@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>n360 Platform - Status Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0B0C0E 0%, #151820 100%);
+      color: #EEF1F6;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      padding: 40px 0;
+      border-bottom: 2px solid #1B2030;
+      margin-bottom: 40px;
+    }
+
+    .quick-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .quick-link {
+      padding: 12px 24px;
+      background: #111317;
+      border: 1px solid #1B2030;
+      border-radius: 8px;
+      color: #00ADE8;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .quick-link:hover {
+      background: #1B2030;
+      transform: translateY(-2px);
+    }
+
+    h1 {
+      font-size: 48px;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+
+    .logo {
+      color: #00ADE8;
+    }
+
+    .subtitle {
+      color: #8B92A8;
+      font-size: 18px;
+    }
+
+    .summary-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: #111317;
+      border: 1px solid #1B2030;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .card h3 {
+      color: #8B92A8;
+      font-size: 14px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .card .value {
+      font-size: 48px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .card.online .value { color: #10B981; }
+    .card.offline .value { color: #EF4444; }
+    .card.percentage .value { color: #00ADE8; }
+
+    .apps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+    }
+
+    .app-card {
+      background: #111317;
+      border: 1px solid #1B2030;
+      border-radius: 12px;
+      padding: 30px;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+
+    .app-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 16px rgba(0, 173, 232, 0.1);
+    }
+
+    .app-card.online {
+      border-left: 4px solid #10B981;
+    }
+
+    .app-card.offline {
+      border-left: 4px solid #EF4444;
+    }
+
+    .app-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .app-name {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    .status-badge {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .status-badge.online {
+      background: rgba(16, 185, 129, 0.2);
+      color: #10B981;
+    }
+
+    .status-badge.offline {
+      background: rgba(239, 68, 68, 0.2);
+      color: #EF4444;
+    }
+
+    .app-details {
+      color: #8B92A8;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .app-details div {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid #1B2030;
+    }
+
+    .app-details div:last-child {
+      border-bottom: none;
+    }
+
+    .refresh-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #00ADE8;
+      color: white;
+      border: none;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 173, 232, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .refresh-btn:hover {
+      background: #0096CC;
+      transform: scale(1.05);
+    }
+
+    .refresh-btn:active {
+      transform: scale(0.95);
+    }
+
+    .loading {
+      text-align: center;
+      padding: 100px 0;
+      font-size: 24px;
+      color: #8B92A8;
+    }
+
+    .error {
+      color: #EF4444;
+      background: rgba(239, 68, 68, 0.1);
+      padding: 16px;
+      border-radius: 8px;
+      margin-top: 8px;
+      font-size: 12px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
+    }
+
+    .updating {
+      animation: pulse 2s ease-in-out infinite;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>n<span class="logo">360</span> Platform</h1>
+      <p class="subtitle">Security Information Orchestrator</p>
+      
+      <div class="quick-links">
+        <a href="https://wazuh.nsecops.com.br" target="_blank" class="quick-link">
+          🔍 Wazuh Dashboard
+        </a>
+        <a href="https://shuffle.nsecops.com.br" target="_blank" class="quick-link">
+          🔄 Shuffle SOAR
+        </a>
+        <a href="https://zabbix.nsecops.com.br" target="_blank" class="quick-link">
+          📈 Zabbix Monitoring
+        </a>
+      </div>
+    </header>
+
+    <div id="content" class="loading">
+      Carregando status das aplicações...
+    </div>
+  </div>
+
+  <button class="refresh-btn" onclick="refreshStatus()">🔄 Atualizar</button>
+
+  <script>
+    // Usar proxy relativo (mesmo domínio) até DNS ser configurado
+    const API_URL = window.location.origin;
+
+    function getAppUrl(appKey) {
+      const urls = {
+        wazuh: 'https://wazuh.nsecops.com.br',
+        shuffle: 'https://shuffle.nsecops.com.br',
+        zabbix: 'https://zabbix.nsecops.com.br'
+      };
+      return urls[appKey] || '#';
+    }
+
+    async function loadStatus() {
+      try {
+        const response = await fetch(`${API_URL}/api/dashboard`);
+        const data = await response.json();
+        renderDashboard(data);
+      } catch (error) {
+        document.getElementById('content').innerHTML = `
+          <div class="error">
+            ❌ Erro ao carregar dados: ${error.message}
+          </div>
+        `;
+      }
+    }
+
+    function renderDashboard(data) {
+      const { summary, apps } = data;
+      
+      const html = `
+        <div class="summary-cards">
+          <div class="card online">
+            <h3>Aplicações Online</h3>
+            <div class="value">${summary.onlineApps}</div>
+          </div>
+          <div class="card offline">
+            <h3>Aplicações Offline</h3>
+            <div class="value">${summary.offlineApps}</div>
+          </div>
+          <div class="card percentage">
+            <h3>Health Score</h3>
+            <div class="value">${summary.healthPercentage}%</div>
+          </div>
+        </div>
+
+        <div class="apps-grid">
+          ${Object.entries(apps).map(([key, app]) => `
+            <div class="app-card ${app.online ? 'online' : 'offline'}">
+              <div class="app-header">
+                <div class="app-name">${key.toUpperCase()}</div>
+                <div class="status-badge ${app.online ? 'online' : 'offline'}">
+                  ${app.online ? '✓ Online' : '✗ Offline'}
+                </div>
+              </div>
+              <div class="app-details">
+                <div>
+                  <span>Versão:</span>
+                  <span>${app.version || 'N/A'}</span>
+                </div>
+                <div>
+                  <span>Última Verificação:</span>
+                  <span>${app.lastCheck ? new Date(app.lastCheck).toLocaleString('pt-BR') : 'Nunca'}</span>
+                </div>
+                <div>
+                  <span>Painel:</span>
+                  <span><a href="${getAppUrl(key)}" target="_blank" style="color: #00ADE8; text-decoration: none;">Acessar →</a></span>
+                </div>
+                ${app.error ? `
+                  <div class="error">
+                    Erro: ${app.error}
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+      
+      document.getElementById('content').innerHTML = html;
+    }
+
+    async function refreshStatus() {
+      const btn = document.querySelector('.refresh-btn');
+      btn.classList.add('updating');
+      btn.textContent = '⏳ Atualizando...';
+      
+      try {
+        await fetch(`${API_URL}/api/status/refresh`, { method: 'POST' });
+        await loadStatus();
+        btn.textContent = '✓ Atualizado!';
+        setTimeout(() => {
+          btn.textContent = '🔄 Atualizar';
+          btn.classList.remove('updating');
+        }, 2000);
+      } catch (error) {
+        btn.textContent = '✗ Erro';
+        setTimeout(() => {
+          btn.textContent = '🔄 Atualizar';
+          btn.classList.remove('updating');
+        }, 2000);
+      }
+    }
+
+    // Load inicial
+    loadStatus();
+
+    // Auto-refresh a cada 60 segundos
+    setInterval(loadStatus, 60000);
+  </script>
+</body>
+</html>
+

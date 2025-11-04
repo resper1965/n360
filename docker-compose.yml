@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  n360-backend:
+    image: node:18-alpine
+    container_name: n360-backend
+    hostname: n360-backend
+    restart: unless-stopped
+    working_dir: /app
+    command: sh -c "npm install && npm start"
+    networks:
+      - n360-internal
+      - traefik-proxy
+      - wazuh-stack_wazuh-internal
+      - zabbix-stack_zabbix-internal
+      - shuffle-internal
+    environment:
+      - NODE_ENV=production
+      - PORT=3001
+      - WAZUH_API_URL=https://wazuh.manager:55000
+      - WAZUH_API_USER=wazuh-wui
+      - WAZUH_API_PASSWORD=Nessnet@10
+      - ZABBIX_API_URL=http://zabbix-web:8080/api_jsonrpc.php
+      - ZABBIX_API_USER=Admin
+      - ZABBIX_API_PASSWORD=nessnet@10
+      - SHUFFLE_API_URL=http://shuffle-backend:5001
+    volumes:
+      - ./backend:/app
+    expose:
+      - "3001"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.n360-api.rule=Host(`api.n360.nsecops.com.br`)"
+      - "traefik.http.routers.n360-api.entrypoints=websecure"
+      - "traefik.http.routers.n360-api.tls.certresolver=letsencrypt"
+      - "traefik.http.services.n360-api-svc.loadbalancer.server.port=3001"
+
+  n360-frontend:
+    image: nginx:alpine
+    container_name: n360-frontend
+    hostname: n360-frontend
+    restart: unless-stopped
+    networks:
+      - traefik-proxy
+    volumes:
+      - ./frontend/dist:/usr/share/nginx/html:ro
+      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+    expose:
+      - "80"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.docker.network=traefik-proxy"
+      - "traefik.http.routers.n360.rule=Host(`n360.nsecops.com.br`)"
+      - "traefik.http.routers.n360.entrypoints=websecure"
+      - "traefik.http.routers.n360.tls.certresolver=letsencrypt"
+      - "traefik.http.services.n360-svc.loadbalancer.server.port=80"
+
+networks:
+  n360-internal:
+    driver: bridge
+  traefik-proxy:
+    external: true
+  wazuh-stack_wazuh-internal:
+    external: true
+  zabbix-stack_zabbix-internal:
+    external: true
+  shuffle-internal:
+    external: true
+
