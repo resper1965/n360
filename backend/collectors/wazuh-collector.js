@@ -43,7 +43,7 @@ class WazuhCollector {
     try {
       // Buscar alertas dos últimos 60 segundos
       const response = await axios.get(
-        `${this.apiUrl}/security/alerts`,
+        `${this.apiUrl}/manager/alerts`,
         {
           params: {
             offset: 0,
