@@ -1,0 +1,22 @@
+# n360 Platform - Environment Variables (PRODUCTION)
+
+# Application
+NODE_ENV=production
+PORT=3001
+
+# Supabase
+SUPABASE_URL=https://hyplrlakowbwntkidtcp.supabase.co
+SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh5cGxybGFrb3did250a2lkdGNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIyNzY5MzIsImV4cCI6MjA3Nzg1MjkzMn0.HBvp7AxL3Bd_39HtvPWdp9Ri7DkPbKZQ1kDMrGJvDxc
+SUPABASE_SERVICE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh5cGxybGFrb3did250a2lkdGNwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MjI3NjkzMiwiZXhwIjoyMDc3ODUyOTMyfQ.IwPdJtuqXRHjiaC5GeGCGroWj0H6pzy-j45Bjb1h84w
+
+# Integrations
+WAZUH_API_URL=https://wazuh.manager:55000
+WAZUH_API_USER=wazuh-wui
+WAZUH_API_PASSWORD=Nessnet@10
+
+ZABBIX_API_URL=http://zabbix-web:8080/api_jsonrpc.php
+ZABBIX_API_USER=Admin
+ZABBIX_API_PASSWORD=nessnet@10
+
+SHUFFLE_API_URL=http://shuffle-backend:5001
+
