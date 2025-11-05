@@ -5,3 +5,5 @@ logs/
 coverage/
 .nyc_output/
 
+
+/generated/prisma

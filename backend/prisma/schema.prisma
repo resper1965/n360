@@ -1,0 +1,541 @@
+// ============================================
+// n360 Platform - Prisma Schema
+// GRC ISMS Evolution (Spec 005)
+// ============================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============================================
+// EXISTING TABLES (Supabase managed)
+// ============================================
+
+model Organization {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name       String   @db.VarChar(255)
+  slug       String   @unique @db.VarChar(100)
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+
+  // Relations
+  assets         Asset[]
+  threats        Threat[]
+  vulnerabilities Vulnerability[]
+  risks          Risk[]
+  controls       Control[]
+  policies       Policy[]
+  incidents      Incident[]
+  audits         Audit[]
+
+  @@map("organizations")
+}
+
+// ============================================
+// MODULE 1: CMDB (Asset Management)
+// ============================================
+
+model Asset {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_id      String   @db.Uuid
+  
+  // Basic Info
+  asset_code  String   @unique @db.VarChar(50)
+  name        String   @db.VarChar(255)
+  description String?  @db.Text
+  asset_type  String   @db.VarChar(50) // hardware, software, information, people, service
+  
+  // CIA Triad Classification
+  confidentiality_impact Int @db.Integer // 1-5
+  integrity_impact       Int @db.Integer // 1-5
+  availability_impact    Int @db.Integer // 1-5
+  business_impact        Int @db.Integer // auto-calculated: max(C,I,A) + others
+  
+  // Ownership
+  asset_owner_id String? @db.Uuid
+  risk_owner_id  String? @db.Uuid
+  
+  // Integration with Wazuh/Zabbix
+  wazuh_agent_id String? @db.VarChar(50)
+  zabbix_host_id String? @db.VarChar(50)
+  
+  // Metadata
+  tags       String[] @db.Text
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  organization Organization @relation(fields: [org_id], references: [id], onDelete: Cascade)
+  risks        Risk[]
+  
+  @@map("assets")
+  @@index([org_id])
+  @@index([asset_type])
+}
+
+// ============================================
+// MODULE 2: TVL (Threat/Vulnerability Library)
+// ============================================
+
+model Threat {
+  id              String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_id          String   @db.Uuid
+  
+  // Basic Info
+  threat_code     String   @unique @db.VarChar(50)
+  name            String   @db.VarChar(255)
+  description     String?  @db.Text
+  
+  // Categorization
+  threat_category String   @db.VarChar(50) // malware, phishing, physical, natural
+  threat_source   String   @db.VarChar(50) // internal, external, environmental
+  
+  // Assessment
+  likelihood_score Int     @db.Integer // 1-5 (global likelihood)
+  
+  // Metadata
+  tags       String[] @db.Text
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  organization Organization @relation(fields: [org_id], references: [id], onDelete: Cascade)
+  risks        RiskThreatVuln[]
+  
+  @@map("threats")
+  @@index([org_id])
+  @@index([threat_category])
+}
+
+model Vulnerability {
+  id             String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_id         String   @db.Uuid
+  
+  // Basic Info
+  vuln_code      String   @unique @db.VarChar(50)
+  name           String   @db.VarChar(255)
+  description    String?  @db.Text
+  
+  // Severity
+  severity_score Int      @db.Integer // 1-5
+  
+  // External IDs
+  cve_id         String?  @db.VarChar(50)
+  cvss_score     Float?   @db.Real
+  
+  // Integration
+  wazuh_vuln_id  String?  @db.VarChar(100)
+  
+  // Metadata
+  tags       String[] @db.Text
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  organization Organization @relation(fields: [org_id], references: [id], onDelete: Cascade)
+  risks        RiskThreatVuln[]
+  
+  @@map("vulnerabilities")
+  @@index([org_id])
+  @@index([cve_id])
+}
+
+// ============================================
+// MODULE 3: RISK ENGINE v2.0
+// ============================================
+
+model Risk {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_id      String   @db.Uuid
+  
+  // Basic Info
+  title       String   @db.VarChar(255)
+  description String?  @db.Text
+  category    String   @db.VarChar(50)
+  
+  // Asset Reference
+  asset_id    String?  @db.Uuid
+  asset_type  String?  @db.VarChar(50)
+  
+  // Inherent Risk (old method - keep for backward compatibility)
+  likelihood  Int      @db.Integer
+  impact      Int      @db.Integer
+  risk_score  Int      @db.Integer // likelihood * impact
+  
+  // Treatment
+  treatment          String  @db.VarChar(30)
+  mitigation_plan    String? @db.Text
+  mitigation_status  String  @default("not_started") @db.VarChar(20)
+  
+  // Ownership
+  owner_id    String? @db.Uuid
+  
+  // Status
+  status           String   @db.VarChar(20)
+  identified_date  DateTime @db.Timestamptz(6)
+  target_date      DateTime? @db.Timestamptz(6)
+  closed_date      DateTime? @db.Timestamptz(6)
+  
+  // Metadata
+  tags       String[] @db.Text
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  organization     Organization      @relation(fields: [org_id], references: [id], onDelete: Cascade)
+  asset            Asset?            @relation(fields: [asset_id], references: [id])
+  threatVulns      RiskThreatVuln[]
+  controlMappings  RiskControl[]
+  incidents        Incident[]
+  
+  @@map("risks")
+  @@index([org_id])
+  @@index([status])
+  @@index([asset_id])
+}
+
+// Many-to-Many: Risk ←→ Threat + Vulnerability
+model RiskThreatVuln {
+  id               String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  risk_id          String   @db.Uuid
+  threat_id        String   @db.Uuid
+  vulnerability_id String   @db.Uuid
+  
+  // Calculated inherent risk
+  inherent_likelihood Int @db.Integer // from Threat
+  inherent_impact     Int @db.Integer // from Asset CIA
+  inherent_score      Int @db.Integer // likelihood * impact
+  
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  risk          Risk          @relation(fields: [risk_id], references: [id], onDelete: Cascade)
+  threat        Threat        @relation(fields: [threat_id], references: [id])
+  vulnerability Vulnerability @relation(fields: [vulnerability_id], references: [id])
+  
+  @@map("risk_threat_vuln")
+  @@unique([risk_id, threat_id, vulnerability_id])
+  @@index([risk_id])
+}
+
+// Many-to-Many: Risk ←→ Control
+model RiskControl {
+  id         String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  risk_id    String   @db.Uuid
+  control_id String   @db.Uuid
+  
+  // Residual risk calculation
+  reduction_percentage Float? @db.Real // How much this control reduces risk
+  
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  risk    Risk    @relation(fields: [risk_id], references: [id], onDelete: Cascade)
+  control Control @relation(fields: [control_id], references: [id])
+  
+  @@map("risk_controls")
+  @@unique([risk_id, control_id])
+  @@index([risk_id])
+  @@index([control_id])
+}
+
+// ============================================
+// MODULE 4: CONTROLS (Enhanced)
+// ============================================
+
+model Control {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_id      String   @db.Uuid
+  
+  // Existing fields (from v1.0)
+  control_id  String   @unique @db.VarChar(50)
+  title       String   @db.VarChar(255)
+  description String?  @db.Text
+  framework   String   @db.VarChar(50)
+  control_type String  @db.VarChar(50)
+  category    String?  @db.VarChar(50)
+  status      String   @db.VarChar(20)
+  
+  // Test Plan (new)
+  test_plan          String? @db.Text
+  test_objective     String? @db.Text
+  test_method        String? @db.Text
+  expected_result    String? @db.Text
+  
+  // Test Execution
+  test_frequency     Int?     @db.Integer
+  last_tested        DateTime? @db.Timestamptz(6)
+  next_test_date     DateTime? @db.Timestamptz(6)
+  test_result        String?   @db.VarChar(20)
+  effectiveness_score Float?   @db.Real
+  
+  // Evidence
+  evidence_url         String? @db.Text
+  evidence_description String? @db.Text
+  
+  // Automation (Shuffle integration)
+  shuffle_workflow_id  String? @db.VarChar(100)
+  is_automated         Boolean @default(false)
+  
+  // Ownership
+  owner_id         String? @db.Uuid
+  responsible_team String? @db.VarChar(100)
+  
+  // Metadata
+  implementation_notes String?   @db.Text
+  tags                 String[]  @db.Text
+  created_at           DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at           DateTime  @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  organization     Organization       @relation(fields: [org_id], references: [id], onDelete: Cascade)
+  riskMappings     RiskControl[]
+  testExecutions   ControlTestExecution[]
+  incidents        Incident[]
+  
+  @@map("controls")
+  @@index([org_id])
+  @@index([framework])
+  @@index([status])
+}
+
+// Test Execution History
+model ControlTestExecution {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  control_id  String   @db.Uuid
+  
+  // Execution
+  tested_at    DateTime @db.Timestamptz(6)
+  tested_by_id String?  @db.Uuid
+  
+  // Result
+  test_result         String  @db.VarChar(20) // passed, failed, partial
+  effectiveness_score Float?  @db.Real
+  
+  // Evidence
+  evidence_url         String? @db.Text
+  evidence_description String? @db.Text
+  raw_evidence_json    Json?   // Logs completos de Wazuh/Zabbix
+  
+  // Automation
+  shuffle_execution_id String? @db.VarChar(100)
+  
+  // Notes
+  notes      String? @db.Text
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  control Control @relation(fields: [control_id], references: [id], onDelete: Cascade)
+  
+  @@map("control_test_executions")
+  @@index([control_id])
+  @@index([tested_at])
+}
+
+// ============================================
+// MODULE 5: POLICIES (Existing - kept)
+// ============================================
+
+model Policy {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_id      String   @db.Uuid
+  
+  title       String   @db.VarChar(255)
+  description String?  @db.Text
+  content     String?  @db.Text
+  
+  category    String   @db.VarChar(50)
+  framework   String?  @db.VarChar(50)
+  
+  version     String   @db.VarChar(20)
+  parent_id   String?  @db.Uuid
+  
+  status          String    @db.VarChar(20)
+  effective_date  DateTime? @db.Timestamptz(6)
+  review_date     DateTime? @db.Timestamptz(6)
+  last_reviewed   DateTime? @db.Timestamptz(6)
+  
+  owner_id    String? @db.Uuid
+  approved_by String? @db.Uuid
+  approved_at DateTime? @db.Timestamptz(6)
+  
+  tags       String[]  @db.Text
+  created_by String    @db.Uuid
+  created_at DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at DateTime  @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  organization Organization @relation(fields: [org_id], references: [id], onDelete: Cascade)
+  
+  @@map("policies")
+  @@index([org_id])
+  @@index([status])
+}
+
+// ============================================
+// MODULE 6: INCIDENTS + CAPA
+// ============================================
+
+model Incident {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_id      String   @db.Uuid
+  
+  // Basic Info
+  incident_code  String   @unique @db.VarChar(50)
+  title          String   @db.VarChar(255)
+  description    String?  @db.Text
+  
+  // Materialization
+  risk_id                String?   @db.Uuid
+  materialization_date   DateTime  @db.Timestamptz(6)
+  
+  // Asset & Control
+  asset_id            String? @db.Uuid
+  failed_control_id   String? @db.Uuid
+  
+  // Classification
+  incident_category String  @db.VarChar(50)
+  severity          String  @db.VarChar(20) // critical, high, medium, low
+  
+  // Status
+  status String @db.VarChar(20) // open, investigating, contained, resolved, closed
+  
+  // Source (from Wazuh/Zabbix/Shuffle)
+  source            String  @db.VarChar(50)
+  source_alert_json Json?
+  
+  // Metadata
+  tags       String[]  @db.Text
+  created_at DateTime  @default(now()) @db.Timestamptz(6)
+  updated_at DateTime  @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  organization    Organization      @relation(fields: [org_id], references: [id], onDelete: Cascade)
+  risk            Risk?             @relation(fields: [risk_id], references: [id])
+  asset           Asset?            @relation(fields: [asset_id], references: [id])
+  failedControl   Control?          @relation(fields: [failed_control_id], references: [id])
+  correctiveActions CorrectiveAction[]
+  
+  @@map("incidents")
+  @@index([org_id])
+  @@index([status])
+  @@index([risk_id])
+}
+
+model CorrectiveAction {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_id      String   @db.Uuid
+  
+  // Reference
+  incident_id String? @db.Uuid
+  control_id  String? @db.Uuid
+  
+  // Action
+  action_type        String  @db.VarChar(20) // corrective, preventive
+  action_title       String  @db.VarChar(255)
+  action_description String  @db.Text
+  
+  // Assignment
+  assigned_to_id String? @db.Uuid
+  priority       String  @db.VarChar(20) // critical, high, medium, low
+  
+  // Automation
+  is_automated         Boolean @default(false)
+  shuffle_workflow_id  String? @db.VarChar(100)
+  
+  // Timeline
+  due_date     DateTime? @db.Timestamptz(6)
+  completed_at DateTime? @db.Timestamptz(6)
+  
+  // Status
+  status String @db.VarChar(20) // open, in_progress, completed, verified, cancelled
+  
+  // Metadata
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  incident Incident? @relation(fields: [incident_id], references: [id])
+  
+  @@map("corrective_actions")
+  @@index([incident_id])
+  @@index([status])
+}
+
+// ============================================
+// MODULE 7: AUDITS
+// ============================================
+
+model Audit {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  org_id      String   @db.Uuid
+  
+  // Basic Info
+  audit_code  String   @unique @db.VarChar(50)
+  title       String   @db.VarChar(255)
+  description String?  @db.Text
+  
+  // Type
+  audit_type String   @db.VarChar(50) // internal, external, compliance, security
+  framework  String?  @db.VarChar(50)
+  
+  // Schedule
+  start_date DateTime? @db.Timestamptz(6)
+  end_date   DateTime? @db.Timestamptz(6)
+  
+  // Status
+  status String @db.VarChar(20) // planned, in_progress, completed, reported
+  
+  // Auditor
+  auditor_name String? @db.VarChar(255)
+  
+  // Results
+  score           Float? @db.Real // 0.00 to 100.00
+  findings_count  Int?   @db.Integer
+  
+  // Metadata
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  organization Organization    @relation(fields: [org_id], references: [id], onDelete: Cascade)
+  findings     AuditFinding[]
+  
+  @@map("audits")
+  @@index([org_id])
+  @@index([status])
+}
+
+model AuditFinding {
+  id          String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  audit_id    String   @db.Uuid
+  
+  // Finding
+  finding_title    String  @db.VarChar(255)
+  finding_description String @db.Text
+  severity         String  @db.VarChar(20) // critical, high, medium, low
+  
+  // Control Reference
+  control_id String? @db.Uuid
+  
+  // Remediation
+  remediation_plan String? @db.Text
+  remediation_status String @default("open") @db.VarChar(20)
+  due_date         DateTime? @db.Timestamptz(6)
+  
+  // Metadata
+  created_at DateTime @default(now()) @db.Timestamptz(6)
+  updated_at DateTime @default(now()) @db.Timestamptz(6)
+  
+  // Relations
+  audit Audit @relation(fields: [audit_id], references: [id], onDelete: Cascade)
+  
+  @@map("audit_findings")
+  @@index([audit_id])
+  @@index([severity])
+}
