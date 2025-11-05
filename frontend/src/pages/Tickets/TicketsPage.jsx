@@ -57,12 +57,6 @@ export default function TicketsPage() {
         </Button>
       </div>
 
-        <button className="flex items-center gap-2 px-4 py-2 bg-ness-blue text-white rounded-lg hover:bg-opacity-90 transition-colors">
-          <Plus size={20} />
-          Novo Ticket
-        </button>
-      </div>
-
       {/* Kanban Board */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
         {['open', 'in_progress', 'waiting', 'resolved'].map((status) => (
