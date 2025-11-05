@@ -15,6 +15,7 @@ export default function Sidebar({ isOpen }) {
     { name: 'Dashboard', icon: LayoutDashboard, path: '/' },
     { name: 'SOC - Alertas', icon: AlertTriangle, path: '/soc/alerts' },
     { name: 'NOC - Problemas', icon: Activity, path: '/noc/problems' },
+    { name: 'GRC', icon: Shield, path: '/grc' },
     { name: 'Tickets', icon: Ticket, path: '/tickets' },
     { name: 'Status', icon: Radio, path: '/status' },
   ]
