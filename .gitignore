@@ -32,3 +32,8 @@ Thumbs.db
 # Docker
 docker-compose.override.yml
 
+# Context7 MCP - API Keys sensíveis
+.context7/mcp-config.json
+.context7/*.key
+.context7/secrets/
+
