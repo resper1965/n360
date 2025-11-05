@@ -196,7 +196,7 @@ Projeto: n360 Platform (ness.)
   
   n360 Platform:
     • Local: /home/resper/stack/n360-platform
-    • GitHub: github.com/resper1965/n360-platform
+    • GitHub: github.com/resper1965/n360
     • Docs: .context7/README.md
 
 ╔══════════════════════════════════════════════════════════════╗
