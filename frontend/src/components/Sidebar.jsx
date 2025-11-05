@@ -13,10 +13,10 @@ export default function Sidebar({ isOpen }) {
 
   const menuItems = [
     { name: 'Dashboard', icon: LayoutDashboard, path: '/' },
-    { name: 'Status', icon: Radio, path: '/status' },
     { name: 'SOC - Alertas', icon: AlertTriangle, path: '/soc/alerts' },
     { name: 'NOC - Problemas', icon: Activity, path: '/noc/problems' },
     { name: 'Tickets', icon: Ticket, path: '/tickets' },
+    { name: 'Status', icon: Radio, path: '/status' },
   ]
 
   const isActive = (path) => {
