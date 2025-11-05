@@ -1,0 +1,71 @@
+name: Pull Request Checks
+
+on:
+  pull_request:
+    branches: [ main, develop ]
+
+jobs:
+  # ============================================
+  # PR Quality Checks
+  # ============================================
+  pr-checks:
+    name: PR Quality Gates
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+      
+      - name: Install backend dependencies
+        run: cd backend && npm ci
+      
+      - name: Install frontend dependencies
+        run: cd frontend && npm ci
+      
+      - name: Run backend tests
+        run: cd backend && npm test
+      
+      - name: Run frontend tests
+        run: cd frontend && npm test -- --run
+      
+      - name: Check code coverage
+        run: |
+          BACKEND_COV=$(cd backend && npm test -- --coverage --silent | grep "Lines" | awk '{print $3}' | tr -d '%')
+          echo "Backend coverage: $BACKEND_COV%"
+          
+          if [ $(echo "$BACKEND_COV < 60" | bc) -eq 1 ]; then
+            echo "::error::Backend coverage below 60%!"
+            exit 1
+          fi
+      
+      - name: Check for secrets
+        uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: ${{ github.event.pull_request.base.sha }}
+          head: ${{ github.event.pull_request.head.sha }}
+      
+      - name: Conventional Commits check
+        uses: amannn/action-semantic-pull-request@v5
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Comment PR with results
+        uses: actions/github-script@v7
+        if: always()
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '✅ All checks passed! Ready for review.'
+            })
+
