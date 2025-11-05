@@ -50,172 +50,200 @@ export default function CISODashboard() {
   const { summary } = data
 
   return (
-    <div className="space-y-6">
-      <div>
-        <h1 className="text-3xl font-semibold tracking-tight">Dashboard CISO</h1>
-        <p className="text-muted-foreground mt-1">Visão executiva da postura de segurança</p>
+    <div className="space-y-grid-xl">
+      {/* Header */}
+      <div className="space-y-1">
+        <h1 className="text-3xl font-medium tracking-tight">Dashboard CISO</h1>
+        <p className="text-sm text-muted-foreground">Visão executiva da postura de segurança</p>
       </div>
 
-      {/* Cards de Métricas */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      {/* KPI Cards - Elegant Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-grid-lg">
         {/* Risk Score */}
-        <Card>
+        <Card className="group">
           <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div className="p-3 bg-red-500/10 rounded-lg">
-                <AlertTriangle className="text-red-500 h-6 w-6" />
-              </div>
-              <div className="text-right">
-                <div className="text-3xl font-bold">
-                  {Math.round(summary.avg_risk_score || 0)}
-                </div>
-                <div className="text-xs text-muted-foreground uppercase mt-1">Risk Score</div>
+            <div className="flex items-start justify-between mb-4">
+              <div className="p-2.5 rounded-lg bg-muted/50 border border-border/50 group-hover:border-primary/20 transition-colors duration-base">
+                <AlertTriangle className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-base" strokeWidth={1.5} />
               </div>
             </div>
-            <div className="text-sm text-muted-foreground mt-4">
-              {summary.open_risks || 0} riscos abertos
+            <div className="space-y-1">
+              <div className="text-3xl font-medium tracking-tight">
+                {Math.round(summary.avg_risk_score || 0)}
+              </div>
+              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Risk Score</div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-border/50">
+              <div className="text-xs text-muted-foreground">
+                {summary.open_risks || 0} riscos abertos
+              </div>
             </div>
           </CardContent>
         </Card>
 
         {/* Compliance */}
-        <Card>
+        <Card className="group">
           <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div className="p-3 bg-green-500/10 rounded-lg">
-                <Shield className="text-green-500 h-6 w-6" />
-              </div>
-              <div className="text-right">
-                <div className="text-3xl font-bold">
-                  {Math.round(summary.avg_compliance || 0)}%
-                </div>
-                <div className="text-xs text-muted-foreground uppercase mt-1">Compliance</div>
+            <div className="flex items-start justify-between mb-4">
+              <div className="p-2.5 rounded-lg bg-muted/50 border border-border/50 group-hover:border-primary/20 transition-colors duration-base">
+                <Shield className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-base" strokeWidth={1.5} />
               </div>
             </div>
-            <div className="text-sm text-muted-foreground mt-4">
-              Média de conformidade
+            <div className="space-y-1">
+              <div className="text-3xl font-medium tracking-tight">
+                {Math.round(summary.avg_compliance || 0)}%
+              </div>
+              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Compliance</div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-border/50">
+              <div className="text-xs text-muted-foreground">
+                Média de conformidade
+              </div>
             </div>
           </CardContent>
         </Card>
 
         {/* Alertas Críticos */}
-        <Card>
+        <Card className="group">
           <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div className="p-3 bg-orange-500/10 rounded-lg">
-                <AlertTriangle className="text-orange-500 h-6 w-6" />
-              </div>
-              <div className="text-right">
-                <div className="text-3xl font-bold">
-                  {summary.critical_alerts || 0}
-                </div>
-                <div className="text-xs text-muted-foreground uppercase mt-1">Alertas Críticos</div>
+            <div className="flex items-start justify-between mb-4">
+              <div className="p-2.5 rounded-lg bg-muted/50 border border-border/50 group-hover:border-primary/20 transition-colors duration-base">
+                <AlertTriangle className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-base" strokeWidth={1.5} />
               </div>
             </div>
-            <div className="text-sm text-muted-foreground mt-4">
-              Últimas 24 horas
+            <div className="space-y-1">
+              <div className="text-3xl font-medium tracking-tight">
+                {summary.critical_alerts || 0}
+              </div>
+              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Alertas Críticos</div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-border/50">
+              <div className="text-xs text-muted-foreground">
+                Últimas 24 horas
+              </div>
             </div>
           </CardContent>
         </Card>
 
         {/* Tickets Abertos */}
-        <Card>
+        <Card className="group">
           <CardContent className="p-6">
-            <div className="flex items-center justify-between">
-              <div className="p-3 bg-primary/10 rounded-lg">
-                <Ticket className="text-primary h-6 w-6" />
-              </div>
-              <div className="text-right">
-                <div className="text-3xl font-bold">
-                  {summary.open_tickets || 0}
-                </div>
-                <div className="text-xs text-muted-foreground uppercase mt-1">Tickets Abertos</div>
+            <div className="flex items-start justify-between mb-4">
+              <div className="p-2.5 rounded-lg bg-muted/50 border border-border/50 group-hover:border-primary/20 transition-colors duration-base">
+                <Ticket className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-base" strokeWidth={1.5} />
               </div>
             </div>
-            <div className="text-sm text-muted-foreground mt-4">
-              Em progresso e pendentes
+            <div className="space-y-1">
+              <div className="text-3xl font-medium tracking-tight">
+                {summary.open_tickets || 0}
+              </div>
+              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Tickets Abertos</div>
+            </div>
+            <div className="mt-4 pt-4 border-t border-border/50">
+              <div className="text-xs text-muted-foreground">
+                Em progresso e pendentes
+              </div>
             </div>
           </CardContent>
         </Card>
       </div>
 
-      {/* Top Riscos */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <TrendingUp className="h-5 w-5 text-primary" />
-            Top 5 Riscos Críticos
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          {data.topRisks?.length > 0 ? (
-            <div className="space-y-3">
-              {data.topRisks.map((risk) => (
-                <div key={risk.id} className="flex items-center justify-between p-4 bg-muted rounded-lg">
-                  <div>
-                    <div className="font-medium">{risk.title}</div>
-                    <div className="text-sm text-muted-foreground mt-1">{risk.category}</div>
-                  </div>
-                  <div className="text-right">
-                    <div className="text-2xl font-bold text-red-500">{risk.risk_score}</div>
-                    <div className="text-xs text-muted-foreground">{risk.status}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12 text-muted-foreground">
-              <Shield className="h-12 w-12 mx-auto mb-3 opacity-50" />
-              <p>Nenhum risco cadastrado</p>
-              <p className="text-sm mt-2">Configure riscos no módulo GRC</p>
-            </div>
-          )}
-        </CardContent>
-      </Card>
-
-      {/* Alertas Críticos Recentes */}
-      <Card>
-        <CardHeader>
-          <CardTitle className="flex items-center gap-2">
-            <AlertTriangle className="h-5 w-5 text-orange-500" />
-            Alertas Críticos (24h)
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          {data.criticalAlerts?.length > 0 ? (
-            <div className="space-y-3">
-              {data.criticalAlerts.map((alert) => (
-                <div key={alert.id} className="flex items-center justify-between p-4 bg-muted rounded-lg">
-                  <div className="flex-1">
-                    <div className="font-medium">{alert.title}</div>
-                    <div className="text-sm text-muted-foreground mt-1">
-                      {alert.source} • {new Date(alert.created_at).toLocaleString('pt-BR')}
+      {/* Main Content Grid - Elegant Layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-grid-lg">
+        {/* Left Column - 2/3 width */}
+        <div className="lg:col-span-2 space-y-grid-lg">
+          {/* Top Riscos */}
+          <Card>
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-lg font-medium">
+                <TrendingUp className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+                Top 5 Riscos Críticos
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {data.topRisks?.length > 0 ? (
+                <div className="space-y-2">
+                  {data.topRisks.map((risk, index) => (
+                    <div 
+                      key={risk.id} 
+                      className="flex items-center justify-between p-4 rounded-lg border border-border/50 bg-muted/30 hover:bg-muted/50 transition-all duration-base group"
+                    >
+                      <div className="flex items-center gap-3 flex-1">
+                        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-muted border border-border/50 flex items-center justify-center text-xs font-medium text-muted-foreground">
+                          {index + 1}
+                        </div>
+                        <div className="flex-1 min-w-0">
+                          <div className="font-medium text-sm truncate">{risk.title}</div>
+                          <div className="text-xs text-muted-foreground mt-0.5">{risk.category}</div>
+                        </div>
+                      </div>
+                      <div className="text-right ml-4">
+                        <div className="text-2xl font-medium tracking-tight">{risk.risk_score}</div>
+                        <div className="text-xs text-muted-foreground uppercase tracking-wide mt-0.5">{risk.status}</div>
+                      </div>
                     </div>
-                  </div>
-                  <div className={`px-3 py-1 rounded-full text-xs font-medium ${
-                    alert.severity === 'critical' 
-                      ? 'bg-red-500/20 text-red-400' 
-                      : 'bg-orange-500/20 text-orange-400'
-                  }`}>
-                    {alert.severity}
-                  </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          ) : (
-            <div className="text-center py-12 text-muted-foreground">
-              <CheckCircle className="h-12 w-12 mx-auto mb-3 text-green-500 opacity-50" />
-              <p>Nenhum alerta crítico nas últimas 24 horas</p>
-              <p className="text-sm mt-2">Sistema operando normalmente</p>
-            </div>
-          )}
-        </CardContent>
-      </Card>
+              ) : (
+                <div className="text-center py-12 text-muted-foreground">
+                  <Shield className="h-10 w-10 mx-auto mb-3 opacity-30" strokeWidth={1.5} />
+                  <p className="text-sm">Nenhum risco cadastrado</p>
+                  <p className="text-xs mt-1 opacity-70">Configure riscos no módulo GRC</p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
 
-      {/* Widgets Row */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <TopAlertsWidget />
-        <TopProblemsWidget />
+          {/* Alertas Críticos Recentes */}
+          <Card>
+            <CardHeader className="pb-4">
+              <CardTitle className="flex items-center gap-2 text-lg font-medium">
+                <AlertTriangle className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
+                Alertas Críticos (24h)
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {data.criticalAlerts?.length > 0 ? (
+                <div className="space-y-2">
+                  {data.criticalAlerts.map((alert) => (
+                    <div 
+                      key={alert.id} 
+                      className="flex items-center justify-between p-4 rounded-lg border border-border/50 bg-muted/30 hover:bg-muted/50 transition-all duration-base"
+                    >
+                      <div className="flex-1 min-w-0">
+                        <div className="font-medium text-sm truncate">{alert.title}</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">
+                          {alert.source} • {new Date(alert.created_at).toLocaleString('pt-BR')}
+                        </div>
+                      </div>
+                      <div className="ml-4">
+                        <div className={`px-2.5 py-1 rounded-md text-xs font-medium border ${
+                          alert.severity === 'critical' 
+                            ? 'bg-muted/50 border-red-500/20 text-red-400' 
+                            : 'bg-muted/50 border-orange-500/20 text-orange-400'
+                        }`}>
+                          {alert.severity}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="text-center py-12 text-muted-foreground">
+                  <CheckCircle className="h-10 w-10 mx-auto mb-3 opacity-30" strokeWidth={1.5} />
+                  <p className="text-sm">Nenhum alerta crítico nas últimas 24 horas</p>
+                  <p className="text-xs mt-1 opacity-70">Sistema operando normalmente</p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Right Column - 1/3 width */}
+        <div className="space-y-grid-lg">
+          <TopAlertsWidget />
+          <TopProblemsWidget />
+        </div>
       </div>
     </div>
   )

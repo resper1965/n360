@@ -40,6 +40,26 @@ export default {
       fontFamily: {
         sans: ['Montserrat', 'system-ui', 'sans-serif'],
       },
+      spacing: {
+        'grid-xs': 'var(--grid-gap-xs)',
+        'grid-sm': 'var(--grid-gap-sm)',
+        'grid-md': 'var(--grid-gap-md)',
+        'grid-lg': 'var(--grid-gap-lg)',
+        'grid-xl': 'var(--grid-gap-xl)',
+        'grid-2xl': 'var(--grid-gap-2xl)',
+      },
+      transitionTimingFunction: {
+        'elegant': 'cubic-bezier(0.2, 0.8, 0.2, 1)',
+      },
+      transitionDuration: {
+        'fast': '120ms',
+        'base': '200ms',
+        'slow': '300ms',
+      },
+      boxShadow: {
+        'elegant': '0 4px 16px rgba(0, 0, 0, 0.1)',
+        'elegant-hover': '0 8px 24px rgba(0, 0, 0, 0.2)',
+      },
     },
   },
   plugins: [],

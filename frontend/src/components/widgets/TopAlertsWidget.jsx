@@ -32,40 +32,48 @@ export default function TopAlertsWidget() {
   }
 
   return (
-    <Card className="p-6">
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="font-semibold flex items-center gap-2">
-          <AlertTriangle className="h-4 w-4 text-primary" />
-          Top 5 Alertas
-        </h3>
-        <TrendingUp className="h-4 w-4 text-muted-foreground" />
-      </div>
-
-      {loading ? (
-        <div className="text-sm text-muted-foreground">Carregando...</div>
-      ) : alerts.length === 0 ? (
-        <div className="text-sm text-muted-foreground">Nenhum alerta recente</div>
-      ) : (
-        <div className="space-y-3">
-          {alerts.map((alert) => (
-            <div
-              key={alert.id}
-              className="flex items-start justify-between p-3 rounded-lg border bg-card hover:bg-accent/50 transition-colors cursor-pointer"
-              onClick={() => window.location.href = `/soc/alerts/${alert.id}`}
-            >
-              <div className="flex-1 min-w-0">
-                <div className="font-medium text-sm truncate">{alert.title}</div>
-                <div className="text-xs text-muted-foreground">
-                  {new Date(alert.created_at).toLocaleDateString('pt-BR')}
-                </div>
-              </div>
-              <Badge variant={severityColors[alert.severity]} className="ml-2">
-                {alert.severity}
-              </Badge>
-            </div>
-          ))}
+    <Card>
+      <div className="p-6 pb-4">
+        <div className="flex items-center justify-between">
+          <h3 className="font-medium text-sm flex items-center gap-2 text-muted-foreground uppercase tracking-wide">
+            <AlertTriangle className="h-3.5 w-3.5" strokeWidth={1.5} />
+            Top 5 Alertas
+          </h3>
+          <TrendingUp className="h-3.5 w-3.5 text-muted-foreground opacity-50" strokeWidth={1.5} />
         </div>
-      )}
+      </div>
+      <div className="px-6 pb-6">
+        {loading ? (
+          <div className="text-xs text-muted-foreground">Carregando...</div>
+        ) : alerts.length === 0 ? (
+          <div className="text-xs text-muted-foreground opacity-70">Nenhum alerta recente</div>
+        ) : (
+          <div className="space-y-2">
+            {alerts.map((alert, index) => (
+              <div
+                key={alert.id}
+                className="flex items-center justify-between p-3 rounded-lg border border-border/50 bg-muted/30 hover:bg-muted/50 transition-all duration-base cursor-pointer group"
+                onClick={() => window.location.href = `/soc/alerts/${alert.id}`}
+              >
+                <div className="flex items-center gap-3 flex-1 min-w-0">
+                  <div className="flex-shrink-0 w-6 h-6 rounded-full bg-muted border border-border/50 flex items-center justify-center text-xs font-medium text-muted-foreground">
+                    {index + 1}
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="font-medium text-sm truncate">{alert.title}</div>
+                    <div className="text-xs text-muted-foreground mt-0.5">
+                      {new Date(alert.created_at).toLocaleDateString('pt-BR')}
+                    </div>
+                  </div>
+                </div>
+                <Badge variant={severityColors[alert.severity]} className="ml-2 text-xs border">
+                  {alert.severity}
+                </Badge>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </Card>
   )
 }
