@@ -65,6 +65,10 @@
 
 ## 🚧 O Que Falta Construir
 
+> **Nota**: O n360 é uma plataforma integrada de **GRC + SOC + NOC**.  
+> Atualmente temos MVP de SOC (alertas) e NOC (problemas).  
+> **GRC precisa ser construído completamente no Sprint 4.**
+
 ### SPRINT 2 - Error Handling & Testing (1 semana)
 **Prioridade**: 🔴 ALTA
 
@@ -228,10 +232,13 @@
 
 ---
 
-### SPRINT 4 - GRC & Compliance (2 semanas)
-**Prioridade**: 🟡 MÉDIA
+### SPRINT 4 - GRC & Compliance (2 semanas) 🏛️
+**Prioridade**: 🟡 MÉDIA-ALTA  
+**Área**: GRC (Governance, Risk & Compliance) - **UMA DAS TRÊS PILARES DO N360**
 
-#### 8. GRC - Governance
+> **Importante**: O n360 é uma plataforma **GRC + SOC + NOC**. GRC é fundamental!
+
+#### 8. GRC - Governance (Governança)
 - [ ] **Asset Management**
   - CMDB (Configuration Management DB)
   - Asset discovery
@@ -250,7 +257,7 @@
   - Risk treatment plans
   - Risk monitoring
 
-#### 9. GRC - Compliance
+#### 9. GRC - Compliance (Conformidade)
 - [ ] **Frameworks**
   - ISO 27001 checklist
   - LGPD compliance tracker
@@ -270,7 +277,20 @@
   - Follow-up tasks
 
 **Estimativa**: 10-14 dias  
-**ROI**: Diferencial competitivo, compliance provada
+**ROI**: Diferencial competitivo, compliance provada  
+**Status Atual**: 0% → 100% (GRC completo)
+
+**Componentes do GRC**:
+- 🏛️ **Governance** (Governança): Asset Management, Policy Management
+- ⚠️ **Risk** (Risco): Risk Register, Risk Assessment, Risk Treatment
+- ✅ **Compliance** (Conformidade): ISO 27001, LGPD, PCI-DSS, NIST CSF
+
+**Por que GRC é importante**:
+- ✅ Diferencial competitivo (poucos produtos têm GRC integrado)
+- ✅ Necessário para vendas enterprise
+- ✅ Compliance regulatória (LGPD, SOX, PCI-DSS)
+- ✅ Auditoria e certificações (ISO 27001)
+- ✅ Visão executiva de risco e compliance
 
 ---
 
@@ -370,17 +390,25 @@ AGORA (Nov 2025)
 │   ├── Jest/Vitest Setup
 │   └── 80% Test Coverage
 │
-├── 🟡 Sprint 3: Features Core (10-12 dias)
+├── 🟡 Sprint 3: Features Core - SOC + NOC (10-12 dias)
 │   ├── SOC Alertas (100%)
 │   ├── NOC Problemas (100%)
 │   ├── Tickets ITIL (100%)
 │   └── Dashboard CISO (100%)
 │
-├── 🟡 Sprint 4: GRC & Compliance (10-14 dias)
-│   ├── Asset Management
-│   ├── Policy Management
-│   ├── Risk Register
-│   └── Compliance Frameworks
+├── 🏛️ SPRINT 4: GRC & Compliance (10-14 dias) ← PILAR FUNDAMENTAL
+│   ├── 🏛️ Governance (Governança)
+│   │   ├── Asset Management (CMDB)
+│   │   └── Policy Management
+│   ├── ⚠️ Risk (Risco)
+│   │   ├── Risk Register
+│   │   ├── Risk Assessment
+│   │   └── Risk Treatment
+│   └── ✅ Compliance (Conformidade)
+│       ├── ISO 27001 checklist
+│       ├── LGPD compliance tracker
+│       ├── PCI-DSS controls
+│       └── NIST CSF mapping
 │
 └── 🟢 Sprint 5: Polish & Production (5-7 dias)
     ├── TypeScript 100%
@@ -403,16 +431,18 @@ TOTAL: 30-40 dias úteis (6-8 semanas)
    - Valor: Crítico
 
 ### Próximo (2-3 Semanas)
-2. **Sprint 3**: Features Core
+2. **Sprint 3**: Features Core - SOC + NOC
    - Impacto: Muito Alto (produto vendável)
    - Esforço: Alto
    - Valor: Muito Alto
+   - **Nota**: Completa 2 dos 3 pilares (SOC + NOC)
 
 ### Depois (4-6 Semanas)
-3. **Sprint 4**: GRC & Compliance
-   - Impacto: Alto (diferencial)
+3. **🏛️ Sprint 4: GRC & Compliance** ← **PILAR FUNDAMENTAL**
+   - Impacto: **Muito Alto** (completa o terceiro pilar)
    - Esforço: Alto
-   - Valor: Alto
+   - Valor: **Muito Alto** (diferencial competitivo)
+   - **Importante**: Sem GRC, o n360 não é uma plataforma completa GRC+SOC+NOC
 
 4. **Sprint 5**: Polish
    - Impacto: Médio (qualidade)
