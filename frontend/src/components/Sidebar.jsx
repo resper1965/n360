@@ -4,9 +4,9 @@ import {
   AlertTriangle, 
   Activity, 
   Ticket,
-  Settings,
   Radio
 } from 'lucide-react'
+import { cn } from '@/lib/utils'
 
 export default function Sidebar({ isOpen }) {
   const location = useLocation()
@@ -19,48 +19,56 @@ export default function Sidebar({ isOpen }) {
     { name: 'Tickets', icon: Ticket, path: '/tickets' },
   ]
 
+  const isActive = (path) => {
+    return location.pathname === path || location.pathname.startsWith(path + '/')
+  }
+
   if (!isOpen) return null
 
   return (
-    <aside className="w-64 bg-ness-surface border-r border-ness-border flex flex-col">
-      {/* Logo */}
-      <div className="p-6 border-b border-ness-border">
-        <h1 className="text-2xl font-medium">
-          n<span className="text-ness-blue">360</span>
-        </h1>
-        <p className="text-xs text-ness-muted mt-1">Security Orchestrator</p>
-      </div>
+    <aside className="fixed left-0 top-0 z-40 h-screen w-64 border-r bg-background">
+      <div className="flex h-full flex-col">
+        {/* Logo */}
+        <div className="flex h-14 items-center border-b px-6">
+          <h2 className="text-lg font-semibold">
+            n<span className="text-primary">360</span>
+          </h2>
+        </div>
 
-      {/* Menu */}
-      <nav className="flex-1 p-4 space-y-1">
-        {menuItems.map((item) => {
-          const Icon = item.icon
-          const isActive = location.pathname === item.path
-          
-          return (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`
-                flex items-center gap-3 px-4 py-3 rounded-lg transition-all
-                ${isActive 
-                  ? 'bg-ness-blue text-white' 
-                  : 'text-ness-muted hover:bg-ness-elevated hover:text-ness-text'
-                }
-              `}
-            >
-              <Icon size={20} />
-              <span className="font-medium">{item.name}</span>
-            </Link>
-          )
-        })}
-      </nav>
+        {/* Menu */}
+        <div className="flex-1 overflow-y-auto py-4">
+          <div className="px-3 space-y-1">
+            {menuItems.map((item) => {
+              const Icon = item.icon
+              const active = isActive(item.path)
+              
+              return (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className={cn(
+                    "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors",
+                    active
+                      ? "bg-primary text-primary-foreground"
+                      : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                  )}
+                >
+                  <Icon className="h-4 w-4" />
+                  {item.name}
+                </Link>
+              )
+            })}
+          </div>
+        </div>
 
-      {/* Footer */}
-      <div className="p-4 border-t border-ness-border">
-        <div className="text-xs text-ness-muted">
-          <p>ness. © 2025</p>
-          <p className="mt-1">v1.0.0</p>
+        {/* Footer */}
+        <div className="border-t p-4">
+          <div className="text-xs text-muted-foreground">
+            <p className="font-medium">
+              ness<span className="text-primary">.</span>
+            </p>
+            <p className="mt-1">v2.0.0 © 2025</p>
+          </div>
         </div>
       </div>
     </aside>

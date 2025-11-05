@@ -13,13 +13,13 @@ function App() {
 
   return (
     <Router>
-      <div className="flex h-screen bg-ness-dark">
+      <div className="flex min-h-screen w-full">
         <Sidebar isOpen={sidebarOpen} />
         
-        <div className="flex-1 flex flex-col overflow-hidden">
+        <div className="flex flex-1 flex-col ml-64">
           <Header onMenuClick={() => setSidebarOpen(!sidebarOpen)} />
           
-          <main className="flex-1 overflow-y-auto p-6">
+          <main className="flex-1 p-6 overflow-y-auto">
             <Routes>
               <Route path="/" element={<CISODashboard />} />
               <Route path="/status" element={<StatusPage />} />
