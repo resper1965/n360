@@ -19,6 +19,9 @@ import PoliciesPage from './pages/GRC/PoliciesPage'
 import PolicyForm from './pages/GRC/PolicyForm'
 import RiskMatrixPage from './pages/GRC/RiskMatrixPage'
 import TicketForm from './pages/Tickets/TicketForm'
+import AssetsPage from './pages/GRC/AssetsPage'
+import AssetForm from './pages/GRC/AssetForm'
+import ThreatsPage from './pages/GRC/ThreatsPage'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -54,6 +57,10 @@ function App() {
               <Route path="/grc/policies/edit/:id" element={<PolicyForm />} />
               <Route path="/tickets/new" element={<TicketForm />} />
               <Route path="/tickets/edit/:id" element={<TicketForm />} />
+              <Route path="/grc/assets" element={<AssetsPage />} />
+              <Route path="/grc/assets/new" element={<AssetForm />} />
+              <Route path="/grc/assets/edit/:id" element={<AssetForm />} />
+              <Route path="/grc/threats" element={<ThreatsPage />} />
             </Routes>
           </main>
         </div>

@@ -631,6 +631,22 @@ app.post(
   }
 );
 
+// ============================================================
+// GRC ISMS Routes (Prisma)
+// ============================================================
+app.use('/api/assets', require('./routes/assets'));
+app.use('/api/threats', require('./routes/threats'));
+app.use('/api/vulnerabilities', require('./routes/vulnerabilities'));
+app.use('/api/risk-engine', require('./routes/risk-engine'));
+app.use('/api/incidents', require('./routes/incidents'));
+app.use('/api/shuffle', require('./routes/shuffle-integration'));
+app.use('/api/compliance', require('./routes/compliance'));
+app.use('/api/risks', require('./routes/risks'));
+app.use('/api/controls', require('./routes/controls'));
+app.use('/api/policies', require('./routes/policies'));
+app.use('/api/tickets', require('./routes/tickets'));
+app.use('/api/dashboard', require('./routes/dashboard'));
+
 // 404 Handler
 app.use((req, res) => {
   res.status(404).json({
