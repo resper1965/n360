@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { AlertTriangle, Shield, CheckCircle, Ticket, TrendingUp } from 'lucide-react'
 import api from '../../lib/api'
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '../../components/ui/card'
+import TopAlertsWidget from '../../components/widgets/TopAlertsWidget'
+import TopProblemsWidget from '../../components/widgets/TopProblemsWidget'
 
 export default function CISODashboard() {
   const [data, setData] = useState(null)
@@ -209,6 +211,12 @@ export default function CISODashboard() {
           )}
         </CardContent>
       </Card>
+
+      {/* Widgets Row */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <TopAlertsWidget />
+        <TopProblemsWidget />
+      </div>
     </div>
   )
 }
