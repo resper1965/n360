@@ -413,13 +413,17 @@ async function start() {
 
     // 4. Cron jobs
     cron.schedule(`*/${HEALTH_CHECK_INTERVAL_SECONDS} * * * * *`, runHealthChecks);
-    cron.schedule(`*/${WAZUH_COLLECTION_INTERVAL_SECONDS} * * * * *`, async () => {
-      try {
-        await wazuhCollector.run(DEMO_ORG_ID);
-      } catch (error) {
-        logger.errorWithContext('[Cron] Wazuh collection failed', error);
-      }
-    });
+    
+    // Wazuh cron: Desabilitado (implementar com OpenSearch no Sprint 3/4)
+    // cron.schedule(`*/${WAZUH_COLLECTION_INTERVAL_SECONDS} * * * * *`, async () => {
+    //   try {
+    //     await wazuhCollector.run(DEMO_ORG_ID);
+    //   } catch (error) {
+    //     logger.errorWithContext('[Cron] Wazuh collection failed', error);
+    //   }
+    // });
+    
+    // Zabbix cron: Funcionando ✅
     cron.schedule(`*/${ZABBIX_COLLECTION_INTERVAL_SECONDS} * * * * *`, async () => {
       try {
         await zabbixCollector.run(DEMO_ORG_ID);
@@ -430,8 +434,8 @@ async function start() {
 
     logger.info('[Cron] ✅ Jobs agendados', {
       healthCheck: `${HEALTH_CHECK_INTERVAL_SECONDS}s`,
-      wazuh: `${WAZUH_COLLECTION_INTERVAL_SECONDS}s`,
       zabbix: `${ZABBIX_COLLECTION_INTERVAL_SECONDS}s`,
+      wazuh: 'Desabilitado (Sprint 3/4)',
     });
 
     // 5. Iniciar servidor
@@ -440,7 +444,7 @@ async function start() {
         port: env.PORT,
         env: env.NODE_ENV,
         supabase: '✅',
-        collectors: 'Wazuh, Zabbix',
+        collectors: 'Zabbix (Wazuh: Sprint 3/4)',
         endpoints: ['/health', '/api/dashboard', '/api/alerts', '/api/problems'],
       });
     });
