@@ -12,9 +12,13 @@ import TicketsPage from './pages/Tickets/TicketsPage'
 import StatusPage from './pages/Status/StatusPage'
 import GRCDashboard from './pages/GRC/GRCDashboard'
 import RisksPage from './pages/GRC/RisksPage'
+import RiskForm from './pages/GRC/RiskForm'
 import ControlsPage from './pages/GRC/ControlsPage'
+import ControlForm from './pages/GRC/ControlForm'
 import PoliciesPage from './pages/GRC/PoliciesPage'
+import PolicyForm from './pages/GRC/PolicyForm'
 import RiskMatrixPage from './pages/GRC/RiskMatrixPage'
+import TicketForm from './pages/Tickets/TicketForm'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -39,9 +43,17 @@ function App() {
               <Route path="/tickets" element={<TicketsPage />} />
               <Route path="/grc" element={<GRCDashboard />} />
               <Route path="/grc/risks" element={<RisksPage />} />
+              <Route path="/grc/risks/new" element={<RiskForm />} />
+              <Route path="/grc/risks/edit/:id" element={<RiskForm />} />
               <Route path="/grc/risks/matrix" element={<RiskMatrixPage />} />
               <Route path="/grc/controls" element={<ControlsPage />} />
+              <Route path="/grc/controls/new" element={<ControlForm />} />
+              <Route path="/grc/controls/edit/:id" element={<ControlForm />} />
               <Route path="/grc/policies" element={<PoliciesPage />} />
+              <Route path="/grc/policies/new" element={<PolicyForm />} />
+              <Route path="/grc/policies/edit/:id" element={<PolicyForm />} />
+              <Route path="/tickets/new" element={<TicketForm />} />
+              <Route path="/tickets/edit/:id" element={<TicketForm />} />
             </Routes>
           </main>
         </div>
