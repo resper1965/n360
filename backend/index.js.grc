@@ -1,0 +1,10 @@
+
+// GRC ROUTES
+const risksRoutes = require('./routes/risks');
+const controlsRoutes = require('./routes/controls');
+const policiesRoutes = require('./routes/policies');
+
+app.use('/api/risks', risksRoutes);
+app.use('/api/controls', controlsRoutes);
+app.use('/api/policies', policiesRoutes);
+
