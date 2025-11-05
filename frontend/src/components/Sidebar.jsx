@@ -4,7 +4,8 @@ import {
   AlertTriangle, 
   Activity, 
   Ticket,
-  Radio
+  Radio,
+  Shield
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
