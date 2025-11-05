@@ -2,4 +2,6 @@ node_modules/
 .env
 *.log
 logs/
+coverage/
+.nyc_output/
 
