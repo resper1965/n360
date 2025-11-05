@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Ticket, Plus } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 import api from '../../lib/api'
 
 export default function TicketsPage() {
+  const navigate = useNavigate()
   const [tickets, setTickets] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -48,6 +51,11 @@ export default function TicketsPage() {
           <h1 className="text-3xl font-semibold text-ness-text">Sistema de Tickets</h1>
           <p className="text-ness-muted mt-1">Gerenciamento de incidentes e requisições</p>
         </div>
+        <Button onClick={() => navigate('/tickets/new')}>
+          <Plus className="h-4 w-4 mr-2" strokeWidth={1.5} />
+          Novo Ticket
+        </Button>
+      </div>
 
         <button className="flex items-center gap-2 px-4 py-2 bg-ness-blue text-white rounded-lg hover:bg-opacity-90 transition-colors">
           <Plus size={20} />
