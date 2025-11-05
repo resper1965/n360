@@ -163,11 +163,14 @@ async function runHealthChecks() {
 // Data Collection
 // ============================================================
 
-const wazuhCollector = new WazuhCollector(supabase, {
-  apiUrl: env.WAZUH_API_URL,
-  username: env.WAZUH_USERNAME,
-  password: env.WAZUH_PASSWORD,
-});
+// Wazuh Collector - DESABILITADO TEMPORARIAMENTE
+// Motivo: Wazuh 4.9.0 mudou arquitetura - alertas vêm do Indexer (OpenSearch)
+// TODO Sprint 3/4: Implementar WazuhIndexerCollector com @opensearch-project/opensearch
+// const wazuhCollector = new WazuhCollector(supabase, {
+//   apiUrl: env.WAZUH_API_URL,
+//   username: env.WAZUH_USERNAME,
+//   password: env.WAZUH_PASSWORD,
+// });
 
 const zabbixCollector = new ZabbixCollector(supabase, {
   apiUrl: env.ZABBIX_API_URL,
@@ -178,13 +181,14 @@ const zabbixCollector = new ZabbixCollector(supabase, {
 async function runCollectors() {
   const orgId = DEMO_ORG_ID; // Em produção, buscar de user_profiles
   
-  try {
-    await wazuhCollector.run(orgId);
-  } catch (error) {
-    logger.errorWithContext('[Collectors] Wazuh collection failed', error);
-    // Não para execução
-  }
+  // Wazuh: Desabilitado - implementar com OpenSearch no Sprint 3/4
+  // try {
+  //   await wazuhCollector.run(orgId);
+  // } catch (error) {
+  //   logger.errorWithContext('[Collectors] Wazuh collection failed', error);
+  // }
   
+  // Zabbix: Funcionando ✅
   try {
     await zabbixCollector.run(orgId);
   } catch (error) {
