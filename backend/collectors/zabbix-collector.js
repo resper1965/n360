@@ -4,14 +4,16 @@
  */
 
 const axios = require('axios');
+const BaseCollector = require('./BaseCollector');
+const logger = require('../utils/logger');
+const { SEVERITY_THRESHOLDS, MAX_PROBLEMS_PER_FETCH } = require('../config/constants');
 
-class ZabbixCollector {
+class ZabbixCollector extends BaseCollector {
   constructor(supabase, config) {
-    this.supabase = supabase;
+    super(supabase, config, 'Zabbix');
     this.apiUrl = config.apiUrl;
     this.username = config.username;
     this.password = config.password;
-    this.authToken = null;
   }
 
   async authenticate() {
@@ -26,23 +28,22 @@ class ZabbixCollector {
             password: this.password
           },
           id: 1
+        },
+        {
+          timeout: this.getTimeout(),
         }
       );
 
-      this.authToken = response.data.result;
-      console.log('[Zabbix] Autenticado com sucesso');
+      this.token = response.data.result;
+      logger.info('[Zabbix] ✅ Autenticado com sucesso');
     } catch (error) {
-      console.error('[Zabbix] Erro ao autenticar:', error.message);
-      this.authToken = null;
+      logger.errorWithContext('[Zabbix] Erro ao autenticar', error);
+      this.token = null;
+      throw error; // Propaga erro
     }
   }
 
-  async collectProblems(orgId) {
-    if (!this.authToken) {
-      await this.authenticate();
-      if (!this.authToken) return;
-    }
-
+  async collect(orgId) {
     try {
       // Buscar problemas ativos
       const response = await axios.post(
@@ -56,17 +57,22 @@ class ZabbixCollector {
             recent: false,
             sortfield: 'eventid',
             sortorder: 'DESC',
-            limit: 100
+            limit: MAX_PROBLEMS_PER_FETCH
           },
-          auth: this.authToken,
+          auth: this.token,
           id: 2
+        },
+        {
+          timeout: this.getTimeout(),
         }
       );
 
       const problems = response.data.result || [];
-      console.log(`[Zabbix] ${problems.length} problemas coletados`);
+      logger.info(`[Zabbix] ${problems.length} problemas coletados`);
 
-      // Buscar problemas já salvos
+      if (problems.length === 0) return;
+
+      // Buscar problemas já salvos (para upsert)
       const { data: existingProblems } = await this.supabase
         .from('problems')
         .select('source_id')
@@ -75,50 +81,64 @@ class ZabbixCollector {
 
       const existingIds = new Set(existingProblems?.map(p => p.source_id) || []);
 
-      // Inserir novos problemas
+      // Separar novos problemas e atualizações
+      const newProblems = [];
+      const updatedProblems = [];
+
       for (const problem of problems) {
-        if (!existingIds.has(problem.eventid)) {
-          await this.supabase.from('problems').insert({
-            org_id: orgId,
-            source: 'zabbix',
-            source_id: problem.eventid,
-            severity: this.mapSeverity(problem.severity),
-            name: problem.name,
-            description: problem.opdata || '',
-            status: problem.r_eventid === '0' ? 'active' : 'resolved',
-            raw_data: problem
-          });
+        const problemData = {
+          org_id: orgId,
+          source: 'zabbix',
+          source_id: problem.eventid,
+          severity: this.mapSeverity(problem.severity),
+          name: problem.name,
+          description: problem.opdata || '',
+          status: problem.r_eventid === '0' ? 'active' : 'resolved',
+          raw_data: problem
+        };
+
+        if (existingIds.has(problem.eventid)) {
+          updatedProblems.push(problemData);
         } else {
-          // Atualizar status se já existe
-          await this.supabase
-            .from('problems')
-            .update({
-              status: problem.r_eventid === '0' ? 'active' : 'resolved',
-              updated_at: new Date().toISOString()
-            })
-            .eq('source_id', problem.eventid);
+          newProblems.push(problemData);
         }
       }
 
+      // Batch upsert (insert + update)
+      const upsertData = [...newProblems, ...updatedProblems];
+      await this.batchUpsert('problems', upsertData, {
+        onConflict: 'source_id',
+        ignoreDuplicates: false,
+      });
+
+      logger.info('[Zabbix] Sincronização completa', {
+        new: newProblems.length,
+        updated: updatedProblems.length,
+      });
+
     } catch (error) {
-      if (error.response?.data?.error?.data === 'Session terminated, re-login, please.') {
-        console.log('[Zabbix] Sessão expirada, re-autenticando...');
-        this.authToken = null;
-      } else {
-        console.error('[Zabbix] Erro ao coletar problemas:', error.message);
-      }
+      logger.errorWithContext('[Zabbix] Erro ao coletar problemas', error, { orgId });
+      throw error; // Propaga erro
     }
   }
 
   mapSeverity(level) {
+    const thresholds = SEVERITY_THRESHOLDS.ZABBIX;
+    
     // Zabbix: 0=not classified, 1=info, 2=warning, 3=average, 4=high, 5=disaster
-    if (level === '5') return 'disaster';
-    if (level === '4') return 'high';
-    if (level === '3') return 'average';
-    if (level === '2') return 'warning';
+    if (level === thresholds.DISASTER) return 'disaster';
+    if (level === thresholds.HIGH) return 'high';
+    if (level === thresholds.AVERAGE) return 'average';
+    if (level === thresholds.WARNING) return 'warning';
     return 'info';
+  }
+
+  isTokenExpiredError(error) {
+    return (
+      error.response?.data?.error?.data === 'Session terminated, re-login, please.' ||
+      error.response?.status === 401
+    );
   }
 }
 
 module.exports = ZabbixCollector;
-
