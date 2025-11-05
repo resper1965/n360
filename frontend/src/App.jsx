@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { useState } from 'react'
+import ErrorBoundary from './components/ErrorBoundary'
 import Sidebar from './components/Sidebar'
 import Header from './components/Header'
 import CISODashboard from './pages/Dashboard/CISODashboard'
@@ -12,8 +13,9 @@ function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
 
   return (
-    <Router>
-      <div className="flex min-h-screen w-full">
+    <ErrorBoundary>
+      <Router>
+        <div className="flex min-h-screen w-full">
         <Sidebar isOpen={sidebarOpen} />
         
         <div className="flex flex-1 flex-col ml-64">
@@ -30,7 +32,8 @@ function App() {
           </main>
         </div>
       </div>
-    </Router>
+      </Router>
+    </ErrorBoundary>
   )
 }
 
