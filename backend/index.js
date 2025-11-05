@@ -323,6 +323,145 @@ app.get(
   }
 );
 
+// Acknowledge alert
+app.patch(
+  '/api/alerts/:id/acknowledge',
+  requireAuth,
+  validate(uuidParamSchema, 'params'),
+  async (req, res) => {
+    try {
+      const { data, error } = await supabase
+        .from('alerts')
+        .update({
+          status: 'acknowledged',
+          acknowledged_by: req.user.id,
+          acknowledged_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', req.params.id)
+        .eq('org_id', req.user.orgId)
+        .select()
+        .single();
+
+      if (error || !data) {
+        return res.status(404).json({
+          error: 'Not Found',
+          message: 'Alerta não encontrado'
+        });
+      }
+
+      logger.info('Alert acknowledged', {
+        alertId: req.params.id,
+        userId: req.user.id,
+      });
+
+      res.json(data);
+    } catch (error) {
+      logger.errorWithContext('Alert acknowledge error', error, {
+        alertId: req.params.id,
+      });
+      
+      res.status(500).json({
+        error: 'Internal Server Error',
+        message: 'Erro ao confirmar alerta'
+      });
+    }
+  }
+);
+
+// Resolve alert
+app.patch(
+  '/api/alerts/:id/resolve',
+  requireAuth,
+  validate(uuidParamSchema, 'params'),
+  async (req, res) => {
+    try {
+      const { data, error } = await supabase
+        .from('alerts')
+        .update({
+          status: 'resolved',
+          resolved_by: req.user.id,
+          resolved_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', req.params.id)
+        .eq('org_id', req.user.orgId)
+        .select()
+        .single();
+
+      if (error || !data) {
+        return res.status(404).json({
+          error: 'Not Found',
+          message: 'Alerta não encontrado'
+        });
+      }
+
+      logger.info('Alert resolved', {
+        alertId: req.params.id,
+        userId: req.user.id,
+      });
+
+      res.json(data);
+    } catch (error) {
+      logger.errorWithContext('Alert resolve error', error, {
+        alertId: req.params.id,
+      });
+      
+      res.status(500).json({
+        error: 'Internal Server Error',
+        message: 'Erro ao resolver alerta'
+      });
+    }
+  }
+);
+
+// Assign alert
+app.patch(
+  '/api/alerts/:id/assign',
+  requireAuth,
+  validate(uuidParamSchema, 'params'),
+  async (req, res) => {
+    try {
+      const { assigned_to } = req.body;
+
+      const { data, error } = await supabase
+        .from('alerts')
+        .update({
+          assigned_to: assigned_to || null,
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', req.params.id)
+        .eq('org_id', req.user.orgId)
+        .select()
+        .single();
+
+      if (error || !data) {
+        return res.status(404).json({
+          error: 'Not Found',
+          message: 'Alerta não encontrado'
+        });
+      }
+
+      logger.info('Alert assigned', {
+        alertId: req.params.id,
+        assignedTo: assigned_to,
+        assignedBy: req.user.id,
+      });
+
+      res.json(data);
+    } catch (error) {
+      logger.errorWithContext('Alert assign error', error, {
+        alertId: req.params.id,
+      });
+      
+      res.status(500).json({
+        error: 'Internal Server Error',
+        message: 'Erro ao atribuir alerta'
+      });
+    }
+  }
+);
+
 // Problems - listagem
 app.get(
   '/api/problems',
@@ -361,6 +500,124 @@ app.get(
       res.status(500).json({
         error: 'Internal Server Error',
         message: 'Erro ao buscar problemas'
+      });
+    }
+  }
+);
+
+// Acknowledge problem
+app.patch(
+  '/api/problems/:id/acknowledge',
+  requireAuth,
+  validate(uuidParamSchema, 'params'),
+  async (req, res) => {
+    try {
+      const { data, error } = await supabase
+        .from('problems')
+        .update({
+          acknowledged_by: req.user.id,
+          acknowledged_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        })
+        .eq('id', req.params.id)
+        .eq('org_id', req.user.orgId)
+        .select()
+        .single();
+
+      if (error || !data) {
+        return res.status(404).json({
+          error: 'Not Found',
+          message: 'Problema não encontrado'
+        });
+      }
+
+      logger.info('Problem acknowledged', {
+        problemId: req.params.id,
+        userId: req.user.id,
+      });
+
+      res.json(data);
+    } catch (error) {
+      logger.errorWithContext('Problem acknowledge error', error);
+      res.status(500).json({
+        error: 'Internal Server Error',
+        message: 'Erro ao confirmar problema'
+      });
+    }
+  }
+);
+
+// Tickets - CRUD
+app.get(
+  '/api/tickets',
+  requireAuth,
+  userLimiter,
+  validate(paginationSchema, 'query'),
+  async (req, res) => {
+    try {
+      const { page, limit } = req.query;
+      const offset = (page - 1) * limit;
+
+      const { data, error, count } = await supabase
+        .from('tickets')
+        .select('*', { count: 'exact' })
+        .eq('org_id', req.user.orgId)
+        .order('created_at', { ascending: false })
+        .range(offset, offset + limit - 1);
+
+      if (error) throw error;
+
+      res.json({
+        data,
+        pagination: {
+          page,
+          limit,
+          total: count,
+          totalPages: Math.ceil(count / limit),
+        }
+      });
+    } catch (error) {
+      logger.errorWithContext('Tickets fetch error', error);
+      res.status(500).json({
+        error: 'Internal Server Error',
+        message: 'Erro ao buscar tickets'
+      });
+    }
+  }
+);
+
+app.post(
+  '/api/tickets',
+  requireAuth,
+  strictLimiter,
+  async (req, res) => {
+    try {
+      const ticketData = {
+        ...req.body,
+        org_id: req.user.orgId,
+        created_by: req.user.id,
+        status: 'open',
+      };
+
+      const { data, error } = await supabase
+        .from('tickets')
+        .insert(ticketData)
+        .select()
+        .single();
+
+      if (error) throw error;
+
+      logger.info('Ticket created', {
+        ticketId: data.id,
+        userId: req.user.id,
+      });
+
+      res.status(201).json(data);
+    } catch (error) {
+      logger.errorWithContext('Ticket create error', error);
+      res.status(500).json({
+        error: 'Internal Server Error',
+        message: 'Erro ao criar ticket'
       });
     }
   }
