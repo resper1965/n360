@@ -5,7 +5,9 @@ import Sidebar from './components/Sidebar'
 import Header from './components/Header'
 import CISODashboard from './pages/Dashboard/CISODashboard'
 import AlertsPage from './pages/SOC/AlertsPage'
+import AlertDetailPage from './pages/SOC/AlertDetailPage'
 import ProblemsPage from './pages/NOC/ProblemsPage'
+import ProblemDetailPage from './pages/NOC/ProblemDetailPage'
 import TicketsPage from './pages/Tickets/TicketsPage'
 import StatusPage from './pages/Status/StatusPage'
 
@@ -26,7 +28,9 @@ function App() {
               <Route path="/" element={<CISODashboard />} />
               <Route path="/status" element={<StatusPage />} />
               <Route path="/soc/alerts" element={<AlertsPage />} />
+              <Route path="/soc/alerts/:id" element={<AlertDetailPage />} />
               <Route path="/noc/problems" element={<ProblemsPage />} />
+              <Route path="/noc/problems/:id" element={<ProblemDetailPage />} />
               <Route path="/tickets" element={<TicketsPage />} />
             </Routes>
           </main>

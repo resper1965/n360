@@ -462,7 +462,7 @@ app.patch(
   }
 );
 
-// Problems - listagem
+// Problems - listagem com filtros
 app.get(
   '/api/problems',
   requireAuth,
@@ -470,15 +470,23 @@ app.get(
   validate(paginationSchema, 'query'),
   async (req, res) => {
     try {
-      const { page, limit } = req.query;
+      const { page, limit, severity, status, source, search } = req.query;
       const offset = (page - 1) * limit;
 
-      const { data, error, count } = await supabase
+      let query = supabase
         .from('problems')
         .select('*', { count: 'exact' })
         .eq('org_id', req.user.orgId)
         .order('created_at', { ascending: false })
         .range(offset, offset + limit - 1);
+
+      // Filtros opcionais
+      if (severity && severity !== 'all') query = query.eq('severity', severity);
+      if (status && status !== 'all') query = query.eq('status', status);
+      if (source) query = query.eq('source', source);
+      if (search) query = query.ilike('name', `%${search}%`);
+
+      const { data, error, count } = await query;
 
       if (error) throw error;
 
