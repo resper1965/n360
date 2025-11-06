@@ -28,6 +28,8 @@ import { VulnerabilityForm } from './pages/GRC/VulnerabilityForm'
 import { RiskEnginePage } from './pages/GRC/RiskEnginePage'
 import { IncidentsPage } from './pages/GRC/IncidentsPage'
 import { CompliancePage } from './pages/GRC/CompliancePage'
+import { ThreatForm } from './pages/GRC/ThreatForm'
+import { IncidentForm } from './pages/GRC/IncidentForm'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -69,10 +71,14 @@ function App() {
               <Route path="/grc/assets/new" element={<AssetForm />} />
               <Route path="/grc/assets/edit/:id" element={<AssetForm />} />
               <Route path="/grc/threats" element={<ThreatsPage />} />
+              <Route path="/grc/threats/new" element={<ThreatForm />} />
+              <Route path="/grc/threats/edit/:id" element={<ThreatForm />} />
               <Route path="/grc/vulnerabilities" element={<VulnerabilitiesPage />} />
               <Route path="/grc/vulnerabilities/new" element={<VulnerabilityForm />} />
               <Route path="/grc/vulnerabilities/edit/:id" element={<VulnerabilityForm />} />
               <Route path="/grc/incidents" element={<IncidentsPage />} />
+              <Route path="/grc/incidents/new" element={<IncidentForm />} />
+              <Route path="/grc/incidents/edit/:id" element={<IncidentForm />} />
               <Route path="/grc/compliance" element={<CompliancePage />} />
             </Routes>
           </main>
