@@ -1,19 +1,43 @@
+/** 🎨 ness. Design System - "Invisível Elegância" */
 import * as React from "react"
 import { cva } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
+/**
+ * Badge - Informação sutil mas clara
+ * 
+ * default (Presente): Azul primário - informações importantes
+ * outline (Invisível): Borda sutil - categorização discreta
+ * secondary (Invisível): Background sutil - metadados
+ */
 const badgeVariants = cva(
-  "inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
+  "inline-flex items-center rounded-md border px-2.5 py-1 text-xs font-medium transition-all duration-fast ease-elegant",
   {
     variants: {
       variant: {
+        // Presente - Destaque importante
         default:
-          "border-transparent bg-primary text-primary-foreground hover:bg-primary/80",
+          "border-primary-500/20 bg-primary-500/10 text-primary-400 hover:bg-primary-500/15",
+        
+        // Invisível - Informação secundária
         secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "border-slate-700/50 bg-slate-800/50 text-slate-300 hover:bg-slate-800",
+        
+        // Outline - Categorização sutil
+        outline: 
+          "border-slate-600 bg-transparent text-slate-300 hover:border-slate-500 hover:text-slate-200",
+        
+        // Destrutivo - Presente quando crítico
         destructive:
-          "border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80",
-        outline: "text-foreground",
+          "border-red-500/20 bg-red-500/10 text-red-400 hover:bg-red-500/15",
+        
+        // Sucesso - Presente quando positivo
+        success:
+          "border-green-500/20 bg-green-500/10 text-green-400 hover:bg-green-500/15",
+        
+        // Warning - Presente quando atenção
+        warning:
+          "border-yellow-500/20 bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/15",
       },
     },
     defaultVariants: {
