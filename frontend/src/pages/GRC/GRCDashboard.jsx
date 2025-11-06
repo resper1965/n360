@@ -50,16 +50,16 @@ export default function GRCDashboard() {
   }
 
   const getRiskLevel = (score) => {
-    if (score >= 20) return { label: 'Crítico', color: 'destructive' }
+    if (score >= 20) return { label: "Critical", color: 'destructive' }
     if (score >= 15) return { label: 'Alto', color: 'default' }
-    if (score >= 6) return { label: 'Médio', color: 'secondary' }
+    if (score >= 6) return { label: 'Medium', color: 'secondary' }
     return { label: 'Baixo', color: 'outline' }
   }
 
   if (loading) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="text-muted-foreground text-lg">Carregando dashboard GRC...</div>
+        <div className="text-muted-foreground text-lg">Loading dashboard GRC...</div>
       </div>
     )
   }
@@ -76,7 +76,7 @@ export default function GRCDashboard() {
 
       {/* KPI Cards - Elegant Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-grid-lg">
-        {/* Compliance Score Médio */}
+        {/* Compliance Score Medium */}
         <Card className="group">
           <CardContent className="p-6">
             <div className="flex items-start justify-between mb-4">

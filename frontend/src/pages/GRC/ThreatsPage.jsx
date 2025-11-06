@@ -31,11 +31,11 @@ export default function ThreatsPage() {
   }
 
   const getLikelihoodLabel = (score) => {
-    if (score === 5) return { label: 'Quase Certo', color: 'destructive' }
-    if (score === 4) return { label: 'Provável', color: 'default' }
-    if (score === 3) return { label: 'Possível', color: 'secondary' }
-    if (score === 2) return { label: 'Improvável', color: 'outline' }
-    return { label: 'Raro', color: 'outline' }
+    if (score === 5) return { label: 'Almost Certain', color: 'destructive' }
+    if (score === 4) return { label: 'Likely', color: 'default' }
+    if (score === 3) return { label: 'Possible', color: 'secondary' }
+    if (score === 2) return { label: 'Unlikely', color: 'outline' }
+    return { label: 'Rare', color: 'outline' }
   }
 
   return (
@@ -58,7 +58,7 @@ export default function ThreatsPage() {
               <option value="all">Todas as Categorias</option>
               <option value="malware">Malware</option>
               <option value="phishing">Phishing</option>
-              <option value="physical">Física</option>
+              <option value="physical">Physical</option>
               <option value="natural">Natural</option>
             </Select>
             <Input placeholder="Search threats..." value={filters.search} onChange={(e) => setFilters(f => ({ ...f, search: e.target.value }))} />

@@ -99,10 +99,10 @@ export default function ControlForm() {
         evidence_url: result.url
       }))
 
-      alert('Evidência enviada com sucesso!')
+      alert('Evidência enviada successfully!')
     } catch (error) {
-      console.error('Error ao enviar evidência:', error)
-      alert('Error ao enviar evidência')
+      console.error('Error enviar evidência:', error)
+      alert('Error enviar evidência')
     } finally {
       setUploadingEvidence(false)
     }
@@ -136,7 +136,7 @@ export default function ControlForm() {
       })
 
       if (response.ok) {
-        alert(isEdit ? 'Controle atualizado com sucesso!' : 'Controle criado com sucesso!')
+        alert(isEdit ? 'Controle atualizado successfully!' : 'Controle criado successfully!')
         navigate('/grc/controls')
       } else {
         const error = await response.json()
@@ -151,7 +151,7 @@ export default function ControlForm() {
   }
 
   const handleDelete = async () => {
-    if (!confirm('Tem certeza que deseja excluir este controle?')) return
+    if (!confirm('Are you sure you want to delete este controle?')) return
 
     try {
       setLoading(true)
@@ -160,14 +160,14 @@ export default function ControlForm() {
       })
 
       if (response.ok) {
-        alert('Controle excluído com sucesso!')
+        alert('Controle excluído successfully!')
         navigate('/grc/controls')
       } else {
-        alert('Error ao excluir controle')
+        alert('Error excluir controle')
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Error ao excluir controle')
+      alert('Error excluir controle')
     } finally {
       setLoading(false)
     }
@@ -200,7 +200,7 @@ export default function ControlForm() {
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Atualize as informações of controle' : 'Cadastre um novo controle of security'}
+            {isEdit ? 'Update the information of controle' : 'Register a new controle of security'}
           </p>
         </div>
 
@@ -221,10 +221,10 @@ export default function ControlForm() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-grid-lg">
           {/* Main Form - 2/3 */}
           <div className="lg:col-span-2 space-y-grid-lg">
-            {/* Informações Básicas */}
+            {/* Basic Information */}
             <Card>
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg font-medium">Informações Básicas</CardTitle>
+                <CardTitle className="text-lg font-medium">Basic Information</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {/* Control ID */}
@@ -235,7 +235,7 @@ export default function ControlForm() {
                     name="control_id"
                     value={formData.control_id}
                     onChange={handleChange}
-                    placeholder="Ex: ISO-27001-A.5.1"
+                    placeholder="Example: ISO-27001-A.5.1"
                     required
                   />
                   <p className="text-xs text-muted-foreground">
@@ -243,22 +243,22 @@ export default function ControlForm() {
                   </p>
                 </div>
 
-                {/* Título */}
+                {/* Title */}
                 <div className="space-y-2">
-                  <Label htmlFor="title">Título *</Label>
+                  <Label htmlFor="title">Title *</Label>
                   <Input
                     id="title"
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    placeholder="Ex: Controle of Acesso Lógico"
+                    placeholder="Example: Controle of Acesso Lógico"
                     required
                   />
                 </div>
 
-                {/* Descrição */}
+                {/* Description */}
                 <div className="space-y-2">
-                  <Label htmlFor="description">Descrição</Label>
+                  <Label htmlFor="description">Description</Label>
                   <Textarea
                     id="description"
                     name="description"
@@ -314,7 +314,7 @@ export default function ControlForm() {
                     name="category"
                     value={formData.category || ''}
                     onChange={handleChange}
-                    placeholder="Ex: Access Control, Network Security"
+                    placeholder="Example: Access Control, Network Security"
                   />
                 </div>
               </CardContent>
@@ -335,7 +335,7 @@ export default function ControlForm() {
                     onChange={handleChange}
                     required
                   >
-                    <option value="not_implemented">Não Implementado</option>
+                    <option value="not_implemented">Not Implemented</option>
                     <option value="planned">Planejado</option>
                     <option value="partial">Parcial</option>
                     <option value="implemented">Implementado</option>
@@ -357,13 +357,13 @@ export default function ControlForm() {
 
                 {/* Team Responsável */}
                 <div className="space-y-2">
-                  <Label htmlFor="responsible_team">Time Responsável</Label>
+                  <Label htmlFor="responsible_team">Time Owner</Label>
                   <Input
                     id="responsible_team"
                     name="responsible_team"
                     value={formData.responsible_team || ''}
                     onChange={handleChange}
-                    placeholder="Ex: Equipe Security"
+                    placeholder="Example: Equipe Security"
                   />
                 </div>
               </CardContent>

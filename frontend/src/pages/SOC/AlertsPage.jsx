@@ -76,9 +76,9 @@ export default function AlertsPage() {
           className="bg-ness-elevated border border-ness-border text-ness-text rounded-lg px-4 py-2"
         >
           <option value="all">Todas as Severidades</option>
-          <option value="critical">Crítico</option>
+          <option value="critical">Critical</option>
           <option value="high">Alto</option>
-          <option value="medium">Médio</option>
+          <option value="medium">Medium</option>
           <option value="low">Baixo</option>
           <option value="info">Info</option>
         </select>
@@ -96,7 +96,7 @@ export default function AlertsPage() {
       {/* Lista of Alertas */}
       <div className="bg-ness-surface border border-ness-border rounded-xl overflow-hidden">
         {loading ? (
-          <div className="p-12 text-center text-ness-muted">Carregando alerts...</div>
+          <div className="p-12 text-center text-ness-muted">Loading alerts...</div>
         ) : alerts.length === 0 ? (
           <div className="p-12 text-center text-ness-muted">
             <AlertTriangle size={48} className="mx-auto mb-3 opacity-50" />

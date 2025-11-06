@@ -59,7 +59,7 @@ export function ExecutiveDashboard() {
       <div className="flex items-center justify-center h-96">
         <div className="text-center space-y-2">
           <FileText className="h-8 w-8 text-muted-foreground mx-auto animate-pulse" strokeWidth={1.5} />
-          <div className="text-sm text-muted-foreground">Carregando dashboard executivo...</div>
+          <div className="text-sm text-muted-foreground">Loading dashboard executivo...</div>
         </div>
       </div>
     );
@@ -246,7 +246,7 @@ export function ExecutiveDashboard() {
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 rounded bg-yellow-500"></div>
-                  <span>Médio</span>
+                  <span>Medium</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 rounded bg-orange-500"></div>
@@ -254,7 +254,7 @@ export function ExecutiveDashboard() {
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 rounded bg-red-500"></div>
-                  <span>Crítico</span>
+                  <span>Critical</span>
                 </div>
               </div>
             </div>
@@ -269,9 +269,9 @@ export function ExecutiveDashboard() {
           <CardContent className="space-y-4">
             {topRisks.length > 0 ? (
               topRisks.map((risk, idx) => {
-                const badge = risk.risk_score >= 16 ? { label: 'Crítico', color: 'bg-red-500/10 text-red-500 border-red-500/20' }
+                const badge = risk.risk_score >= 16 ? { label: "Critical", color: 'bg-red-500/10 text-red-500 border-red-500/20' }
                   : risk.risk_score >= 12 ? { label: 'Alto', color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' }
-                  : { label: 'Médio', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' };
+                  : { label: 'Medium', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' };
 
                 return (
                   <div key={risk.id} className="p-4 rounded-lg border border-border hover:border-primary/20 transition-colors">
@@ -334,7 +334,7 @@ export function ExecutiveDashboard() {
             <div className="font-medium mb-2">⚠️ Key Concerns</div>
             <ul className="list-disc list-insiof text-muted-foreground space-y-1">
               <li>{criticalRisks} risks critical identificados que podem impactar operações</li>
-              <li>{openIncidents} incidentes of security em investigação</li>
+              <li>{openIncidents} incidents of security em investigação</li>
               <li>Effectiveness control em {controlEffectiveness}% (meta: 90%)</li>
             </ul>
           </div>
@@ -344,7 +344,7 @@ export function ExecutiveDashboard() {
             <ol className="list-decimal list-insiof text-muted-foreground space-y-1">
               <li>Revisar e mitigar os {criticalRisks} risks critical identificados</li>
               <li>Implementar controles adicionais para risks residuais altos</li>
-              <li>Acelerar resolução of {openIncidents} incidentes open</li>
+              <li>Acelerar resolução of {openIncidents} incidents open</li>
               <li>Investir em treinamento of security para reduzir risks of erro humano</li>
             </ol>
           </div>

@@ -22,7 +22,7 @@ export default function AlertDetailPage() {
       const data = await response.json()
       setAlert(data)
     } catch (error) {
-      console.error('Error ao buscar alert:', error)
+      console.error('Error buscar alert:', error)
     } finally {
       setLoading(false)
     }
@@ -37,7 +37,7 @@ export default function AlertDetailPage() {
       const updated = await response.json()
       setAlert(updated)
     } catch (error) {
-      console.error('Error ao confirmar:', error)
+      console.error('Error confirmar:', error)
     } finally {
       setActionLoading(false)
     }
@@ -52,7 +52,7 @@ export default function AlertDetailPage() {
       const updated = await response.json()
       setAlert(updated)
     } catch (error) {
-      console.error('Error ao resolve:', error)
+      console.error('Error resolve:', error)
     } finally {
       setActionLoading(false)
     }
@@ -70,7 +70,7 @@ export default function AlertDetailPage() {
     return (
       <div className="flex flex-col items-center justify-center h-64 space-y-4">
         <XCircle className="h-12 w-12 text-muted-foreground" />
-        <div className="text-muted-foreground">Alerta não encontrado</div>
+        <div className="text-muted-foreground">Alerta not found</div>
         <Button onClick={() => navigate('/soc/alerts')}>Back</Button>
       </div>
     )

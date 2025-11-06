@@ -32,7 +32,7 @@ const ExportPDFButton = ({
       });
 
       if (!response.ok) {
-        throw new Error(`Error ao gerar PDF: ${response.statusText}`);
+        throw new Error(`Error gerar PDF: ${response.statusText}`);
       }
 
       // Converter resposta em blob
@@ -52,7 +52,7 @@ const ExportPDFButton = ({
 
       console.log(`[PDF] ${filename} baixado com sucesso`);
     } catch (err) {
-      console.error('[PDF] Error ao exportar:', err);
+      console.error('[PDF] Error exportar:', err);
       setError(err.message);
     } finally {
       setLoading(false);

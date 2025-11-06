@@ -85,9 +85,9 @@ export function RiskEnginePage() {
   };
 
   const getRiskBadge = (score) => {
-    if (score >= 16) return { label: 'Crítico', color: 'bg-red-500/10 text-red-500 border-red-500/20' };
+    if (score >= 16) return { label: "Critical", color: 'bg-red-500/10 text-red-500 border-red-500/20' };
     if (score >= 12) return { label: 'Alto', color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' };
-    if (score >= 8) return { label: 'Médio', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' };
+    if (score >= 8) return { label: 'Medium', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' };
     return { label: 'Baixo', color: 'bg-blue-500/10 text-blue-500 border-blue-500/20' };
   };
 
@@ -109,7 +109,7 @@ export function RiskEnginePage() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight">Risks</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Cálculo avançado of Risco Inherente e Residual
+            Cálculo avançado of Inherent Risk e Residual
           </p>
         </div>
         <ExportPDFButton
@@ -126,7 +126,7 @@ export function RiskEnginePage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-muted-foreground">Risco Inherente Médio</div>
+                <div className="text-sm text-muted-foreground">Inherent Risk Medium</div>
                 <div className={cn("text-3xl font-bold", getRiskColor(stats.avgInherent))}>
                   {stats.avgInherent}
                 </div>
@@ -145,7 +145,7 @@ export function RiskEnginePage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-muted-foreground">Risco Residual Médio</div>
+                <div className="text-sm text-muted-foreground">Residual Risk Medium</div>
                 <div className={cn("text-3xl font-bold", getRiskColor(stats.avgResidual))}>
                   {stats.avgResidual}
                 </div>
@@ -304,7 +304,7 @@ export function RiskEnginePage() {
             {/* Gráfico of comparação */}
             <div className="flex items-center gap-4">
               <div className="flex-1 space-y-2">
-                <div className="text-sm font-medium">Risco Inherente Médio</div>
+                <div className="text-sm font-medium">Inherent Risk Medium</div>
                 <div className="h-4 rounded-full bg-red-500/20 overflow-hidden border border-red-500/30">
                   <div
                     className="h-full bg-red-500 transition-all duration-slow"
@@ -319,7 +319,7 @@ export function RiskEnginePage() {
               <ArrowRight className="h-8 w-8 text-muted-foreground" strokeWidth={1.5} />
 
               <div className="flex-1 space-y-2">
-                <div className="text-sm font-medium">Risco Residual Médio</div>
+                <div className="text-sm font-medium">Residual Risk Medium</div>
                 <div className="h-4 rounded-full bg-green-500/20 overflow-hidden border border-green-500/30">
                   <div
                     className="h-full bg-green-500 transition-all duration-slow"
@@ -332,7 +332,7 @@ export function RiskEnginePage() {
               </div>
 
               <div className="text-center">
-                <div className="text-sm font-medium text-muted-foreground">Redução</div>
+                <div className="text-sm font-medium text-muted-foreground">Reduction</div>
                 <div className="text-2xl font-bold text-green-500 mt-2">
                   -{stats.avgReduction}%
                 </div>
@@ -351,7 +351,7 @@ export function RiskEnginePage() {
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-yellow-500">{stats.medium}</div>
-                <div className="text-xs text-muted-foreground">Médios</div>
+                <div className="text-xs text-muted-foreground">Mediums</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-blue-500">{stats.low}</div>
@@ -369,9 +369,9 @@ export function RiskEnginePage() {
         </CardHeader>
         <CardContent className="space-y-4 text-sm">
           <div>
-            <div className="font-medium mb-2">1. Risco Inherente (Bruto)</div>
+            <div className="font-medium mb-2">1. Inherent Risk (Bruto)</div>
             <code className="block p-3 bg-background rounded-lg border border-border font-mono text-xs">
-              Risco Inherente = Likelihood × Impact
+              Inherent Risk = Likelihood × Impact
             </code>
             <p className="text-muted-foreground mt-2">
               O risk antes of qualquer controle ser aplicado. Representa a exposição pura of organization.
@@ -379,9 +379,9 @@ export function RiskEnginePage() {
           </div>
 
           <div>
-            <div className="font-medium mb-2">2. Risco Residual (Líquido)</div>
+            <div className="font-medium mb-2">2. Residual Risk (Líquido)</div>
             <code className="block p-3 bg-background rounded-lg border border-border font-mono text-xs">
-              Risco Residual = Risco Inherente × (1 - Control Effectiveness)
+              Residual Risk = Inherent Risk × (1 - Control Effectiveness)
             </code>
             <p className="text-muted-foreground mt-2">
               O risk que permanece após a aplicação control. Este é o risk real of organization.
@@ -391,7 +391,7 @@ export function RiskEnginePage() {
           <div>
             <div className="font-medium mb-2">3. Effectiveness of Controles</div>
             <code className="block p-3 bg-background rounded-lg border border-border font-mono text-xs">
-              Redução = ((Inherent - Residual) / Inherent) × 100%
+              Reduction = ((Inherent - Residual) / Inherent) × 100%
             </code>
             <p className="text-muted-foreground mt-2">
               Percentual of redução of risk. Quanto maior, mais efetivos são os controles.

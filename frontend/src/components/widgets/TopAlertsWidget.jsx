@@ -17,7 +17,7 @@ export default function TopAlertsWidget() {
       const data = await response.json()
       setAlerts(data.data || [])
     } catch (error) {
-      console.error('Error ao buscar top alerts:', error)
+      console.error('Error buscar top alerts:', error)
     } finally {
       setLoading(false)
     }

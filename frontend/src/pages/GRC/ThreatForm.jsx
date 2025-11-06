@@ -1,6 +1,6 @@
 /**
  * Threat Form
- * Formulário para criar/editar ameaças (TVL - Threat & Vulnerability Library)
+ * Formulário para criar/editar threats (TVL - Threat & Vulnerability Library)
  */
 
 import { useState, useEffect } from 'react';
@@ -69,8 +69,8 @@ export function ThreatForm() {
   function validate() {
     const newErrors = {};
 
-    if (!formData.threat_code) newErrors.threat_code = 'Código é obrigatório';
-    if (!formData.name) newErrors.name = 'Nome é obrigatório';
+    if (!formData.threat_code) newErrors.threat_code = 'Code is required';
+    if (!formData.name) newErrors.name = 'Name is required';
     if (formData.likelihood_score < 1 || formData.likelihood_score > 5) {
       newErrors.likelihood_score = 'Likelihood deve estar entre 1 e 5';
     }
@@ -115,7 +115,7 @@ export function ThreatForm() {
       }
     } catch (error) {
       console.error('Error saving threat:', error);
-      alert('Error saving ameaça');
+      alert('Error saving threat');
     } finally {
       setLoading(false);
     }
@@ -137,7 +137,7 @@ export function ThreatForm() {
   const likelihoodLabels = {
     1: { label: 'Muito Baixa', color: 'bg-blue-500/10 text-blue-500 border-blue-500/20' },
     2: { label: 'Baixa', color: 'bg-green-500/10 text-green-500 border-green-500/20' },
-    3: { label: 'Média', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' },
+    3: { label: 'Medium', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' },
     4: { label: 'Alta', color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' },
     5: { label: 'Muito Alta', color: 'bg-red-500/10 text-red-500 border-red-500/20' }
   };
@@ -159,7 +159,7 @@ export function ThreatForm() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Skull className="h-5 w-5" strokeWidth={1.5} />
-              Informações of Ameaça
+              Information about Ameaça
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -167,7 +167,7 @@ export function ThreatForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="threat_code">
-                  Código of Ameaça <span className="text-red-500">*</span>
+                  Code of Ameaça <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="threat_code"
@@ -198,14 +198,14 @@ export function ThreatForm() {
               </div>
             </div>
 
-            {/* Descrição */}
+            {/* Description */}
             <div className="space-y-2">
-              <Label htmlFor="description">Descrição</Label>
+              <Label htmlFor="description">Description</Label>
               <Textarea
                 id="description"
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                placeholder="Descrição detalhada of ameaça, incluindo como ela poof se manifestar..."
+                placeholder="Description detalhada of threat, incluindo como ela poof se manifestar..."
                 rows={4}
               />
             </div>
@@ -264,7 +264,7 @@ export function ThreatForm() {
                 placeholder="Email phishing, Remote code execution, Physical access, etc."
               />
               <p className="text-xs text-muted-foreground">
-                Como a ameaça poof se materializar (ex: email, rede, físico)
+                Como a threat poof se materializar (ex: email, rede, físico)
               </p>
             </div>
 
@@ -301,9 +301,9 @@ export function ThreatForm() {
               </div>
             </div>
 
-            {/* Referência */}
+            {/* Reference */}
             <div className="space-y-2">
-              <Label htmlFor="reference_url">URL of Referência</Label>
+              <Label htmlFor="reference_url">Reference URL</Label>
               <Input
                 id="reference_url"
                 type="url"
@@ -315,7 +315,7 @@ export function ThreatForm() {
 
             {/* Tags */}
             <div className="space-y-2">
-              <Label htmlFor="tags">Tags (separadas por vírgula)</Label>
+              <Label htmlFor="tags">Tags (comma-separated)</Label>
               <Input
                 id="tags"
                 value={formData.tags}

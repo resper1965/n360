@@ -36,7 +36,7 @@ export default function PoliciesPage() {
       setPolicies(data.data || [])
       setPagination(data.pagination || {})
     } catch (error) {
-      console.error('Error ao buscar políticas:', error)
+      console.error('Error buscar policies:', error)
     } finally {
       setLoading(false)
     }
@@ -124,7 +124,7 @@ export default function PoliciesPage() {
             }
           >
             <option value="all">Todas as Categorias</option>
-            <option value="security">Segurança</option>
+            <option value="security">Security</option>
             <option value="privacy">Privacidade</option>
             <option value="compliance">Conformidade</option>
             <option value="operational">Operacional</option>
@@ -163,7 +163,7 @@ export default function PoliciesPage() {
       <Card>
         {loading ? (
           <div className="p-12 text-center text-muted-foreground">
-            Carregando políticas...
+            Loading policies...
           </div>
         ) : policies.length === 0 ? (
           <div className="p-12 text-center">
@@ -210,13 +210,13 @@ export default function PoliciesPage() {
                       {policy.effective_date && (
                         <div className="flex items-center gap-1">
                           <Clock className="h-3 w-3" />
-                          Vigência: {new Date(policy.effective_date).toLocaleDateString('en-US')}
+                          Effective: {new Date(policy.effective_date).toLocaleDateString('en-US')}
                         </div>
                       )}
                       {policy.review_date && (
                         <div className="flex items-center gap-1">
                           <Clock className="h-3 w-3" />
-                          Revisão: {new Date(policy.review_date).toLocaleDateString('en-US')}
+                          Review: {new Date(policy.review_date).toLocaleDateString('en-US')}
                         </div>
                       )}
                       <div>
@@ -242,8 +242,8 @@ export default function PoliciesPage() {
         {pagination.totalPages > 1 && (
           <div className="p-4 border-t flex items-center justify-between">
             <div className="text-sm text-muted-foreground">
-              Página {pagination.page} of {pagination.totalPages} ({pagination.total}{' '}
-              políticas)
+              Page {pagination.page} of {pagination.totalPages} ({pagination.total}{' '}
+              policies)
             </div>
             <div className="flex gap-2">
               <Button
@@ -252,7 +252,7 @@ export default function PoliciesPage() {
                 disabled={page === 1}
                 onClick={() => setPage(page - 1)}
               >
-                Anterior
+                Previous
               </Button>
               <Button
                 variant="outline"
@@ -260,7 +260,7 @@ export default function PoliciesPage() {
                 disabled={page === pagination.totalPages}
                 onClick={() => setPage(page + 1)}
               >
-                Próxima
+                Next
               </Button>
             </div>
           </div>

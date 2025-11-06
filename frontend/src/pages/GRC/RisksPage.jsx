@@ -37,16 +37,16 @@ export default function RisksPage() {
       setRisks(data.data || [])
       setPagination(data.pagination || {})
     } catch (error) {
-      console.error('Error ao buscar risks:', error)
+      console.error('Error buscar risks:', error)
     } finally {
       setLoading(false)
     }
   }
 
   const getRiskLevel = (score) => {
-    if (score >= 20) return { label: 'Crítico', color: 'destructive' }
+    if (score >= 20) return { label: "Critical", color: 'destructive' }
     if (score >= 15) return { label: 'Alto', color: 'default' }
-    if (score >= 6) return { label: 'Médio', color: 'secondary' }
+    if (score >= 6) return { label: 'Medium', color: 'secondary' }
     return { label: 'Baixo', color: 'outline' }
   }
 
@@ -127,10 +127,10 @@ export default function RisksPage() {
             <option value="all">Todas as Categorias</option>
             <option value="operational">Operacional</option>
             <option value="financial">Financeiro</option>
-            <option value="strategic">Estratégico</option>
+            <option value="strategic">Strategic</option>
             <option value="compliance">Conformidade</option>
-            <option value="cyber">Cibernético</option>
-            <option value="reputational">Reputação</option>
+            <option value="cyber">Cyber</option>
+            <option value="reputational">Reputation</option>
           </select>
 
           {/* Severity Filter */}
@@ -144,7 +144,7 @@ export default function RisksPage() {
             <option value="all">Todas as Severidades</option>
             <option value="critical">Crítico (20-25)</option>
             <option value="high">Alto (15-19)</option>
-            <option value="medium">Médio (6-14)</option>
+            <option value="medium">Medium (6-14)</option>
             <option value="low">Baixo (1-5)</option>
           </select>
         </div>
@@ -254,7 +254,7 @@ export default function RisksPage() {
         {pagination.totalPages > 1 && (
           <div className="p-4 border-t flex items-center justify-between">
             <div className="text-sm text-muted-foreground">
-              Página {pagination.page} of {pagination.totalPages} ({pagination.total}{' '}
+              Page {pagination.page} of {pagination.totalPages} ({pagination.total}{' '}
               risks)
             </div>
             <div className="flex gap-2">
@@ -264,7 +264,7 @@ export default function RisksPage() {
                 disabled={page === 1}
                 onClick={() => setPage(page - 1)}
               >
-                Anterior
+                Previous
               </Button>
               <Button
                 variant="outline"
@@ -272,7 +272,7 @@ export default function RisksPage() {
                 disabled={page === pagination.totalPages}
                 onClick={() => setPage(page + 1)}
               >
-                Próxima
+                Next
               </Button>
             </div>
           </div>

@@ -99,7 +99,7 @@ export default function AssetsPage() {
               </div>
               <div className="space-y-1">
                 <div className="text-3xl font-medium tracking-tight">{stats.avgBusinessImpact?.toFixed(1) || 0}</div>
-                <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Impacto Médio</div>
+                <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Impacto Medium</div>
               </div>
             </CardContent>
           </Card>
@@ -128,9 +128,9 @@ export default function AssetsPage() {
               <option value="all">Todos os Tipos</option>
               <option value="hardware">Hardware</option>
               <option value="software">Software</option>
-              <option value="information">Informação</option>
+              <option value="information">Information</option>
               <option value="people">Pessoas</option>
-              <option value="service">Serviço</option>
+              <option value="service">Service</option>
             </Select>
             <Input
               placeholder="Search actives..."

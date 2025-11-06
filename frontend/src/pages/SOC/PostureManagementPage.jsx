@@ -1,6 +1,6 @@
 /**
  * Posture Management Page
- * Página completa of gerenciamento of security posture security (SIEM SCA)
+ * Page completa of gerenciamento of security posture security (SIEM SCA)
  */
 
 import { useState, useEffect } from 'react';
@@ -150,7 +150,7 @@ export function PostureManagementPage() {
                 <div className="text-sm text-muted-foreground">Falhou</div>
                 <div className="text-3xl font-bold text-red-500">{summary.failed}</div>
                 <div className="text-xs text-muted-foreground mt-1">
-                  Requer atenção
+                  Requires attention
                 </div>
               </div>
               <div className="p-2.5 rounded-lg bg-red-500/10 border border-red-500/20">
@@ -165,7 +165,7 @@ export function PostureManagementPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-muted-foreground">Não Aplicável</div>
+                <div className="text-sm text-muted-foreground">Not Applicable</div>
                 <div className="text-3xl font-bold">{summary.not_applicable}</div>
                 <div className="text-xs text-muted-foreground mt-1">
                   Ignorados
@@ -302,7 +302,7 @@ export function PostureManagementPage() {
                   <div className="border-t border-border bg-muted/20 p-4 space-y-3">
                     {check.description && (
                       <div>
-                        <div className="text-xs font-medium text-muted-foreground mb-1">Descrição:</div>
+                        <div className="text-xs font-medium text-muted-foreground mb-1">Description:</div>
                         <div className="text-sm">{check.description}</div>
                       </div>
                     )}
@@ -316,7 +316,7 @@ export function PostureManagementPage() {
 
                     {check.remediation && (
                       <div>
-                        <div className="text-xs font-medium text-muted-foreground mb-1">Remediação:</div>
+                        <div className="text-xs font-medium text-muted-foreground mb-1">Remediation:</div>
                         <div className="text-sm bg-muted p-3 rounded-lg border border-border font-mono text-xs overflow-x-auto">
                           {check.remediation}
                         </div>

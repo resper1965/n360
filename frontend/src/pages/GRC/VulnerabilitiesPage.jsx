@@ -1,6 +1,6 @@
 /**
  * Vulnerabilities Page (TVL)
- * Lista e gerencia vulnerabilidades of Threat & Vulnerability Library
+ * Lista e gerencia vulnerabilitys of Threat & Vulnerability Library
  */
 
 import { useState, useEffect } from 'react';
@@ -91,7 +91,7 @@ export function VulnerabilitiesPage() {
       <div className="flex items-center justify-center h-96">
         <div className="text-center space-y-2">
           <Bug className="h-8 w-8 text-muted-foreground mx-auto animate-pulse" strokeWidth={1.5} />
-          <div className="text-sm text-muted-foreground">Carregando vulnerabilidades...</div>
+          <div className="text-sm text-muted-foreground">Loading vulnerabilitys...</div>
         </div>
       </div>
     );
@@ -104,7 +104,7 @@ export function VulnerabilitiesPage() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight">Vulnerabilities</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Biblioteca of vulnerabilidades conhecidas
+            Biblioteca of vulnerabilitys conhecidas
           </p>
         </div>
         <button
@@ -284,7 +284,7 @@ export function VulnerabilitiesPage() {
                           className="text-xs text-primary hover:underline flex items-center gap-1"
                         >
                           <ExternalLink className="h-3 w-3" strokeWidth={1.5} />
-                          Referência
+                          Reference
                         </button>
                       )}
                     </div>
@@ -296,7 +296,7 @@ export function VulnerabilitiesPage() {
             <div className="text-center py-12 text-muted-foreground">
               {search || severityFilter !== 'all' 
                 ? 'Nenhuma vulnerabilidaof encontrada com esses filtros.'
-                : 'Nenhuma vulnerabilidaof cadastrada. Clique em "Nova Vulnerabilidade" para começar.'}
+                : 'Nenhuma vulnerabilidaof cadastrada. Click on "Nova Vulnerabilidade" to start.'}
             </div>
           )}
         </CardContent>

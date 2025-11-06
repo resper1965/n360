@@ -50,8 +50,8 @@ export default function PolicyForm() {
         tags: data.tags || [],
       })
     } catch (error) {
-      console.error('Error loading política:', error)
-      alert('Error loading política')
+      console.error('Error loading policy:', error)
+      alert('Error loading policy')
     } finally {
       setLoading(false)
     }
@@ -91,10 +91,10 @@ export default function PolicyForm() {
         content: prev.content + `\n\n[Documento anexado](${result.url})`
       }))
 
-      alert('Documento enviado com sucesso!')
+      alert('Documento enviado successfully!')
     } catch (error) {
-      console.error('Error ao enviar documento:', error)
-      alert('Error ao enviar documento')
+      console.error('Error enviar documento:', error)
+      alert('Error enviar documento')
     } finally {
       setUploadingDoc(false)
     }
@@ -117,22 +117,22 @@ export default function PolicyForm() {
       })
 
       if (response.ok) {
-        alert(isEdit ? 'Política atualizada com sucesso!' : 'Política criada com sucesso!')
+        alert(isEdit ? 'Política atualizada successfully!' : 'Política criada successfully!')
         navigate('/grc/policies')
       } else {
         const error = await response.json()
-        alert(`Erro: ${error.error || 'Error saving política'}`)
+        alert(`Erro: ${error.error || 'Error saving policy'}`)
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Error saving política')
+      alert('Error saving policy')
     } finally {
       setLoading(false)
     }
   }
 
   const handleDelete = async () => {
-    if (!confirm('Tem certeza que deseja excluir esta política?')) return
+    if (!confirm('Are you sure you want to delete esta policy?')) return
 
     try {
       setLoading(true)
@@ -141,14 +141,14 @@ export default function PolicyForm() {
       })
 
       if (response.ok) {
-        alert('Política excluída com sucesso!')
+        alert('Política excluída successfully!')
         navigate('/grc/policies')
       } else {
-        alert('Error ao excluir política')
+        alert('Error excluir policy')
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Error ao excluir política')
+      alert('Error excluir policy')
     } finally {
       setLoading(false)
     }
@@ -181,7 +181,7 @@ export default function PolicyForm() {
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Atualize as informações of política' : 'Cadastre uma nova política of security'}
+            {isEdit ? 'Update the information of policy' : 'Register a new policy of security'}
           </p>
         </div>
 
@@ -202,32 +202,32 @@ export default function PolicyForm() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-grid-lg">
           {/* Main Form - 2/3 */}
           <div className="lg:col-span-2 space-y-grid-lg">
-            {/* Informações Básicas */}
+            {/* Basic Information */}
             <Card>
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg font-medium">Informações Básicas</CardTitle>
+                <CardTitle className="text-lg font-medium">Basic Information</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="title">Título *</Label>
+                  <Label htmlFor="title">Title *</Label>
                   <Input
                     id="title"
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    placeholder="Ex: Política of Uso Aceitável"
+                    placeholder="Example: Política of Uso Aceitável"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="description">Descrição</Label>
+                  <Label htmlFor="description">Description</Label>
                   <Textarea
                     id="description"
                     name="description"
                     value={formData.description || ''}
                     onChange={handleChange}
-                    placeholder="Resumo executivo of política..."
+                    placeholder="Resumo executivo of policy..."
                     rows={3}
                   />
                 </div>
@@ -242,7 +242,7 @@ export default function PolicyForm() {
                       onChange={handleChange}
                       required
                     >
-                      <option value="security">Segurança</option>
+                      <option value="security">Security</option>
                       <option value="privacy">Privacidade</option>
                       <option value="compliance">Compliance</option>
                       <option value="operational">Operacional</option>
@@ -257,7 +257,7 @@ export default function PolicyForm() {
                       name="framework"
                       value={formData.framework || ''}
                       onChange={handleChange}
-                      placeholder="Ex: ISO 27001"
+                      placeholder="Example: ISO 27001"
                     />
                   </div>
                 </div>
@@ -269,7 +269,7 @@ export default function PolicyForm() {
                     name="content"
                     value={formData.content || ''}
                     onChange={handleChange}
-                    placeholder="Conteúdo completo of política (suporta Markdown)..."
+                    placeholder="Conteúdo completo of policy (suporta Markdown)..."
                     rows={12}
                     className="font-mono text-xs"
                   />
@@ -339,7 +339,7 @@ export default function PolicyForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="version">Versão *</Label>
+                  <Label htmlFor="version">Version *</Label>
                   <Input
                     id="version"
                     name="version"
@@ -351,7 +351,7 @@ export default function PolicyForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="effective_date">Data of Vigência</Label>
+                  <Label htmlFor="effective_date">Effective Date</Label>
                   <Input
                     type="date"
                     id="effective_date"
@@ -362,7 +362,7 @@ export default function PolicyForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="review_date">Próxima Revisão</Label>
+                  <Label htmlFor="review_date">Next Review</Label>
                   <Input
                     type="date"
                     id="review_date"

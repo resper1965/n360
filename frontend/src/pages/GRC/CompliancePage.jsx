@@ -233,7 +233,7 @@ export function CompliancePage() {
                   <div className="text-center p-3 rounded-lg bg-red-500/10 border border-red-500/20">
                     <div className="flex items-center justify-center gap-1 mb-1">
                       <XCircle className="h-4 w-4 text-red-500" strokeWidth={1.5} />
-                      <span className="text-xs text-muted-foreground">Não Conforme</span>
+                      <span className="text-xs text-muted-foreground">Non-Compliant</span>
                     </div>
                     <div className="text-2xl font-bold text-red-500">{framework.not_compliant}</div>
                   </div>
@@ -362,7 +362,7 @@ export function CompliancePage() {
                 Parcial: Controle implementado mas not 100% effective
               </Badge>
               <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/20">
-                Não Conforme: Controle not implemented or failed
+                Non-Compliant: Controle not implemented or failed
               </Badge>
             </div>
           </div>

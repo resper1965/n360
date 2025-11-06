@@ -22,7 +22,7 @@ export default function ProblemDetailPage() {
       const data = await response.json()
       setProblem(data)
     } catch (error) {
-      console.error('Error ao buscar problem:', error)
+      console.error('Error buscar problem:', error)
     } finally {
       setLoading(false)
     }
@@ -37,7 +37,7 @@ export default function ProblemDetailPage() {
       const updated = await response.json()
       setProblem(updated)
     } catch (error) {
-      console.error('Error ao confirmar:', error)
+      console.error('Error confirmar:', error)
     } finally {
       setActionLoading(false)
     }
@@ -55,7 +55,7 @@ export default function ProblemDetailPage() {
     return (
       <div className="flex flex-col items-center justify-center h-64 space-y-4">
         <XCircle className="h-12 w-12 text-muted-foreground" />
-        <div className="text-muted-foreground">Problema não encontrado</div>
+        <div className="text-muted-foreground">Problema not found</div>
         <Button onClick={() => navigate('/noc/problems')}>Back</Button>
       </div>
     )

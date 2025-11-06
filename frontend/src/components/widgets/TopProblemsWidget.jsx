@@ -17,7 +17,7 @@ export default function TopProblemsWidget() {
       const data = await response.json()
       setProblems(data.data || [])
     } catch (error) {
-      console.error('Error ao buscar top problems:', error)
+      console.error('Error buscar top problems:', error)
     } finally {
       setLoading(false)
     }

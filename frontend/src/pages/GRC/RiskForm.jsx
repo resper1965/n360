@@ -90,7 +90,7 @@ export default function RiskForm() {
       })
 
       if (response.ok) {
-        alert(isEdit ? 'Risco atualizado com sucesso!' : 'Risco criado com sucesso!')
+        alert(isEdit ? 'Risco atualizado successfully!' : 'Risco criado successfully!')
         navigate('/grc/risks')
       } else {
         const error = await response.json()
@@ -105,7 +105,7 @@ export default function RiskForm() {
   }
 
   const handleDelete = async () => {
-    if (!confirm('Tem certeza que deseja excluir este risk?')) return
+    if (!confirm('Are you sure you want to delete este risk?')) return
 
     try {
       setLoading(true)
@@ -114,14 +114,14 @@ export default function RiskForm() {
       })
 
       if (response.ok) {
-        alert('Risco excluído com sucesso!')
+        alert('Risco excluído successfully!')
         navigate('/grc/risks')
       } else {
-        alert('Error ao excluir risk')
+        alert('Error excluir risk')
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Error ao excluir risk')
+      alert('Error excluir risk')
     } finally {
       setLoading(false)
     }
@@ -154,7 +154,7 @@ export default function RiskForm() {
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Atualize as informações of risk' : 'Cadastre um novo risk no sistema'}
+            {isEdit ? 'Update the information of risk' : 'Register a new risk no sistema'}
           </p>
         </div>
 
@@ -175,28 +175,28 @@ export default function RiskForm() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-grid-lg">
           {/* Main Form - 2/3 */}
           <div className="lg:col-span-2 space-y-grid-lg">
-            {/* Informações Básicas */}
+            {/* Basic Information */}
             <Card>
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg font-medium">Informações Básicas</CardTitle>
+                <CardTitle className="text-lg font-medium">Basic Information</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {/* Título */}
+                {/* Title */}
                 <div className="space-y-2">
-                  <Label htmlFor="title">Título *</Label>
+                  <Label htmlFor="title">Title *</Label>
                   <Input
                     id="title"
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    placeholder="Ex: Risco of vazamento of dados"
+                    placeholder="Example: Risco of vazamento of dados"
                     required
                   />
                 </div>
 
-                {/* Descrição */}
+                {/* Description */}
                 <div className="space-y-2">
-                  <Label htmlFor="description">Descrição</Label>
+                  <Label htmlFor="description">Description</Label>
                   <Textarea
                     id="description"
                     name="description"
@@ -220,9 +220,9 @@ export default function RiskForm() {
                     >
                       <option value="operational">Operacional</option>
                       <option value="financial">Financeiro</option>
-                      <option value="strategic">Estratégico</option>
+                      <option value="strategic">Strategic</option>
                       <option value="compliance">Compliance</option>
-                      <option value="cyber">Cibernético</option>
+                      <option value="cyber">Cyber</option>
                       <option value="reputational">Reputacional</option>
                     </Select>
                   </div>
@@ -234,7 +234,7 @@ export default function RiskForm() {
                       name="asset_type"
                       value={formData.asset_type || ''}
                       onChange={handleChange}
-                      placeholder="Ex: Banco of dados"
+                      placeholder="Example: Banco of dados"
                     />
                   </div>
                 </div>

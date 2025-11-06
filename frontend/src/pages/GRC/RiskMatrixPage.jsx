@@ -19,7 +19,7 @@ export default function RiskMatrixPage() {
       const data = await response.json()
       setMatrix(data.matrix || [])
     } catch (error) {
-      console.error('Error ao buscar matriz:', error)
+      console.error('Error buscar matriz:', error)
       // Criar matriz vazia 5x5
       setMatrix(Array(5).fill().map(() => Array(5).fill({ count: 0, risks: [] })))
     } finally {
@@ -40,8 +40,8 @@ export default function RiskMatrixPage() {
     return 'text-white'
   }
 
-  const impactLabels = ['Insignificante', 'Menor', 'Moderado', 'Maior', 'Catastrófico']
-  const likelihoodLabels = ['Raro', 'Improvável', 'Possível', 'Provável', 'Quase Certo']
+  const impactLabels = ['Insignificant', 'Minor', 'Moderate', 'Major', 'Catastrophic']
+  const likelihoodLabels = ['Rare', 'Unlikely', 'Possible', 'Likely', 'Almost Certain']
 
   const handleCellClick = (likelihood, impact, cell) => {
     if (cell.count > 0) {
@@ -77,7 +77,7 @@ export default function RiskMatrixPage() {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 rounded bg-yellow-500" />
-              <span>Médio (6-14)</span>
+              <span>Medium (6-14)</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 rounded bg-orange-500" />
@@ -89,7 +89,7 @@ export default function RiskMatrixPage() {
             </div>
           </div>
           <div className="text-sm text-muted-foreground">
-            Clique em uma célula para ver os risks
+            Click on uma célula para ver os risks
           </div>
         </div>
       </Card>
@@ -98,7 +98,7 @@ export default function RiskMatrixPage() {
       <Card className="p-6">
         {loading ? (
           <div className="text-center py-12 text-muted-foreground">
-            Carregando matriz...
+            Loading matriz...
           </div>
         ) : (
           <div className="overflow-x-auto">
@@ -198,7 +198,7 @@ export default function RiskMatrixPage() {
           </div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Riscos Médios/Baixos</div>
+          <div className="text-sm text-muted-foreground">Riscos Mediums/Baixos</div>
           <div className="text-2xl font-bold">
             {matrix
               .flat()

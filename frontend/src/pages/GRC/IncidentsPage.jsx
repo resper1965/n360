@@ -79,9 +79,9 @@ export function IncidentsPage() {
 
   const getSeverityBadge = (severity) => {
     const badges = {
-      critical: { label: 'Crítico', color: 'bg-red-500/10 text-red-500 border-red-500/20' },
+      critical: { label: "Critical", color: 'bg-red-500/10 text-red-500 border-red-500/20' },
       high: { label: 'Alto', color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' },
-      medium: { label: 'Médio', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' },
+      medium: { label: 'Medium', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' },
       low: { label: 'Baixo', color: 'bg-blue-500/10 text-blue-500 border-blue-500/20' }
     };
     return badges[severity] || badges.low;
@@ -92,7 +92,7 @@ export function IncidentsPage() {
       <div className="flex items-center justify-center h-96">
         <div className="text-center space-y-2">
           <AlertOctagon className="h-8 w-8 text-muted-foreground mx-auto animate-pulse" strokeWidth={1.5} />
-          <div className="text-sm text-muted-foreground">Carregando incidentes...</div>
+          <div className="text-sm text-muted-foreground">Loading incidents...</div>
         </div>
       </div>
     );
@@ -283,7 +283,7 @@ export function IncidentsPage() {
               <p className="text-muted-foreground">
                 {filter === 'all' 
                   ? 'No incidents registered.' 
-                  : `No incidente com status "${getStatusBadge(filter).label}".`}
+                  : `No incident com status "${getStatusBadge(filter).label}".`}
               </p>
               <Link to="/grc/incidents/new">
                 <button className="mt-4 px-4 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors">
@@ -310,7 +310,7 @@ export function IncidentsPage() {
           <div>
             <div className="font-medium mb-1">🛠️ CAPA (Corrective Action & Preventive Action)</div>
             <p className="text-muted-foreground">
-              Para cada incidente, defina ações corretivas (resolve) e preventivas (prevent recurrence).
+              Para cada incident, defina ações corretivas (resolve) e preventivas (prevent recurrence).
             </p>
           </div>
           <div>

@@ -93,7 +93,7 @@ export default function AssetForm() {
       navigate('/grc/assets')
     } catch (error) {
       console.error('Erro:', error)
-      alert('Error ao excluir')
+      alert('Error excluir')
     } finally {
       setLoading(false)
     }
@@ -130,7 +130,7 @@ export default function AssetForm() {
           <div className="lg:col-span-2 space-y-grid-lg">
             <Card>
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg font-medium">Informações Básicas</CardTitle>
+                <CardTitle className="text-lg font-medium">Basic Information</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
@@ -143,18 +143,18 @@ export default function AssetForm() {
                     <Select id="asset_type" name="asset_type" value={formData.asset_type} onChange={handleChange} required>
                       <option value="hardware">Hardware</option>
                       <option value="software">Software</option>
-                      <option value="information">Informação</option>
+                      <option value="information">Information</option>
                       <option value="people">Pessoas</option>
-                      <option value="service">Serviço</option>
+                      <option value="service">Service</option>
                     </Select>
                   </div>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="name">Nome *</Label>
-                  <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Ex: Servidor of Banco of Dados" required />
+                  <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Example: Servidor of Banco of Dados" required />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="description">Descrição</Label>
+                  <Label htmlFor="description">Description</Label>
                   <Textarea id="description" name="description" value={formData.description || ''} onChange={handleChange} rows={3} />
                 </div>
               </CardContent>

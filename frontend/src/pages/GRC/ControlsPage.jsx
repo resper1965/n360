@@ -36,14 +36,14 @@ export default function ControlsPage() {
       setControls(data.data || [])
       setPagination(data.pagination || {})
     } catch (error) {
-      console.error('Error ao buscar controles:', error)
+      console.error('Error buscar controles:', error)
     } finally {
       setLoading(false)
     }
   }
 
   const statusLabels = {
-    not_implemented: 'Não Implementado',
+    not_implemented: 'Not Implemented',
     planned: 'Planejado',
     partial: 'Parcial',
     implemented: 'Implementado',
@@ -117,7 +117,7 @@ export default function ControlsPage() {
             onChange={(e) => setFilters({ ...filters, status: e.target.value })}
           >
             <option value="all">Todos os Status</option>
-            <option value="not_implemented">Não Implementado</option>
+            <option value="not_implemented">Not Implemented</option>
             <option value="planned">Planejado</option>
             <option value="partial">Parcial</option>
             <option value="implemented">Implementado</option>
@@ -163,7 +163,7 @@ export default function ControlsPage() {
       <Card>
         {loading ? (
           <div className="p-12 text-center text-muted-foreground">
-            Carregando controles...
+            Loading controles...
           </div>
         ) : controls.length === 0 ? (
           <div className="p-12 text-center">
@@ -215,7 +215,7 @@ export default function ControlsPage() {
                       )}
                       {control.last_tested && (
                         <div>
-                          Último Teste:{' '}
+                          Last Test:{' '}
                           {new Date(control.last_tested).toLocaleDateString('en-US')}
                         </div>
                       )}
@@ -239,7 +239,7 @@ export default function ControlsPage() {
         {pagination.totalPages > 1 && (
           <div className="p-4 border-t flex items-center justify-between">
             <div className="text-sm text-muted-foreground">
-              Página {pagination.page} of {pagination.totalPages} ({pagination.total}{' '}
+              Page {pagination.page} of {pagination.totalPages} ({pagination.total}{' '}
               controles)
             </div>
             <div className="flex gap-2">
@@ -249,7 +249,7 @@ export default function ControlsPage() {
                 disabled={page === 1}
                 onClick={() => setPage(page - 1)}
               >
-                Anterior
+                Previous
               </Button>
               <Button
                 variant="outline"
@@ -257,7 +257,7 @@ export default function ControlsPage() {
                 disabled={page === pagination.totalPages}
                 onClick={() => setPage(page + 1)}
               >
-                Próxima
+                Next
               </Button>
             </div>
           </div>

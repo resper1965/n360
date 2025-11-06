@@ -53,7 +53,7 @@ class ErrorBoundary extends Component {
                 <AlertTriangle className="h-8 w-8 text-destructive" />
               </div>
 
-              {/* Título */}
+              {/* Title */}
               <div className="space-y-2">
                 <h2 className="text-2xl font-semibold">
                   Ops! Algo deu errado

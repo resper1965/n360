@@ -67,7 +67,7 @@ export default function TicketForm() {
       })
 
       if (response.ok) {
-        alert(isEdit ? 'Ticket atualizado com sucesso!' : 'Ticket criado com sucesso!')
+        alert(isEdit ? 'Ticket atualizado successfully!' : 'Ticket criado successfully!')
         navigate('/tickets')
       } else {
         const error = await response.json()
@@ -82,7 +82,7 @@ export default function TicketForm() {
   }
 
   const handleDelete = async () => {
-    if (!confirm('Tem certeza que deseja excluir este ticket?')) return
+    if (!confirm('Are you sure you want to delete este ticket?')) return
 
     try {
       setLoading(true)
@@ -91,14 +91,14 @@ export default function TicketForm() {
       })
 
       if (response.ok) {
-        alert('Ticket excluído com sucesso!')
+        alert('Ticket excluído successfully!')
         navigate('/tickets')
       } else {
-        alert('Error ao excluir ticket')
+        alert('Error excluir ticket')
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Error ao excluir ticket')
+      alert('Error excluir ticket')
     } finally {
       setLoading(false)
     }
@@ -131,7 +131,7 @@ export default function TicketForm() {
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Atualize as informações of ticket' : 'Cadastre um novo ticket'}
+            {isEdit ? 'Update the information of ticket' : 'Register a new ticket'}
           </p>
         </div>
 
@@ -158,19 +158,19 @@ export default function TicketForm() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="title">Título *</Label>
+                  <Label htmlFor="title">Title *</Label>
                   <Input
                     id="title"
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    placeholder="Ex: Problema no servidor of backup"
+                    placeholder="Example: Problema no servidor of backup"
                     required
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="description">Descrição *</Label>
+                  <Label htmlFor="description">Description *</Label>
                   <Textarea
                     id="description"
                     name="description"
@@ -195,7 +195,7 @@ export default function TicketForm() {
                       <option value="low">Low</option>
                       <option value="medium">Medium</option>
                       <option value="high">High</option>
-                      <option value="critical">Crítica</option>
+                      <option value="critical">Critical</option>
                     </Select>
                   </div>
 
@@ -209,9 +209,9 @@ export default function TicketForm() {
                       required
                     >
                       <option value="incident">Incidente</option>
-                      <option value="request">Requisição</option>
+                      <option value="request">Request</option>
                       <option value="problem">Problema</option>
-                      <option value="change">Mudança</option>
+                      <option value="change">Change</option>
                     </Select>
                   </div>
 

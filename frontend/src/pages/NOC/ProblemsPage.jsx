@@ -54,7 +54,7 @@ export default function ProblemsPage() {
 
       <div className="bg-ness-surface border border-ness-border rounded-xl overflow-hidden">
         {loading ? (
-          <div className="p-12 text-center text-ness-muted">Carregando problems...</div>
+          <div className="p-12 text-center text-ness-muted">Loading problems...</div>
         ) : problems.length === 0 ? (
           <div className="p-12 text-center text-ness-muted">
             <Server size={48} className="mx-auto mb-3 opacity-50 text-green-500" />

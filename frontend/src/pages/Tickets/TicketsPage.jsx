@@ -97,7 +97,7 @@ export default function TicketsPage() {
 
       {loading && (
         <div className="text-center py-12 text-ness-muted">
-          Carregando tickets...
+          Loading tickets...
         </div>
       )}
 
@@ -105,7 +105,7 @@ export default function TicketsPage() {
         <div className="bg-ness-surface border border-ness-border rounded-xl p-12 text-center">
           <Ticket size={48} className="mx-auto mb-3 text-ness-muted opacity-50" />
           <p className="text-ness-muted">No ticket criado</p>
-          <p className="text-sm text-ness-muted mt-2">Clique em "New Ticket" para começar</p>
+          <p className="text-sm text-ness-muted mt-2">Click on "New Ticket" to start</p>
         </div>
       )}
     </div>
