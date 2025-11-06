@@ -11,7 +11,8 @@ import {
   ShieldCheck,
   Bug,
   AlertOctagon,
-  FileCheck
+  FileCheck,
+  TrendingUp
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -20,6 +21,7 @@ export default function Sidebar({ isOpen }) {
 
   const menuItems = [
     { name: 'Dashboard', icon: LayoutDashboard, path: '/' },
+    { name: 'Executive', icon: TrendingUp, path: '/executive' },
     { name: 'SOC - Alertas', icon: AlertTriangle, path: '/soc/alerts' },
     { name: 'SOC - Posture', icon: ShieldCheck, path: '/soc/posture' },
     { name: 'NOC - Problemas', icon: Activity, path: '/noc/problems' },

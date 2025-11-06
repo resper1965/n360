@@ -30,6 +30,7 @@ import { IncidentsPage } from './pages/GRC/IncidentsPage'
 import { CompliancePage } from './pages/GRC/CompliancePage'
 import { ThreatForm } from './pages/GRC/ThreatForm'
 import { IncidentForm } from './pages/GRC/IncidentForm'
+import { ExecutiveDashboard } from './pages/Dashboard/ExecutiveDashboard'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -46,6 +47,7 @@ function App() {
           <main className="flex-1 p-6 overflow-y-auto">
             <Routes>
               <Route path="/" element={<CISODashboard />} />
+              <Route path="/executive" element={<ExecutiveDashboard />} />
               <Route path="/status" element={<StatusPage />} />
               <Route path="/soc/alerts" element={<AlertsPage />} />
               <Route path="/soc/alerts/:id" element={<AlertDetailPage />} />
