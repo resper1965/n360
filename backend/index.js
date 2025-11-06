@@ -647,6 +647,9 @@ app.use('/api/policies', require('./routes/policies'));
 app.use('/api/tickets', require('./routes/tickets'));
 app.use('/api/dashboard', require('./routes/dashboard'));
 
+// Wazuh Integration Routes
+app.use('/api/posture', require('./routes/posture'));
+
 // 404 Handler
 app.use((req, res) => {
   res.status(404).json({

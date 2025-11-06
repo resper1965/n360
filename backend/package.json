@@ -12,6 +12,7 @@
     "test:verbose": "jest --verbose"
   },
   "dependencies": {
+    "@opensearch-project/opensearch": "^3.5.1",
     "@prisma/client": "^6.19.0",
     "@supabase/supabase-js": "^2.39.0",
     "axios": "^1.6.0",

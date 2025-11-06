@@ -7,7 +7,8 @@ import {
   Radio,
   Shield,
   Database,
-  Skull
+  Skull,
+  ShieldCheck
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -17,6 +18,7 @@ export default function Sidebar({ isOpen }) {
   const menuItems = [
     { name: 'Dashboard', icon: LayoutDashboard, path: '/' },
     { name: 'SOC - Alertas', icon: AlertTriangle, path: '/soc/alerts' },
+    { name: 'SOC - Posture', icon: ShieldCheck, path: '/soc/posture' },
     { name: 'NOC - Problemas', icon: Activity, path: '/noc/problems' },
     { name: 'GRC', icon: Shield, path: '/grc', submenu: true },
     { name: '  CMDB - Ativos', icon: Database, path: '/grc/assets', indent: true },

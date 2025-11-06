@@ -4,6 +4,7 @@ import api from '../../lib/api'
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '../../components/ui/card'
 import TopAlertsWidget from '../../components/widgets/TopAlertsWidget'
 import TopProblemsWidget from '../../components/widgets/TopProblemsWidget'
+import { PostureScoreWidget } from '../../components/widgets/PostureScoreWidget'
 
 export default function CISODashboard() {
   const [data, setData] = useState(null)

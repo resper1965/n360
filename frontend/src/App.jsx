@@ -22,6 +22,7 @@ import TicketForm from './pages/Tickets/TicketForm'
 import AssetsPage from './pages/GRC/AssetsPage'
 import AssetForm from './pages/GRC/AssetForm'
 import ThreatsPage from './pages/GRC/ThreatsPage'
+import { PostureManagementPage } from './pages/SOC/PostureManagementPage'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -41,6 +42,7 @@ function App() {
               <Route path="/status" element={<StatusPage />} />
               <Route path="/soc/alerts" element={<AlertsPage />} />
               <Route path="/soc/alerts/:id" element={<AlertDetailPage />} />
+              <Route path="/soc/posture" element={<PostureManagementPage />} />
               <Route path="/noc/problems" element={<ProblemsPage />} />
               <Route path="/noc/problems/:id" element={<ProblemDetailPage />} />
               <Route path="/tickets" element={<TicketsPage />} />
