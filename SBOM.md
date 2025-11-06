@@ -538,3 +538,4 @@ Este SBOM deve ser **atualizado**:
 **Licença n360**: Proprietário  
 **Conformidade**: LGPD, GDPR, Open Source Licenses
 
+

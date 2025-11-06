@@ -433,3 +433,4 @@ Ou me diga o que você gostaria de ver implementado!
 **Data**: 06/11/2025  
 **Status**: Aguardando decisão
 
+

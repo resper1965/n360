@@ -115,3 +115,4 @@ class WazuhCollector extends BaseCollector {
 
 module.exports = WazuhCollector;
 
+

@@ -691,3 +691,4 @@ O projeto tem **58 bad smells** identificados, sendo **11 críticos**.
 **Revisores**: Claude (AI)
 
 
+

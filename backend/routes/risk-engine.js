@@ -201,3 +201,4 @@ async function calculateInherent(risk_id, threat_id, vulnerability_id) {
 
 module.exports = router
 
+

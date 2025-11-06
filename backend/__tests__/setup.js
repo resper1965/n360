@@ -43,3 +43,4 @@ global.console = {
   error: console.error, // Manter errors visíveis
 };
 
+

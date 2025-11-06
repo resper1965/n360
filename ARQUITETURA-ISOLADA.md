@@ -461,3 +461,4 @@ docker network inspect wazuh-stack_wazuh-internal
 
 **Princípio Final**: Se funciona, não mexa. Inove apenas no n360. 🚀
 
+

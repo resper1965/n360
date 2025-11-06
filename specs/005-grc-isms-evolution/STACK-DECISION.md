@@ -319,3 +319,4 @@ Se Prisma não funcionar bem:
 **Data**: 06/11/2025  
 **Implementação**: A partir de Sprint 6 (GRC ISMS Evolution)
 
+

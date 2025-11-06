@@ -203,3 +203,4 @@ curl https://mcp.context7.com/mcp/health \
 **Empresa**: ness.  
 **Última atualização**: 05/11/2025
 
+

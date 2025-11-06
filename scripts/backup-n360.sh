@@ -280,3 +280,4 @@ log_info ""
 log_info "🎉 Backup finalizado!"
 exit 0
 
+

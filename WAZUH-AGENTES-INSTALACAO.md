@@ -267,3 +267,4 @@ Server address: wazuh.nsecops.com.br
 ---
 
 Quer que eu verifique ou configure a registration password do Wazuh para facilitar a instalação dos agentes?
+

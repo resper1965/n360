@@ -289,3 +289,4 @@ Score = (Controles Efetivos / Total Controles Aplicáveis) × 100
 **Data**: 06/11/2025  
 **Status**: ✅ Aprovada para Implementação
 
+

@@ -103,3 +103,4 @@ async function runAutoIncidentsJob() {
 // Exportar job
 module.exports = { runAutoIncidentsJob };
 
+

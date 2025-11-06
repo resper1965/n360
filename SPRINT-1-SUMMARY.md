@@ -485,3 +485,4 @@ Proprietário - ness. © 2025
 **✅ Sprint 1 completo em 05/11/2025**  
 **Próximo**: Sprint 2 (Error Handling + Tests) - ETA 1 semana
 
+

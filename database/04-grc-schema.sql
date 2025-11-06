@@ -436,3 +436,4 @@ COMMENT ON TABLE audit_findings IS 'Achados (findings) identificados em auditori
 -- END OF GRC SCHEMA
 -- ============================================
 
+

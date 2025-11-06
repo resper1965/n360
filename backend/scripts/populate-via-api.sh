@@ -221,3 +221,4 @@ echo "   - 3 Vulnerabilities"
 echo ""
 echo "🌐 Acesse: https://n360.nsecops.com.br"
 
+

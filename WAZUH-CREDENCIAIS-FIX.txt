@@ -171,3 +171,4 @@ Tempo de resolução: ~15 minutos
 Causa: Senha incorreta no wazuh.yml
 Solução: sed -i no arquivo do host
 
+

@@ -266,3 +266,4 @@ Sprint 2 concluído: 06/11/2025 - 00h30 ✅
 Próximo: Sprint 3 (Features Core - SOC + NOC)
 ETA Sprint 3: 10-12 dias úteis
 
+
