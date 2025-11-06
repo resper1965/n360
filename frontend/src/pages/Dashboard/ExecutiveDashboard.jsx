@@ -102,9 +102,9 @@ export function ExecutiveDashboard() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight">Executive Dashboard</h1>
+          <h1 className="text-3xl font-semibold tracking-tight">Executive</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Visão executiva of risks, compliance e incidentes
+            Executive view of risks, compliance and incidents
           </p>
         </div>
         <ExportPDFButton
@@ -144,7 +144,7 @@ export function ExecutiveDashboard() {
                 </div>
                 <div className="flex items-center gap-1 mt-1 text-xs text-green-500">
                   <TrendingUp className="h-3 w-3" strokeWidth={1.5} />
-                  +5% este mês
+                  +5% this month
                 </div>
               </div>
               <div className="p-3 rounded-full bg-green-500/10">
@@ -161,7 +161,7 @@ export function ExecutiveDashboard() {
                 <div className="text-sm text-muted-foreground">Incidentes Abertos</div>
                 <div className="text-3xl font-bold text-yellow-500 mt-2">{openIncidents}</div>
                 <div className="text-xs text-muted-foreground mt-1">
-                  requerem atenção
+                  require attention
                 </div>
               </div>
               <div className="p-3 rounded-full bg-yellow-500/10">
@@ -194,7 +194,7 @@ export function ExecutiveDashboard() {
         {/* Risk Heatmap Interactive */}
         <Card className="shadow-elegant">
           <CardHeader>
-            <CardTitle>Mapa of Calor of Riscos</CardTitle>
+            <CardTitle>Risk Heat Map</CardTitle>
           </CardHeader>
           <CardContent>
             <div className="space-y-2">
@@ -238,7 +238,7 @@ export function ExecutiveDashboard() {
               ))}
 
               <div className="flex items-center gap-2 text-xs mt-4 pt-4 border-t border-border">
-                <span>Probabilidaof →</span>
+                <span>Probability →</span>
                 <div className="flex-1"></div>
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 rounded bg-blue-500"></div>
@@ -308,7 +308,7 @@ export function ExecutiveDashboard() {
             <div className="pt-4 border-t border-border">
               <p className="text-xs text-muted-foreground">
                 <strong>💡 Recomendação Executiva:</strong> Priorizar mitigação of {criticalRisks} risks 
-                critical através of implementação of controles adicionais e revisão of políticas.
+                critical através of implementação control adicionais e revisão policy.
               </p>
             </div>
           </CardContent>
@@ -318,41 +318,41 @@ export function ExecutiveDashboard() {
       {/* Executive Summary Card */}
       <Card className="shadow-elegant bg-gradient-to-br from-primary/5 to-primary/10">
         <CardHeader>
-          <CardTitle>Resumo Executivo</CardTitle>
+          <CardTitle>Executive Summary</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-sm">
           <div>
-            <div className="font-medium mb-2">🎯 Status Geral of Segurança</div>
+            <div className="font-medium mb-2">🎯 Overall Status Security</div>
             <p className="text-muted-foreground">
-              A organização mantém uma postura of conformidaof of <strong>{data.compliance?.overall_score || 75}%</strong>, 
+              A organization maintains uma security posture conformity of <strong>{data.compliance?.overall_score || 75}%</strong>, 
               com {totalRisks} risks identificados, of quais {criticalRisks} são considerados critical 
-              e requerem atenção imediata of liderança.
+              e require attention imediata of liderança.
             </p>
           </div>
 
           <div>
-            <div className="font-medium mb-2">⚠️ Principais Preocupações</div>
+            <div className="font-medium mb-2">⚠️ Key Concerns</div>
             <ul className="list-disc list-insiof text-muted-foreground space-y-1">
               <li>{criticalRisks} risks critical identificados que podem impactar operações</li>
-              <li>{openIncidents} incidentes of segurança em investigação</li>
-              <li>Efetividaof of controles em {controlEffectiveness}% (meta: 90%)</li>
+              <li>{openIncidents} incidentes of security em investigação</li>
+              <li>Effectiveness control em {controlEffectiveness}% (meta: 90%)</li>
             </ul>
           </div>
 
           <div>
-            <div className="font-medium mb-2">✅ Ações Recomendadas</div>
+            <div className="font-medium mb-2">✅ Recommended Actions</div>
             <ol className="list-decimal list-insiof text-muted-foreground space-y-1">
               <li>Revisar e mitigar os {criticalRisks} risks critical identificados</li>
               <li>Implementar controles adicionais para risks residuais altos</li>
               <li>Acelerar resolução of {openIncidents} incidentes open</li>
-              <li>Investir em treinamento of segurança para reduzir risks of erro humano</li>
+              <li>Investir em treinamento of security para reduzir risks of erro humano</li>
             </ol>
           </div>
 
           <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
             <p className="text-xs">
-              <strong>📊 Próxima Revisão:</strong> Este relatório deve ser revisado mensalmente 
-              pelo Comitê of Segurança. Export em PDF disponível para distribuição.
+              <strong>📊 Next Review:</strong> This report should be reviewed monthly 
+              by the Security Committee Security. Export em PDF available for distribution.
             </p>
           </div>
         </CardContent>

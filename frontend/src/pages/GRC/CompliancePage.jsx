@@ -1,6 +1,6 @@
 /**
  * Compliance & SoA Page
- * Statement of Applicability e Relatórios of Conformidade
+ * Statement of Applicability e Relatórios Compliance
  */
 
 import { useState, useEffect } from 'react';
@@ -97,7 +97,7 @@ export function CompliancePage() {
   const getScoreBadge = (score) => {
     if (score >= 90) return { label: 'Excelente', color: 'bg-green-500/10 text-green-500 border-green-500/20' };
     if (score >= 70) return { label: 'Bom', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' };
-    return { label: 'Requer Atenção', color: 'bg-red-500/10 text-red-500 border-red-500/20' };
+    return { label: 'Requires Attention', color: 'bg-red-500/10 text-red-500 border-red-500/20' };
   };
 
   const exportSoA = (framework) => {
@@ -121,9 +121,9 @@ export function CompliancePage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight">Compliance & SoA</h1>
+          <h1 className="text-3xl font-semibold tracking-tight">Compliance</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Statement of Applicability e Postura of Conformidade
+            Statement of Applicability e Postura Compliance
           </p>
         </div>
         <ExportPDFButton
@@ -139,7 +139,7 @@ export function CompliancePage() {
         <CardContent className="pt-6">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-sm text-muted-foreground mb-2">Score Geral of Conformidade</div>
+              <div className="text-sm text-muted-foreground mb-2">Score Geral Compliance</div>
               <div className={cn("text-5xl font-bold", getScoreColor(overallScore))}>
                 {overallScore}%
               </div>
@@ -164,7 +164,7 @@ export function CompliancePage() {
           )}
           onClick={() => setSelectedFramework('all')}
         >
-          Todos Frameworks
+          All Frameworks
         </Badge>
         {complianceData.map((f) => (
           <Badge
@@ -242,7 +242,7 @@ export function CompliancePage() {
                 {/* Progress Bars */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-muted-foreground">Taxa of Conformidade</span>
+                    <span className="text-muted-foreground">Taxa Compliance</span>
                     <span className="font-semibold">{complianceRate}%</span>
                   </div>
                   <div className="h-2 rounded-full bg-muted overflow-hidden border border-border">
@@ -273,7 +273,7 @@ export function CompliancePage() {
                 {/* Meta */}
                 <div className="pt-3 border-t border-border text-xs text-muted-foreground">
                   <div className="flex items-center justify-between">
-                    <span>Total of Requisitos</span>
+                    <span>Total Requisitos</span>
                     <span className="font-semibold">{framework.total_requirements}</span>
                   </div>
                 </div>
@@ -283,12 +283,12 @@ export function CompliancePage() {
         })}
       </div>
 
-      {/* Ações Recomendadas */}
+      {/* Recommended Actions */}
       <Card className="shadow-elegant">
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <TrendingUp className="h-5 w-5" strokeWidth={1.5} />
-            Próximas Ações Recomendadas
+            Next Recommended Actions
           </CardTitle>
         </CardHeader>
         <CardContent>
@@ -309,7 +309,7 @@ export function CompliancePage() {
                       <div>
                         <div className="font-medium text-sm">{framework.framework}</div>
                         <div className="text-xs text-muted-foreground">
-                          {framework.not_compliant} requisitos não conformes requerem atenção
+                          {framework.not_compliant} requisitos não conformes require attention
                         </div>
                       </div>
                     </div>
@@ -323,9 +323,9 @@ export function CompliancePage() {
             {complianceData.every(f => f.not_compliant === 0) && (
               <div className="text-center py-8">
                 <CheckCircle2 className="h-12 w-12 text-green-500 mx-auto mb-3" strokeWidth={1.5} />
-                <div className="font-medium">Excelente!</div>
+                <div className="font-medium">Excellent!</div>
                 <div className="text-sm text-muted-foreground">
-                  Não há requisitos não conformes pending.
+                  No non-compliant requirements pending.
                 </div>
               </div>
             )}
@@ -336,39 +336,39 @@ export function CompliancePage() {
       {/* Info */}
       <Card className="shadow-elegant bg-muted/30">
         <CardHeader>
-          <CardTitle>Sobre Statement of Applicability (SoA)</CardTitle>
+          <CardTitle>About Statement of Applicability (SoA)</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 text-sm">
           <div>
-            <div className="font-medium mb-1">📋 O que é SoA?</div>
+            <div className="font-medium mb-1">📋 What is SoA?</div>
             <p className="text-muted-foreground">
-              Documento exigido pela ISO 27001 que lista todos os controles of segurança, 
-              indicando quais são aplicáveis e sua justificativa.
+              Document required by ISO 27001 that lists all security controls of security, 
+              indicating which are applicable and their justification.
             </p>
           </div>
           <div>
-            <div className="font-medium mb-1">🎯 Como é calculado?</div>
+            <div className="font-medium mb-1">🎯 How is it calculated?</div>
             <code className="block p-3 bg-background rounded-lg border border-border font-mono text-xs mt-2">
               Score = (Conformes × 1.0 + Parciais × 0.5) / Total Requisitos
             </code>
           </div>
           <div>
-            <div className="font-medium mb-1">📊 Status of Conformidade</div>
+            <div className="font-medium mb-1">📊 Status Compliance</div>
             <div className="flex flex-wrap gap-2 mt-2">
               <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">
-                Conforme: Controle implementado e efetivo
+                Conforme: Control implemented and effective
               </Badge>
               <Badge variant="outline" className="bg-yellow-500/10 text-yellow-500 border-yellow-500/20">
-                Parcial: Controle implementado mas não 100% efetivo
+                Parcial: Controle implementado mas not 100% effective
               </Badge>
               <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/20">
-                Não Conforme: Controle não implementado ou falho
+                Não Conforme: Controle not implemented or failed
               </Badge>
             </div>
           </div>
           <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
             <p className="text-xs">
-              <strong>💡 Dica:</strong> Exporte o SoA em PDF para auditorias formais. 
+              <strong>💡 Tip:</strong> Exporte o SoA em PDF para auditorias formais. 
               O documento incluirá todos os controles mapeados e suas evidências.
             </p>
           </div>

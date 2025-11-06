@@ -32,7 +32,7 @@ export default function StatusPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-semibold text-ness-text">Application Status</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">Status</h1>
         <p className="text-ness-muted mt-1">Monitoramento em tempo real</p>
       </div>
 

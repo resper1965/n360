@@ -1,6 +1,6 @@
 /**
  * Incidents & CAPA Page
- * Gestão of Incidentes of Segurança e Corrective Actions
+ * Gestão Incident Security e Corrective Actions
  */
 
 import { useState, useEffect } from 'react';
@@ -104,16 +104,16 @@ export function IncidentsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-semibold tracking-tight">
-            Gestão of Incidentes
+            Incidents
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Incidentes of Segurança e Ações Corretivas (CAPA)
+            Security incidents and Corrective Actions (CAPA)
           </p>
         </div>
         <Link to="/grc/incidents/new">
           <button className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
             <PlusCircle className="h-4 w-4" strokeWidth={1.5} />
-            New Incidente
+            New Incident
           </button>
         </Link>
       </div>
@@ -282,12 +282,12 @@ export function IncidentsPage() {
               <AlertOctagon className="h-12 w-12 text-muted-foreground mx-auto mb-4" strokeWidth={1.5} />
               <p className="text-muted-foreground">
                 {filter === 'all' 
-                  ? 'No incidente registrado.' 
+                  ? 'No incidents registered.' 
                   : `No incidente com status "${getStatusBadge(filter).label}".`}
               </p>
               <Link to="/grc/incidents/new">
                 <button className="mt-4 px-4 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors">
-                  Registrar Primeiro Incidente
+                  Register First Incident
                 </button>
               </Link>
             </div>
@@ -298,23 +298,23 @@ export function IncidentsPage() {
       {/* Info Card */}
       <Card className="shadow-elegant bg-muted/30">
         <CardHeader>
-          <CardTitle>Sobre Incidents & CAPA</CardTitle>
+          <CardTitle>About Incidents & CAPA</CardTitle>
         </CardHeader>
         <CardContent className="space-y-3 text-sm">
           <div>
-            <div className="font-medium mb-1">🔍 Registro of Incidentes</div>
+            <div className="font-medium mb-1">🔍 Registro Incident</div>
             <p className="text-muted-foreground">
-              Documente todos os incidentes of segurança, incluindo detecção, impacto, assets afetados e evidências.
+              Document all security incidents of security, including detection, impacto, assets affected and evidence.
             </p>
           </div>
           <div>
             <div className="font-medium mb-1">🛠️ CAPA (Corrective Action & Preventive Action)</div>
             <p className="text-muted-foreground">
-              Para cada incidente, defina ações corretivas (resolver) e preventivas (evitar recorrência).
+              Para cada incidente, defina ações corretivas (resolve) e preventivas (prevent recurrence).
             </p>
           </div>
           <div>
-            <div className="font-medium mb-1">📊 Workflow Padrão</div>
+            <div className="font-medium mb-1">📊 Standard Workflow</div>
             <div className="flex items-center gap-2 text-xs text-muted-foreground mt-2">
               <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/20">Aberto</Badge>
               <span>→</span>

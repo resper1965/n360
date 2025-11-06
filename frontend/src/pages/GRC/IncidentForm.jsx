@@ -1,6 +1,6 @@
 /**
  * Incident Form
- * Formulário para criar/editar incidentes of segurança
+ * Formulário para criar/editar incidentes of security
  * Inclui gestão of CAPA (Corrective & Preventive Actions)
  */
 
@@ -185,7 +185,7 @@ export function IncidentForm() {
           {isEdit ? 'Edit' : 'Novo'} Incidente
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Registro of Incidentes of Segurança e CAPA
+          Registro Incident Security e CAPA
         </p>
       </div>
 
@@ -358,7 +358,7 @@ export function IncidentForm() {
         {/* CAPA - Corrective & Preventive Actions */}
         <Card className="shadow-elegant">
           <CardHeader>
-            <CardTitle>CAPA - Ações Corretivas e Preventivas</CardTitle>
+            <CardTitle>CAPA - Corrective Actions e Preventivas</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {/* Lista of CAPAs */}

@@ -42,12 +42,12 @@ export default function ThreatsPage() {
     <div className="space-y-grid-lg">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-medium tracking-tight">TVL - Catálogo of Ameaças</h1>
+          <h1 className="text-3xl font-semibold tracking-tight">Threats</h1>
           <p className="text-sm text-muted-foreground">Threat & Vulnerability Library</p>
         </div>
         <Button onClick={() => navigate('/grc/threats/new')}>
           <Plus className="h-4 w-4 mr-2" strokeWidth={1.5} />
-          Nova Ameaça
+          New Threat
         </Button>
       </div>
 
@@ -61,7 +61,7 @@ export default function ThreatsPage() {
               <option value="physical">Física</option>
               <option value="natural">Natural</option>
             </Select>
-            <Input placeholder="Search ameaças..." value={filters.search} onChange={(e) => setFilters(f => ({ ...f, search: e.target.value }))} />
+            <Input placeholder="Search threats..." value={filters.search} onChange={(e) => setFilters(f => ({ ...f, search: e.target.value }))} />
           </div>
         </CardContent>
       </Card>
@@ -76,7 +76,7 @@ export default function ThreatsPage() {
           ) : threats.length === 0 ? (
             <div className="text-center py-12 text-muted-foreground">
               <AlertTriangle className="h-10 w-10 mx-auto mb-3 opacity-30" strokeWidth={1.5} />
-              <p className="text-sm">Nenhuma ameaça cadastrada</p>
+              <p className="text-sm">No threats registered</p>
             </div>
           ) : (
             <div className="space-y-2">

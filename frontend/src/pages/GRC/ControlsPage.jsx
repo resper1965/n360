@@ -63,17 +63,16 @@ export default function ControlsPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight flex items-center gap-2">
-            <Shield className="h-8 w-8 text-primary" />
-            Controles of Segurança
+          <h1 className="text-3xl font-semibold tracking-tight">
+            Controls
           </h1>
           <p className="text-muted-foreground mt-1">
-            Gestão of controles conforme frameworks of compliance
+            Control management according to compliance frameworks
           </p>
         </div>
         <Button onClick={() => navigate('/grc/controls/new')}>
           <Plus className="h-4 w-4 mr-2" />
-          New Controle
+          New Control
         </Button>
       </div>
 
@@ -85,7 +84,7 @@ export default function ControlsPage() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
               type="text"
-              placeholder="Search controles..."
+              placeholder="Search controls..."
               className="w-full pl-10 pr-4 py-2 rounded-lg border bg-background"
               value={filters.search}
               onChange={(e) =>
@@ -130,23 +129,23 @@ export default function ControlsPage() {
       {/* Control Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Total of Controles</div>
+          <div className="text-sm text-muted-foreground">Total Controles</div>
           <div className="text-2xl font-bold">{pagination.total || 0}</div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Implementados</div>
+          <div className="text-sm text-muted-foreground">Implemented</div>
           <div className="text-2xl font-bold text-green-500">
             {controls.filter((c) => c.status === 'implemented' || c.status === 'verified').length}
           </div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Pendings</div>
+          <div className="text-sm text-muted-foreground">Pending</div>
           <div className="text-2xl font-bold text-yellow-500">
             {controls.filter((c) => c.status === 'not_implemented' || c.status === 'planned').length}
           </div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Compliance Médio</div>
+          <div className="text-sm text-muted-foreground">Average Compliance</div>
           <div className="text-2xl font-bold">
             {controls.length > 0
               ? Math.round(
@@ -169,14 +168,14 @@ export default function ControlsPage() {
         ) : controls.length === 0 ? (
           <div className="p-12 text-center">
             <Shield className="h-12 w-12 mx-auto mb-4 text-muted-foreground opacity-50" />
-            <p className="text-muted-foreground">No controle encontrado</p>
+            <p className="text-muted-foreground">No controls found</p>
             <Button
               variant="outline"
               className="mt-4"
               onClick={() => navigate('/grc/controls/new')}
             >
               <Plus className="h-4 w-4 mr-2" />
-              Cadastrar Primeiro Controle
+              Register First Control
             </Button>
           </div>
         ) : (

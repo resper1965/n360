@@ -57,12 +57,12 @@ export default function AlertsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold text-ness-text">SOC - Security Alerts</h1>
+          <h1 className="text-3xl font-semibold tracking-tight">Alerts</h1>
           <p className="text-ness-muted mt-1">SIEM alerts and security events</p>
         </div>
 
         <button className="px-4 py-2 bg-ness-blue text-white rounded-lg hover:bg-opacity-90 transition-colors">
-          Criar Alerta Manual
+          Create Manual Alert
         </button>
       </div>
 

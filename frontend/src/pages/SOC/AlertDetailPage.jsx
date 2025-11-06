@@ -52,7 +52,7 @@ export default function AlertDetailPage() {
       const updated = await response.json()
       setAlert(updated)
     } catch (error) {
-      console.error('Error ao resolver:', error)
+      console.error('Error ao resolve:', error)
     } finally {
       setActionLoading(false)
     }

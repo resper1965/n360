@@ -1,6 +1,6 @@
 /**
  * Posture Management Page
- * Página completa of gerenciamento of postura of segurança (SIEM SCA)
+ * Página completa of gerenciamento of security posture security (SIEM SCA)
  */
 
 import { useState, useEffect } from 'react';
@@ -93,9 +93,9 @@ export function PostureManagementPage() {
     <div className="space-y-grid-xl">
       {/* Header */}
       <div>
-        <h1 className="text-3xl font-semibold tracking-tight">Posture Management</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">Posture</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Avaliação contínua of configurações of segurança (SIEM SCA)
+          Continuous security configuration assessment (SIEM SCA)
         </p>
       </div>
 
@@ -183,7 +183,7 @@ export function PostureManagementPage() {
       <Card className="shadow-elegant">
         <CardHeader>
           <CardTitle className="flex items-center justify-between">
-            <span>Policies Ativas ({summary.policies?.length || 0})</span>
+            <span>Policies Active ({summary.policies?.length || 0})</span>
           </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">

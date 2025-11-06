@@ -137,7 +137,7 @@ export default function GRCDashboard() {
           </CardContent>
         </Card>
 
-        {/* Políticas Ativas */}
+        {/* Políticas Active */}
         <Card className="group">
           <CardContent className="p-6">
             <div className="flex items-start justify-between mb-4">
@@ -150,7 +150,7 @@ export default function GRCDashboard() {
                 {data.policies.length}
               </div>
               <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                Políticas Ativas
+                Políticas Active
               </div>
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">
@@ -161,7 +161,7 @@ export default function GRCDashboard() {
           </CardContent>
         </Card>
 
-        {/* Controles Pendings */}
+        {/* Controles Pending */}
         <Card className="group">
           <CardContent className="p-6">
             <div className="flex items-start justify-between mb-4">
@@ -174,7 +174,7 @@ export default function GRCDashboard() {
                 {data.controls.length}
               </div>
               <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                Controles Pendings
+                Controles Pending
               </div>
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">
@@ -195,7 +195,7 @@ export default function GRCDashboard() {
         >
           <div className="flex flex-col items-center gap-2">
             <TrendingUp className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-base" strokeWidth={1.5} />
-            <span className="text-sm font-medium">Matriz of Riscos</span>
+            <span className="text-sm font-medium">Matriz Risk</span>
           </div>
         </Button>
         <Button
@@ -205,7 +205,7 @@ export default function GRCDashboard() {
         >
           <div className="flex flex-col items-center gap-2">
             <AlertTriangle className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-base" strokeWidth={1.5} />
-            <span className="text-sm font-medium">Gestão of Riscos</span>
+            <span className="text-sm font-medium">Gestão Risk</span>
           </div>
         </Button>
         <Button

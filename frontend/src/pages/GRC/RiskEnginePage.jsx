@@ -107,7 +107,7 @@ export function RiskEnginePage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight">Risk Engine v2</h1>
+          <h1 className="text-3xl font-semibold tracking-tight">Risks</h1>
           <p className="text-sm text-muted-foreground mt-1">
             Cálculo avançado of Risco Inherente e Residual
           </p>
@@ -294,10 +294,10 @@ export function RiskEnginePage() {
         </Card>
       </div>
 
-      {/* Análise of Efetividaof */}
+      {/* Análise of Effectiveness */}
       <Card className="shadow-elegant">
         <CardHeader>
-          <CardTitle>Análise of Efetividaof of Controles</CardTitle>
+          <CardTitle>Análise of Effectiveness of Controles</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -374,7 +374,7 @@ export function RiskEnginePage() {
               Risco Inherente = Likelihood × Impact
             </code>
             <p className="text-muted-foreground mt-2">
-              O risk antes of qualquer controle ser aplicado. Representa a exposição pura of organização.
+              O risk antes of qualquer controle ser aplicado. Representa a exposição pura of organization.
             </p>
           </div>
 
@@ -384,12 +384,12 @@ export function RiskEnginePage() {
               Risco Residual = Risco Inherente × (1 - Control Effectiveness)
             </code>
             <p className="text-muted-foreground mt-2">
-              O risk que permanece após a aplicação of controles. Este é o risk real of organização.
+              O risk que permanece após a aplicação control. Este é o risk real of organization.
             </p>
           </div>
 
           <div>
-            <div className="font-medium mb-2">3. Efetividaof of Controles</div>
+            <div className="font-medium mb-2">3. Effectiveness of Controles</div>
             <code className="block p-3 bg-background rounded-lg border border-border font-mono text-xs">
               Redução = ((Inherent - Residual) / Inherent) × 100%
             </code>
@@ -400,7 +400,7 @@ export function RiskEnginePage() {
 
           <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
             <p className="text-xs">
-              <strong>💡 Dica:</strong> Um risk residual alto indica que os controles existentes não são suficientes. 
+              <strong>💡 Tip:</strong> Um risk residual alto indica que os controles existentes não são suficientes. 
               Considere implementar controles adicionais ou aceitar o risk formalmente.
             </p>
           </div>

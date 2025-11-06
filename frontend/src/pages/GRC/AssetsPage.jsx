@@ -64,7 +64,7 @@ export default function AssetsPage() {
     <div className="space-y-grid-lg">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-medium tracking-tight">CMDB - Asset Management</h1>
+          <h1 className="text-3xl font-semibold tracking-tight">Assets</h1>
           <p className="text-sm text-muted-foreground">Configuration Management Database</p>
         </div>
         <Button onClick={() => navigate('/grc/assets/new')}>

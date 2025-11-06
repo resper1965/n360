@@ -251,7 +251,7 @@ export default function RiskForm() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="likelihood">
-                      Probabilidaof (1-5) *
+                      Probability (1-5) *
                       <span className="ml-2 text-xs text-muted-foreground">
                         Atual: {formData.likelihood}
                       </span>
@@ -302,7 +302,7 @@ export default function RiskForm() {
                     <div>
                       <div className="text-sm font-medium">Risk Score (Inherente)</div>
                       <div className="text-xs text-muted-foreground mt-0.5">
-                        Probabilidaof × Impacto
+                        Probability × Impacto
                       </div>
                     </div>
                     <div className="text-3xl font-medium tracking-tight">

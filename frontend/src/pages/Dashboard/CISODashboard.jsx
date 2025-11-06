@@ -107,7 +107,7 @@ export default function CISODashboard() {
     <div className="space-y-grid-xl">
       {/* Header */}
       <div className="space-y-1">
-        <h1 className="text-3xl font-medium tracking-tight">Dashboard CISO</h1>
+        <h1 className="text-3xl font-medium tracking-tight">CISO Dashboard</h1>
         <p className="text-sm text-muted-foreground">Executive security posture overview</p>
       </div>
 
@@ -157,7 +157,7 @@ export default function CISODashboard() {
           </CardContent>
         </Card>
 
-        {/* Alertas Críticos */}
+        {/* Critical Alerts */}
         <Card className="group">
           <CardContent className="p-6">
             <div className="flex items-start justify-between mb-4">
@@ -169,17 +169,17 @@ export default function CISODashboard() {
               <div className="text-3xl font-medium tracking-tight">
                 {summary.critical_alerts || 0}
               </div>
-              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Alertas Críticos</div>
+              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Critical Alerts</div>
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">
               <div className="text-xs text-muted-foreground">
-                Últimas 24 hours
+                Last 24 hours
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Tickets Abertos */}
+        {/* Open Tickets */}
         <Card className="group">
           <CardContent className="p-6">
             <div className="flex items-start justify-between mb-4">
@@ -191,11 +191,11 @@ export default function CISODashboard() {
               <div className="text-3xl font-medium tracking-tight">
                 {summary.open_tickets || 0}
               </div>
-              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Tickets Abertos</div>
+              <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Open Tickets</div>
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">
               <div className="text-xs text-muted-foreground">
-                In progress e pending
+                In progress and pending
               </div>
             </div>
           </CardContent>
@@ -241,19 +241,19 @@ export default function CISODashboard() {
               ) : (
                 <div className="text-center py-12 text-muted-foreground">
                   <Shield className="h-10 w-10 mx-auto mb-3 opacity-30" strokeWidth={1.5} />
-                  <p className="text-sm">No risk registered</p>
-                  <p className="text-xs mt-1 opacity-70">Configure risks no módulo GRC</p>
+                  <p className="text-sm">No risks registered</p>
+                  <p className="text-xs mt-1 opacity-70">Configure risks in GRC module</p>
                 </div>
               )}
             </CardContent>
           </Card>
 
-          {/* Alertas Críticos Recentes */}
+          {/* Recent Critical Alerts */}
           <Card>
             <CardHeader className="pb-4">
               <CardTitle className="flex items-center gap-2 text-lg font-medium">
                 <AlertTriangle className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-                Alertas Críticos (24h)
+                Critical Alerts (24h)
               </CardTitle>
             </CardHeader>
             <CardContent>

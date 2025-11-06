@@ -1,6 +1,6 @@
 /**
- * Posture Score Widget
- * Exibe resumo of postura of segurança (SIEM SCA) no CISO Dashboard
+ * Security Posture Score Widget
+ * Displays security posture summary (SIEM SCA) on CISO Dashboard
  */
 
 import { useEffect, useState } from 'react';
@@ -22,7 +22,7 @@ export function PostureScoreWidget() {
         const res = await fetch(`${window.location.origin}/api/posture/summary`);
         
         if (!res.ok) {
-          throw new Error('Failed to fetch dados of postura');
+          throw new Error('Failed to fetch data of postura');
         }
         
         const data = await res.json();
@@ -46,7 +46,7 @@ export function PostureScoreWidget() {
       <Card className="shadow-elegant">
         <CardContent className="pt-6">
           <div className="text-center text-sm text-muted-foreground">
-            Carregando postura...
+            Loading posture...
           </div>
         </CardContent>
       </Card>
@@ -57,7 +57,7 @@ export function PostureScoreWidget() {
     return (
       <Card className="shadow-elegant">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Postura of Segurança</CardTitle>
+          <CardTitle className="text-sm font-medium">Postura Security</CardTitle>
           <div className="p-2.5 rounded-lg bg-muted/50 border border-border/50">
             <Shield className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           </div>
@@ -89,7 +89,7 @@ export function PostureScoreWidget() {
       onClick={() => navigate('/soc/posture')}
     >
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">Postura of Segurança</CardTitle>
+        <CardTitle className="text-sm font-medium">Postura Security</CardTitle>
         <div className="p-2.5 rounded-lg bg-muted/50 border border-border/50 group-hover:border-primary/20 transition-colors">
           <Shield className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         </div>
@@ -157,10 +157,10 @@ export function PostureScoreWidget() {
           </div>
         )}
 
-        {/* Ver Details */}
+        {/* View Details */}
         <div className="pt-2 border-t border-border/50">
           <button className="text-xs text-primary hover:underline w-full text-left transition-colors">
-            Ver Details →
+            View Details →
           </button>
         </div>
       </CardContent>

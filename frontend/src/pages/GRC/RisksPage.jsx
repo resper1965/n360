@@ -74,7 +74,7 @@ export default function RisksPage() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight flex items-center gap-2">
             <AlertTriangle className="h-8 w-8 text-primary" />
-            Gestão of Riscos
+            Gestão Risk
           </h1>
           <p className="text-muted-foreground mt-1">
             Identificação e mitigação of risks organizacionais

@@ -196,11 +196,11 @@ export default function ControlForm() {
               <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
             </Button>
             <h1 className="text-3xl font-medium tracking-tight">
-              {isEdit ? 'Edit Controle' : 'New Controle'}
+              {isEdit ? 'Edit Controle' : 'New Control'}
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Atualize as informações of controle' : 'Cadastre um novo controle of segurança'}
+            {isEdit ? 'Atualize as informações of controle' : 'Cadastre um novo controle of security'}
           </p>
         </div>
 
@@ -363,7 +363,7 @@ export default function ControlForm() {
                     name="responsible_team"
                     value={formData.responsible_team || ''}
                     onChange={handleChange}
-                    placeholder="Ex: Equipe of Segurança"
+                    placeholder="Ex: Equipe Security"
                   />
                 </div>
               </CardContent>
@@ -494,7 +494,7 @@ export default function ControlForm() {
 
                 <div className="space-y-2">
                   <Label htmlFor="effectiveness_score">
-                    Efetividaof (0.00 - 1.00)
+                    Effectiveness (0.00 - 1.00)
                   </Label>
                   <Input
                     type="number"

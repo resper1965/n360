@@ -102,7 +102,7 @@ export function VulnerabilitiesPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight">TVL - Vulnerabilidades</h1>
+          <h1 className="text-3xl font-semibold tracking-tight">Vulnerabilities</h1>
           <p className="text-sm text-muted-foreground mt-1">
             Biblioteca of vulnerabilidades conhecidas
           </p>
@@ -140,7 +140,7 @@ export function VulnerabilitiesPage() {
           >
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-muted-foreground">Críticas</div>
+                <div className="text-sm text-muted-foreground">Critical</div>
                 <div className="text-2xl font-bold text-red-500">{stats.critical}</div>
               </div>
               <AlertTriangle className="h-6 w-6 text-red-500" strokeWidth={1.5} />
@@ -155,7 +155,7 @@ export function VulnerabilitiesPage() {
           >
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-muted-foreground">Altas</div>
+                <div className="text-sm text-muted-foreground">High</div>
                 <div className="text-2xl font-bold text-orange-500">{stats.high}</div>
               </div>
               <AlertTriangle className="h-6 w-6 text-orange-500" strokeWidth={1.5} />
@@ -185,7 +185,7 @@ export function VulnerabilitiesPage() {
           >
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-muted-foreground">Baixas</div>
+                <div className="text-sm text-muted-foreground">Low</div>
                 <div className="text-2xl font-bold text-blue-500">{stats.low}</div>
               </div>
               <Bug className="h-6 w-6 text-blue-500" strokeWidth={1.5} />
@@ -198,7 +198,7 @@ export function VulnerabilitiesPage() {
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <Input
-          placeholder="Search por CVE, nome ou descrição..."
+          placeholder="Search by CVE, name or description..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="pl-10"

@@ -177,11 +177,11 @@ export default function PolicyForm() {
               <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
             </Button>
             <h1 className="text-3xl font-medium tracking-tight">
-              {isEdit ? 'Edit Política' : 'Nova Política'}
+              {isEdit ? 'Edit Política' : 'New Policy'}
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Atualize as informações of política' : 'Cadastre uma nova política of segurança'}
+            {isEdit ? 'Atualize as informações of política' : 'Cadastre uma nova política of security'}
           </p>
         </div>
 
@@ -331,7 +331,7 @@ export default function PolicyForm() {
                     required
                   >
                     <option value="draft">Rascunho</option>
-                    <option value="review">Em Revisão</option>
+                    <option value="review">Under Review</option>
                     <option value="approved">Aprovado</option>
                     <option value="active">Active</option>
                     <option value="archived">Arquivado</option>

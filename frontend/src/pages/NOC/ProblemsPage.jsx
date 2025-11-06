@@ -48,7 +48,7 @@ export default function ProblemsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-semibold text-ness-text">NOC - Infrastructure Problems</h1>
+        <h1 className="text-3xl font-semibold tracking-tight">Problems</h1>
         <p className="text-ness-muted mt-1">Monitoring system problems</p>
       </div>
 

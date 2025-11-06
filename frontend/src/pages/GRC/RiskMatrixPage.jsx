@@ -57,7 +57,7 @@ export default function RiskMatrixPage() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight flex items-center gap-2">
             <Grid3x3 className="h-8 w-8 text-primary" />
-            Matriz of Riscos
+            Matriz Risk
           </h1>
           <p className="text-muted-foreground mt-1">
             Mapa of calor (heat map) of risks - Likelihood × Impact

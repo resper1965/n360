@@ -44,7 +44,7 @@ export default function PoliciesPage() {
 
   const statusLabels = {
     draft: 'Rascunho',
-    review: 'Em Revisão',
+    review: 'Under Review',
     approved: 'Aprovada',
     active: 'Ativa',
     archived: 'Arquivada',
@@ -71,17 +71,16 @@ export default function PoliciesPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight flex items-center gap-2">
-            <FileText className="h-8 w-8 text-primary" />
-            Políticas of Segurança
+          <h1 className="text-3xl font-semibold tracking-tight">
+            Policies
           </h1>
           <p className="text-muted-foreground mt-1">
-            Gestão of políticas e procedimentos organizacionais
+            Policy management and organizational procedures
           </p>
         </div>
         <Button onClick={() => navigate('/grc/policies/new')}>
           <Plus className="h-4 w-4 mr-2" />
-          Nova Política
+          New Policy
         </Button>
       </div>
 
@@ -93,7 +92,7 @@ export default function PoliciesPage() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
               type="text"
-              placeholder="Search políticas..."
+              placeholder="Search policies..."
               className="w-full pl-10 pr-4 py-2 rounded-lg border bg-background"
               value={filters.search}
               onChange={(e) =>
@@ -110,7 +109,7 @@ export default function PoliciesPage() {
           >
             <option value="all">Todos os Status</option>
             <option value="draft">Rascunho</option>
-            <option value="review">Em Revisão</option>
+            <option value="review">Under Review</option>
             <option value="approved">Aprovada</option>
             <option value="active">Ativa</option>
             <option value="archived">Arquivada</option>
@@ -137,23 +136,23 @@ export default function PoliciesPage() {
       {/* Policy Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Total of Políticas</div>
+          <div className="text-sm text-muted-foreground">Total Políticas</div>
           <div className="text-2xl font-bold">{pagination.total || 0}</div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Ativas</div>
+          <div className="text-sm text-muted-foreground">Active</div>
           <div className="text-2xl font-bold text-green-500">
             {policies.filter((p) => p.status === 'active').length}
           </div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Em Revisão</div>
+          <div className="text-sm text-muted-foreground">Under Review</div>
           <div className="text-2xl font-bold text-yellow-500">
             {policies.filter((p) => p.status === 'review').length}
           </div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Rascunhos</div>
+          <div className="text-sm text-muted-foreground">Drafts</div>
           <div className="text-2xl font-bold">
             {policies.filter((p) => p.status === 'draft').length}
           </div>
@@ -169,14 +168,14 @@ export default function PoliciesPage() {
         ) : policies.length === 0 ? (
           <div className="p-12 text-center">
             <FileText className="h-12 w-12 mx-auto mb-4 text-muted-foreground opacity-50" />
-            <p className="text-muted-foreground">Nenhuma política encontrada</p>
+            <p className="text-muted-foreground">No policies found</p>
             <Button
               variant="outline"
               className="mt-4"
               onClick={() => navigate('/grc/policies/new')}
             >
               <Plus className="h-4 w-4 mr-2" />
-              Cadastrar Primeira Política
+              Register First Policy
             </Button>
           </div>
         ) : (
