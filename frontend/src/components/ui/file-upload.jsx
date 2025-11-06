@@ -46,7 +46,7 @@ export function FileUpload({
       })
 
       if (!isValid) {
-        setError(`Tipo de arquivo não permitido. Aceitos: ${accept}`)
+        setError(`Tipo of arquivo não permitido. Aceitos: ${accept}`)
         return false
       }
     }

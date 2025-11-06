@@ -1,6 +1,6 @@
 /**
  * Vulnerabilities Page (TVL)
- * Lista e gerencia vulnerabilidades do Threat & Vulnerability Library
+ * Lista e gerencia vulnerabilidades of Threat & Vulnerability Library
  */
 
 import { useState, useEffect } from 'react';
@@ -104,7 +104,7 @@ export function VulnerabilitiesPage() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight">TVL - Vulnerabilidades</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Biblioteca de vulnerabilidades conhecidas
+            Biblioteca of vulnerabilidades conhecidas
           </p>
         </div>
         <button
@@ -170,7 +170,7 @@ export function VulnerabilitiesPage() {
           >
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-muted-foreground">Médias</div>
+                <div className="text-sm text-muted-foreground">Averages</div>
                 <div className="text-2xl font-bold text-yellow-500">{stats.medium}</div>
               </div>
               <Shield className="h-6 w-6 text-yellow-500" strokeWidth={1.5} />
@@ -295,8 +295,8 @@ export function VulnerabilitiesPage() {
           ) : (
             <div className="text-center py-12 text-muted-foreground">
               {search || severityFilter !== 'all' 
-                ? 'Nenhuma vulnerabilidade encontrada com esses filtros.'
-                : 'Nenhuma vulnerabilidade cadastrada. Clique em "Nova Vulnerabilidade" para começar.'}
+                ? 'Nenhuma vulnerabilidaof encontrada com esses filtros.'
+                : 'Nenhuma vulnerabilidaof cadastrada. Clique em "Nova Vulnerabilidade" para começar.'}
             </div>
           )}
         </CardContent>

@@ -1,6 +1,6 @@
 /**
  * Posture Management Page
- * Página completa de gerenciamento de postura de segurança (SIEM SCA)
+ * Página completa of gerenciamento of postura of segurança (SIEM SCA)
  */
 
 import { useState, useEffect } from 'react';
@@ -58,7 +58,7 @@ export function PostureManagementPage() {
       <div className="flex items-center justify-center h-96">
         <div className="text-center space-y-2">
           <Shield className="h-8 w-8 text-muted-foreground mx-auto animate-pulse" strokeWidth={1.5} />
-          <div className="text-sm text-muted-foreground">Carregando postura de segurança...</div>
+          <div className="text-sm text-muted-foreground">Loading security posture...</div>
         </div>
       </div>
     );
@@ -67,7 +67,7 @@ export function PostureManagementPage() {
   if (!summary) {
     return (
       <div className="p-8 text-center text-muted-foreground">
-        No dado de postura disponível
+        No dado of postura disponível
       </div>
     );
   }
@@ -95,7 +95,7 @@ export function PostureManagementPage() {
       <div>
         <h1 className="text-3xl font-semibold tracking-tight">Posture Management</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Avaliação contínua de configurações de segurança (SIEM SCA)
+          Avaliação contínua of configurações of segurança (SIEM SCA)
         </p>
       </div>
 
@@ -132,7 +132,7 @@ export function PostureManagementPage() {
                 <div className="text-sm text-muted-foreground">Passou</div>
                 <div className="text-3xl font-bold text-green-500">{summary.passed}</div>
                 <div className="text-xs text-muted-foreground mt-1">
-                  de {summary.total} checks
+                  of {summary.total} checks
                 </div>
               </div>
               <div className="p-2.5 rounded-lg bg-green-500/10 border border-green-500/20">

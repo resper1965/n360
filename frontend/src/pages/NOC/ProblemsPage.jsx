@@ -48,8 +48,8 @@ export default function ProblemsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-semibold text-ness-text">NOC - Problemas de Infraestrutura</h1>
-        <p className="text-ness-muted mt-1">Problemas do Monitoring e monitoramento</p>
+        <h1 className="text-3xl font-semibold text-ness-text">NOC - Infrastructure Problems</h1>
+        <p className="text-ness-muted mt-1">Monitoring system problems</p>
       </div>
 
       <div className="bg-ness-surface border border-ness-border rounded-xl overflow-hidden">
@@ -73,7 +73,7 @@ export default function ProblemsPage() {
                       </span>
                       <span className="text-xs text-ness-muted">{problem.source}</span>
                       <span className="text-xs text-ness-muted">
-                        {new Date(problem.created_at).toLocaleString('pt-BR')}
+                        {new Date(problem.created_at).toLocaleString('en-US')}
                       </span>
                     </div>
                     

@@ -48,7 +48,7 @@ export default function TicketsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold text-ness-text">Sistema de Tickets</h1>
+          <h1 className="text-3xl font-semibold text-ness-text">Ticketing System</h1>
           <p className="text-ness-muted mt-1">Incident and request management</p>
         </div>
         <Button onClick={() => navigate('/tickets/new')}>
@@ -86,7 +86,7 @@ export default function TicketsPage() {
                   </h4>
 
                   <div className="text-xs text-ness-muted">
-                    {ticket.type} • {new Date(ticket.created_at).toLocaleDateString('pt-BR')}
+                    {ticket.type} • {new Date(ticket.created_at).toLocaleDateString('en-US')}
                   </div>
                 </div>
               ))}

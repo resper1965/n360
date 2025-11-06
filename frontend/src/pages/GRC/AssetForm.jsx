@@ -89,7 +89,7 @@ export default function AssetForm() {
     try {
       setLoading(true)
       await fetch(`/api/assets/${id}`, { method: 'DELETE' })
-      alert('Ativo excluído!')
+      alert('Asset deleted!')
       navigate('/grc/assets')
     } catch (error) {
       console.error('Erro:', error)
@@ -113,7 +113,7 @@ export default function AssetForm() {
             <Button variant="outline" size="sm" onClick={() => navigate('/grc/assets')} className="border-border/50">
               <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
             </Button>
-            <h1 className="text-3xl font-medium tracking-tight">{isEdit ? 'Edit Ativo' : 'New Ativo'}</h1>
+            <h1 className="text-3xl font-medium tracking-tight">{isEdit ? 'Edit Asset' : 'New Asset'}</h1>
           </div>
           <p className="text-sm text-muted-foreground">CMDB - Configuration Management Database</p>
         </div>
@@ -135,7 +135,7 @@ export default function AssetForm() {
               <CardContent className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="asset_code">Código do Ativo *</Label>
+                    <Label htmlFor="asset_code">Asset Coof *</Label>
                     <Input id="asset_code" name="asset_code" value={formData.asset_code} onChange={handleChange} placeholder="AST-001" required />
                   </div>
                   <div className="space-y-2">
@@ -151,7 +151,7 @@ export default function AssetForm() {
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="name">Nome *</Label>
-                  <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Ex: Servidor de Banco de Dados" required />
+                  <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Ex: Servidor of Banco of Dados" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="description">Descrição</Label>
@@ -221,7 +221,7 @@ export default function AssetForm() {
               <CardContent className="p-6 space-y-3">
                 <Button type="submit" className="w-full" disabled={loading}>
                   <Save className="h-4 w-4 mr-2" strokeWidth={1.5} />
-                  {loading ? 'Salvando...' : (isEdit ? 'Atualizar' : 'Criar Ativo')}
+                  {loading ? 'Saving...' : (isEdit ? 'Update' : 'Create Asset')}
                 </Button>
                 <Button type="button" variant="outline" className="w-full border-border/50" onClick={() => navigate('/grc/assets')} disabled={loading}>
                   Cancel

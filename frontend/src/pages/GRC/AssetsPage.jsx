@@ -64,7 +64,7 @@ export default function AssetsPage() {
     <div className="space-y-grid-lg">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-medium tracking-tight">CMDB - Gestão de Ativos</h1>
+          <h1 className="text-3xl font-medium tracking-tight">CMDB - Asset Management</h1>
           <p className="text-sm text-muted-foreground">Configuration Management Database</p>
         </div>
         <Button onClick={() => navigate('/grc/assets/new')}>
@@ -85,7 +85,7 @@ export default function AssetsPage() {
               </div>
               <div className="space-y-1">
                 <div className="text-3xl font-medium tracking-tight">{stats.totalAssets}</div>
-                <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Total de Ativos</div>
+                <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Total Assets</div>
               </div>
             </CardContent>
           </Card>
@@ -113,7 +113,7 @@ export default function AssetsPage() {
               </div>
               <div className="space-y-1">
                 <div className="text-3xl font-medium tracking-tight">{stats.byType?.length || 0}</div>
-                <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Tipos de Ativos</div>
+                <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Asset Types</div>
               </div>
             </CardContent>
           </Card>
@@ -144,7 +144,7 @@ export default function AssetsPage() {
       {/* Assets List */}
       <Card>
         <CardHeader className="pb-4">
-          <CardTitle className="text-lg font-medium">Ativos Cadastrados</CardTitle>
+          <CardTitle className="text-lg font-medium">Registered Assets</CardTitle>
         </CardHeader>
         <CardContent>
           {loading ? (
@@ -177,7 +177,7 @@ export default function AssetsPage() {
                     </div>
                     <div className="flex items-center gap-4 ml-4">
                       <div className="text-right">
-                        <div className="text-xs text-muted-foreground uppercase tracking-wide mb-1">CIA</div>
+                        <div className="text-xs text-muted-foreground uppercase tracking-wiof mb-1">CIA</div>
                         <div className="flex gap-1 text-xs">
                           <span className={getImpactColor(asset.confidentiality_impact)}>C:{asset.confidentiality_impact}</span>
                           <span className={getImpactColor(asset.integrity_impact)}>I:{asset.integrity_impact}</span>

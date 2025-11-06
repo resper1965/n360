@@ -1,7 +1,7 @@
 /**
  * Incident Form
- * Formulário para criar/editar incidentes de segurança
- * Inclui gestão de CAPA (Corrective & Preventive Actions)
+ * Formulário para criar/editar incidentes of segurança
+ * Inclui gestão of CAPA (Corrective & Preventive Actions)
  */
 
 import { useState, useEffect } from 'react';
@@ -92,7 +92,7 @@ export function IncidentForm() {
 
     if (!formData.title) newErrors.title = 'Título é obrigatório';
     if (!formData.description) newErrors.description = 'Descrição é obrigatória';
-    if (!formData.detected_at) newErrors.detected_at = 'Data de detecção é obrigatória';
+    if (!formData.detected_at) newErrors.detected_at = 'Data of detecção é obrigatória';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -146,7 +146,7 @@ export function IncidentForm() {
 
   function addCapa() {
     if (!newCapa.description.trim()) {
-      alert('Descrição da CAPA é obrigatória');
+      alert('Descrição of CAPA é obrigatória');
       return;
     }
 
@@ -185,7 +185,7 @@ export function IncidentForm() {
           {isEdit ? 'Edit' : 'Novo'} Incidente
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Registro de Incidentes de Segurança e CAPA
+          Registro of Incidentes of Segurança e CAPA
         </p>
       </div>
 
@@ -195,7 +195,7 @@ export function IncidentForm() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <AlertOctagon className="h-5 w-5" strokeWidth={1.5} />
-              Informações do Incidente
+              Informações of Incidente
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -208,7 +208,7 @@ export function IncidentForm() {
                 id="title"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                placeholder="Título resumido do incidente"
+                placeholder="Título resumido of incidente"
                 className={errors.title && 'border-red-500'}
               />
               {errors.title && (
@@ -225,7 +225,7 @@ export function IncidentForm() {
                 id="description"
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                placeholder="Descrição detalhada do que aconteceu..."
+                placeholder="Descrição detalhada of que aconteceu..."
                 rows={4}
                 className={errors.description && 'border-red-500'}
               />
@@ -234,7 +234,7 @@ export function IncidentForm() {
               )}
             </div>
 
-            {/* Severidade e Status */}
+            {/* Severidaof e Status */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label>Severidade</Label>
@@ -277,7 +277,7 @@ export function IncidentForm() {
               </div>
             </div>
 
-            {/* Asset Afetado e Data de Detecção */}
+            {/* Asset Afetado e Data of Detecção */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="asset_id">Asset Afetado</Label>
@@ -298,7 +298,7 @@ export function IncidentForm() {
 
               <div className="space-y-2">
                 <Label htmlFor="detected_at">
-                  Data de Detecção <span className="text-red-500">*</span>
+                  Data of Detecção <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="detected_at"
@@ -315,7 +315,7 @@ export function IncidentForm() {
 
             {/* Impacto */}
             <div className="space-y-2">
-              <Label htmlFor="impact_description">Descrição do Impacto</Label>
+              <Label htmlFor="impact_description">Descrição of Impacto</Label>
               <Textarea
                 id="impact_description"
                 value={formData.impact_description}
@@ -333,7 +333,7 @@ export function IncidentForm() {
                   id="root_cause"
                   value={formData.root_cause}
                   onChange={(e) => setFormData({ ...formData, root_cause: e.target.value })}
-                  placeholder="Qual foi a causa raiz do incidente?"
+                  placeholder="Qual foi a causa raiz of incidente?"
                   rows={3}
                 />
               </div>
@@ -342,7 +342,7 @@ export function IncidentForm() {
             {/* Resolution Notes (se status ≥ resolved) */}
             {['resolved', 'closed'].includes(formData.status) && (
               <div className="space-y-2">
-                <Label htmlFor="resolution_notes">Notas de Resolução</Label>
+                <Label htmlFor="resolution_notes">Notas of Resolução</Label>
                 <Textarea
                   id="resolution_notes"
                   value={formData.resolution_notes}
@@ -361,7 +361,7 @@ export function IncidentForm() {
             <CardTitle>CAPA - Ações Corretivas e Preventivas</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {/* Lista de CAPAs */}
+            {/* Lista of CAPAs */}
             {capas.length > 0 && (
               <div className="space-y-2">
                 {capas.map((capa, index) => (
@@ -383,7 +383,7 @@ export function IncidentForm() {
                       <p className="text-sm">{capa.description}</p>
                       {capa.due_date && (
                         <p className="text-xs text-muted-foreground mt-1">
-                          Prazo: {new Date(capa.due_date).toLocaleDateString('pt-BR')}
+                          Prazo: {new Date(capa.due_date).toLocaleDateString('en-US')}
                         </p>
                       )}
                     </div>
@@ -404,7 +404,7 @@ export function IncidentForm() {
               <h4 className="text-sm font-medium">Add CAPA</h4>
               
               <div className="space-y-2">
-                <Label htmlFor="new_capa_description">Descrição da Ação</Label>
+                <Label htmlFor="new_capa_description">Descrição of Ação</Label>
                 <Textarea
                   id="new_capa_description"
                   value={newCapa.description}
@@ -435,7 +435,7 @@ export function IncidentForm() {
                     id="new_capa_owner"
                     value={newCapa.owner}
                     onChange={(e) => setNewCapa({ ...newCapa, owner: e.target.value })}
-                    placeholder="Nome do responsável"
+                    placeholder="Nome of responsável"
                   />
                 </div>
 
@@ -470,7 +470,7 @@ export function IncidentForm() {
             className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50"
           >
             <Save className="h-4 w-4" strokeWidth={1.5} />
-            {loading ? 'Salvando...' : (isEdit ? 'Atualizar' : 'Criar')} Incidente
+            {loading ? 'Saving...' : (isEdit ? 'Update' : 'Criar')} Incidente
           </button>
 
           <button

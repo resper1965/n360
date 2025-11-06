@@ -131,7 +131,7 @@ export default function TicketForm() {
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Atualize as informações do ticket' : 'Cadastre um novo ticket'}
+            {isEdit ? 'Atualize as informações of ticket' : 'Cadastre um novo ticket'}
           </p>
         </div>
 
@@ -154,7 +154,7 @@ export default function TicketForm() {
           <div className="lg:col-span-2">
             <Card>
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg font-medium">Informações do Ticket</CardTitle>
+                <CardTitle className="text-lg font-medium">Ticket Information</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
@@ -164,7 +164,7 @@ export default function TicketForm() {
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    placeholder="Ex: Problema no servidor de backup"
+                    placeholder="Ex: Problema no servidor of backup"
                     required
                   />
                 </div>
@@ -184,7 +184,7 @@ export default function TicketForm() {
 
                 <div className="grid grid-cols-3 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="priority">Prioridade *</Label>
+                    <Label htmlFor="priority">Prioridaof *</Label>
                     <Select
                       id="priority"
                       name="priority"
@@ -192,9 +192,9 @@ export default function TicketForm() {
                       onChange={handleChange}
                       required
                     >
-                      <option value="low">Baixa</option>
-                      <option value="medium">Média</option>
-                      <option value="high">Alta</option>
+                      <option value="low">Low</option>
+                      <option value="medium">Medium</option>
+                      <option value="high">High</option>
                       <option value="critical">Crítica</option>
                     </Select>
                   </div>
@@ -224,7 +224,7 @@ export default function TicketForm() {
                       onChange={handleChange}
                       required
                     >
-                      <option value="open">Aberto</option>
+                      <option value="open">Open</option>
                       <option value="in_progress">Em Progresso</option>
                       <option value="resolved">Resolvido</option>
                       <option value="closed">Closed</option>
@@ -245,7 +245,7 @@ export default function TicketForm() {
                   disabled={loading}
                 >
                   <Save className="h-4 w-4 mr-2" strokeWidth={1.5} />
-                  {loading ? 'Salvando...' : (isEdit ? 'Atualizar Ticket' : 'Criar Ticket')}
+                  {loading ? 'Saving...' : (isEdit ? 'Atualizar Ticket' : 'Criar Ticket')}
                 </Button>
 
                 <Button

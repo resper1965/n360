@@ -1,6 +1,6 @@
 /**
  * Compliance & SoA Page
- * Statement of Applicability e Relatórios de Conformidade
+ * Statement of Applicability e Relatórios of Conformidade
  */
 
 import { useState, useEffect } from 'react';
@@ -123,7 +123,7 @@ export function CompliancePage() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight">Compliance & SoA</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Statement of Applicability e Postura de Conformidade
+            Statement of Applicability e Postura of Conformidade
           </p>
         </div>
         <ExportPDFButton
@@ -139,7 +139,7 @@ export function CompliancePage() {
         <CardContent className="pt-6">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-sm text-muted-foreground mb-2">Score Geral de Conformidade</div>
+              <div className="text-sm text-muted-foreground mb-2">Score Geral of Conformidade</div>
               <div className={cn("text-5xl font-bold", getScoreColor(overallScore))}>
                 {overallScore}%
               </div>
@@ -242,7 +242,7 @@ export function CompliancePage() {
                 {/* Progress Bars */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-muted-foreground">Taxa de Conformidade</span>
+                    <span className="text-muted-foreground">Taxa of Conformidade</span>
                     <span className="font-semibold">{complianceRate}%</span>
                   </div>
                   <div className="h-2 rounded-full bg-muted overflow-hidden border border-border">
@@ -273,7 +273,7 @@ export function CompliancePage() {
                 {/* Meta */}
                 <div className="pt-3 border-t border-border text-xs text-muted-foreground">
                   <div className="flex items-center justify-between">
-                    <span>Total de Requisitos</span>
+                    <span>Total of Requisitos</span>
                     <span className="font-semibold">{framework.total_requirements}</span>
                   </div>
                 </div>
@@ -342,7 +342,7 @@ export function CompliancePage() {
           <div>
             <div className="font-medium mb-1">📋 O que é SoA?</div>
             <p className="text-muted-foreground">
-              Documento exigido pela ISO 27001 que lista todos os controles de segurança, 
+              Documento exigido pela ISO 27001 que lista todos os controles of segurança, 
               indicando quais são aplicáveis e sua justificativa.
             </p>
           </div>
@@ -353,7 +353,7 @@ export function CompliancePage() {
             </code>
           </div>
           <div>
-            <div className="font-medium mb-1">📊 Status de Conformidade</div>
+            <div className="font-medium mb-1">📊 Status of Conformidade</div>
             <div className="flex flex-wrap gap-2 mt-2">
               <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">
                 Conforme: Controle implementado e efetivo

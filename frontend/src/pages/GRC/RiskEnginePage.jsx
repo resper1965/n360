@@ -1,6 +1,6 @@
 /**
  * Risk Engine v2 Page
- * Dashboard avançado de cálculo de risks (Inherent + Residual)
+ * Dashboard avançado of cálculo of risks (Inherent + Residual)
  */
 
 import { useState, useEffect } from 'react';
@@ -51,7 +51,7 @@ export function RiskEnginePage() {
           else if (risk.risk_score >= 8) acc.medium++;
           else acc.low++;
           
-          // Médias
+          // Averages
           acc.totalInherent += risk.risk_score || 0;
           acc.totalResidual += risk.residual_risk_score || risk.risk_score || 0;
           
@@ -109,7 +109,7 @@ export function RiskEnginePage() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight">Risk Engine v2</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Cálculo avançado de Risco Inherente e Residual
+            Cálculo avançado of Risco Inherente e Residual
           </p>
         </div>
         <ExportPDFButton
@@ -164,7 +164,7 @@ export function RiskEnginePage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-muted-foreground">Redução Média</div>
+                <div className="text-sm text-muted-foreground">Average Reduction</div>
                 <div className="text-3xl font-bold text-green-500">
                   {stats.avgReduction}%
                 </div>
@@ -183,7 +183,7 @@ export function RiskEnginePage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-muted-foreground">Total de Riscos</div>
+                <div className="text-sm text-muted-foreground">Total Risks</div>
                 <div className="text-3xl font-bold">{stats.total}</div>
                 <div className="text-xs text-muted-foreground mt-1">
                   {stats.critical} critical
@@ -294,14 +294,14 @@ export function RiskEnginePage() {
         </Card>
       </div>
 
-      {/* Análise de Efetividade */}
+      {/* Análise of Efetividaof */}
       <Card className="shadow-elegant">
         <CardHeader>
-          <CardTitle>Análise de Efetividade dos Controles</CardTitle>
+          <CardTitle>Análise of Efetividaof of Controles</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {/* Gráfico de comparação */}
+            {/* Gráfico of comparação */}
             <div className="flex items-center gap-4">
               <div className="flex-1 space-y-2">
                 <div className="text-sm font-medium">Risco Inherente Médio</div>
@@ -362,7 +362,7 @@ export function RiskEnginePage() {
         </CardContent>
       </Card>
 
-      {/* Explicação do Modelo */}
+      {/* Explicação of Modelo */}
       <Card className="shadow-elegant bg-muted/30">
         <CardHeader>
           <CardTitle>Como Funciona o Risk Engine v2</CardTitle>
@@ -374,7 +374,7 @@ export function RiskEnginePage() {
               Risco Inherente = Likelihood × Impact
             </code>
             <p className="text-muted-foreground mt-2">
-              O risk antes de qualquer controle ser aplicado. Representa a exposição pura da organização.
+              O risk antes of qualquer controle ser aplicado. Representa a exposição pura of organização.
             </p>
           </div>
 
@@ -384,17 +384,17 @@ export function RiskEnginePage() {
               Risco Residual = Risco Inherente × (1 - Control Effectiveness)
             </code>
             <p className="text-muted-foreground mt-2">
-              O risk que permanece após a aplicação dos controles. Este é o risk real da organização.
+              O risk que permanece após a aplicação of controles. Este é o risk real of organização.
             </p>
           </div>
 
           <div>
-            <div className="font-medium mb-2">3. Efetividade dos Controles</div>
+            <div className="font-medium mb-2">3. Efetividaof of Controles</div>
             <code className="block p-3 bg-background rounded-lg border border-border font-mono text-xs">
               Redução = ((Inherent - Residual) / Inherent) × 100%
             </code>
             <p className="text-muted-foreground mt-2">
-              Percentual de redução do risk. Quanto maior, mais efetivos são os controles.
+              Percentual of redução of risk. Quanto maior, mais efetivos são os controles.
             </p>
           </div>
 

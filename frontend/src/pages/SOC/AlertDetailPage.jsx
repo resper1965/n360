@@ -97,7 +97,7 @@ export default function AlertDetailPage() {
             <ArrowLeft className="h-4 w-4" />
           </Button>
           <div>
-            <h1 className="text-2xl font-semibold">Details do Alerta</h1>
+            <h1 className="text-2xl font-semibold">Alert Details</h1>
             <p className="text-sm text-muted-foreground">
               ID: {alert.id?.substring(0, 8)}...
             </p>
@@ -159,9 +159,9 @@ export default function AlertDetailPage() {
               <div className="font-mono text-sm">{alert.rule_id}</div>
             </div>
             <div>
-              <div className="text-xs text-muted-foreground">Criado em</div>
+              <div className="text-xs text-muted-foreground">Created at</div>
               <div className="text-sm">
-                {new Date(alert.created_at).toLocaleString('pt-BR')}
+                {new Date(alert.created_at).toLocaleString('en-US')}
               </div>
             </div>
           </div>
@@ -177,13 +177,13 @@ export default function AlertDetailPage() {
                 {alert.acknowledged_at && (
                   <div className="text-sm">
                     <span className="text-muted-foreground">Confirmado:</span>{' '}
-                    {new Date(alert.acknowledged_at).toLocaleString('pt-BR')}
+                    {new Date(alert.acknowledged_at).toLocaleString('en-US')}
                   </div>
                 )}
                 {alert.resolved_at && (
                   <div className="text-sm">
                     <span className="text-muted-foreground">Resolvido:</span>{' '}
-                    {new Date(alert.resolved_at).toLocaleString('pt-BR')}
+                    {new Date(alert.resolved_at).toLocaleString('en-US')}
                   </div>
                 )}
               </div>

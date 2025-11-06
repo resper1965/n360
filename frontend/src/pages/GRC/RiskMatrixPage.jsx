@@ -45,7 +45,7 @@ export default function RiskMatrixPage() {
 
   const handleCellClick = (likelihood, impact, cell) => {
     if (cell.count > 0) {
-      // Navegar para lista de risks filtrados
+      // Navegar para lista of risks filtrados
       navigate(`/grc/risks?likelihood=${likelihood + 1}&impact=${impact + 1}`)
     }
   }
@@ -57,10 +57,10 @@ export default function RiskMatrixPage() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight flex items-center gap-2">
             <Grid3x3 className="h-8 w-8 text-primary" />
-            Matriz de Riscos
+            Matriz of Riscos
           </h1>
           <p className="text-muted-foreground mt-1">
-            Mapa de calor (heat map) de risks - Likelihood × Impact
+            Mapa of calor (heat map) of risks - Likelihood × Impact
           </p>
         </div>
         <Button variant="outline" onClick={() => navigate('/grc/risks')}>
@@ -175,13 +175,13 @@ export default function RiskMatrixPage() {
       {/* Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Total de Riscos</div>
+          <div className="text-sm text-muted-foreground">Total Risks</div>
           <div className="text-2xl font-bold">
             {matrix.flat().reduce((acc, cell) => acc + (cell.count || 0), 0)}
           </div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Riscos Críticos</div>
+          <div className="text-sm text-muted-foreground">Critical Risks</div>
           <div className="text-2xl font-bold text-red-500">
             {matrix
               .flat()

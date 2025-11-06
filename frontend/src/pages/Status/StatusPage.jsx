@@ -24,7 +24,7 @@ export default function StatusPage() {
   }
 
   if (loading) {
-    return <div className="text-center py-12 text-ness-muted">Carregando status...</div>
+    return <div className="text-center py-12 text-ness-muted">Loading status...</div>
   }
 
   const apps = status?.apps || {}
@@ -32,7 +32,7 @@ export default function StatusPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-semibold text-ness-text">Status das Aplicações</h1>
+        <h1 className="text-3xl font-semibold text-ness-text">Application Status</h1>
         <p className="text-ness-muted mt-1">Monitoramento em tempo real</p>
       </div>
 

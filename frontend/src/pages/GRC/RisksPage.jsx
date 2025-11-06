@@ -60,7 +60,7 @@ export default function RisksPage() {
   }
 
   const statusLabels = {
-    open: 'Aberto',
+    open: 'Open',
     mitigating: 'Mitigando',
     mitigated: 'Mitigado',
     accepted: 'Aceito',
@@ -74,10 +74,10 @@ export default function RisksPage() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight flex items-center gap-2">
             <AlertTriangle className="h-8 w-8 text-primary" />
-            Gestão de Riscos
+            Gestão of Riscos
           </h1>
           <p className="text-muted-foreground mt-1">
-            Identificação e mitigação de risks organizacionais
+            Identificação e mitigação of risks organizacionais
           </p>
         </div>
         <Button onClick={() => navigate('/grc/risks/new')}>
@@ -110,7 +110,7 @@ export default function RisksPage() {
             onChange={(e) => setFilters({ ...filters, status: e.target.value })}
           >
             <option value="all">Todos os Status</option>
-            <option value="open">Aberto</option>
+            <option value="open">Open</option>
             <option value="mitigating">Mitigando</option>
             <option value="mitigated">Mitigado</option>
             <option value="accepted">Aceito</option>
@@ -154,23 +154,23 @@ export default function RisksPage() {
       {/* Risk Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Total de Riscos</div>
+          <div className="text-sm text-muted-foreground">Total Risks</div>
           <div className="text-2xl font-bold">{pagination.total || 0}</div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Riscos Abertos</div>
+          <div className="text-sm text-muted-foreground">Open Risks</div>
           <div className="text-2xl font-bold">
             {risks.filter((r) => r.status === 'open').length}
           </div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Riscos Críticos</div>
+          <div className="text-sm text-muted-foreground">Critical Risks</div>
           <div className="text-2xl font-bold text-red-500">
             {risks.filter((r) => r.risk_score >= 20).length}
           </div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Risk Score Médio</div>
+          <div className="text-sm text-muted-foreground">Average Risk Score</div>
           <div className="text-2xl font-bold">
             {risks.length > 0
               ? Math.round(
@@ -185,19 +185,19 @@ export default function RisksPage() {
       <Card>
         {loading ? (
           <div className="p-12 text-center text-muted-foreground">
-            Carregando risks...
+            Loading risks...
           </div>
         ) : risks.length === 0 ? (
           <div className="p-12 text-center">
             <AlertTriangle className="h-12 w-12 mx-auto mb-4 text-muted-foreground opacity-50" />
-            <p className="text-muted-foreground">No risk encontrado</p>
+            <p className="text-muted-foreground">No risks found</p>
             <Button
               variant="outline"
               className="mt-4"
               onClick={() => navigate('/grc/risks/new')}
             >
               <Plus className="h-4 w-4 mr-2" />
-              Cadastrar Primeiro Risco
+              Register First Risk
             </Button>
           </div>
         ) : (
@@ -234,7 +234,7 @@ export default function RisksPage() {
                           Impact: <span className="font-medium">{risk.impact}</span>
                         </div>
                         <div>
-                          Criado: {new Date(risk.created_at).toLocaleDateString('pt-BR')}
+                          Created: {new Date(risk.created_at).toLocaleDateString('en-US')}
                         </div>
                       </div>
                     </div>
@@ -255,7 +255,7 @@ export default function RisksPage() {
         {pagination.totalPages > 1 && (
           <div className="p-4 border-t flex items-center justify-between">
             <div className="text-sm text-muted-foreground">
-              Página {pagination.page} de {pagination.totalPages} ({pagination.total}{' '}
+              Página {pagination.page} of {pagination.totalPages} ({pagination.total}{' '}
               risks)
             </div>
             <div className="flex gap-2">

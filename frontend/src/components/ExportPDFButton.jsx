@@ -2,11 +2,11 @@ import React, { useState } from 'react';
 import { Download, Loader2 } from 'lucide-react';
 
 /**
- * Botão de Export PDF
+ * Botão of Export PDF
  * 
- * @param {string} endpoint - Endpoint da API (ex: /api/reports/executive-pdf)
- * @param {string} filename - Nome do arquivo (ex: executive-summary.pdf)
- * @param {string} label - Texto do botão
+ * @param {string} endpoint - Endpoint of API (ex: /api/reports/executive-pdf)
+ * @param {string} filename - Nome of arquivo (ex: executive-summary.pdf)
+ * @param {string} label - Texto of botão
  */
 const ExportPDFButton = ({ 
   endpoint, 
@@ -38,7 +38,7 @@ const ExportPDFButton = ({
       // Converter resposta em blob
       const blob = await response.blob();
 
-      // Criar link de download
+      // Criar link of download
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;

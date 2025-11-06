@@ -82,7 +82,7 @@ export default function ProblemDetailPage() {
             <ArrowLeft className="h-4 w-4" />
           </Button>
           <div>
-            <h1 className="text-2xl font-semibold">Details do Problema</h1>
+            <h1 className="text-2xl font-semibold">Problem Details</h1>
             <p className="text-sm text-muted-foreground">
               ID: {problem.id?.substring(0, 8)}...
             </p>
@@ -134,9 +134,9 @@ export default function ProblemDetailPage() {
               <div className="font-mono text-sm">{problem.source_id}</div>
             </div>
             <div>
-              <div className="text-xs text-muted-foreground">Criado em</div>
+              <div className="text-xs text-muted-foreground">Created at</div>
               <div className="text-sm">
-                {new Date(problem.created_at).toLocaleString('pt-BR')}
+                {new Date(problem.created_at).toLocaleString('en-US')}
               </div>
             </div>
           </div>
@@ -151,7 +151,7 @@ export default function ProblemDetailPage() {
               <div className="space-y-2 ml-6">
                 <div className="text-sm">
                   <span className="text-muted-foreground">Confirmado:</span>{' '}
-                  {new Date(problem.acknowledged_at).toLocaleString('pt-BR')}
+                  {new Date(problem.acknowledged_at).toLocaleString('en-US')}
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
 /**
  * Incidents & CAPA Page
- * Gestão de Incidentes de Segurança e Corrective Actions
+ * Gestão of Incidentes of Segurança e Corrective Actions
  */
 
 import { useState, useEffect } from 'react';
@@ -104,10 +104,10 @@ export function IncidentsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-semibold tracking-tight">
-            Gestão de Incidentes
+            Gestão of Incidentes
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Incidentes de Segurança e Ações Corretivas (CAPA)
+            Incidentes of Segurança e Ações Corretivas (CAPA)
           </p>
         </div>
         <Link to="/grc/incidents/new">
@@ -254,7 +254,7 @@ export function IncidentsPage() {
                             <div className="flex items-center gap-4 mt-2 text-xs text-muted-foreground">
                               <span className="flex items-center gap-1">
                                 <Calendar className="h-3 w-3" strokeWidth={1.5} />
-                                {new Date(inc.detected_at).toLocaleDateString('pt-BR')}
+                                {new Date(inc.detected_at).toLocaleDateString('en-US')}
                               </span>
                               {inc.asset_name && (
                                 <span className="flex items-center gap-1">
@@ -302,9 +302,9 @@ export function IncidentsPage() {
         </CardHeader>
         <CardContent className="space-y-3 text-sm">
           <div>
-            <div className="font-medium mb-1">🔍 Registro de Incidentes</div>
+            <div className="font-medium mb-1">🔍 Registro of Incidentes</div>
             <p className="text-muted-foreground">
-              Documente todos os incidentes de segurança, incluindo detecção, impacto, assets afetados e evidências.
+              Documente todos os incidentes of segurança, incluindo detecção, impacto, assets afetados e evidências.
             </p>
           </div>
           <div>

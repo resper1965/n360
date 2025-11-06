@@ -200,7 +200,7 @@ export default function ControlForm() {
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Atualize as informações do controle' : 'Cadastre um novo controle de segurança'}
+            {isEdit ? 'Atualize as informações of controle' : 'Cadastre um novo controle of segurança'}
           </p>
         </div>
 
@@ -229,7 +229,7 @@ export default function ControlForm() {
               <CardContent className="space-y-4">
                 {/* Control ID */}
                 <div className="space-y-2">
-                  <Label htmlFor="control_id">ID do Controle *</Label>
+                  <Label htmlFor="control_id">ID of Controle *</Label>
                   <Input
                     id="control_id"
                     name="control_id"
@@ -251,7 +251,7 @@ export default function ControlForm() {
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    placeholder="Ex: Controle de Acesso Lógico"
+                    placeholder="Ex: Controle of Acesso Lógico"
                     required
                   />
                 </div>
@@ -290,7 +290,7 @@ export default function ControlForm() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="control_type">Tipo de Controle *</Label>
+                    <Label htmlFor="control_type">Tipo of Controle *</Label>
                     <Select
                       id="control_type"
                       name="control_type"
@@ -344,7 +344,7 @@ export default function ControlForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="implementation_notes">Notas de Implementação</Label>
+                  <Label htmlFor="implementation_notes">Notas of Implementação</Label>
                   <Textarea
                     id="implementation_notes"
                     name="implementation_notes"
@@ -363,7 +363,7 @@ export default function ControlForm() {
                     name="responsible_team"
                     value={formData.responsible_team || ''}
                     onChange={handleChange}
-                    placeholder="Ex: Equipe de Segurança"
+                    placeholder="Ex: Equipe of Segurança"
                   />
                 </div>
               </CardContent>
@@ -374,13 +374,13 @@ export default function ControlForm() {
               <CardHeader className="pb-4">
                 <CardTitle className="text-lg font-medium flex items-center gap-2">
                   <Upload className="h-4 w-4" strokeWidth={1.5} />
-                  Evidências de Teste
+                  Evidências of Teste
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {/* File Upload */}
                 <FileUpload
-                  label="Arquivo de Evidência"
+                  label="Arquivo of Evidência"
                   accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt,.csv,.xlsx"
                   maxSize={10}
                   value={evidenceFile}
@@ -428,7 +428,7 @@ export default function ControlForm() {
                 )}
 
                 <div className="space-y-2">
-                  <Label htmlFor="evidence_description">Descrição da Evidência</Label>
+                  <Label htmlFor="evidence_description">Descrição of Evidência</Label>
                   <Textarea
                     id="evidence_description"
                     name="evidence_description"
@@ -451,7 +451,7 @@ export default function ControlForm() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="test_frequency">Frequência de Teste (dias)</Label>
+                  <Label htmlFor="test_frequency">Frequência of Teste (dias)</Label>
                   <Input
                     type="number"
                     id="test_frequency"
@@ -478,7 +478,7 @@ export default function ControlForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="test_result">Resultado do Teste</Label>
+                  <Label htmlFor="test_result">Resultado of Teste</Label>
                   <Select
                     id="test_result"
                     name="test_result"
@@ -494,7 +494,7 @@ export default function ControlForm() {
 
                 <div className="space-y-2">
                   <Label htmlFor="effectiveness_score">
-                    Efetividade (0.00 - 1.00)
+                    Efetividaof (0.00 - 1.00)
                   </Label>
                   <Input
                     type="number"
@@ -508,7 +508,7 @@ export default function ControlForm() {
                     step="0.01"
                   />
                   <p className="text-xs text-muted-foreground">
-                    Score de 0 (inefetivo) a 1 (100% efetivo)
+                    Score of 0 (inefetivo) a 1 (100% efetivo)
                   </p>
                 </div>
               </CardContent>
@@ -523,7 +523,7 @@ export default function ControlForm() {
                   disabled={loading || uploadingEvidence}
                 >
                   <Save className="h-4 w-4 mr-2" strokeWidth={1.5} />
-                  {loading ? 'Salvando...' : (isEdit ? 'Atualizar Controle' : 'Criar Controle')}
+                  {loading ? 'Saving...' : (isEdit ? 'Atualizar Controle' : 'Criar Controle')}
                 </Button>
 
                 <Button

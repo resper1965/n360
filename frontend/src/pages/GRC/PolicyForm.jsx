@@ -181,7 +181,7 @@ export default function PolicyForm() {
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Atualize as informações da política' : 'Cadastre uma nova política de segurança'}
+            {isEdit ? 'Atualize as informações of política' : 'Cadastre uma nova política of segurança'}
           </p>
         </div>
 
@@ -215,7 +215,7 @@ export default function PolicyForm() {
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    placeholder="Ex: Política de Uso Aceitável"
+                    placeholder="Ex: Política of Uso Aceitável"
                     required
                   />
                 </div>
@@ -227,7 +227,7 @@ export default function PolicyForm() {
                     name="description"
                     value={formData.description || ''}
                     onChange={handleChange}
-                    placeholder="Resumo executivo da política..."
+                    placeholder="Resumo executivo of política..."
                     rows={3}
                   />
                 </div>
@@ -263,13 +263,13 @@ export default function PolicyForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="content">Conteúdo da Política</Label>
+                  <Label htmlFor="content">Conteúdo of Política</Label>
                   <Textarea
                     id="content"
                     name="content"
                     value={formData.content || ''}
                     onChange={handleChange}
-                    placeholder="Conteúdo completo da política (suporta Markdown)..."
+                    placeholder="Conteúdo completo of política (suporta Markdown)..."
                     rows={12}
                     className="font-mono text-xs"
                   />
@@ -290,7 +290,7 @@ export default function PolicyForm() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <FileUpload
-                  label="Documento da Política"
+                  label="Documento of Política"
                   accept=".pdf,.doc,.docx"
                   maxSize={10}
                   value={docFile}
@@ -333,7 +333,7 @@ export default function PolicyForm() {
                     <option value="draft">Rascunho</option>
                     <option value="review">Em Revisão</option>
                     <option value="approved">Aprovado</option>
-                    <option value="active">Ativo</option>
+                    <option value="active">Active</option>
                     <option value="archived">Arquivado</option>
                   </Select>
                 </div>
@@ -351,7 +351,7 @@ export default function PolicyForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="effective_date">Data de Vigência</Label>
+                  <Label htmlFor="effective_date">Data of Vigência</Label>
                   <Input
                     type="date"
                     id="effective_date"
@@ -383,7 +383,7 @@ export default function PolicyForm() {
                   disabled={loading || uploadingDoc}
                 >
                   <Save className="h-4 w-4 mr-2" strokeWidth={1.5} />
-                  {loading ? 'Salvando...' : (isEdit ? 'Atualizar Política' : 'Criar Política')}
+                  {loading ? 'Saving...' : (isEdit ? 'Atualizar Política' : 'Criar Política')}
                 </Button>
 
                 <Button

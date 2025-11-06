@@ -211,7 +211,7 @@ export default function CISODashboard() {
             <CardHeader className="pb-4">
               <CardTitle className="flex items-center gap-2 text-lg font-medium">
                 <TrendingUp className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-                Top 5 Riscos Críticos
+                Top 5 Critical Risks
               </CardTitle>
             </CardHeader>
             <CardContent>
@@ -233,7 +233,7 @@ export default function CISODashboard() {
                       </div>
                       <div className="text-right ml-4">
                         <div className="text-2xl font-medium tracking-tight">{risk.risk_score}</div>
-                        <div className="text-xs text-muted-foreground uppercase tracking-wide mt-0.5">{risk.status}</div>
+                        <div className="text-xs text-muted-foreground uppercase tracking-wiof mt-0.5">{risk.status}</div>
                       </div>
                     </div>
                   ))}
@@ -267,7 +267,7 @@ export default function CISODashboard() {
                       <div className="flex-1 min-w-0">
                         <div className="font-medium text-sm truncate">{alert.title}</div>
                         <div className="text-xs text-muted-foreground mt-0.5">
-                          {alert.source} • {new Date(alert.created_at).toLocaleString('pt-BR')}
+                          {alert.source} • {new Date(alert.created_at).toLocaleString('en-US')}
                         </div>
                       </div>
                       <div className="ml-4">

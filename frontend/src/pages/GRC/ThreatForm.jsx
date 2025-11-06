@@ -159,7 +159,7 @@ export function ThreatForm() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Skull className="h-5 w-5" strokeWidth={1.5} />
-              Informações da Ameaça
+              Informações of Ameaça
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -167,7 +167,7 @@ export function ThreatForm() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="threat_code">
-                  Código da Ameaça <span className="text-red-500">*</span>
+                  Código of Ameaça <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="threat_code"
@@ -205,7 +205,7 @@ export function ThreatForm() {
                 id="description"
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                placeholder="Descrição detalhada da ameaça, incluindo como ela pode se manifestar..."
+                placeholder="Descrição detalhada of ameaça, incluindo como ela poof se manifestar..."
                 rows={4}
               />
             </div>
@@ -256,7 +256,7 @@ export function ThreatForm() {
 
             {/* Attack Vector */}
             <div className="space-y-2">
-              <Label htmlFor="attack_vector">Vetor de Ataque</Label>
+              <Label htmlFor="attack_vector">Vetor of Ataque</Label>
               <Input
                 id="attack_vector"
                 value={formData.attack_vector}
@@ -264,7 +264,7 @@ export function ThreatForm() {
                 placeholder="Email phishing, Remote code execution, Physical access, etc."
               />
               <p className="text-xs text-muted-foreground">
-                Como a ameaça pode se materializar (ex: email, rede, físico)
+                Como a ameaça poof se materializar (ex: email, rede, físico)
               </p>
             </div>
 
@@ -303,7 +303,7 @@ export function ThreatForm() {
 
             {/* Referência */}
             <div className="space-y-2">
-              <Label htmlFor="reference_url">URL de Referência</Label>
+              <Label htmlFor="reference_url">URL of Referência</Label>
               <Input
                 id="reference_url"
                 type="url"
@@ -332,7 +332,7 @@ export function ThreatForm() {
                 className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50"
               >
                 <Save className="h-4 w-4" strokeWidth={1.5} />
-                {loading ? 'Salvando...' : (isEdit ? 'Atualizar' : 'Criar')} Ameaça
+                {loading ? 'Saving...' : (isEdit ? 'Update' : 'Criar')} Ameaça
               </button>
 
               <button

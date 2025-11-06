@@ -65,10 +65,10 @@ export default function ControlsPage() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight flex items-center gap-2">
             <Shield className="h-8 w-8 text-primary" />
-            Controles de Segurança
+            Controles of Segurança
           </h1>
           <p className="text-muted-foreground mt-1">
-            Gestão de controles conforme frameworks de compliance
+            Gestão of controles conforme frameworks of compliance
           </p>
         </div>
         <Button onClick={() => navigate('/grc/controls/new')}>
@@ -130,7 +130,7 @@ export default function ControlsPage() {
       {/* Control Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Total de Controles</div>
+          <div className="text-sm text-muted-foreground">Total of Controles</div>
           <div className="text-2xl font-bold">{pagination.total || 0}</div>
         </Card>
         <Card className="p-4">
@@ -217,7 +217,7 @@ export default function ControlsPage() {
                       {control.last_tested && (
                         <div>
                           Último Teste:{' '}
-                          {new Date(control.last_tested).toLocaleDateString('pt-BR')}
+                          {new Date(control.last_tested).toLocaleDateString('en-US')}
                         </div>
                       )}
                     </div>
@@ -240,7 +240,7 @@ export default function ControlsPage() {
         {pagination.totalPages > 1 && (
           <div className="p-4 border-t flex items-center justify-between">
             <div className="text-sm text-muted-foreground">
-              Página {pagination.page} de {pagination.totalPages} ({pagination.total}{' '}
+              Página {pagination.page} of {pagination.totalPages} ({pagination.total}{' '}
               controles)
             </div>
             <div className="flex gap-2">

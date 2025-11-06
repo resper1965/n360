@@ -57,8 +57,8 @@ export default function AlertsPage() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold text-ness-text">SOC - Alertas de Segurança</h1>
-          <p className="text-ness-muted mt-1">Alertas do SIEM e outros sistemas de segurança</p>
+          <h1 className="text-3xl font-semibold text-ness-text">SOC - Security Alerts</h1>
+          <p className="text-ness-muted mt-1">SIEM alerts and security events</p>
         </div>
 
         <button className="px-4 py-2 bg-ness-blue text-white rounded-lg hover:bg-opacity-90 transition-colors">
@@ -93,7 +93,7 @@ export default function AlertsPage() {
         </div>
       </div>
 
-      {/* Lista de Alertas */}
+      {/* Lista of Alertas */}
       <div className="bg-ness-surface border border-ness-border rounded-xl overflow-hidden">
         {loading ? (
           <div className="p-12 text-center text-ness-muted">Carregando alerts...</div>
@@ -101,7 +101,7 @@ export default function AlertsPage() {
           <div className="p-12 text-center text-ness-muted">
             <AlertTriangle size={48} className="mx-auto mb-3 opacity-50" />
             <p>No alert encontrado</p>
-            <p className="text-sm mt-2">Os collectors começarão a coletar dados automaticamente</p>
+            <p className="text-sm mt-2">Collectors will start gathering data automatically</p>
           </div>
         ) : (
           <div className="divide-y divide-ness-border">
@@ -115,7 +115,7 @@ export default function AlertsPage() {
                       </span>
                       <span className="text-xs text-ness-muted">{alert.source}</span>
                       <span className="text-xs text-ness-muted">
-                        {new Date(alert.created_at).toLocaleString('pt-BR')}
+                        {new Date(alert.created_at).toLocaleString('en-US')}
                       </span>
                     </div>
                     

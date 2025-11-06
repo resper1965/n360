@@ -42,7 +42,7 @@ export default function ThreatsPage() {
     <div className="space-y-grid-lg">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-medium tracking-tight">TVL - Catálogo de Ameaças</h1>
+          <h1 className="text-3xl font-medium tracking-tight">TVL - Catálogo of Ameaças</h1>
           <p className="text-sm text-muted-foreground">Threat & Vulnerability Library</p>
         </div>
         <Button onClick={() => navigate('/grc/threats/new')}>

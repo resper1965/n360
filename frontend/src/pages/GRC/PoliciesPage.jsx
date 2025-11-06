@@ -73,10 +73,10 @@ export default function PoliciesPage() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight flex items-center gap-2">
             <FileText className="h-8 w-8 text-primary" />
-            Políticas de Segurança
+            Políticas of Segurança
           </h1>
           <p className="text-muted-foreground mt-1">
-            Gestão de políticas e procedimentos organizacionais
+            Gestão of políticas e procedimentos organizacionais
           </p>
         </div>
         <Button onClick={() => navigate('/grc/policies/new')}>
@@ -137,7 +137,7 @@ export default function PoliciesPage() {
       {/* Policy Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Total de Políticas</div>
+          <div className="text-sm text-muted-foreground">Total of Políticas</div>
           <div className="text-2xl font-bold">{pagination.total || 0}</div>
         </Card>
         <Card className="p-4">
@@ -211,17 +211,17 @@ export default function PoliciesPage() {
                       {policy.effective_date && (
                         <div className="flex items-center gap-1">
                           <Clock className="h-3 w-3" />
-                          Vigência: {new Date(policy.effective_date).toLocaleDateString('pt-BR')}
+                          Vigência: {new Date(policy.effective_date).toLocaleDateString('en-US')}
                         </div>
                       )}
                       {policy.review_date && (
                         <div className="flex items-center gap-1">
                           <Clock className="h-3 w-3" />
-                          Revisão: {new Date(policy.review_date).toLocaleDateString('pt-BR')}
+                          Revisão: {new Date(policy.review_date).toLocaleDateString('en-US')}
                         </div>
                       )}
                       <div>
-                        Criada: {new Date(policy.created_at).toLocaleDateString('pt-BR')}
+                        Criada: {new Date(policy.created_at).toLocaleDateString('en-US')}
                       </div>
                     </div>
                   </div>
@@ -243,7 +243,7 @@ export default function PoliciesPage() {
         {pagination.totalPages > 1 && (
           <div className="p-4 border-t flex items-center justify-between">
             <div className="text-sm text-muted-foreground">
-              Página {pagination.page} de {pagination.totalPages} ({pagination.total}{' '}
+              Página {pagination.page} of {pagination.totalPages} ({pagination.total}{' '}
               políticas)
             </div>
             <div className="flex gap-2">

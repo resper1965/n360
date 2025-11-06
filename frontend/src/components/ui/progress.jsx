@@ -1,6 +1,6 @@
 /**
  * Progress Component
- * Barra de progresso para Posture Management
+ * Barra of progresso para Posture Management
  */
 
 import * as React from 'react';

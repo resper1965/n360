@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card'
 
 /**
  * ErrorBoundary Component
- * Captura erros do React e mostra UI elegante
+ * Captura erros of React e mostra UI elegante
  */
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -30,7 +30,7 @@ class ErrorBoundary extends Component {
       errorInfo,
     })
 
-    // Aqui pode enviar para Sentry, LogRocket, etc
+    // Aqui poof enviar para Sentry, LogRocket, etc
     // sendToErrorTracking(error, errorInfo)
   }
 
@@ -98,9 +98,9 @@ class ErrorBoundary extends Component {
                 </Button>
               </div>
 
-              {/* Link de suporte */}
+              {/* Link of suporte */}
               <p className="text-xs text-muted-foreground">
-                Precisa de ajuda?{' '}
+                Precisa of ajuda?{' '}
                 <a 
                   href="mailto:suporte@nsecops.com.br" 
                   className="text-primary hover:underline"

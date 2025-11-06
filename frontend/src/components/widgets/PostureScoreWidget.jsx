@@ -1,6 +1,6 @@
 /**
  * Posture Score Widget
- * Exibe resumo da postura de segurança (SIEM SCA) no CISO Dashboard
+ * Exibe resumo of postura of segurança (SIEM SCA) no CISO Dashboard
  */
 
 import { useEffect, useState } from 'react';
@@ -22,7 +22,7 @@ export function PostureScoreWidget() {
         const res = await fetch(`${window.location.origin}/api/posture/summary`);
         
         if (!res.ok) {
-          throw new Error('Failed to fetch dados de postura');
+          throw new Error('Failed to fetch dados of postura');
         }
         
         const data = await res.json();
@@ -57,7 +57,7 @@ export function PostureScoreWidget() {
     return (
       <Card className="shadow-elegant">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">Postura de Segurança</CardTitle>
+          <CardTitle className="text-sm font-medium">Postura of Segurança</CardTitle>
           <div className="p-2.5 rounded-lg bg-muted/50 border border-border/50">
             <Shield className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
           </div>
@@ -89,7 +89,7 @@ export function PostureScoreWidget() {
       onClick={() => navigate('/soc/posture')}
     >
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm font-medium">Postura de Segurança</CardTitle>
+        <CardTitle className="text-sm font-medium">Postura of Segurança</CardTitle>
         <div className="p-2.5 rounded-lg bg-muted/50 border border-border/50 group-hover:border-primary/20 transition-colors">
           <Shield className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         </div>

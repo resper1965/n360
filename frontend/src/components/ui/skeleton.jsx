@@ -1,6 +1,6 @@
 /**
  * Skeleton Loader
- * Componente de loading elegante
+ * Componente of loading elegante
  */
 
 import { cn } from '@/lib/utils';

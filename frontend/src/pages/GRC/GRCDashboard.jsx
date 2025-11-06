@@ -108,7 +108,7 @@ export default function GRCDashboard() {
           </CardContent>
         </Card>
 
-        {/* Risk Score Médio */}
+        {/* Average Risk Score */}
         <Card className="group">
           <CardContent className="p-6">
             <div className="flex items-start justify-between mb-4">
@@ -195,7 +195,7 @@ export default function GRCDashboard() {
         >
           <div className="flex flex-col items-center gap-2">
             <TrendingUp className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-base" strokeWidth={1.5} />
-            <span className="text-sm font-medium">Matriz de Riscos</span>
+            <span className="text-sm font-medium">Matriz of Riscos</span>
           </div>
         </Button>
         <Button
@@ -205,7 +205,7 @@ export default function GRCDashboard() {
         >
           <div className="flex flex-col items-center gap-2">
             <AlertTriangle className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-base" strokeWidth={1.5} />
-            <span className="text-sm font-medium">Gestão de Riscos</span>
+            <span className="text-sm font-medium">Gestão of Riscos</span>
           </div>
         </Button>
         <Button
@@ -278,7 +278,7 @@ export default function GRCDashboard() {
           <CardHeader className="pb-4">
             <CardTitle className="flex items-center gap-2 text-lg font-medium">
               <AlertTriangle className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-              Top 5 Riscos Críticos
+              Top 5 Critical Risks
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -320,7 +320,7 @@ export default function GRCDashboard() {
                       </div>
                       <div className="text-right ml-4">
                         <div className="text-2xl font-medium tracking-tight">{risk.risk_score}</div>
-                        <div className="text-xs text-muted-foreground uppercase tracking-wide mt-0.5">
+                        <div className="text-xs text-muted-foreground uppercase tracking-wiof mt-0.5">
                           {risk.likelihood} × {risk.impact}
                         </div>
                       </div>
