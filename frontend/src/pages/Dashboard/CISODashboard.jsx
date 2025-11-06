@@ -244,6 +244,7 @@ export default function CISODashboard() {
         <div className="space-y-grid-lg">
           <TopAlertsWidget />
           <TopProblemsWidget />
+          <PostureScoreWidget />
         </div>
       </div>
     </div>
