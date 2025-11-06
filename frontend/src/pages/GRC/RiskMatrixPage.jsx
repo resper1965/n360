@@ -55,16 +55,15 @@ export default function RiskMatrixPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight flex items-center gap-2">
-            <Grid3x3 className="h-8 w-8 text-primary" />
-            Matriz Risk
+          <h1 className="text-3xl font-semibold tracking-tight">
+            Risk Matrix
           </h1>
           <p className="text-muted-foreground mt-1">
-            Mapa of calor (heat map) of risks - Likelihood × Impact
+            Risk heat map - Likelihood × Impact
           </p>
         </div>
         <Button variant="outline" onClick={() => navigate('/grc/risks')}>
-          Ver Todos os Riscos
+          View All Risks
         </Button>
       </div>
 

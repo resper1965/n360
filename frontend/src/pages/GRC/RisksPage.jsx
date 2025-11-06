@@ -72,17 +72,16 @@ export default function RisksPage() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-semibold tracking-tight flex items-center gap-2">
-            <AlertTriangle className="h-8 w-8 text-primary" />
-            Gestão Risk
+          <h1 className="text-3xl font-semibold tracking-tight">
+            Risks
           </h1>
           <p className="text-muted-foreground mt-1">
-            Identificação e mitigação of risks organizacionais
+            Organizational risk identification and mitigation
           </p>
         </div>
         <Button onClick={() => navigate('/grc/risks/new')}>
           <Plus className="h-4 w-4 mr-2" />
-          New Risco
+          New Risk
         </Button>
       </div>
 
