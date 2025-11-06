@@ -23,6 +23,11 @@ import AssetsPage from './pages/GRC/AssetsPage'
 import AssetForm from './pages/GRC/AssetForm'
 import ThreatsPage from './pages/GRC/ThreatsPage'
 import { PostureManagementPage } from './pages/SOC/PostureManagementPage'
+import { VulnerabilitiesPage } from './pages/GRC/VulnerabilitiesPage'
+import { VulnerabilityForm } from './pages/GRC/VulnerabilityForm'
+import { RiskEnginePage } from './pages/GRC/RiskEnginePage'
+import { IncidentsPage } from './pages/GRC/IncidentsPage'
+import { CompliancePage } from './pages/GRC/CompliancePage'
 
 function App() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
@@ -51,6 +56,7 @@ function App() {
               <Route path="/grc/risks/new" element={<RiskForm />} />
               <Route path="/grc/risks/edit/:id" element={<RiskForm />} />
               <Route path="/grc/risks/matrix" element={<RiskMatrixPage />} />
+              <Route path="/grc/risk-engine" element={<RiskEnginePage />} />
               <Route path="/grc/controls" element={<ControlsPage />} />
               <Route path="/grc/controls/new" element={<ControlForm />} />
               <Route path="/grc/controls/edit/:id" element={<ControlForm />} />
@@ -63,6 +69,11 @@ function App() {
               <Route path="/grc/assets/new" element={<AssetForm />} />
               <Route path="/grc/assets/edit/:id" element={<AssetForm />} />
               <Route path="/grc/threats" element={<ThreatsPage />} />
+              <Route path="/grc/vulnerabilities" element={<VulnerabilitiesPage />} />
+              <Route path="/grc/vulnerabilities/new" element={<VulnerabilityForm />} />
+              <Route path="/grc/vulnerabilities/edit/:id" element={<VulnerabilityForm />} />
+              <Route path="/grc/incidents" element={<IncidentsPage />} />
+              <Route path="/grc/compliance" element={<CompliancePage />} />
             </Routes>
           </main>
         </div>

@@ -8,7 +8,10 @@ import {
   Shield,
   Database,
   Skull,
-  ShieldCheck
+  ShieldCheck,
+  Bug,
+  AlertOctagon,
+  FileCheck
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -23,6 +26,9 @@ export default function Sidebar({ isOpen }) {
     { name: 'GRC', icon: Shield, path: '/grc', submenu: true },
     { name: '  CMDB - Ativos', icon: Database, path: '/grc/assets', indent: true },
     { name: '  TVL - Ameaças', icon: Skull, path: '/grc/threats', indent: true },
+    { name: '  TVL - Vulnerabilidades', icon: Bug, path: '/grc/vulnerabilities', indent: true },
+    { name: '  Incidentes & CAPA', icon: AlertOctagon, path: '/grc/incidents', indent: true },
+    { name: '  Compliance & SoA', icon: FileCheck, path: '/grc/compliance', indent: true },
     { name: 'Tickets', icon: Ticket, path: '/tickets' },
     { name: 'Status', icon: Radio, path: '/status' },
   ]
