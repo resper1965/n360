@@ -67,7 +67,7 @@ export function PostureManagementPage() {
   if (!summary) {
     return (
       <div className="p-8 text-center text-muted-foreground">
-        No dado of postura disponível
+        No posture data available
       </div>
     );
   }

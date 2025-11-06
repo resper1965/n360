@@ -1,6 +1,6 @@
 /**
  * Risk Engine v2 Page
- * Dashboard avançado of cálculo of risks (Inherent + Residual)
+ * Dashboard advanced calculation of risks (Inherent + Residual)
  */
 
 import { useState, useEffect } from 'react';
@@ -109,7 +109,7 @@ export function RiskEnginePage() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight">Risks</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Cálculo avançado of Inherent Risk e Residual
+            Advanced calculation of Inherent Risk e Residual
           </p>
         </div>
         <ExportPDFButton
@@ -294,14 +294,14 @@ export function RiskEnginePage() {
         </Card>
       </div>
 
-      {/* Análise of Effectiveness */}
+      {/* Analysis of Effectiveness */}
       <Card className="shadow-elegant">
         <CardHeader>
-          <CardTitle>Análise of Effectiveness of Controles</CardTitle>
+          <CardTitle>Analysis of Effectiveness of Controles</CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
-            {/* Gráfico of comparação */}
+            {/* Comparison Chart */}
             <div className="flex items-center gap-4">
               <div className="flex-1 space-y-2">
                 <div className="text-sm font-medium">Inherent Risk Medium</div>
@@ -339,7 +339,7 @@ export function RiskEnginePage() {
               </div>
             </div>
 
-            {/* Distribuição */}
+            {/* Distribution */}
             <div className="grid grid-cols-4 gap-4 pt-4 border-t border-border">
               <div className="text-center">
                 <div className="text-2xl font-bold text-red-500">{stats.critical}</div>
@@ -362,7 +362,7 @@ export function RiskEnginePage() {
         </CardContent>
       </Card>
 
-      {/* Explicação of Modelo */}
+      {/* Explanation of Model */}
       <Card className="shadow-elegant bg-muted/30">
         <CardHeader>
           <CardTitle>Como Funciona o Risk Engine v2</CardTitle>
@@ -374,7 +374,7 @@ export function RiskEnginePage() {
               Inherent Risk = Likelihood × Impact
             </code>
             <p className="text-muted-foreground mt-2">
-              O risk antes of qualquer controle ser aplicado. Representa a exposição pura of organization.
+              The risk before any control is applied. Represents the pure organizational exposure.
             </p>
           </div>
 
@@ -384,7 +384,7 @@ export function RiskEnginePage() {
               Residual Risk = Inherent Risk × (1 - Control Effectiveness)
             </code>
             <p className="text-muted-foreground mt-2">
-              O risk que permanece após a aplicação control. Este é o risk real of organization.
+              The risk that remains after control application. This is the actual organizational risk.
             </p>
           </div>
 
@@ -394,7 +394,7 @@ export function RiskEnginePage() {
               Reduction = ((Inherent - Residual) / Inherent) × 100%
             </code>
             <p className="text-muted-foreground mt-2">
-              Percentual of redução of risk. Quanto maior, mais efetivos são os controles.
+              Risk reduction percentage. The higher, the more effective the controls.
             </p>
           </div>
 

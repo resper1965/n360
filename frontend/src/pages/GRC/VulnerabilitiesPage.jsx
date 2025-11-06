@@ -250,12 +250,12 @@ export function VulnerabilitiesPage() {
                         )}
                         {vuln.exploitable && (
                           <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/20">
-                            Exploitável
+                            Exploitable
                           </Badge>
                         )}
                         {vuln.patch_available && (
                           <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">
-                            Patch Disponível
+                            Patch Available
                           </Badge>
                         )}
                       </div>

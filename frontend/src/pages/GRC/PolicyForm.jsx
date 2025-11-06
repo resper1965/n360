@@ -274,7 +274,7 @@ export default function PolicyForm() {
                     className="font-mono text-xs"
                   />
                   <p className="text-xs text-muted-foreground">
-                    Suporta Markdown. Use ## para títulos, **negrito**, etc.
+                    Supports Markdown. Use ## for headings, **bold**, etc.
                   </p>
                 </div>
               </CardContent>

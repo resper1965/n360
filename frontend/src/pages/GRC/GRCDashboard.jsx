@@ -137,7 +137,7 @@ export default function GRCDashboard() {
           </CardContent>
         </Card>
 
-        {/* Políticas Active */}
+        {/* Active Policies */}
         <Card className="group">
           <CardContent className="p-6">
             <div className="flex items-start justify-between mb-4">
@@ -150,7 +150,7 @@ export default function GRCDashboard() {
                 {data.policies.length}
               </div>
               <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                Políticas Active
+                Active Policies
               </div>
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">

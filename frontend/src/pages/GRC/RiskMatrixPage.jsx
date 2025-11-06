@@ -89,7 +89,7 @@ export default function RiskMatrixPage() {
             </div>
           </div>
           <div className="text-sm text-muted-foreground">
-            Click on uma célula para ver os risks
+            Click on a cell to view risks
           </div>
         </div>
       </Card>
@@ -134,7 +134,7 @@ export default function RiskMatrixPage() {
                       </div>
                     </td>
                     {[...Array(5)].map((_, likelihoodIdx) => {
-                      // Matriz é [likelihood][impact], mas precisamos inverter impact para display
+                      // Matrix is [likelihood][impact], but we need to invert impact para display
                       const cell = matrix[likelihoodIdx]?.[4 - impactIdx] || {
                         count: 0,
                         risks: [],

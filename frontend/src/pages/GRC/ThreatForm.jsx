@@ -1,6 +1,6 @@
 /**
  * Threat Form
- * Formulário para criar/editar threats (TVL - Threat & Vulnerability Library)
+ * Form to create/edit threats (TVL - Threat & Vulnerability Library)
  */
 
 import { useState, useEffect } from 'react';
@@ -159,7 +159,7 @@ export function ThreatForm() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Skull className="h-5 w-5" strokeWidth={1.5} />
-              Information about Ameaça
+              Threat Information
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
@@ -264,7 +264,7 @@ export function ThreatForm() {
                 placeholder="Email phishing, Remote code execution, Physical access, etc."
               />
               <p className="text-xs text-muted-foreground">
-                Como a threat poof se materializar (ex: email, rede, físico)
+                How the threat can materialize (ex: email, rede, físico)
               </p>
             </div>
 

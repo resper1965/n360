@@ -241,10 +241,10 @@ export default function RiskForm() {
               </CardContent>
             </Card>
 
-            {/* Análise of Risco */}
+            {/* Analysis of Risco */}
             <Card>
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg font-medium">Análise of Risco</CardTitle>
+                <CardTitle className="text-lg font-medium">Analysis of Risco</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {/* Likelihood e Impact */}

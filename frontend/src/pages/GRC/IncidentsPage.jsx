@@ -1,6 +1,6 @@
 /**
  * Incidents & CAPA Page
- * Gestão Incident Security e Corrective Actions
+ * Incident Management Security e Corrective Actions
  */
 
 import { useState, useEffect } from 'react';
@@ -310,7 +310,7 @@ export function IncidentsPage() {
           <div>
             <div className="font-medium mb-1">🛠️ CAPA (Corrective Action & Preventive Action)</div>
             <p className="text-muted-foreground">
-              Para cada incident, defina ações corretivas (resolve) e preventivas (prevent recurrence).
+              For each incident, define corrective actions (resolve) e preventivas (prevent recurrence).
             </p>
           </div>
           <div>

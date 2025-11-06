@@ -1,7 +1,7 @@
 /**
  * Incident Form
- * Formulário para criar/editar incidents of security
- * Inclui gestão of CAPA (Corrective & Preventive Actions)
+ * Form to create/edit incidents of security
+ * Includes CAPA management (Corrective & Preventive Actions)
  */
 
 import { useState, useEffect } from 'react';
