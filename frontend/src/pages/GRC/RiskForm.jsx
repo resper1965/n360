@@ -48,8 +48,8 @@ export default function RiskForm() {
         tags: data.tags || [],
       })
     } catch (error) {
-      console.error('Erro ao carregar risco:', error)
-      alert('Erro ao carregar risco')
+      console.error('Error loading risk:', error)
+      alert('Error loading risk')
     } finally {
       setLoading(false)
     }
@@ -94,18 +94,18 @@ export default function RiskForm() {
         navigate('/grc/risks')
       } else {
         const error = await response.json()
-        alert(`Erro: ${error.error || 'Erro ao salvar risco'}`)
+        alert(`Erro: ${error.error || 'Error saving risk'}`)
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Erro ao salvar risco')
+      alert('Error saving risk')
     } finally {
       setLoading(false)
     }
   }
 
   const handleDelete = async () => {
-    if (!confirm('Tem certeza que deseja excluir este risco?')) return
+    if (!confirm('Tem certeza que deseja excluir este risk?')) return
 
     try {
       setLoading(true)
@@ -117,11 +117,11 @@ export default function RiskForm() {
         alert('Risco excluído com sucesso!')
         navigate('/grc/risks')
       } else {
-        alert('Erro ao excluir risco')
+        alert('Error ao excluir risk')
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Erro ao excluir risco')
+      alert('Error ao excluir risk')
     } finally {
       setLoading(false)
     }
@@ -130,7 +130,7 @@ export default function RiskForm() {
   if (loading && isEdit) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="text-muted-foreground">Carregando...</div>
+        <div className="text-muted-foreground">Loading...</div>
       </div>
     )
   }
@@ -150,11 +150,11 @@ export default function RiskForm() {
               <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
             </Button>
             <h1 className="text-3xl font-medium tracking-tight">
-              {isEdit ? 'Editar Risco' : 'Novo Risco'}
+              {isEdit ? 'Edit Risco' : 'New Risco'}
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Atualize as informações do risco' : 'Cadastre um novo risco no sistema'}
+            {isEdit ? 'Atualize as informações do risk' : 'Cadastre um novo risk no sistema'}
           </p>
         </div>
 
@@ -166,7 +166,7 @@ export default function RiskForm() {
             className="border-red-500/20 text-red-400 hover:bg-red-500/10"
           >
             <Trash2 className="h-4 w-4 mr-2" strokeWidth={1.5} />
-            Excluir
+            Delete
           </Button>
         )}
       </div>
@@ -202,7 +202,7 @@ export default function RiskForm() {
                     name="description"
                     value={formData.description || ''}
                     onChange={handleChange}
-                    placeholder="Descreva o risco em detalhes..."
+                    placeholder="Descreva o risk em detalhes..."
                     rows={4}
                   />
                 </div>
@@ -373,7 +373,7 @@ export default function RiskForm() {
                     <option value="mitigating">Mitigando</option>
                     <option value="mitigated">Mitigado</option>
                     <option value="accepted">Aceito</option>
-                    <option value="closed">Fechado</option>
+                    <option value="closed">Closed</option>
                   </Select>
                 </div>
 
@@ -421,7 +421,7 @@ export default function RiskForm() {
                   onClick={() => navigate('/grc/risks')}
                   disabled={loading}
                 >
-                  Cancelar
+                  Cancel
                 </Button>
               </CardContent>
             </Card>

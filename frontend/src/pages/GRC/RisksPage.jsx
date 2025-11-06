@@ -37,7 +37,7 @@ export default function RisksPage() {
       setRisks(data.data || [])
       setPagination(data.pagination || {})
     } catch (error) {
-      console.error('Erro ao buscar riscos:', error)
+      console.error('Error ao buscar risks:', error)
     } finally {
       setLoading(false)
     }
@@ -64,7 +64,7 @@ export default function RisksPage() {
     mitigating: 'Mitigando',
     mitigated: 'Mitigado',
     accepted: 'Aceito',
-    closed: 'Fechado',
+    closed: 'Closed',
   }
 
   return (
@@ -77,12 +77,12 @@ export default function RisksPage() {
             Gestão de Riscos
           </h1>
           <p className="text-muted-foreground mt-1">
-            Identificação e mitigação de riscos organizacionais
+            Identificação e mitigação de risks organizacionais
           </p>
         </div>
         <Button onClick={() => navigate('/grc/risks/new')}>
           <Plus className="h-4 w-4 mr-2" />
-          Novo Risco
+          New Risco
         </Button>
       </div>
 
@@ -94,7 +94,7 @@ export default function RisksPage() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
               type="text"
-              placeholder="Buscar riscos..."
+              placeholder="Search risks..."
               className="w-full pl-10 pr-4 py-2 rounded-lg border bg-background"
               value={filters.search}
               onChange={(e) =>
@@ -114,7 +114,7 @@ export default function RisksPage() {
             <option value="mitigating">Mitigando</option>
             <option value="mitigated">Mitigado</option>
             <option value="accepted">Aceito</option>
-            <option value="closed">Fechado</option>
+            <option value="closed">Closed</option>
           </select>
 
           {/* Category Filter */}
@@ -185,12 +185,12 @@ export default function RisksPage() {
       <Card>
         {loading ? (
           <div className="p-12 text-center text-muted-foreground">
-            Carregando riscos...
+            Carregando risks...
           </div>
         ) : risks.length === 0 ? (
           <div className="p-12 text-center">
             <AlertTriangle className="h-12 w-12 mx-auto mb-4 text-muted-foreground opacity-50" />
-            <p className="text-muted-foreground">Nenhum risco encontrado</p>
+            <p className="text-muted-foreground">No risk encontrado</p>
             <Button
               variant="outline"
               className="mt-4"
@@ -256,7 +256,7 @@ export default function RisksPage() {
           <div className="p-4 border-t flex items-center justify-between">
             <div className="text-sm text-muted-foreground">
               Página {pagination.page} de {pagination.totalPages} ({pagination.total}{' '}
-              riscos)
+              risks)
             </div>
             <div className="flex gap-2">
               <Button

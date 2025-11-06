@@ -22,7 +22,7 @@ export default function CISODashboard() {
       const response = await api.get('/api/dashboard/ciso')
       setData(response.data)
     } catch (error) {
-      console.error('Erro ao carregar dashboard:', error)
+      console.error('Error loading dashboard:', error)
       // Dados mockados para demonstração
       setData({
         summary: {
@@ -108,7 +108,7 @@ export default function CISODashboard() {
       {/* Header */}
       <div className="space-y-1">
         <h1 className="text-3xl font-medium tracking-tight">Dashboard CISO</h1>
-        <p className="text-sm text-muted-foreground">Visão executiva da postura de segurança</p>
+        <p className="text-sm text-muted-foreground">Executive security posture overview</p>
       </div>
 
       {/* KPI Cards - Elegant Grid */}
@@ -129,7 +129,7 @@ export default function CISODashboard() {
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">
               <div className="text-xs text-muted-foreground">
-                {summary.open_risks || 0} riscos abertos
+                {summary.open_risks || 0} risks open
               </div>
             </div>
           </CardContent>
@@ -151,7 +151,7 @@ export default function CISODashboard() {
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">
               <div className="text-xs text-muted-foreground">
-                Média de conformidade
+                Average compliance
               </div>
             </div>
           </CardContent>
@@ -173,7 +173,7 @@ export default function CISODashboard() {
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">
               <div className="text-xs text-muted-foreground">
-                Últimas 24 horas
+                Últimas 24 hours
               </div>
             </div>
           </CardContent>
@@ -195,7 +195,7 @@ export default function CISODashboard() {
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">
               <div className="text-xs text-muted-foreground">
-                Em progresso e pendentes
+                In progress e pending
               </div>
             </div>
           </CardContent>
@@ -241,8 +241,8 @@ export default function CISODashboard() {
               ) : (
                 <div className="text-center py-12 text-muted-foreground">
                   <Shield className="h-10 w-10 mx-auto mb-3 opacity-30" strokeWidth={1.5} />
-                  <p className="text-sm">Nenhum risco cadastrado</p>
-                  <p className="text-xs mt-1 opacity-70">Configure riscos no módulo GRC</p>
+                  <p className="text-sm">No risk registered</p>
+                  <p className="text-xs mt-1 opacity-70">Configure risks no módulo GRC</p>
                 </div>
               )}
             </CardContent>
@@ -285,8 +285,8 @@ export default function CISODashboard() {
               ) : (
                 <div className="text-center py-12 text-muted-foreground">
                   <CheckCircle className="h-10 w-10 mx-auto mb-3 opacity-30" strokeWidth={1.5} />
-                  <p className="text-sm">Nenhum alerta crítico nas últimas 24 horas</p>
-                  <p className="text-xs mt-1 opacity-70">Sistema operando normalmente</p>
+                  <p className="text-sm">No alert critical nas last 24 hours</p>
+                  <p className="text-xs mt-1 opacity-70">System operating normally</p>
                 </div>
               )}
             </CardContent>

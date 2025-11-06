@@ -56,8 +56,8 @@ export default function ControlForm() {
         tags: data.tags || [],
       })
     } catch (error) {
-      console.error('Erro ao carregar controle:', error)
-      alert('Erro ao carregar controle')
+      console.error('Error loading controle:', error)
+      alert('Error loading controle')
     } finally {
       setLoading(false)
     }
@@ -101,8 +101,8 @@ export default function ControlForm() {
 
       alert('Evidência enviada com sucesso!')
     } catch (error) {
-      console.error('Erro ao enviar evidência:', error)
-      alert('Erro ao enviar evidência')
+      console.error('Error ao enviar evidência:', error)
+      alert('Error ao enviar evidência')
     } finally {
       setUploadingEvidence(false)
     }
@@ -140,11 +140,11 @@ export default function ControlForm() {
         navigate('/grc/controls')
       } else {
         const error = await response.json()
-        alert(`Erro: ${error.error || 'Erro ao salvar controle'}`)
+        alert(`Erro: ${error.error || 'Error saving controle'}`)
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Erro ao salvar controle')
+      alert('Error saving controle')
     } finally {
       setLoading(false)
     }
@@ -163,11 +163,11 @@ export default function ControlForm() {
         alert('Controle excluído com sucesso!')
         navigate('/grc/controls')
       } else {
-        alert('Erro ao excluir controle')
+        alert('Error ao excluir controle')
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Erro ao excluir controle')
+      alert('Error ao excluir controle')
     } finally {
       setLoading(false)
     }
@@ -176,7 +176,7 @@ export default function ControlForm() {
   if (loading && isEdit) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="text-muted-foreground">Carregando...</div>
+        <div className="text-muted-foreground">Loading...</div>
       </div>
     )
   }
@@ -196,7 +196,7 @@ export default function ControlForm() {
               <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
             </Button>
             <h1 className="text-3xl font-medium tracking-tight">
-              {isEdit ? 'Editar Controle' : 'Novo Controle'}
+              {isEdit ? 'Edit Controle' : 'New Controle'}
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
@@ -212,7 +212,7 @@ export default function ControlForm() {
             className="border-red-500/20 text-red-400 hover:bg-red-500/10"
           >
             <Trash2 className="h-4 w-4 mr-2" strokeWidth={1.5} />
-            Excluir
+            Delete
           </Button>
         )}
       </div>
@@ -533,7 +533,7 @@ export default function ControlForm() {
                   onClick={() => navigate('/grc/controls')}
                   disabled={loading}
                 >
-                  Cancelar
+                  Cancel
                 </Button>
               </CardContent>
             </Card>

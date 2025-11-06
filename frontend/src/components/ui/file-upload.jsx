@@ -241,7 +241,7 @@ export function FileUploadWithStatus({
       {uploadStatus === 'error' && (
         <div className="flex items-center gap-2 text-xs text-red-400">
           <AlertCircle className="h-3.5 w-3.5" strokeWidth={1.5} />
-          Erro ao enviar arquivo. Tente novamente.
+          Error ao enviar arquivo. Tente novamente.
         </div>
       )}
     </div>

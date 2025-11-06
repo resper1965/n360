@@ -19,7 +19,7 @@ export default function RiskMatrixPage() {
       const data = await response.json()
       setMatrix(data.matrix || [])
     } catch (error) {
-      console.error('Erro ao buscar matriz:', error)
+      console.error('Error ao buscar matriz:', error)
       // Criar matriz vazia 5x5
       setMatrix(Array(5).fill().map(() => Array(5).fill({ count: 0, risks: [] })))
     } finally {
@@ -45,7 +45,7 @@ export default function RiskMatrixPage() {
 
   const handleCellClick = (likelihood, impact, cell) => {
     if (cell.count > 0) {
-      // Navegar para lista de riscos filtrados
+      // Navegar para lista de risks filtrados
       navigate(`/grc/risks?likelihood=${likelihood + 1}&impact=${impact + 1}`)
     }
   }
@@ -60,7 +60,7 @@ export default function RiskMatrixPage() {
             Matriz de Riscos
           </h1>
           <p className="text-muted-foreground mt-1">
-            Mapa de calor (heat map) de riscos - Likelihood × Impact
+            Mapa de calor (heat map) de risks - Likelihood × Impact
           </p>
         </div>
         <Button variant="outline" onClick={() => navigate('/grc/risks')}>
@@ -90,7 +90,7 @@ export default function RiskMatrixPage() {
             </div>
           </div>
           <div className="text-sm text-muted-foreground">
-            Clique em uma célula para ver os riscos
+            Clique em uma célula para ver os risks
           </div>
         </div>
       </Card>

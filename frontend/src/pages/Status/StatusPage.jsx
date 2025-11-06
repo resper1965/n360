@@ -17,7 +17,7 @@ export default function StatusPage() {
       const response = await api.get('/api/dashboard')
       setStatus(response.data)
     } catch (error) {
-      console.error('Erro ao carregar status:', error)
+      console.error('Error loading status:', error)
     } finally {
       setLoading(false)
     }

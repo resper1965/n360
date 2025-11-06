@@ -66,7 +66,7 @@ export function ExecutiveDashboard() {
   }
 
   if (!data) {
-    return <div className="text-center text-muted-foreground p-8">Erro ao carregar dados</div>;
+    return <div className="text-center text-muted-foreground p-8">Error loading dados</div>;
   }
 
   // Calcular KPIs
@@ -104,7 +104,7 @@ export function ExecutiveDashboard() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight">Executive Dashboard</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Visão executiva de riscos, compliance e incidentes
+            Visão executiva de risks, compliance e incidentes
           </p>
         </div>
         <ExportPDFButton
@@ -191,7 +191,7 @@ export function ExecutiveDashboard() {
 
       {/* Risk Heatmap + Narrativa */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-grid-lg">
-        {/* Risk Heatmap Interativo */}
+        {/* Risk Heatmap Interactive */}
         <Card className="shadow-elegant">
           <CardHeader>
             <CardTitle>Mapa de Calor de Riscos</CardTitle>
@@ -228,7 +228,7 @@ export function ExecutiveDashboard() {
                           bgColor,
                           count === 0 && "opacity-30"
                         )}
-                        title={`${count} risco(s) - ${score} pontos`}
+                        title={`${count} risk(s) - ${score} pontos`}
                       >
                         {count > 0 ? count : ''}
                       </div>
@@ -301,14 +301,14 @@ export function ExecutiveDashboard() {
               })
             ) : (
               <p className="text-muted-foreground text-center py-8">
-                Nenhum risco cadastrado
+                No risk registered
               </p>
             )}
 
             <div className="pt-4 border-t border-border">
               <p className="text-xs text-muted-foreground">
-                <strong>💡 Recomendação Executiva:</strong> Priorizar mitigação dos {criticalRisks} riscos 
-                críticos através da implementação de controles adicionais e revisão de políticas.
+                <strong>💡 Recomendação Executiva:</strong> Priorizar mitigação dos {criticalRisks} risks 
+                critical através da implementação de controles adicionais e revisão de políticas.
               </p>
             </div>
           </CardContent>
@@ -325,7 +325,7 @@ export function ExecutiveDashboard() {
             <div className="font-medium mb-2">🎯 Status Geral de Segurança</div>
             <p className="text-muted-foreground">
               A organização mantém uma postura de conformidade de <strong>{data.compliance?.overall_score || 75}%</strong>, 
-              com {totalRisks} riscos identificados, dos quais {criticalRisks} são considerados críticos 
+              com {totalRisks} risks identificados, dos quais {criticalRisks} são considerados critical 
               e requerem atenção imediata da liderança.
             </p>
           </div>
@@ -333,7 +333,7 @@ export function ExecutiveDashboard() {
           <div>
             <div className="font-medium mb-2">⚠️ Principais Preocupações</div>
             <ul className="list-disc list-inside text-muted-foreground space-y-1">
-              <li>{criticalRisks} riscos críticos identificados que podem impactar operações</li>
+              <li>{criticalRisks} risks critical identificados que podem impactar operações</li>
               <li>{openIncidents} incidentes de segurança em investigação</li>
               <li>Efetividade de controles em {controlEffectiveness}% (meta: 90%)</li>
             </ul>
@@ -342,10 +342,10 @@ export function ExecutiveDashboard() {
           <div>
             <div className="font-medium mb-2">✅ Ações Recomendadas</div>
             <ol className="list-decimal list-inside text-muted-foreground space-y-1">
-              <li>Revisar e mitigar os {criticalRisks} riscos críticos identificados</li>
-              <li>Implementar controles adicionais para riscos residuais altos</li>
-              <li>Acelerar resolução dos {openIncidents} incidentes abertos</li>
-              <li>Investir em treinamento de segurança para reduzir riscos de erro humano</li>
+              <li>Revisar e mitigar os {criticalRisks} risks critical identificados</li>
+              <li>Implementar controles adicionais para risks residuais altos</li>
+              <li>Acelerar resolução dos {openIncidents} incidentes open</li>
+              <li>Investir em treinamento de segurança para reduzir risks de erro humano</li>
             </ol>
           </div>
 

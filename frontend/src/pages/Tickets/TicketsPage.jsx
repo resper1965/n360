@@ -18,7 +18,7 @@ export default function TicketsPage() {
       const response = await api.get('/api/tickets')
       setTickets(response.data.tickets || [])
     } catch (error) {
-      console.error('Erro ao carregar tickets:', error)
+      console.error('Error loading tickets:', error)
     } finally {
       setLoading(false)
     }
@@ -49,11 +49,11 @@ export default function TicketsPage() {
       <div className="flex items-center justify-between">
         <div>
           <h1 className="text-3xl font-semibold text-ness-text">Sistema de Tickets</h1>
-          <p className="text-ness-muted mt-1">Gerenciamento de incidentes e requisições</p>
+          <p className="text-ness-muted mt-1">Incident and request management</p>
         </div>
         <Button onClick={() => navigate('/tickets/new')}>
           <Plus className="h-4 w-4 mr-2" strokeWidth={1.5} />
-          Novo Ticket
+          New Ticket
         </Button>
       </div>
 
@@ -104,8 +104,8 @@ export default function TicketsPage() {
       {!loading && tickets.length === 0 && (
         <div className="bg-ness-surface border border-ness-border rounded-xl p-12 text-center">
           <Ticket size={48} className="mx-auto mb-3 text-ness-muted opacity-50" />
-          <p className="text-ness-muted">Nenhum ticket criado</p>
-          <p className="text-sm text-ness-muted mt-2">Clique em "Novo Ticket" para começar</p>
+          <p className="text-ness-muted">No ticket criado</p>
+          <p className="text-sm text-ness-muted mt-2">Clique em "New Ticket" para começar</p>
         </div>
       )}
     </div>

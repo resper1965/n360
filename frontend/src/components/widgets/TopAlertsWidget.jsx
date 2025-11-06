@@ -17,7 +17,7 @@ export default function TopAlertsWidget() {
       const data = await response.json()
       setAlerts(data.data || [])
     } catch (error) {
-      console.error('Erro ao buscar top alerts:', error)
+      console.error('Error ao buscar top alerts:', error)
     } finally {
       setLoading(false)
     }
@@ -44,9 +44,9 @@ export default function TopAlertsWidget() {
       </div>
       <div className="px-6 pb-6">
         {loading ? (
-          <div className="text-xs text-muted-foreground">Carregando...</div>
+          <div className="text-xs text-muted-foreground">Loading...</div>
         ) : alerts.length === 0 ? (
-          <div className="text-xs text-muted-foreground opacity-70">Nenhum alerta recente</div>
+          <div className="text-xs text-muted-foreground opacity-70">No alert recente</div>
         ) : (
           <div className="space-y-2">
             {alerts.map((alert, index) => (

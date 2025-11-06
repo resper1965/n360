@@ -35,8 +35,8 @@ export default function TicketForm() {
       const data = await response.json()
       setFormData(data)
     } catch (error) {
-      console.error('Erro ao carregar ticket:', error)
-      alert('Erro ao carregar ticket')
+      console.error('Error loading ticket:', error)
+      alert('Error loading ticket')
     } finally {
       setLoading(false)
     }
@@ -71,11 +71,11 @@ export default function TicketForm() {
         navigate('/tickets')
       } else {
         const error = await response.json()
-        alert(`Erro: ${error.error || 'Erro ao salvar ticket'}`)
+        alert(`Erro: ${error.error || 'Error saving ticket'}`)
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Erro ao salvar ticket')
+      alert('Error saving ticket')
     } finally {
       setLoading(false)
     }
@@ -94,11 +94,11 @@ export default function TicketForm() {
         alert('Ticket excluído com sucesso!')
         navigate('/tickets')
       } else {
-        alert('Erro ao excluir ticket')
+        alert('Error ao excluir ticket')
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Erro ao excluir ticket')
+      alert('Error ao excluir ticket')
     } finally {
       setLoading(false)
     }
@@ -107,7 +107,7 @@ export default function TicketForm() {
   if (loading && isEdit) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="text-muted-foreground">Carregando...</div>
+        <div className="text-muted-foreground">Loading...</div>
       </div>
     )
   }
@@ -127,7 +127,7 @@ export default function TicketForm() {
               <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
             </Button>
             <h1 className="text-3xl font-medium tracking-tight">
-              {isEdit ? 'Editar Ticket' : 'Novo Ticket'}
+              {isEdit ? 'Edit Ticket' : 'New Ticket'}
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
@@ -143,7 +143,7 @@ export default function TicketForm() {
             className="border-red-500/20 text-red-400 hover:bg-red-500/10"
           >
             <Trash2 className="h-4 w-4 mr-2" strokeWidth={1.5} />
-            Excluir
+            Delete
           </Button>
         )}
       </div>
@@ -227,7 +227,7 @@ export default function TicketForm() {
                       <option value="open">Aberto</option>
                       <option value="in_progress">Em Progresso</option>
                       <option value="resolved">Resolvido</option>
-                      <option value="closed">Fechado</option>
+                      <option value="closed">Closed</option>
                     </Select>
                   </div>
                 </div>
@@ -255,7 +255,7 @@ export default function TicketForm() {
                   onClick={() => navigate('/tickets')}
                   disabled={loading}
                 >
-                  Cancelar
+                  Cancel
                 </Button>
               </CardContent>
             </Card>

@@ -36,7 +36,7 @@ export default function PoliciesPage() {
       setPolicies(data.data || [])
       setPagination(data.pagination || {})
     } catch (error) {
-      console.error('Erro ao buscar políticas:', error)
+      console.error('Error ao buscar políticas:', error)
     } finally {
       setLoading(false)
     }
@@ -93,7 +93,7 @@ export default function PoliciesPage() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
               type="text"
-              placeholder="Buscar políticas..."
+              placeholder="Search políticas..."
               className="w-full pl-10 pr-4 py-2 rounded-lg border bg-background"
               value={filters.search}
               onChange={(e) =>

@@ -53,7 +53,7 @@ export default function Sidebar({ isOpen }) {
       name: 'SOC',
       icon: ShieldAlert,
       items: [
-        { name: 'Alertas', icon: AlertTriangle, path: '/soc/alerts' },
+        { name: 'Alerts', icon: AlertTriangle, path: '/soc/alerts' },
         { name: 'Posture', icon: ShieldCheck, path: '/soc/posture' },
       ]
     },
@@ -62,7 +62,7 @@ export default function Sidebar({ isOpen }) {
       name: 'NOC',
       icon: Activity,
       items: [
-        { name: 'Problemas', icon: Activity, path: '/noc/problems' },
+        { name: 'Problems', icon: Activity, path: '/noc/problems' },
       ]
     },
     {

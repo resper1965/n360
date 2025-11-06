@@ -28,7 +28,7 @@ export default function ProblemsPage() {
       if (error) throw error
       setProblems(data || [])
     } catch (error) {
-      console.error('Erro ao carregar problemas:', error)
+      console.error('Error loading problems:', error)
     } finally {
       setLoading(false)
     }
@@ -49,17 +49,17 @@ export default function ProblemsPage() {
     <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-semibold text-ness-text">NOC - Problemas de Infraestrutura</h1>
-        <p className="text-ness-muted mt-1">Problemas do Zabbix e monitoramento</p>
+        <p className="text-ness-muted mt-1">Problemas do Monitoring e monitoramento</p>
       </div>
 
       <div className="bg-ness-surface border border-ness-border rounded-xl overflow-hidden">
         {loading ? (
-          <div className="p-12 text-center text-ness-muted">Carregando problemas...</div>
+          <div className="p-12 text-center text-ness-muted">Carregando problems...</div>
         ) : problems.length === 0 ? (
           <div className="p-12 text-center text-ness-muted">
             <Server size={48} className="mx-auto mb-3 opacity-50 text-green-500" />
-            <p>Nenhum problema ativo</p>
-            <p className="text-sm mt-2">Sistema operando normalmente</p>
+            <p>No problem active</p>
+            <p className="text-sm mt-2">System operating normally</p>
           </div>
         ) : (
           <div className="divide-y divide-ness-border">

@@ -61,7 +61,7 @@ export default function ThreatsPage() {
               <option value="physical">Física</option>
               <option value="natural">Natural</option>
             </Select>
-            <Input placeholder="Buscar ameaças..." value={filters.search} onChange={(e) => setFilters(f => ({ ...f, search: e.target.value }))} />
+            <Input placeholder="Search ameaças..." value={filters.search} onChange={(e) => setFilters(f => ({ ...f, search: e.target.value }))} />
           </div>
         </CardContent>
       </Card>
@@ -72,7 +72,7 @@ export default function ThreatsPage() {
         </CardHeader>
         <CardContent>
           {loading ? (
-            <div className="text-center py-12 text-muted-foreground">Carregando...</div>
+            <div className="text-center py-12 text-muted-foreground">Loading...</div>
           ) : threats.length === 0 ? (
             <div className="text-center py-12 text-muted-foreground">
               <AlertTriangle className="h-10 w-10 mx-auto mb-3 opacity-30" strokeWidth={1.5} />

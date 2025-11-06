@@ -22,8 +22,8 @@ export default function AssetForm() {
     confidentiality_impact: 3,
     integrity_impact: 3,
     availability_impact: 3,
-    wazuh_agent_id: '',
-    zabbix_host_id: '',
+    siem_agent_id: '',
+    monitoring_host_id: '',
     tags: []
   })
 
@@ -39,7 +39,7 @@ export default function AssetForm() {
       setFormData({ ...data, tags: data.tags || [] })
     } catch (error) {
       console.error('Erro:', error)
-      alert('Erro ao carregar ativo')
+      alert('Error loading active')
     } finally {
       setLoading(false)
     }
@@ -73,18 +73,18 @@ export default function AssetForm() {
         alert(isEdit ? 'Ativo atualizado!' : 'Ativo criado!')
         navigate('/grc/assets')
       } else {
-        alert('Erro ao salvar ativo')
+        alert('Error saving active')
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Erro ao salvar ativo')
+      alert('Error saving active')
     } finally {
       setLoading(false)
     }
   }
 
   const handleDelete = async () => {
-    if (!confirm('Excluir este ativo?')) return
+    if (!confirm('Delete this active?')) return
 
     try {
       setLoading(true)
@@ -93,7 +93,7 @@ export default function AssetForm() {
       navigate('/grc/assets')
     } catch (error) {
       console.error('Erro:', error)
-      alert('Erro ao excluir')
+      alert('Error ao excluir')
     } finally {
       setLoading(false)
     }
@@ -113,14 +113,14 @@ export default function AssetForm() {
             <Button variant="outline" size="sm" onClick={() => navigate('/grc/assets')} className="border-border/50">
               <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
             </Button>
-            <h1 className="text-3xl font-medium tracking-tight">{isEdit ? 'Editar Ativo' : 'Novo Ativo'}</h1>
+            <h1 className="text-3xl font-medium tracking-tight">{isEdit ? 'Edit Ativo' : 'New Ativo'}</h1>
           </div>
           <p className="text-sm text-muted-foreground">CMDB - Configuration Management Database</p>
         </div>
         {isEdit && (
           <Button variant="outline" onClick={handleDelete} disabled={loading} className="border-red-500/20 text-red-400 hover:bg-red-500/10">
             <Trash2 className="h-4 w-4 mr-2" strokeWidth={1.5} />
-            Excluir
+            Delete
           </Button>
         )}
       </div>
@@ -207,12 +207,12 @@ export default function AssetForm() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="wazuh_agent_id">Wazuh Agent ID</Label>
-                  <Input id="wazuh_agent_id" name="wazuh_agent_id" value={formData.wazuh_agent_id || ''} onChange={handleChange} placeholder="001" />
+                  <Label htmlFor="siem_agent_id">SIEM Agent ID</Label>
+                  <Input id="siem_agent_id" name="siem_agent_id" value={formData.siem_agent_id || ''} onChange={handleChange} placeholder="001" />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="zabbix_host_id">Zabbix Host ID</Label>
-                  <Input id="zabbix_host_id" name="zabbix_host_id" value={formData.zabbix_host_id || ''} onChange={handleChange} placeholder="10084" />
+                  <Label htmlFor="monitoring_host_id">Monitoring Host ID</Label>
+                  <Input id="monitoring_host_id" name="monitoring_host_id" value={formData.monitoring_host_id || ''} onChange={handleChange} placeholder="10084" />
                 </div>
               </CardContent>
             </Card>
@@ -224,7 +224,7 @@ export default function AssetForm() {
                   {loading ? 'Salvando...' : (isEdit ? 'Atualizar' : 'Criar Ativo')}
                 </Button>
                 <Button type="button" variant="outline" className="w-full border-border/50" onClick={() => navigate('/grc/assets')} disabled={loading}>
-                  Cancelar
+                  Cancel
                 </Button>
               </CardContent>
             </Card>

@@ -1,6 +1,6 @@
 /**
  * Posture Score Widget
- * Exibe resumo da postura de segurança (Wazuh SCA) no CISO Dashboard
+ * Exibe resumo da postura de segurança (SIEM SCA) no CISO Dashboard
  */
 
 import { useEffect, useState } from 'react';
@@ -22,7 +22,7 @@ export function PostureScoreWidget() {
         const res = await fetch(`${window.location.origin}/api/posture/summary`);
         
         if (!res.ok) {
-          throw new Error('Falha ao buscar dados de postura');
+          throw new Error('Failed to fetch dados de postura');
         }
         
         const data = await res.json();
@@ -157,10 +157,10 @@ export function PostureScoreWidget() {
           </div>
         )}
 
-        {/* Ver Detalhes */}
+        {/* Ver Details */}
         <div className="pt-2 border-t border-border/50">
           <button className="text-xs text-primary hover:underline w-full text-left transition-colors">
-            Ver Detalhes →
+            Ver Details →
           </button>
         </div>
       </CardContent>

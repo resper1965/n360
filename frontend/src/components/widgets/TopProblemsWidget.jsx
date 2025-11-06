@@ -17,7 +17,7 @@ export default function TopProblemsWidget() {
       const data = await response.json()
       setProblems(data.data || [])
     } catch (error) {
-      console.error('Erro ao buscar top problems:', error)
+      console.error('Error ao buscar top problems:', error)
     } finally {
       setLoading(false)
     }
@@ -44,9 +44,9 @@ export default function TopProblemsWidget() {
       </div>
       <div className="px-6 pb-6">
         {loading ? (
-          <div className="text-xs text-muted-foreground">Carregando...</div>
+          <div className="text-xs text-muted-foreground">Loading...</div>
         ) : problems.length === 0 ? (
-          <div className="text-xs text-muted-foreground opacity-70">Nenhum problema ativo</div>
+          <div className="text-xs text-muted-foreground opacity-70">No problem active</div>
         ) : (
           <div className="space-y-2">
             {problems.map((problem, index) => (

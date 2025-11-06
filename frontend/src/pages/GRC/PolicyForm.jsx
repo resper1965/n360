@@ -50,8 +50,8 @@ export default function PolicyForm() {
         tags: data.tags || [],
       })
     } catch (error) {
-      console.error('Erro ao carregar política:', error)
-      alert('Erro ao carregar política')
+      console.error('Error loading política:', error)
+      alert('Error loading política')
     } finally {
       setLoading(false)
     }
@@ -93,8 +93,8 @@ export default function PolicyForm() {
 
       alert('Documento enviado com sucesso!')
     } catch (error) {
-      console.error('Erro ao enviar documento:', error)
-      alert('Erro ao enviar documento')
+      console.error('Error ao enviar documento:', error)
+      alert('Error ao enviar documento')
     } finally {
       setUploadingDoc(false)
     }
@@ -121,11 +121,11 @@ export default function PolicyForm() {
         navigate('/grc/policies')
       } else {
         const error = await response.json()
-        alert(`Erro: ${error.error || 'Erro ao salvar política'}`)
+        alert(`Erro: ${error.error || 'Error saving política'}`)
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Erro ao salvar política')
+      alert('Error saving política')
     } finally {
       setLoading(false)
     }
@@ -144,11 +144,11 @@ export default function PolicyForm() {
         alert('Política excluída com sucesso!')
         navigate('/grc/policies')
       } else {
-        alert('Erro ao excluir política')
+        alert('Error ao excluir política')
       }
     } catch (error) {
       console.error('Erro:', error)
-      alert('Erro ao excluir política')
+      alert('Error ao excluir política')
     } finally {
       setLoading(false)
     }
@@ -157,7 +157,7 @@ export default function PolicyForm() {
   if (loading && isEdit) {
     return (
       <div className="flex items-center justify-center h-full">
-        <div className="text-muted-foreground">Carregando...</div>
+        <div className="text-muted-foreground">Loading...</div>
       </div>
     )
   }
@@ -177,7 +177,7 @@ export default function PolicyForm() {
               <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
             </Button>
             <h1 className="text-3xl font-medium tracking-tight">
-              {isEdit ? 'Editar Política' : 'Nova Política'}
+              {isEdit ? 'Edit Política' : 'Nova Política'}
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
@@ -193,7 +193,7 @@ export default function PolicyForm() {
             className="border-red-500/20 text-red-400 hover:bg-red-500/10"
           >
             <Trash2 className="h-4 w-4 mr-2" strokeWidth={1.5} />
-            Excluir
+            Delete
           </Button>
         )}
       </div>
@@ -393,7 +393,7 @@ export default function PolicyForm() {
                   onClick={() => navigate('/grc/policies')}
                   disabled={loading}
                 >
-                  Cancelar
+                  Cancel
                 </Button>
               </CardContent>
             </Card>

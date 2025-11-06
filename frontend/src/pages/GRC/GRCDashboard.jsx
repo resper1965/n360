@@ -43,7 +43,7 @@ export default function GRCDashboard() {
         complianceScores: complianceData.data || [],
       })
     } catch (error) {
-      console.error('Erro ao carregar dashboard GRC:', error)
+      console.error('Error loading dashboard GRC:', error)
     } finally {
       setLoading(false)
     }
@@ -102,7 +102,7 @@ export default function GRCDashboard() {
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">
               <div className="text-xs text-muted-foreground">
-                Média de conformidade
+                Average compliance
               </div>
             </div>
           </CardContent>
@@ -131,7 +131,7 @@ export default function GRCDashboard() {
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">
               <div className="text-xs text-muted-foreground">
-                {data.risks.filter((r) => r.status === 'open').length} riscos abertos
+                {data.risks.filter((r) => r.status === 'open').length} risks open
               </div>
             </div>
           </CardContent>
@@ -161,7 +161,7 @@ export default function GRCDashboard() {
           </CardContent>
         </Card>
 
-        {/* Controles Pendentes */}
+        {/* Controles Pendings */}
         <Card className="group">
           <CardContent className="p-6">
             <div className="flex items-start justify-between mb-4">
@@ -174,7 +174,7 @@ export default function GRCDashboard() {
                 {data.controls.length}
               </div>
               <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                Controles Pendentes
+                Controles Pendings
               </div>
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">
@@ -234,7 +234,7 @@ export default function GRCDashboard() {
             {data.complianceScores.length === 0 ? (
               <div className="text-center py-12 text-muted-foreground">
                 <Shield className="h-10 w-10 mx-auto mb-3 opacity-30" strokeWidth={1.5} />
-                <p className="text-sm">Nenhum framework configurado</p>
+                <p className="text-sm">No framework configurado</p>
                 <Button
                   variant="outline"
                   className="mt-4 border-border/50"
@@ -285,7 +285,7 @@ export default function GRCDashboard() {
             {data.risks.length === 0 ? (
               <div className="text-center py-12 text-muted-foreground">
                 <AlertTriangle className="h-10 w-10 mx-auto mb-3 opacity-30" strokeWidth={1.5} />
-                <p className="text-sm">Nenhum risco cadastrado</p>
+                <p className="text-sm">No risk registered</p>
                 <Button
                   variant="outline"
                   className="mt-4 border-border/50"

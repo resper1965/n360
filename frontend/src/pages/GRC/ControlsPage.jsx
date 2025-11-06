@@ -36,7 +36,7 @@ export default function ControlsPage() {
       setControls(data.data || [])
       setPagination(data.pagination || {})
     } catch (error) {
-      console.error('Erro ao buscar controles:', error)
+      console.error('Error ao buscar controles:', error)
     } finally {
       setLoading(false)
     }
@@ -73,7 +73,7 @@ export default function ControlsPage() {
         </div>
         <Button onClick={() => navigate('/grc/controls/new')}>
           <Plus className="h-4 w-4 mr-2" />
-          Novo Controle
+          New Controle
         </Button>
       </div>
 
@@ -85,7 +85,7 @@ export default function ControlsPage() {
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
             <input
               type="text"
-              placeholder="Buscar controles..."
+              placeholder="Search controles..."
               className="w-full pl-10 pr-4 py-2 rounded-lg border bg-background"
               value={filters.search}
               onChange={(e) =>
@@ -140,7 +140,7 @@ export default function ControlsPage() {
           </div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Pendentes</div>
+          <div className="text-sm text-muted-foreground">Pendings</div>
           <div className="text-2xl font-bold text-yellow-500">
             {controls.filter((c) => c.status === 'not_implemented' || c.status === 'planned').length}
           </div>
@@ -169,7 +169,7 @@ export default function ControlsPage() {
         ) : controls.length === 0 ? (
           <div className="p-12 text-center">
             <Shield className="h-12 w-12 mx-auto mb-4 text-muted-foreground opacity-50" />
-            <p className="text-muted-foreground">Nenhum controle encontrado</p>
+            <p className="text-muted-foreground">No controle encontrado</p>
             <Button
               variant="outline"
               className="mt-4"

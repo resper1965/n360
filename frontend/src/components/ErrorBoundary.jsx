@@ -94,7 +94,7 @@ class ErrorBoundary extends Component {
                   onClick={() => window.location.href = '/'}
                   variant="outline"
                 >
-                  Voltar ao Início
+                  Back ao Início
                 </Button>
               </div>
 

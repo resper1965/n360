@@ -69,7 +69,7 @@ export default function AssetsPage() {
         </div>
         <Button onClick={() => navigate('/grc/assets/new')}>
           <Plus className="h-4 w-4 mr-2" strokeWidth={1.5} />
-          Novo Ativo
+          New Ativo
         </Button>
       </div>
 
@@ -133,7 +133,7 @@ export default function AssetsPage() {
               <option value="service">Serviço</option>
             </Select>
             <Input
-              placeholder="Buscar ativos..."
+              placeholder="Search actives..."
               value={filters.search}
               onChange={(e) => setFilters(f => ({ ...f, search: e.target.value }))}
             />
@@ -148,11 +148,11 @@ export default function AssetsPage() {
         </CardHeader>
         <CardContent>
           {loading ? (
-            <div className="text-center py-12 text-muted-foreground">Carregando...</div>
+            <div className="text-center py-12 text-muted-foreground">Loading...</div>
           ) : assets.length === 0 ? (
             <div className="text-center py-12 text-muted-foreground">
               <Database className="h-10 w-10 mx-auto mb-3 opacity-30" strokeWidth={1.5} />
-              <p className="text-sm">Nenhum ativo cadastrado</p>
+              <p className="text-sm">No active registered</p>
             </div>
           ) : (
             <div className="space-y-2">

@@ -45,7 +45,7 @@ export function DeleteConfirmDialog({
             onClick={() => onOpenChange(false)}
             className="px-4 py-2 border border-border rounded-lg hover:bg-muted transition-colors"
           >
-            Cancelar
+            Cancel
           </button>
           <button
             onClick={() => {
@@ -54,7 +54,7 @@ export function DeleteConfirmDialog({
             }}
             className="px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors"
           >
-            Excluir
+            Delete
           </button>
         </DialogFooter>
       </DialogContent>

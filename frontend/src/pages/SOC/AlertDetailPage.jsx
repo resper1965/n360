@@ -22,7 +22,7 @@ export default function AlertDetailPage() {
       const data = await response.json()
       setAlert(data)
     } catch (error) {
-      console.error('Erro ao buscar alerta:', error)
+      console.error('Error ao buscar alert:', error)
     } finally {
       setLoading(false)
     }
@@ -37,7 +37,7 @@ export default function AlertDetailPage() {
       const updated = await response.json()
       setAlert(updated)
     } catch (error) {
-      console.error('Erro ao confirmar:', error)
+      console.error('Error ao confirmar:', error)
     } finally {
       setActionLoading(false)
     }
@@ -52,7 +52,7 @@ export default function AlertDetailPage() {
       const updated = await response.json()
       setAlert(updated)
     } catch (error) {
-      console.error('Erro ao resolver:', error)
+      console.error('Error ao resolver:', error)
     } finally {
       setActionLoading(false)
     }
@@ -61,7 +61,7 @@ export default function AlertDetailPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
-        <div className="text-muted-foreground">Carregando...</div>
+        <div className="text-muted-foreground">Loading...</div>
       </div>
     )
   }
@@ -71,7 +71,7 @@ export default function AlertDetailPage() {
       <div className="flex flex-col items-center justify-center h-64 space-y-4">
         <XCircle className="h-12 w-12 text-muted-foreground" />
         <div className="text-muted-foreground">Alerta não encontrado</div>
-        <Button onClick={() => navigate('/soc/alerts')}>Voltar</Button>
+        <Button onClick={() => navigate('/soc/alerts')}>Back</Button>
       </div>
     )
   }
@@ -97,7 +97,7 @@ export default function AlertDetailPage() {
             <ArrowLeft className="h-4 w-4" />
           </Button>
           <div>
-            <h1 className="text-2xl font-semibold">Detalhes do Alerta</h1>
+            <h1 className="text-2xl font-semibold">Details do Alerta</h1>
             <p className="text-sm text-muted-foreground">
               ID: {alert.id?.substring(0, 8)}...
             </p>

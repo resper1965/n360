@@ -138,7 +138,7 @@ export function IncidentForm() {
       }
     } catch (error) {
       console.error('Error saving incident:', error);
-      alert('Erro ao salvar incidente');
+      alert('Error saving incidente');
     } finally {
       setLoading(false);
     }
@@ -169,7 +169,7 @@ export function IncidentForm() {
     { value: 'open', label: 'Aberto', color: 'bg-red-500/10 text-red-500 border-red-500/20' },
     { value: 'investigating', label: 'Investigando', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' },
     { value: 'resolved', label: 'Resolvido', color: 'bg-green-500/10 text-green-500 border-green-500/20' },
-    { value: 'closed', label: 'Fechado', color: 'bg-muted/50 text-muted-foreground border-border/50' }
+    { value: 'closed', label: 'Closed', color: 'bg-muted/50 text-muted-foreground border-border/50' }
   ];
 
   const capaTypes = [
@@ -182,7 +182,7 @@ export function IncidentForm() {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-semibold tracking-tight">
-          {isEdit ? 'Editar' : 'Novo'} Incidente
+          {isEdit ? 'Edit' : 'Novo'} Incidente
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
           Registro de Incidentes de Segurança e CAPA
@@ -287,7 +287,7 @@ export function IncidentForm() {
                   onChange={(e) => setFormData({ ...formData, asset_id: e.target.value })}
                   className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <option value="">Nenhum asset selecionado</option>
+                  <option value="">No asset selecionado</option>
                   {assets.map((asset) => (
                     <option key={asset.id} value={asset.id}>
                       {asset.name} ({asset.type})
@@ -401,7 +401,7 @@ export function IncidentForm() {
 
             {/* Nova CAPA */}
             <div className="p-4 rounded-lg bg-muted/30 border border-border space-y-3">
-              <h4 className="text-sm font-medium">Adicionar CAPA</h4>
+              <h4 className="text-sm font-medium">Add CAPA</h4>
               
               <div className="space-y-2">
                 <Label htmlFor="new_capa_description">Descrição da Ação</Label>
@@ -456,7 +456,7 @@ export function IncidentForm() {
                 className="flex items-center gap-2 px-3 py-2 text-sm bg-muted hover:bg-muted/70 border border-border rounded-lg transition-colors"
               >
                 <Plus className="h-4 w-4" strokeWidth={1.5} />
-                Adicionar CAPA
+                Add CAPA
               </button>
             </div>
           </CardContent>
@@ -479,7 +479,7 @@ export function IncidentForm() {
             className="flex items-center gap-2 px-4 py-2 border border-border rounded-lg hover:bg-muted transition-colors"
           >
             <X className="h-4 w-4" strokeWidth={1.5} />
-            Cancelar
+            Cancel
           </button>
         </div>
       </form>

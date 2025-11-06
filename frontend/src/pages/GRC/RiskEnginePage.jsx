@@ -1,6 +1,6 @@
 /**
  * Risk Engine v2 Page
- * Dashboard avançado de cálculo de riscos (Inherent + Residual)
+ * Dashboard avançado de cálculo de risks (Inherent + Residual)
  */
 
 import { useState, useEffect } from 'react';
@@ -96,7 +96,7 @@ export function RiskEnginePage() {
       <div className="flex items-center justify-center h-96">
         <div className="text-center space-y-2">
           <TrendingUp className="h-8 w-8 text-muted-foreground mx-auto animate-pulse" strokeWidth={1.5} />
-          <div className="text-sm text-muted-foreground">Calculando riscos...</div>
+          <div className="text-sm text-muted-foreground">Calculando risks...</div>
         </div>
       </div>
     );
@@ -131,7 +131,7 @@ export function RiskEnginePage() {
                   {stats.avgInherent}
                 </div>
                 <div className="text-xs text-muted-foreground mt-1">
-                  Antes dos controles
+                  Before controls
                 </div>
               </div>
               <div className="p-2.5 rounded-lg bg-red-500/10 border border-red-500/20">
@@ -150,7 +150,7 @@ export function RiskEnginePage() {
                   {stats.avgResidual}
                 </div>
                 <div className="text-xs text-muted-foreground mt-1">
-                  Após controles
+                  After controls
                 </div>
               </div>
               <div className="p-2.5 rounded-lg bg-green-500/10 border border-green-500/20">
@@ -169,7 +169,7 @@ export function RiskEnginePage() {
                   {stats.avgReduction}%
                 </div>
                 <div className="text-xs text-muted-foreground mt-1">
-                  Efetividade dos controles
+                  Control effectiveness
                 </div>
               </div>
               <div className="p-2.5 rounded-lg bg-green-500/10 border border-green-500/20">
@@ -186,7 +186,7 @@ export function RiskEnginePage() {
                 <div className="text-sm text-muted-foreground">Total de Riscos</div>
                 <div className="text-3xl font-bold">{stats.total}</div>
                 <div className="text-xs text-muted-foreground mt-1">
-                  {stats.critical} críticos
+                  {stats.critical} critical
                 </div>
               </div>
               <div className="p-2.5 rounded-lg bg-muted/50 border border-border/50">
@@ -374,7 +374,7 @@ export function RiskEnginePage() {
               Risco Inherente = Likelihood × Impact
             </code>
             <p className="text-muted-foreground mt-2">
-              O risco antes de qualquer controle ser aplicado. Representa a exposição pura da organização.
+              O risk antes de qualquer controle ser aplicado. Representa a exposição pura da organização.
             </p>
           </div>
 
@@ -384,7 +384,7 @@ export function RiskEnginePage() {
               Risco Residual = Risco Inherente × (1 - Control Effectiveness)
             </code>
             <p className="text-muted-foreground mt-2">
-              O risco que permanece após a aplicação dos controles. Este é o risco real da organização.
+              O risk que permanece após a aplicação dos controles. Este é o risk real da organização.
             </p>
           </div>
 
@@ -394,14 +394,14 @@ export function RiskEnginePage() {
               Redução = ((Inherent - Residual) / Inherent) × 100%
             </code>
             <p className="text-muted-foreground mt-2">
-              Percentual de redução do risco. Quanto maior, mais efetivos são os controles.
+              Percentual de redução do risk. Quanto maior, mais efetivos são os controles.
             </p>
           </div>
 
           <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
             <p className="text-xs">
-              <strong>💡 Dica:</strong> Um risco residual alto indica que os controles existentes não são suficientes. 
-              Considere implementar controles adicionais ou aceitar o risco formalmente.
+              <strong>💡 Dica:</strong> Um risk residual alto indica que os controles existentes não são suficientes. 
+              Considere implementar controles adicionais ou aceitar o risk formalmente.
             </p>
           </div>
         </CardContent>

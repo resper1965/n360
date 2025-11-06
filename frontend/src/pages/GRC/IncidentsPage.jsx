@@ -72,7 +72,7 @@ export function IncidentsPage() {
       open: { label: 'Aberto', color: 'bg-red-500/10 text-red-500 border-red-500/20' },
       investigating: { label: 'Investigando', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' },
       resolved: { label: 'Resolvido', color: 'bg-green-500/10 text-green-500 border-green-500/20' },
-      closed: { label: 'Fechado', color: 'bg-muted/50 text-muted-foreground border-border/50' }
+      closed: { label: 'Closed', color: 'bg-muted/50 text-muted-foreground border-border/50' }
     };
     return badges[status] || badges.open;
   };
@@ -113,7 +113,7 @@ export function IncidentsPage() {
         <Link to="/grc/incidents/new">
           <button className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors">
             <PlusCircle className="h-4 w-4" strokeWidth={1.5} />
-            Novo Incidente
+            New Incidente
           </button>
         </Link>
       </div>
@@ -202,7 +202,7 @@ export function IncidentsPage() {
           <CardContent className="pt-6">
             <div className="flex items-center justify-between">
               <div>
-                <div className="text-sm text-muted-foreground">Fechados</div>
+                <div className="text-sm text-muted-foreground">Closeds</div>
                 <div className="text-2xl font-bold">{stats.closed}</div>
               </div>
               <CheckCircle2 className="h-5 w-5 text-muted-foreground" strokeWidth={1.5} />
@@ -282,8 +282,8 @@ export function IncidentsPage() {
               <AlertOctagon className="h-12 w-12 text-muted-foreground mx-auto mb-4" strokeWidth={1.5} />
               <p className="text-muted-foreground">
                 {filter === 'all' 
-                  ? 'Nenhum incidente registrado.' 
-                  : `Nenhum incidente com status "${getStatusBadge(filter).label}".`}
+                  ? 'No incidente registrado.' 
+                  : `No incidente com status "${getStatusBadge(filter).label}".`}
               </p>
               <Link to="/grc/incidents/new">
                 <button className="mt-4 px-4 py-2 text-sm border border-border rounded-lg hover:bg-muted transition-colors">
@@ -322,7 +322,7 @@ export function IncidentsPage() {
               <span>→</span>
               <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">Resolvido</Badge>
               <span>→</span>
-              <Badge variant="outline" className="bg-muted/50 text-muted-foreground border-border/50">Fechado</Badge>
+              <Badge variant="outline" className="bg-muted/50 text-muted-foreground border-border/50">Closed</Badge>
             </div>
           </div>
         </CardContent>

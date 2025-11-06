@@ -1,6 +1,6 @@
 /**
  * Posture Management Page
- * Página completa de gerenciamento de postura de segurança (Wazuh SCA)
+ * Página completa de gerenciamento de postura de segurança (SIEM SCA)
  */
 
 import { useState, useEffect } from 'react';
@@ -67,7 +67,7 @@ export function PostureManagementPage() {
   if (!summary) {
     return (
       <div className="p-8 text-center text-muted-foreground">
-        Nenhum dado de postura disponível
+        No dado de postura disponível
       </div>
     );
   }
@@ -95,7 +95,7 @@ export function PostureManagementPage() {
       <div>
         <h1 className="text-3xl font-semibold tracking-tight">Posture Management</h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Avaliação contínua de configurações de segurança (Wazuh SCA)
+          Avaliação contínua de configurações de segurança (SIEM SCA)
         </p>
       </div>
 
@@ -233,7 +233,7 @@ export function PostureManagementPage() {
             ))
           ) : (
             <div className="text-center text-sm text-muted-foreground py-8">
-              Nenhuma policy ativa. Ative SCA no Wazuh Manager.
+              Nenhuma policy ativa. Ative SCA no SIEM Manager.
             </div>
           )}
         </CardContent>
@@ -243,7 +243,7 @@ export function PostureManagementPage() {
       <div className="relative">
         <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
         <Input
-          placeholder="Buscar checks falhando..."
+          placeholder="Search checks falhando..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           className="pl-10"
@@ -326,10 +326,10 @@ export function PostureManagementPage() {
                     <div className="flex gap-2 pt-2">
                       <button 
                         className="flex items-center gap-1 px-3 py-1.5 text-xs bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
-                        onClick={() => window.open('https://wazuh.nsecops.com.br', '_blank')}
+                        onClick={() => window.open('https://siem.nsecops.com.br', '_blank')}
                       >
                         <ExternalLink className="h-3 w-3" strokeWidth={1.5} />
-                        Ver no Wazuh
+                        Ver no SIEM
                       </button>
                       <button className="flex items-center gap-1 px-3 py-1.5 text-xs border border-border rounded-lg hover:bg-muted transition-colors">
                         Ver Agentes Afetados ({check.affected_agents})
@@ -341,7 +341,7 @@ export function PostureManagementPage() {
             ))
           ) : (
             <div className="text-center text-sm text-muted-foreground py-8">
-              {search ? 'Nenhum check encontrado com esse filtro.' : 'Nenhum check falhando! 🎉'}
+              {search ? 'No check encontrado com esse filtro.' : 'No check falhando! 🎉'}
             </div>
           )}
         </CardContent>

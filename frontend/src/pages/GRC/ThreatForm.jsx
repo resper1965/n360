@@ -115,7 +115,7 @@ export function ThreatForm() {
       }
     } catch (error) {
       console.error('Error saving threat:', error);
-      alert('Erro ao salvar ameaça');
+      alert('Error saving ameaça');
     } finally {
       setLoading(false);
     }
@@ -147,7 +147,7 @@ export function ThreatForm() {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-semibold tracking-tight">
-          {isEdit ? 'Editar' : 'Nova'} Ameaça
+          {isEdit ? 'Edit' : 'Nova'} Ameaça
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
           Threat & Vulnerability Library (TVL)
@@ -341,7 +341,7 @@ export function ThreatForm() {
                 className="flex items-center gap-2 px-4 py-2 border border-border rounded-lg hover:bg-muted transition-colors"
               >
                 <X className="h-4 w-4" strokeWidth={1.5} />
-                Cancelar
+                Cancel
               </button>
             </div>
           </CardContent>

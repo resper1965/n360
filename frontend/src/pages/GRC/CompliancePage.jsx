@@ -325,7 +325,7 @@ export function CompliancePage() {
                 <CheckCircle2 className="h-12 w-12 text-green-500 mx-auto mb-3" strokeWidth={1.5} />
                 <div className="font-medium">Excelente!</div>
                 <div className="text-sm text-muted-foreground">
-                  Não há requisitos não conformes pendentes.
+                  Não há requisitos não conformes pending.
                 </div>
               </div>
             )}
