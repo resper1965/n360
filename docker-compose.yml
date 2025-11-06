@@ -2,7 +2,10 @@ version: '3.8'
 
 services:
   n360-backend:
-    image: node:18-alpine
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.puppeteer
+    image: n360-backend:latest
     container_name: n360-backend
     hostname: n360-backend
     restart: unless-stopped

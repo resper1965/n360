@@ -16,6 +16,7 @@ import {
   TrendingUp
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import ExportPDFButton from '@/components/ExportPDFButton';
 
 export function CompliancePage() {
   const [complianceData, setComplianceData] = useState([]);
@@ -118,11 +119,19 @@ export function CompliancePage() {
   return (
     <div className="space-y-grid-xl">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-semibold tracking-tight">Compliance & SoA</h1>
-        <p className="text-sm text-muted-foreground mt-1">
-          Statement of Applicability e Postura de Conformidade
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-semibold tracking-tight">Compliance & SoA</h1>
+          <p className="text-sm text-muted-foreground mt-1">
+            Statement of Applicability e Postura de Conformidade
+          </p>
+        </div>
+        <ExportPDFButton
+          endpoint="/api/reports/soa-pdf"
+          filename={`soa-${new Date().toISOString().split('T')[0]}.pdf`}
+          label="Export SoA (PDF)"
+          variant="outline"
+        />
       </div>
 
       {/* Overall Score */}

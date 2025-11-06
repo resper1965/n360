@@ -650,6 +650,7 @@ app.use('/api/dashboard', require('./routes/dashboard'));
 // Wazuh Integration Routes
 app.use('/api/posture', require('./routes/posture'));
 app.use('/api/wazuh-alerts', require('./routes/wazuh-alerts'));
+app.use('/api/reports', require('./routes/reports'));
 
 // 404 Handler
 app.use((req, res) => {

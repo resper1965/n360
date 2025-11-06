@@ -16,6 +16,7 @@ import {
   Download
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import ExportPDFButton from '@/components/ExportPDFButton';
 
 export function ExecutiveDashboard() {
   const [data, setData] = useState(null);
@@ -51,11 +52,6 @@ export function ExecutiveDashboard() {
     } finally {
       setLoading(false);
     }
-  }
-
-  function exportToPDF() {
-    alert('Export PDF em desenvolvimento...');
-    // TODO: Implementar export real
   }
 
   if (loading) {
@@ -111,13 +107,12 @@ export function ExecutiveDashboard() {
             Visão executiva de riscos, compliance e incidentes
           </p>
         </div>
-        <button
-          onClick={exportToPDF}
-          className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors"
-        >
-          <Download className="h-4 w-4" strokeWidth={1.5} />
-          Export PDF
-        </button>
+        <ExportPDFButton
+          endpoint="/api/reports/executive-pdf"
+          filename={`executive-summary-${new Date().toISOString().split('T')[0]}.pdf`}
+          label="Export PDF"
+          variant="primary"
+        />
       </div>
 
       {/* KPIs Executivos */}

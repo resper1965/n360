@@ -14,6 +14,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import ExportPDFButton from '@/components/ExportPDFButton';
 
 export function RiskEnginePage() {
   const [risks, setRisks] = useState([]);
@@ -104,11 +105,19 @@ export function RiskEnginePage() {
   return (
     <div className="space-y-grid-xl">
       {/* Header */}
-      <div>
-        <h1 className="text-3xl font-semibold tracking-tight">Risk Engine v2</h1>
-        <p className="text-sm text-muted-foreground mt-1">
-          Cálculo avançado de Risco Inherente e Residual
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h1 className="text-3xl font-semibold tracking-tight">Risk Engine v2</h1>
+          <p className="text-sm text-muted-foreground mt-1">
+            Cálculo avançado de Risco Inherente e Residual
+          </p>
+        </div>
+        <ExportPDFButton
+          endpoint="/api/reports/risk-register-pdf"
+          filename={`risk-register-${new Date().toISOString().split('T')[0]}.pdf`}
+          label="Export Risk Register"
+          variant="outline"
+        />
       </div>
 
       {/* KPIs */}
