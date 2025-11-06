@@ -64,13 +64,13 @@ const ExportPDFButton = ({
     
     switch (variant) {
       case 'primary':
-        return `${base} bg-[#00ADE8] text-white hover:bg-[#0096cc] disabled:opacity-50 disabled:cursor-not-allowed`;
+        return `${base} bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed`;
       case 'secondary':
-        return `${base} bg-[#1B2030] text-white hover:bg-[#151820] disabled:opacity-50 disabled:cursor-not-allowed`;
+        return `${base} bg-card text-card-foreground hover:bg-muted disabled:opacity-50 disabled:cursor-not-allowed`;
       case 'outline':
-        return `${base} border border-[#00ADE8] text-[#00ADE8] hover:bg-[#00ADE8]/10 disabled:opacity-50 disabled:cursor-not-allowed`;
+        return `${base} border border-primary text-primary hover:bg-primary/10 disabled:opacity-50 disabled:cursor-not-allowed`;
       default:
-        return `${base} bg-gray-700 text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed`;
+        return `${base} bg-muted text-muted-foreground hover:bg-muted/80 disabled:opacity-50 disabled:cursor-not-allowed`;
     }
   };
 

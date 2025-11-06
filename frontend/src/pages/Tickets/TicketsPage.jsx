@@ -29,7 +29,7 @@ export default function TicketsPage() {
       open: 'bg-blue-500/20 text-blue-400',
       in_progress: 'bg-yellow-500/20 text-yellow-400',
       resolved: 'bg-green-500/20 text-green-400',
-      closed: 'bg-gray-500/20 text-gray-400'
+      closed: 'bg-muted/300/20 text-muted-foreground'
     }
     return colors[status] || colors.open
   }

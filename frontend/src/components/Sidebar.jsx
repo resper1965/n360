@@ -70,14 +70,14 @@ export default function Sidebar({ isOpen }) {
       name: 'GRC',
       icon: Shield,
       items: [
-        { name: 'Ativos', icon: Database, path: '/grc/assets' },
-        { name: 'Ameaças', icon: Skull, path: '/grc/threats' },
-        { name: 'Vulnerabilidades', icon: Bug, path: '/grc/vulnerabilities' },
-        { name: 'Riscos', icon: Target, path: '/grc/risks' },
-        { name: 'Controles', icon: Shield, path: '/grc/controls' },
-        { name: 'Políticas', icon: FileText, path: '/grc/policies' },
-        { name: 'Incidentes', icon: AlertOctagon, path: '/grc/incidents' },
+        { name: 'Assets', icon: Database, path: '/grc/assets' },
+        { name: 'Threats', icon: Skull, path: '/grc/threats' },
+        { name: 'Vulnerabilities', icon: Bug, path: '/grc/vulnerabilities' },
+        { name: 'Risks', icon: Target, path: '/grc/risks' },
+        { name: 'Controls', icon: Shield, path: '/grc/controls' },
+        { name: 'Policies', icon: FileText, path: '/grc/policies' },
         { name: 'Compliance', icon: FileCheck, path: '/grc/compliance' },
+        { name: 'Incidents', icon: AlertOctagon, path: '/grc/incidents' },
       ]
     },
   ]

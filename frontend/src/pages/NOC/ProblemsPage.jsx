@@ -40,7 +40,7 @@ export default function ProblemsPage() {
       high: 'bg-orange-500/20 text-orange-400',
       average: 'bg-yellow-500/20 text-yellow-400',
       warning: 'bg-blue-500/20 text-blue-400',
-      info: 'bg-gray-500/20 text-gray-400'
+      info: 'bg-muted/300/20 text-muted-foreground'
     }
     return colors[severity] || colors.info
   }

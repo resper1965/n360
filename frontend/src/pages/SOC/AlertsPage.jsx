@@ -48,7 +48,7 @@ export default function AlertsPage() {
       high: 'bg-orange-500/20 text-orange-400 border-orange-500/30',
       medium: 'bg-yellow-500/20 text-yellow-400 border-yellow-500/30',
       low: 'bg-blue-500/20 text-blue-400 border-blue-500/30',
-      info: 'bg-gray-500/20 text-gray-400 border-gray-500/30'
+      info: 'bg-muted/300/20 text-muted-foreground border-gray-500/30'
     }
     return colors[severity] || colors.info
   }

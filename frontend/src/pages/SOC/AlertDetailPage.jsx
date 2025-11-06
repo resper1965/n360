@@ -81,7 +81,7 @@ export default function AlertDetailPage() {
     high: 'bg-orange-500/10 text-orange-500 border-orange-500/20',
     medium: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20',
     low: 'bg-blue-500/10 text-blue-500 border-blue-500/20',
-    info: 'bg-gray-500/10 text-gray-500 border-gray-500/20',
+    info: 'bg-muted/300/10 text-muted-foreground border-gray-500/20',
   }
 
   return (
