@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { AlertTriangle, Shield, CheckCircle, Ticket, TrendingUp } from 'lucide-react'
 import api from '../../lib/api'
 import { Card, CardHeader, CardTitle, CardContent, CardDescription } from '../../components/ui/card'
+import { Skeleton } from '../../components/ui/skeleton'
 import TopAlertsWidget from '../../components/widgets/TopAlertsWidget'
 import TopProblemsWidget from '../../components/widgets/TopProblemsWidget'
 import { PostureScoreWidget } from '../../components/widgets/PostureScoreWidget'
@@ -42,8 +43,60 @@ export default function CISODashboard() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center h-full">
-        <div className="text-muted-foreground text-lg">Carregando dashboard...</div>
+      <div className="space-y-grid-xl">
+        {/* Header Skeleton */}
+        <div className="space-y-2">
+          <Skeleton className="h-9 w-64" />
+          <Skeleton className="h-4 w-96" />
+        </div>
+
+        {/* KPI Cards Skeleton */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-grid-lg">
+          {[1, 2, 3, 4].map((i) => (
+            <Card key={i}>
+              <CardContent className="p-6">
+                <div className="space-y-4">
+                  <Skeleton className="h-10 w-10 rounded-lg" />
+                  <Skeleton className="h-8 w-16" />
+                  <Skeleton className="h-3 w-24" />
+                  <div className="pt-4 border-t">
+                    <Skeleton className="h-3 w-32" />
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        {/* Main Content Skeleton */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-grid-lg">
+          <div className="lg:col-span-2 space-y-grid-lg">
+            <Card>
+              <CardHeader>
+                <Skeleton className="h-6 w-48" />
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-3">
+                  {[1, 2, 3].map((i) => (
+                    <Skeleton key={i} className="h-20 w-full" />
+                  ))}
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+          <div className="space-y-grid-lg">
+            {[1, 2, 3].map((i) => (
+              <Card key={i}>
+                <CardHeader>
+                  <Skeleton className="h-5 w-32" />
+                </CardHeader>
+                <CardContent>
+                  <Skeleton className="h-24 w-full" />
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
       </div>
     )
   }
