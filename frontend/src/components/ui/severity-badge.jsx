@@ -1,19 +1,19 @@
-/** 🎨 ness. Design System - "Invisível Elegância" */
+/** 🎨 ness. Design System - "Invisible Elegance" */
 import { AlertCircle, AlertTriangle, Info, Shield } from 'lucide-react'
 import { Badge } from './badge'
 import { cn } from '@/lib/utils'
 
 /**
- * SeverityBadge - Presente quando importa
- * Cores saturadas para severidades altas (critical/high)
- * Cores sutis para severidades baixas (low/info)
+ * SeverityBadge - Present when it matters
+ * Saturated colors for high severities (critical/high)
+ * Subtle colors for low severities (low/info)
  */
 export function SeverityBadge({ severity, className }) {
   const config = {
     critical: {
       label: 'Critical',
       icon: AlertCircle,
-      className: 'bg-red-500/15 text-red-400 border-red-500/30 font-semibold hover:bg-red-500/20', // Presente!
+      className: 'bg-red-500/15 text-red-400 border-red-500/30 font-semibold hover:bg-red-500/20', // Present!
     },
     high: {
       label: 'High',
@@ -28,12 +28,12 @@ export function SeverityBadge({ severity, className }) {
     low: {
       label: 'Low',
       icon: Shield,
-      className: 'bg-blue-500/8 text-blue-400 border-blue-500/15 hover:bg-blue-500/12', // Invisível
+      className: 'bg-blue-500/8 text-blue-400 border-blue-500/15 hover:bg-blue-500/12', // Invisible
     },
     info: {
       label: 'Info',
       icon: Info,
-      className: 'bg-slate-700/30 text-slate-400 border-slate-600/30 hover:bg-slate-700/40', // Invisível
+      className: 'bg-slate-700/30 text-slate-400 border-slate-600/30 hover:bg-slate-700/40', // Invisible
     },
   }
 
@@ -57,8 +57,8 @@ export function SeverityBadge({ severity, className }) {
 }
 
 /**
- * StatusBadge - Estado visual claro
- * Cores indicam progresso e resultado
+ * StatusBadge - Clear visual state
+ * Colors indicate progress and outcome
  */
 export function StatusBadge({ status, className }) {
   const config = {
@@ -80,7 +80,7 @@ export function StatusBadge({ status, className }) {
     },
     closed: {
       label: 'Closed',
-      className: 'bg-slate-700/30 text-slate-400 border-slate-600/30 hover:bg-slate-700/40', // Invisível quando fechado
+      className: 'bg-slate-700/30 text-slate-400 border-slate-600/30 hover:bg-slate-700/40', // Invisible when closed
     },
     pending: {
       label: 'Pending',
@@ -88,7 +88,7 @@ export function StatusBadge({ status, className }) {
     },
     active: {
       label: 'Active',
-      className: 'bg-green-500/12 text-green-400 border-green-500/25 font-medium hover:bg-green-500/18', // Presente!
+      className: 'bg-green-500/12 text-green-400 border-green-500/25 font-medium hover:bg-green-500/18', // Present!
     },
     inactive: {
       label: 'Inactive',

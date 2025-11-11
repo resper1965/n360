@@ -321,3 +321,4 @@ const getBaseTemplate = (content, title = 'Relatório') => `
 
 module.exports = { getBaseTemplate };
 
+

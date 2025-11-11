@@ -5,7 +5,7 @@ import { Card } from '@/components/ui/card'
 
 /**
  * ErrorBoundary Component
- * Captura erros of React e mostra UI elegante
+ * Captures React errors and displays a polished fallback UI
  */
 class ErrorBoundary extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class ErrorBoundary extends Component {
   }
 
   componentDidCatch(error, errorInfo) {
-    // Log error para monitoramento
+    // Log error for monitoring
     console.error('ErrorBoundary caught:', error, errorInfo)
     
     this.setState({
@@ -30,7 +30,7 @@ class ErrorBoundary extends Component {
       errorInfo,
     })
 
-    // Aqui poof enviar para Sentry, LogRocket, etc
+    // Hook into Sentry, LogRocket, etc. here if needed
     // sendToErrorTracking(error, errorInfo)
   }
 
@@ -48,7 +48,7 @@ class ErrorBoundary extends Component {
         <div className="flex min-h-screen items-center justify-center bg-background p-4">
           <Card className="max-w-md w-full p-6">
             <div className="flex flex-col items-center text-center space-y-4">
-              {/* Ícone */}
+              {/* Icon */}
               <div className="rounded-full bg-destructive/10 p-4">
                 <AlertTriangle className="h-8 w-8 text-destructive" />
               </div>
@@ -56,14 +56,14 @@ class ErrorBoundary extends Component {
               {/* Title */}
               <div className="space-y-2">
                 <h2 className="text-2xl font-semibold">
-                  Ops! Algo deu errado
+                  Oops! Something went wrong
                 </h2>
                 <p className="text-sm text-muted-foreground">
-                  Encontramos um erro inesperado. Nossa equipe já foi notificada.
+                  We hit an unexpected error. Our team has been notified.
                 </p>
               </div>
 
-              {/* Error Message (apenas em development) */}
+              {/* Error message (development only) */}
               {process.env.NODE_ENV === 'development' && this.state.error && (
                 <div className="w-full rounded-lg bg-muted p-4 text-left">
                   <p className="text-xs font-mono text-destructive">
@@ -82,30 +82,30 @@ class ErrorBoundary extends Component {
                 </div>
               )}
 
-              {/* Ações */}
+              {/* Actions */}
               <div className="flex gap-2">
                 <Button
                   onClick={this.handleReset}
                   variant="default"
                 >
-                  Tentar Novamente
+                  Try Again
                 </Button>
                 <Button
                   onClick={() => window.location.href = '/'}
                   variant="outline"
                 >
-                  Back ao Início
+                  Back to Home
                 </Button>
               </div>
 
-              {/* Link of suporte */}
+              {/* Support link */}
               <p className="text-xs text-muted-foreground">
-                Precisa of ajuda?{' '}
+                Need assistance?{' '}
                 <a 
                   href="mailto:suporte@nsecops.com.br" 
                   className="text-primary hover:underline"
                 >
-                  Entre em contato
+                  Contact support
                 </a>
               </p>
 
@@ -126,5 +126,6 @@ class ErrorBoundary extends Component {
 }
 
 export default ErrorBoundary
+
 
 

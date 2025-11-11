@@ -99,7 +99,7 @@ nano backend/.env
 **Configurar variáveis**:
 ```env
 # Supabase
-SUPABASE_URL=https://hyplrlakowbwntkidtcp.supabase.co
+SUPABASE_URL=https://mupwrwjxqsveljtjzllr.supabase.co
 SUPABASE_ANON_KEY=eyJ...
 SUPABASE_SERVICE_KEY=eyJ...
 
@@ -159,7 +159,7 @@ docker logs n360-backend --tail 50
 
 ### 1. Via Supabase Dashboard
 
-**Acessar**: https://supabase.com/dashboard/project/hyplrlakowbwntkidtcp
+**Acessar**: https://supabase.com/dashboard/project/mupwrwjxqsveljtjzllr
 
 **Criar Usuário**:
 1. Authentication → Users → Add User
@@ -193,7 +193,7 @@ VALUES (
 
 ```bash
 # Criar usuário via Supabase Auth API
-curl -X POST 'https://hyplrlakowbwntkidtcp.supabase.co/auth/v1/signup' \
+curl -X POST 'https://mupwrwjxqsveljtjzllr.supabase.co/auth/v1/signup' \
   -H "apikey: $SUPABASE_ANON_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -221,7 +221,7 @@ git remote -v
 # Supabase faz backup automático diário
 # Recovery Point: 24 horas
 # Para backup manual via API:
-curl "https://hyplrlakowbwntkidtcp.supabase.co/rest/v1/risks?select=*" \
+curl "https://mupwrwjxqsveljtjzllr.supabase.co/rest/v1/risks?select=*" \
   -H "apikey: $SUPABASE_SERVICE_KEY" > backup-risks-$(date +%Y%m%d).json
 ```
 
@@ -601,13 +601,13 @@ docker system prune -a --volumes  # ⚠️ BACKUP ANTES!
 
 ### 1. Acesso ao Database
 
-**Dashboard**: https://supabase.com/dashboard/project/hyplrlakowbwntkidtcp
+**Dashboard**: https://supabase.com/dashboard/project/mupwrwjxqsveljtjzllr
 
 **SQL Editor**: Dashboard → SQL Editor
 
 **Connection String**:
 ```
-postgresql://postgres:[PASSWORD]@db.hyplrlakowbwntkidtcp.supabase.co:5432/postgres
+postgresql://postgres:[PASSWORD]@db.mupwrwjxqsveljtjzllr.supabase.co:5432/postgres
 ```
 
 ### 2. Migrations
@@ -913,5 +913,6 @@ tar -czf /root/backup-opt-stack-$(date +%Y%m%d).tar.gz /opt/stack/
 **Desenvolvido por**: ness.  
 **Versão**: 1.0  
 **Atualizado**: 06/11/2025
+
 
 

@@ -90,9 +90,9 @@ export function IncidentForm() {
   function validate() {
     const newErrors = {};
 
-    if (!formData.title) newErrors.title = 'Título is required';
-    if (!formData.description) newErrors.description = 'Descrição is required';
-    if (!formData.detected_at) newErrors.detected_at = 'Data of detecção is required';
+    if (!formData.title) newErrors.title = 'Title is required';
+    if (!formData.description) newErrors.description = 'Description is required';
+    if (!formData.detected_at) newErrors.detected_at = 'Detection date is required';
 
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -134,7 +134,7 @@ export function IncidentForm() {
         navigate('/grc/incidents');
       } else {
         const error = await res.json();
-        alert(`Erro: ${error.error || 'Falha ao salvar'}`);
+        alert(`Error: ${error.error || 'Failed to save incident'}`);
       }
     } catch (error) {
       console.error('Error saving incident:', error);
@@ -146,7 +146,7 @@ export function IncidentForm() {
 
   function addCapa() {
     if (!newCapa.description.trim()) {
-      alert('Descrição of CAPA is required');
+      alert('CAPA description is required');
       return;
     }
 
@@ -160,21 +160,21 @@ export function IncidentForm() {
 
   const severities = [
     { value: 'critical', label: "Critical", color: 'bg-red-500/10 text-red-500 border-red-500/20' },
-    { value: 'high', label: 'Alto', color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' },
+    { value: 'high', label: 'High', color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' },
     { value: 'medium', label: 'Medium', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' },
-    { value: 'low', label: 'Baixo', color: 'bg-blue-500/10 text-blue-500 border-blue-500/20' }
+    { value: 'low', label: 'Low', color: 'bg-blue-500/10 text-blue-500 border-blue-500/20' }
   ];
 
   const statuses = [
-    { value: 'open', label: 'Aberto', color: 'bg-red-500/10 text-red-500 border-red-500/20' },
-    { value: 'investigating', label: 'Investigando', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' },
-    { value: 'resolved', label: 'Resolvido', color: 'bg-green-500/10 text-green-500 border-green-500/20' },
+    { value: 'open', label: 'Open', color: 'bg-red-500/10 text-red-500 border-red-500/20' },
+    { value: 'investigating', label: 'Investigating', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' },
+    { value: 'resolved', label: 'Resolved', color: 'bg-green-500/10 text-green-500 border-green-500/20' },
     { value: 'closed', label: 'Closed', color: 'bg-muted/50 text-muted-foreground border-border/50' }
   ];
 
   const capaTypes = [
-    { value: 'corrective', label: 'Corretiva' },
-    { value: 'preventive', label: 'Preventiva' }
+    { value: 'corrective', label: 'Corrective' },
+    { value: 'preventive', label: 'Preventive' }
   ];
 
   return (
@@ -182,10 +182,10 @@ export function IncidentForm() {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-semibold tracking-tight">
-          {isEdit ? 'Edit' : 'Novo'} Incidente
+          {isEdit ? 'Edit' : 'New'} Incident
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
-          Registro Incident Security e CAPA
+          Security incident record and CAPA tracking
         </p>
       </div>
 
@@ -195,20 +195,20 @@ export function IncidentForm() {
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <AlertOctagon className="h-5 w-5" strokeWidth={1.5} />
-              Information about Incidente
+              Incident information
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
             {/* Title */}
             <div className="space-y-2">
               <Label htmlFor="title">
-                Título <span className="text-red-500">*</span>
+                Title <span className="text-red-500">*</span>
               </Label>
               <Input
                 id="title"
                 value={formData.title}
                 onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                placeholder="Title resumido of incident"
+                placeholder="Concise incident title"
                 className={errors.title && 'border-red-500'}
               />
               {errors.title && (
@@ -219,13 +219,13 @@ export function IncidentForm() {
             {/* Description */}
             <div className="space-y-2">
               <Label htmlFor="description">
-                Descrição <span className="text-red-500">*</span>
+                Description <span className="text-red-500">*</span>
               </Label>
               <Textarea
                 id="description"
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                placeholder="Description detalhada of que aconteceu..."
+                placeholder="Detail what happened..."
                 rows={4}
                 className={errors.description && 'border-red-500'}
               />
@@ -234,10 +234,10 @@ export function IncidentForm() {
               )}
             </div>
 
-            {/* Severidaof e Status */}
+            {/* Severity and Status */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label>Severidade</Label>
+                <Label>Severity</Label>
                 <div className="flex gap-2 flex-wrap">
                   {severities.map((sev) => (
                     <Badge
@@ -277,17 +277,17 @@ export function IncidentForm() {
               </div>
             </div>
 
-            {/* Asset Afetado e Detection Date */}
+            {/* Impacted asset and detection date */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="asset_id">Asset Afetado</Label>
+                <Label htmlFor="asset_id">Impacted asset</Label>
                 <select
                   id="asset_id"
                   value={formData.asset_id}
                   onChange={(e) => setFormData({ ...formData, asset_id: e.target.value })}
                   className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                 >
-                  <option value="">No asset selecionado</option>
+                  <option value="">No asset selected</option>
                   {assets.map((asset) => (
                     <option key={asset.id} value={asset.id}>
                       {asset.name} ({asset.type})
@@ -313,41 +313,41 @@ export function IncidentForm() {
               </div>
             </div>
 
-            {/* Impacto */}
+            {/* Impact */}
             <div className="space-y-2">
-              <Label htmlFor="impact_description">Descrição of Impacto</Label>
+              <Label htmlFor="impact_description">Impact description</Label>
               <Textarea
                 id="impact_description"
                 value={formData.impact_description}
                 onChange={(e) => setFormData({ ...formData, impact_description: e.target.value })}
-                placeholder="Qual foi o impacto no negócio? Dados comprometidos? Sistemas indisponíveis?"
+                placeholder="What was the business impact? Compromised data? Unavailable systems?"
                 rows={3}
               />
             </div>
 
-            {/* Root Cause (se status ≥ investigating) */}
+            {/* Root cause (when status ≥ investigating) */}
             {['investigating', 'resolved', 'closed'].includes(formData.status) && (
               <div className="space-y-2">
-                <Label htmlFor="root_cause">Causa Raiz</Label>
+                <Label htmlFor="root_cause">Root cause</Label>
                 <Textarea
                   id="root_cause"
                   value={formData.root_cause}
                   onChange={(e) => setFormData({ ...formData, root_cause: e.target.value })}
-                  placeholder="Qual foi a causa raiz of incident?"
+                  placeholder="What root cause was identified?"
                   rows={3}
                 />
               </div>
             )}
 
-            {/* Resolution Notes (se status ≥ resolved) */}
+            {/* Resolution notes (when status ≥ resolved) */}
             {['resolved', 'closed'].includes(formData.status) && (
               <div className="space-y-2">
-                <Label htmlFor="resolution_notes">Notas of Resolução</Label>
+                <Label htmlFor="resolution_notes">Resolution notes</Label>
                 <Textarea
                   id="resolution_notes"
                   value={formData.resolution_notes}
                   onChange={(e) => setFormData({ ...formData, resolution_notes: e.target.value })}
-                  placeholder="Como o incident foi resolvido? Quais ações foram tomadas?"
+                  placeholder="How was the incident resolved? Which actions were taken?"
                   rows={3}
                 />
               </div>
@@ -358,10 +358,10 @@ export function IncidentForm() {
         {/* CAPA - Corrective & Preventive Actions */}
         <Card className="shadow-elegant">
           <CardHeader>
-            <CardTitle>CAPA - Corrective Actions e Preventivas</CardTitle>
+            <CardTitle>CAPA - Corrective and Preventive Actions</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            {/* Lista of CAPAs */}
+            {/* CAPA list */}
             {capas.length > 0 && (
               <div className="space-y-2">
                 {capas.map((capa, index) => (
@@ -383,7 +383,7 @@ export function IncidentForm() {
                       <p className="text-sm">{capa.description}</p>
                       {capa.due_date && (
                         <p className="text-xs text-muted-foreground mt-1">
-                          Prazo: {new Date(capa.due_date).toLocaleDateString('en-US')}
+                          Due date: {new Date(capa.due_date).toLocaleDateString('en-US')}
                         </p>
                       )}
                     </div>
@@ -399,24 +399,24 @@ export function IncidentForm() {
               </div>
             )}
 
-            {/* Nova CAPA */}
+            {/* New CAPA */}
             <div className="p-4 rounded-lg bg-muted/30 border border-border space-y-3">
               <h4 className="text-sm font-medium">Add CAPA</h4>
               
               <div className="space-y-2">
-                <Label htmlFor="new_capa_description">Descrição of Ação</Label>
+                <Label htmlFor="new_capa_description">Action description</Label>
                 <Textarea
                   id="new_capa_description"
                   value={newCapa.description}
                   onChange={(e) => setNewCapa({ ...newCapa, description: e.target.value })}
-                  placeholder="Descreva a ação corretiva ou preventiva..."
+                  placeholder="Describe the corrective or preventive action..."
                   rows={2}
                 />
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                 <div className="space-y-2">
-                  <Label htmlFor="new_capa_type">Tipo</Label>
+                  <Label htmlFor="new_capa_type">Type</Label>
                   <select
                     id="new_capa_type"
                     value={newCapa.type}
@@ -435,12 +435,12 @@ export function IncidentForm() {
                     id="new_capa_owner"
                     value={newCapa.owner}
                     onChange={(e) => setNewCapa({ ...newCapa, owner: e.target.value })}
-                    placeholder="Name of responsável"
+                    placeholder="Responsible person's name"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="new_capa_due_date">Prazo</Label>
+                  <Label htmlFor="new_capa_due_date">Due date</Label>
                   <Input
                     id="new_capa_due_date"
                     type="date"
@@ -470,7 +470,7 @@ export function IncidentForm() {
             className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50"
           >
             <Save className="h-4 w-4" strokeWidth={1.5} />
-            {loading ? 'Saving...' : (isEdit ? 'Update' : 'Criar')} Incidente
+            {loading ? 'Saving...' : (isEdit ? 'Update' : 'Create')} Incident
           </button>
 
           <button
@@ -486,5 +486,6 @@ export function IncidentForm() {
     </div>
   );
 }
+
 
 

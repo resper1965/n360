@@ -172,3 +172,4 @@ Causa: Senha incorreta no wazuh.yml
 Solução: sed -i no arquivo do host
 
 
+

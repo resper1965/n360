@@ -267,3 +267,4 @@ Próximo: Sprint 3 (Features Core - SOC + NOC)
 ETA Sprint 3: 10-12 dias úteis
 
 
+

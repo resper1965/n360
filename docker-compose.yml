@@ -14,21 +14,21 @@ services:
     networks:
       - n360-internal
       - traefik-proxy
-      - wazuh-stack_wazuh-internal
+      - multi-node_wazuh-internal
       - zabbix-stack_zabbix-internal
-      - shuffle-internal
+      - shuffle-stack_shuffle-internal
     environment:
       - NODE_ENV=production
       - PORT=3001
-      - SUPABASE_URL=https://hyplrlakowbwntkidtcp.supabase.co
-      - SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh5cGxybGFrb3did250a2lkdGNwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjIyNzY5MzIsImV4cCI6MjA3Nzg1MjkzMn0.HBvp7AxL3Bd_39HtvPWdp9Ri7DkPbKZQ1kDMrGJvDxc
-      - SUPABASE_SERVICE_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh5cGxybGFrb3did250a2lkdGNwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MjI3NjkzMiwiZXhwIjoyMDc3ODUyOTMyfQ.IwPdJtuqXRHjiaC5GeGCGroWj0H6pzy-j45Bjb1h84w
+      - SUPABASE_URL=https://mupwrwjxqsveljtjzllr.supabase.co
+      - SUPABASE_ANON_KEY=sb_publishable_1EL3fXI6Jgw6WPkWkbpuNg_HbLFRwVb
+      - SUPABASE_SERVICE_KEY=sb_secret_C9GBuz_pdSPyyz_W-mBFfQ_zF-AcEuU
       - WAZUH_API_URL=https://wazuh.manager:55000
-      - WAZUH_API_USER=wazuh-wui
-      - WAZUH_API_PASSWORD=Nessnet@10
+      - WAZUH_USERNAME=wazuh-wui
+      - WAZUH_PASSWORD=Nessnet@10
       - ZABBIX_API_URL=http://zabbix-web:8080/api_jsonrpc.php
-      - ZABBIX_API_USER=Admin
-      - ZABBIX_API_PASSWORD=nessnet@10
+      - ZABBIX_USERNAME=Admin
+      - ZABBIX_PASSWORD=nessnet@10
       - SHUFFLE_API_URL=http://shuffle-backend:5001
     volumes:
       - ./backend:/app
@@ -67,10 +67,10 @@ networks:
     driver: bridge
   traefik-proxy:
     external: true
-  wazuh-stack_wazuh-internal:
+  multi-node_wazuh-internal:
     external: true
   zabbix-stack_zabbix-internal:
     external: true
-  shuffle-internal:
+  shuffle-stack_shuffle-internal:
     external: true
 

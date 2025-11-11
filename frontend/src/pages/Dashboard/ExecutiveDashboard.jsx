@@ -28,7 +28,7 @@ export function ExecutiveDashboard() {
 
   async function fetchExecutiveData() {
     try {
-      // Fetch of múltiplas APIs
+      // Fetch data from multiple APIs concurrently
       const [risksRes, complianceRes, incidentsRes, controlsRes] = await Promise.all([
         fetch(`${window.location.origin}/api/risks`),
         fetch(`${window.location.origin}/api/compliance/overall`),
@@ -250,7 +250,7 @@ export function ExecutiveDashboard() {
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 rounded bg-orange-500"></div>
-                  <span>Alto</span>
+                  <span>High</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="w-3 h-3 rounded bg-red-500"></div>
@@ -261,16 +261,16 @@ export function ExecutiveDashboard() {
           </CardContent>
         </Card>
 
-        {/* Top 5 Risks - Narrativa Executiva */}
+        {/* Top 5 Risks - Executive Narrative */}
         <Card className="shadow-elegant">
           <CardHeader>
-            <CardTitle>Top 5 Riscos - Narrativa Executiva</CardTitle>
+            <CardTitle>Top 5 Risks - Executive Narrative</CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
             {topRisks.length > 0 ? (
               topRisks.map((risk, idx) => {
                 const badge = risk.risk_score >= 16 ? { label: "Critical", color: 'bg-red-500/10 text-red-500 border-red-500/20' }
-                  : risk.risk_score >= 12 ? { label: 'Alto', color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' }
+                  : risk.risk_score >= 12 ? { label: 'High', color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' }
                   : { label: 'Medium', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' };
 
                 return (
@@ -287,11 +287,11 @@ export function ExecutiveDashboard() {
                           </Badge>
                         </div>
                         <p className="text-sm text-muted-foreground mb-2">
-                          {risk.description || 'Descrição não disponível'}
+                          {risk.description || 'Description not available'}
                         </p>
                         <div className="flex items-center gap-4 text-xs">
-                          <span>Probabilidade: {risk.likelihood || 'N/A'}/5</span>
-                          <span>Impacto: {risk.impact || 'N/A'}/5</span>
+                          <span>Likelihood: {risk.likelihood || 'N/A'}/5</span>
+                          <span>Impact: {risk.impact || 'N/A'}/5</span>
                           <span className="font-semibold">Score: {risk.risk_score || 0}</span>
                         </div>
                       </div>
@@ -307,8 +307,7 @@ export function ExecutiveDashboard() {
 
             <div className="pt-4 border-t border-border">
               <p className="text-xs text-muted-foreground">
-                <strong>💡 Recomendação Executiva:</strong> Priorizar mitigação of {criticalRisks} risks 
-                critical através of implementação control adicionais e revisão policy.
+                <strong>💡 Executive Recommendation:</strong> Prioritize mitigation of the {criticalRisks} critical risks through additional control implementation and policy review.
               </p>
             </div>
           </CardContent>
@@ -322,37 +321,36 @@ export function ExecutiveDashboard() {
         </CardHeader>
         <CardContent className="space-y-4 text-sm">
           <div>
-            <div className="font-medium mb-2">🎯 Overall Status Security</div>
+            <div className="font-medium mb-2">🎯 Overall Security Status</div>
             <p className="text-muted-foreground">
-              A organization maintains uma security posture conformity of <strong>{data.compliance?.overall_score || 75}%</strong>, 
-              com {totalRisks} risks identificados, of quais {criticalRisks} são considerados critical 
-              e require attention imediata of liderança.
+              The organization maintains a security posture compliance level of <strong>{data.compliance?.overall_score || 75}%</strong>,
+              with {totalRisks} identified risks, of which {criticalRisks} are considered critical
+              and require immediate leadership attention.
             </p>
           </div>
 
           <div>
             <div className="font-medium mb-2">⚠️ Key Concerns</div>
             <ul className="list-disc list-insiof text-muted-foreground space-y-1">
-              <li>{criticalRisks} risks critical identificados que podem impactar operações</li>
-              <li>{openIncidents} incidents of security em investigação</li>
-              <li>Effectiveness control em {controlEffectiveness}% (meta: 90%)</li>
+              <li>{criticalRisks} critical risks identified that may impact operations</li>
+              <li>{openIncidents} security incidents currently under investigation</li>
+              <li>Control effectiveness at {controlEffectiveness}% (target: 90%)</li>
             </ul>
           </div>
 
           <div>
             <div className="font-medium mb-2">✅ Recommended Actions</div>
             <ol className="list-decimal list-insiof text-muted-foreground space-y-1">
-              <li>Revisar e mitigar os {criticalRisks} risks critical identificados</li>
-              <li>Implementar controles adicionais para risks residuais altos</li>
-              <li>Acelerar resolução of {openIncidents} incidents open</li>
-              <li>Investir em treinamento of security para reduzir risks of erro humano</li>
+              <li>Review and mitigate the {criticalRisks} critical risks identified</li>
+              <li>Implement additional controls for high residual risks</li>
+              <li>Accelerate resolution of the {openIncidents} open incidents</li>
+              <li>Invest in security training to reduce human-error risks</li>
             </ol>
           </div>
 
           <div className="p-3 rounded-lg bg-primary/10 border border-primary/20">
             <p className="text-xs">
-              <strong>📊 Next Review:</strong> This report should be reviewed monthly 
-              by the Security Committee Security. Export em PDF available for distribution.
+              <strong>📊 Next Review:</strong> This report should be reviewed monthly by the Security Committee. PDF export available for distribution.
             </p>
           </div>
         </CardContent>

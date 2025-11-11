@@ -1,6 +1,6 @@
 /**
- * n360 Platform - Backend API Completo
- * Versão 2.0 - Com Supabase, Collectors e Dashboard CISO
+ * n360 Platform - Full Backend API
+ * Version 2.0 - Includes Supabase, collectors, and the CISO dashboard
  */
 
 const path = require('path');
@@ -10,7 +10,7 @@ const express = require('express');
 const cors = require('cors');
 const axios = require('axios');
 const cron = require('node-cron');
-const { createClient } = require('@supabase/supabase-js');
+const supabase = require('./utils/supabase');
 
 const WazuhCollector = require('./collectors/wazuh-collector');
 const ZabbixCollector = require('./collectors/zabbix-collector');
@@ -26,11 +26,6 @@ app.use(express.json());
 // Supabase Client
 // ============================================================
 
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY // Service key para operações de backend
-);
-
 console.log('[Supabase] Connected to:', process.env.SUPABASE_URL);
 
 // ============================================================
@@ -39,14 +34,14 @@ console.log('[Supabase] Connected to:', process.env.SUPABASE_URL);
 
 const wazuhCollector = new WazuhCollector(supabase, {
   apiUrl: process.env.WAZUH_API_URL,
-  username: process.env.WAZUH_API_USER,
-  password: process.env.WAZUH_API_PASSWORD
+  username: process.env.WAZUH_USERNAME,
+  password: process.env.WAZUH_PASSWORD
 });
 
 const zabbixCollector = new ZabbixCollector(supabase, {
   apiUrl: process.env.ZABBIX_API_URL,
-  username: process.env.ZABBIX_API_USER,
-  password: process.env.ZABBIX_API_PASSWORD
+  username: process.env.ZABBIX_USERNAME,
+  password: process.env.ZABBIX_PASSWORD
 });
 
 const DEMO_ORG_ID = '550e8400-e29b-41d4-a716-446655440000';
@@ -139,7 +134,7 @@ async function checkZabbix() {
     appsStatus.zabbix = {
       online: false,
       lastCheck: new Date().toISOString(),
-      error: error.code === 'ECONNREFUSED' ? 'Container offline ou DB não inicializado' : error.message,
+      error: error.code === 'ECONNREFUSED' ? 'Container offline or database not initialized' : error.message,
       url: 'https://zabbix.nsecops.com.br'
     };
   }

@@ -75,7 +75,7 @@ VPS: root@148.230.77.242
   [Config] ✅ Variáveis de ambiente validadas com sucesso
   
   [Supabase] ✅ Conectado com sucesso
-    • URL: https://hyplrlakowbwntkidtcp.supabase.co
+    • URL: https://mupwrwjxqsveljtjzllr.supabase.co
   
   [Zabbix] ✅ Autenticado com sucesso
     • 0 problemas coletados
@@ -294,5 +294,6 @@ VPS: 148.230.77.242
 URLs: https://n360.nsecops.com.br
 
 05/11/2025 - Deploy Produção Concluído ✅
+
 
 

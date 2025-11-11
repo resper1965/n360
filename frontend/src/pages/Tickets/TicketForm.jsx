@@ -67,11 +67,11 @@ export default function TicketForm() {
       })
 
       if (response.ok) {
-        alert(isEdit ? 'Ticket atualizado successfully!' : 'Ticket criado successfully!')
+        alert(isEdit ? 'Ticket updated successfully!' : 'Ticket created successfully!')
         navigate('/tickets')
       } else {
         const error = await response.json()
-        alert(`Erro: ${error.error || 'Error saving ticket'}`)
+        alert(`Error: ${error.error || 'Error saving ticket'}`)
       }
     } catch (error) {
       console.error('Erro:', error)
@@ -82,7 +82,7 @@ export default function TicketForm() {
   }
 
   const handleDelete = async () => {
-    if (!confirm('Are you sure you want to delete este ticket?')) return
+    if (!confirm('Are you sure you want to delete this ticket?')) return
 
     try {
       setLoading(true)
@@ -91,14 +91,14 @@ export default function TicketForm() {
       })
 
       if (response.ok) {
-        alert('Ticket excluído successfully!')
+        alert('Ticket deleted successfully!')
         navigate('/tickets')
       } else {
-        alert('Error excluir ticket')
+        alert('Error deleting ticket')
       }
     } catch (error) {
-      console.error('Erro:', error)
-      alert('Error excluir ticket')
+      console.error('Error:', error)
+      alert('Error deleting ticket')
     } finally {
       setLoading(false)
     }
@@ -131,7 +131,7 @@ export default function TicketForm() {
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Update the information of ticket' : 'Register a new ticket'}
+            {isEdit ? 'Update the ticket information' : 'Register a new ticket'}
           </p>
         </div>
 
@@ -164,7 +164,7 @@ export default function TicketForm() {
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    placeholder="Example: Problema no servidor of backup"
+                    placeholder="Example: Backup server outage"
                     required
                   />
                 </div>
@@ -176,7 +176,7 @@ export default function TicketForm() {
                     name="description"
                     value={formData.description || ''}
                     onChange={handleChange}
-                    placeholder="Descreva o ticket em detalhes..."
+                    placeholder="Describe the ticket in detail..."
                     rows={8}
                     required
                   />
@@ -265,5 +265,6 @@ export default function TicketForm() {
     </div>
   )
 }
+
 
 

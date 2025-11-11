@@ -1,6 +1,6 @@
 /**
  * Dialog / Modal Component
- * Modal elegante para confirmações
+ * Elegant modal for confirmations and prompts
  */
 
 import * as React from 'react';
@@ -87,5 +87,6 @@ export {
   DialogDescription,
   DialogFooter
 };
+
 
 

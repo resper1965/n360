@@ -13,7 +13,7 @@ export default function CISODashboard() {
 
   useEffect(() => {
     loadDashboard()
-    const interval = setInterval(loadDashboard, 60000) // Refresh a cada 60s
+    const interval = setInterval(loadDashboard, 60000) // Refresh every 60s
     return () => clearInterval(interval)
   }, [])
 
@@ -23,7 +23,7 @@ export default function CISODashboard() {
       setData(response.data)
     } catch (error) {
       console.error('Error loading dashboard:', error)
-      // Dados mockados para demonstração
+      // Mock data for demonstration
       setData({
         summary: {
           avg_risk_score: 0,

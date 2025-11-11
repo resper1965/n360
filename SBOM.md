@@ -144,7 +144,7 @@ Este documento lista todas as dependências de software, bibliotecas open-source
 
 **Plano**: Free (500 MB database, 1 GB storage)  
 **Região**: us-east-1  
-**URL**: https://hyplrlakowbwntkidtcp.supabase.co
+**URL**: https://mupwrwjxqsveljtjzllr.supabase.co
 
 ### 2. Cloudflare (presumido)
 
@@ -537,5 +537,6 @@ Este SBOM deve ser **atualizado**:
 **Desenvolvido por**: ness.  
 **Licença n360**: Proprietário  
 **Conformidade**: LGPD, GDPR, Open Source Licenses
+
 
 

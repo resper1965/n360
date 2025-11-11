@@ -1,6 +1,6 @@
 /**
  * Compliance & SoA Page
- * Statement of Applicability e Relatórios Compliance
+ * Statement of Applicability and Compliance Reports
  */
 
 import { useState, useEffect } from 'react';
@@ -39,7 +39,7 @@ export function CompliancePage() {
       }
     } catch (error) {
       console.error('Error fetching compliance:', error);
-      // Mock data para demonstração
+      // Mock data for demonstration
       setComplianceData([
         {
           framework: 'ISO 27001:2022',
@@ -95,14 +95,14 @@ export function CompliancePage() {
   };
 
   const getScoreBadge = (score) => {
-    if (score >= 90) return { label: 'Excelente', color: 'bg-green-500/10 text-green-500 border-green-500/20' };
-    if (score >= 70) return { label: 'Bom', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' };
+    if (score >= 90) return { label: 'Excellent', color: 'bg-green-500/10 text-green-500 border-green-500/20' };
+    if (score >= 70) return { label: 'Good', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' };
     return { label: 'Requires Attention', color: 'bg-red-500/10 text-red-500 border-red-500/20' };
   };
 
   const exportSoA = (framework) => {
-    alert(`Exportando SoA para ${framework || 'todos frameworks'}...`);
-    // TODO: Implementar export para PDF/Excel
+    alert(`Exporting SoA for ${framework || 'all frameworks'}...`);
+    // TODO: Implement export to PDF/Excel
   };
 
   if (loading) {
@@ -110,7 +110,7 @@ export function CompliancePage() {
       <div className="flex items-center justify-center h-96">
         <div className="text-center space-y-2">
           <FileCheck className="h-8 w-8 text-muted-foreground mx-auto animate-pulse" strokeWidth={1.5} />
-          <div className="text-sm text-muted-foreground">Calculando conformidade...</div>
+          <div className="text-sm text-muted-foreground">Calculating compliance...</div>
         </div>
       </div>
     );
@@ -123,7 +123,7 @@ export function CompliancePage() {
         <div>
           <h1 className="text-3xl font-semibold tracking-tight">Compliance</h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Statement of Applicability e Postura Compliance
+            Statement of Applicability and compliance posture
           </p>
         </div>
         <ExportPDFButton
@@ -139,7 +139,7 @@ export function CompliancePage() {
         <CardContent className="pt-6">
           <div className="flex items-center justify-between">
             <div>
-              <div className="text-sm text-muted-foreground mb-2">Score Geral Compliance</div>
+              <div className="text-sm text-muted-foreground mb-2">Overall Compliance Score</div>
               <div className={cn("text-5xl font-bold", getScoreColor(overallScore))}>
                 {overallScore}%
               </div>
@@ -217,7 +217,7 @@ export function CompliancePage() {
                   <div className="text-center p-3 rounded-lg bg-green-500/10 border border-green-500/20">
                     <div className="flex items-center justify-center gap-1 mb-1">
                       <CheckCircle2 className="h-4 w-4 text-green-500" strokeWidth={1.5} />
-                      <span className="text-xs text-muted-foreground">Conforme</span>
+                      <span className="text-xs text-muted-foreground">Compliant</span>
                     </div>
                     <div className="text-2xl font-bold text-green-500">{framework.compliant}</div>
                   </div>
@@ -225,7 +225,7 @@ export function CompliancePage() {
                   <div className="text-center p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
                     <div className="flex items-center justify-center gap-1 mb-1">
                       <AlertTriangle className="h-4 w-4 text-yellow-500" strokeWidth={1.5} />
-                      <span className="text-xs text-muted-foreground">Parcial</span>
+                      <span className="text-xs text-muted-foreground">Partial</span>
                     </div>
                     <div className="text-2xl font-bold text-yellow-500">{framework.partially_compliant}</div>
                   </div>
@@ -242,7 +242,7 @@ export function CompliancePage() {
                 {/* Progress Bars */}
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-muted-foreground">Taxa Compliance</span>
+                    <span className="text-muted-foreground">Compliance Rate</span>
                     <span className="font-semibold">{complianceRate}%</span>
                   </div>
                   <div className="h-2 rounded-full bg-muted overflow-hidden border border-border">
@@ -255,7 +255,7 @@ export function CompliancePage() {
 
                 <div className="space-y-2">
                   <div className="flex items-center justify-between text-xs">
-                    <span className="text-muted-foreground">Controles Mapeados</span>
+                    <span className="text-muted-foreground">Mapped Controls</span>
                     <span className="font-semibold">
                       {framework.controls_mapped} / {framework.total_requirements}
                     </span>
@@ -273,7 +273,7 @@ export function CompliancePage() {
                 {/* Meta */}
                 <div className="pt-3 border-t border-border text-xs text-muted-foreground">
                   <div className="flex items-center justify-between">
-                    <span>Total Requisitos</span>
+                    <span>Total Requirements</span>
                     <span className="font-semibold">{framework.total_requirements}</span>
                   </div>
                 </div>
@@ -309,7 +309,7 @@ export function CompliancePage() {
                       <div>
                         <div className="font-medium text-sm">{framework.framework}</div>
                         <div className="text-xs text-muted-foreground">
-                          {framework.not_compliant} requisitos não conformes require attention
+                          {framework.not_compliant} non-compliant requirements require attention
                         </div>
                       </div>
                     </div>
@@ -340,36 +340,34 @@ export function CompliancePage() {
         </CardHeader>
         <CardContent className="space-y-3 text-sm">
           <div>
-            <div className="font-medium mb-1">📋 What is SoA?</div>
+            <div className="font-medium mb-1">📋 What is the SoA?</div>
             <p className="text-muted-foreground">
-              Document required by ISO 27001 that lists all security controls of security, 
-              indicating which are applicable and their justification.
+              Document required by ISO 27001 that lists all security controls, indicating which are applicable and providing justification.
             </p>
           </div>
           <div>
             <div className="font-medium mb-1">🎯 How is it calculated?</div>
             <code className="block p-3 bg-background rounded-lg border border-border font-mono text-xs mt-2">
-              Score = (Conformes × 1.0 + Parciais × 0.5) / Total Requisitos
+              Score = (Compliant × 1.0 + Partial × 0.5) / Total Requirements
             </code>
           </div>
           <div>
             <div className="font-medium mb-1">📊 Status Compliance</div>
             <div className="flex flex-wrap gap-2 mt-2">
               <Badge variant="outline" className="bg-green-500/10 text-green-500 border-green-500/20">
-                Conforme: Control implemented and effective
+                Compliant: Control implemented and effective
               </Badge>
               <Badge variant="outline" className="bg-yellow-500/10 text-yellow-500 border-yellow-500/20">
-                Parcial: Controle implementado mas not 100% effective
+                Partial: Control implemented but not fully effective
               </Badge>
               <Badge variant="outline" className="bg-red-500/10 text-red-500 border-red-500/20">
-                Non-Compliant: Controle not implemented or failed
+                Non-Compliant: Control not implemented or failed
               </Badge>
             </div>
           </div>
           <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
             <p className="text-xs">
-              <strong>💡 Tip:</strong> Exporte o SoA em PDF para auditorias formais. 
-              O documento incluirá todos os controles mapeados e suas evidências.
+              <strong>💡 Tip:</strong> Export the SoA as a PDF for formal audits. The document includes all mapped controls and their evidence.
             </p>
           </div>
         </CardContent>

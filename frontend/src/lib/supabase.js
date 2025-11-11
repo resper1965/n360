@@ -1,8 +1,17 @@
 import { createClient } from '@supabase/supabase-js'
 
-// Get Supabase credentials from environment or window
-const supabaseUrl = window.SUPABASE_URL || import.meta.env.VITE_SUPABASE_URL
-const supabaseAnonKey = window.SUPABASE_ANON_KEY || import.meta.env.VITE_SUPABASE_ANON_KEY
+const getGlobalVar = (key) => {
+  if (typeof window !== 'undefined' && window[key]) {
+    return window[key]
+  }
+  return undefined
+}
+
+const supabaseUrl = getGlobalVar('SUPABASE_URL') || import.meta.env.VITE_SUPABASE_URL
+const supabaseAnonKey =
+  getGlobalVar('SUPABASE_ANON_KEY') ||
+  import.meta.env.VITE_SUPABASE_ANON_KEY ||
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_DEFAULT_KEY
 
 if (!supabaseUrl || !supabaseAnonKey) {
   throw new Error('Missing Supabase credentials')

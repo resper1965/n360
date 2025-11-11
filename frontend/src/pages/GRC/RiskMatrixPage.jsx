@@ -19,8 +19,8 @@ export default function RiskMatrixPage() {
       const data = await response.json()
       setMatrix(data.matrix || [])
     } catch (error) {
-      console.error('Error buscar matriz:', error)
-      // Criar matriz vazia 5x5
+      console.error('Error loading matrix:', error)
+      // Create empty 5x5 matrix as fallback
       setMatrix(Array(5).fill().map(() => Array(5).fill({ count: 0, risks: [] })))
     } finally {
       setLoading(false)
@@ -45,7 +45,7 @@ export default function RiskMatrixPage() {
 
   const handleCellClick = (likelihood, impact, cell) => {
     if (cell.count > 0) {
-      // Navegar para lista of risks filtrados
+      // Navigate to filtered risk list
       navigate(`/grc/risks?likelihood=${likelihood + 1}&impact=${impact + 1}`)
     }
   }
@@ -73,7 +73,7 @@ export default function RiskMatrixPage() {
           <div className="flex items-center gap-6 text-sm">
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 rounded bg-green-500" />
-              <span>Baixo (1-5)</span>
+              <span>Low (1-5)</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 rounded bg-yellow-500" />
@@ -81,11 +81,11 @@ export default function RiskMatrixPage() {
             </div>
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 rounded bg-orange-500" />
-              <span>Alto (15-19)</span>
+              <span>High (15-19)</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-4 h-4 rounded bg-red-600" />
-              <span>Crítico (20-25)</span>
+              <span>Critical (20-25)</span>
             </div>
           </div>
           <div className="text-sm text-muted-foreground">
@@ -98,7 +98,7 @@ export default function RiskMatrixPage() {
       <Card className="p-6">
         {loading ? (
           <div className="text-center py-12 text-muted-foreground">
-            Loading matriz...
+            Loading matrix...
           </div>
         ) : (
           <div className="overflow-x-auto">
@@ -134,7 +134,7 @@ export default function RiskMatrixPage() {
                       </div>
                     </td>
                     {[...Array(5)].map((_, likelihoodIdx) => {
-                      // Matrix is [likelihood][impact], but we need to invert impact para display
+                      // Matrix is [likelihood][impact], but we need to invert impact for display
                       const cell = matrix[likelihoodIdx]?.[4 - impactIdx] || {
                         count: 0,
                         risks: [],
@@ -189,7 +189,7 @@ export default function RiskMatrixPage() {
           </div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Riscos Altos</div>
+          <div className="text-sm text-muted-foreground">High Risks</div>
           <div className="text-2xl font-bold text-orange-500">
             {matrix
               .flat()
@@ -198,7 +198,7 @@ export default function RiskMatrixPage() {
           </div>
         </Card>
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Riscos Mediums/Baixos</div>
+          <div className="text-sm text-muted-foreground">Medium/Low Risks</div>
           <div className="text-2xl font-bold">
             {matrix
               .flat()

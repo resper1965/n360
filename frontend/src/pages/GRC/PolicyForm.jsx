@@ -88,13 +88,13 @@ export default function PolicyForm() {
       // Store URL in content (or separate field)
       setFormData(prev => ({
         ...prev,
-        content: prev.content + `\n\n[Documento anexado](${result.url})`
+        content: prev.content + `\n\n[Attached document](${result.url})`
       }))
 
-      alert('Documento enviado successfully!')
+      alert('Document uploaded successfully!')
     } catch (error) {
-      console.error('Error enviar documento:', error)
-      alert('Error enviar documento')
+      console.error('Error uploading document:', error)
+      alert('Error uploading document')
     } finally {
       setUploadingDoc(false)
     }
@@ -117,14 +117,14 @@ export default function PolicyForm() {
       })
 
       if (response.ok) {
-        alert(isEdit ? 'Política atualizada successfully!' : 'Política criada successfully!')
+        alert(isEdit ? 'Policy updated successfully!' : 'Policy created successfully!')
         navigate('/grc/policies')
       } else {
         const error = await response.json()
-        alert(`Erro: ${error.error || 'Error saving policy'}`)
+        alert(`Error: ${error.error || 'Error saving policy'}`)
       }
     } catch (error) {
-      console.error('Erro:', error)
+      console.error('Error:', error)
       alert('Error saving policy')
     } finally {
       setLoading(false)
@@ -132,7 +132,7 @@ export default function PolicyForm() {
   }
 
   const handleDelete = async () => {
-    if (!confirm('Are you sure you want to delete esta policy?')) return
+    if (!confirm('Are you sure you want to delete this policy?')) return
 
     try {
       setLoading(true)
@@ -141,14 +141,14 @@ export default function PolicyForm() {
       })
 
       if (response.ok) {
-        alert('Política excluída successfully!')
+        alert('Policy deleted successfully!')
         navigate('/grc/policies')
       } else {
-        alert('Error excluir policy')
+        alert('Error deleting policy')
       }
     } catch (error) {
-      console.error('Erro:', error)
-      alert('Error excluir policy')
+      console.error('Error:', error)
+      alert('Error deleting policy')
     } finally {
       setLoading(false)
     }
@@ -177,11 +177,11 @@ export default function PolicyForm() {
               <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
             </Button>
             <h1 className="text-3xl font-medium tracking-tight">
-              {isEdit ? 'Edit Política' : 'New Policy'}
+              {isEdit ? 'Edit Policy' : 'New Policy'}
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Update the information of policy' : 'Register a new policy of security'}
+            {isEdit ? 'Update the policy information' : 'Register a new security policy'}
           </p>
         </div>
 
@@ -215,7 +215,7 @@ export default function PolicyForm() {
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    placeholder="Example: Política of Uso Aceitável"
+                    placeholder="Example: Acceptable Use Policy"
                     required
                   />
                 </div>
@@ -227,14 +227,14 @@ export default function PolicyForm() {
                     name="description"
                     value={formData.description || ''}
                     onChange={handleChange}
-                    placeholder="Resumo executivo of policy..."
+                    placeholder="Executive summary of the policy..."
                     rows={3}
                   />
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="category">Categoria *</Label>
+                    <Label htmlFor="category">Category *</Label>
                     <Select
                       id="category"
                       name="category"
@@ -243,10 +243,10 @@ export default function PolicyForm() {
                       required
                     >
                       <option value="security">Security</option>
-                      <option value="privacy">Privacidade</option>
+                      <option value="privacy">Privacy</option>
                       <option value="compliance">Compliance</option>
-                      <option value="operational">Operacional</option>
-                      <option value="hr">Recursos Humanos</option>
+                      <option value="operational">Operational</option>
+                      <option value="hr">Human Resources</option>
                     </Select>
                   </div>
 
@@ -263,13 +263,13 @@ export default function PolicyForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="content">Conteúdo of Política</Label>
+                  <Label htmlFor="content">Policy content</Label>
                   <Textarea
                     id="content"
                     name="content"
                     value={formData.content || ''}
                     onChange={handleChange}
-                    placeholder="Conteúdo completo of policy (suporta Markdown)..."
+                    placeholder="Full policy content (supports Markdown)..."
                     rows={12}
                     className="font-mono text-xs"
                   />
@@ -280,17 +280,17 @@ export default function PolicyForm() {
               </CardContent>
             </Card>
 
-            {/* Anexos */}
+            {/* Attachments */}
             <Card>
               <CardHeader className="pb-4">
                 <CardTitle className="text-lg font-medium flex items-center gap-2">
                   <FileText className="h-4 w-4" strokeWidth={1.5} />
-                  Documento Oficial (PDF)
+                  Official Document (PDF)
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <FileUpload
-                  label="Documento of Política"
+                  label="Policy document"
                   accept=".pdf,.doc,.docx"
                   maxSize={10}
                   value={docFile}
@@ -306,7 +306,7 @@ export default function PolicyForm() {
                     className="w-full border-border/50"
                   >
                     <Upload className="h-4 w-4 mr-2" strokeWidth={1.5} />
-                    {uploadingDoc ? 'Enviando...' : 'Anexar Documento'}
+                    {uploadingDoc ? 'Uploading...' : 'Attach Document'}
                   </Button>
                 )}
               </CardContent>
@@ -330,11 +330,11 @@ export default function PolicyForm() {
                     onChange={handleChange}
                     required
                   >
-                    <option value="draft">Rascunho</option>
+                    <option value="draft">Draft</option>
                     <option value="review">Under Review</option>
-                    <option value="approved">Aprovado</option>
+                    <option value="approved">Approved</option>
                     <option value="active">Active</option>
-                    <option value="archived">Arquivado</option>
+                    <option value="archived">Archived</option>
                   </Select>
                 </div>
 
@@ -383,7 +383,7 @@ export default function PolicyForm() {
                   disabled={loading || uploadingDoc}
                 >
                   <Save className="h-4 w-4 mr-2" strokeWidth={1.5} />
-                  {loading ? 'Saving...' : (isEdit ? 'Atualizar Política' : 'Criar Política')}
+                  {loading ? 'Saving...' : (isEdit ? 'Update Policy' : 'Create Policy')}
                 </Button>
 
                 <Button
@@ -403,5 +403,6 @@ export default function PolicyForm() {
     </div>
   )
 }
+
 
 

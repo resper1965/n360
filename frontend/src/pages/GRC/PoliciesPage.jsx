@@ -36,18 +36,18 @@ export default function PoliciesPage() {
       setPolicies(data.data || [])
       setPagination(data.pagination || {})
     } catch (error) {
-      console.error('Error buscar policies:', error)
+      console.error('Error fetching policies:', error)
     } finally {
       setLoading(false)
     }
   }
 
   const statusLabels = {
-    draft: 'Rascunho',
+    draft: 'Draft',
     review: 'Under Review',
-    approved: 'Aprovada',
-    active: 'Ativa',
-    archived: 'Arquivada',
+    approved: 'Approved',
+    active: 'Active',
+    archived: 'Archived',
   }
 
   const statusColors = {
@@ -59,11 +59,11 @@ export default function PoliciesPage() {
   }
 
   const categoryLabels = {
-    security: 'Segurança',
-    privacy: 'Privacidade',
-    compliance: 'Conformidade',
-    operational: 'Operacional',
-    hr: 'RH',
+    security: 'Security',
+    privacy: 'Privacy',
+    compliance: 'Compliance',
+    operational: 'Operational',
+    hr: 'HR',
   }
 
   return (
@@ -107,12 +107,12 @@ export default function PoliciesPage() {
             value={filters.status}
             onChange={(e) => setFilters({ ...filters, status: e.target.value })}
           >
-            <option value="all">Todos os Status</option>
-            <option value="draft">Rascunho</option>
+            <option value="all">All Statuses</option>
+            <option value="draft">Draft</option>
             <option value="review">Under Review</option>
-            <option value="approved">Aprovada</option>
-            <option value="active">Ativa</option>
-            <option value="archived">Arquivada</option>
+            <option value="approved">Approved</option>
+            <option value="active">Active</option>
+            <option value="archived">Archived</option>
           </select>
 
           {/* Category Filter */}
@@ -123,12 +123,12 @@ export default function PoliciesPage() {
               setFilters({ ...filters, category: e.target.value })
             }
           >
-            <option value="all">Todas as Categorias</option>
+            <option value="all">All Categories</option>
             <option value="security">Security</option>
-            <option value="privacy">Privacidade</option>
-            <option value="compliance">Conformidade</option>
-            <option value="operational">Operacional</option>
-            <option value="hr">RH</option>
+            <option value="privacy">Privacy</option>
+            <option value="compliance">Compliance</option>
+            <option value="operational">Operational</option>
+            <option value="hr">HR</option>
           </select>
         </div>
       </Card>
@@ -136,7 +136,7 @@ export default function PoliciesPage() {
       {/* Policy Stats */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card className="p-4">
-          <div className="text-sm text-muted-foreground">Total Políticas</div>
+          <div className="text-sm text-muted-foreground">Total Policies</div>
           <div className="text-2xl font-bold">{pagination.total || 0}</div>
         </Card>
         <Card className="p-4">
@@ -220,7 +220,7 @@ export default function PoliciesPage() {
                         </div>
                       )}
                       <div>
-                        Criada: {new Date(policy.created_at).toLocaleDateString('en-US')}
+                        Created: {new Date(policy.created_at).toLocaleDateString('en-US')}
                       </div>
                     </div>
                   </div>
@@ -228,7 +228,7 @@ export default function PoliciesPage() {
                     <div className="ml-4">
                       <div className="flex items-center gap-1 text-green-600">
                         <FileText className="h-5 w-5" />
-                        <span className="text-xs font-medium">ATIVA</span>
+                        <span className="text-xs font-medium">ACTIVE</span>
                       </div>
                     </div>
                   )}

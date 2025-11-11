@@ -1530,3 +1530,4 @@ Se PoC bem-sucedido → Aprovar MVP completo (6 meses)
 **Status**: 📋 Aguardando Aprovação para PoC
 
 
+

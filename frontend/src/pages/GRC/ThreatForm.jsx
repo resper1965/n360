@@ -72,7 +72,7 @@ export function ThreatForm() {
     if (!formData.threat_code) newErrors.threat_code = 'Code is required';
     if (!formData.name) newErrors.name = 'Name is required';
     if (formData.likelihood_score < 1 || formData.likelihood_score > 5) {
-      newErrors.likelihood_score = 'Likelihood deve estar entre 1 e 5';
+      newErrors.likelihood_score = 'Likelihood must be between 1 and 5';
     }
 
     setErrors(newErrors);
@@ -111,7 +111,7 @@ export function ThreatForm() {
         navigate('/grc/threats');
       } else {
         const error = await res.json();
-        alert(`Erro: ${error.error || 'Falha ao salvar'}`);
+        alert(`Error: ${error.error || 'Failed to save threat'}`);
       }
     } catch (error) {
       console.error('Error saving threat:', error);
@@ -135,11 +135,11 @@ export function ThreatForm() {
   ];
 
   const likelihoodLabels = {
-    1: { label: 'Muito Baixa', color: 'bg-blue-500/10 text-blue-500 border-blue-500/20' },
-    2: { label: 'Baixa', color: 'bg-green-500/10 text-green-500 border-green-500/20' },
+    1: { label: 'Very Low', color: 'bg-blue-500/10 text-blue-500 border-blue-500/20' },
+    2: { label: 'Low', color: 'bg-green-500/10 text-green-500 border-green-500/20' },
     3: { label: 'Medium', color: 'bg-yellow-500/10 text-yellow-500 border-yellow-500/20' },
-    4: { label: 'Alta', color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' },
-    5: { label: 'Muito Alta', color: 'bg-red-500/10 text-red-500 border-red-500/20' }
+    4: { label: 'High', color: 'bg-orange-500/10 text-orange-500 border-orange-500/20' },
+    5: { label: 'Very High', color: 'bg-red-500/10 text-red-500 border-red-500/20' }
   };
 
   return (
@@ -147,7 +147,7 @@ export function ThreatForm() {
       {/* Header */}
       <div>
         <h1 className="text-3xl font-semibold tracking-tight">
-          {isEdit ? 'Edit' : 'Nova'} Ameaça
+          {isEdit ? 'Edit' : 'New'} Threat
         </h1>
         <p className="text-sm text-muted-foreground mt-1">
           Threat & Vulnerability Library (TVL)
@@ -163,11 +163,11 @@ export function ThreatForm() {
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-6">
-            {/* Código e Nome */}
+            {/* Code and Name */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="threat_code">
-                  Code of Ameaça <span className="text-red-500">*</span>
+                  Threat Code <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="threat_code"
@@ -183,7 +183,7 @@ export function ThreatForm() {
 
               <div className="space-y-2">
                 <Label htmlFor="name">
-                  Nome <span className="text-red-500">*</span>
+                  Name <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="name"
@@ -205,15 +205,15 @@ export function ThreatForm() {
                 id="description"
                 value={formData.description}
                 onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                placeholder="Description detalhada of threat, incluindo como ela poof se manifestar..."
+                placeholder="Detailed description of the threat, including how it can manifest..."
                 rows={4}
               />
             </div>
 
-            {/* Categoria e Likelihood */}
+            {/* Category and Likelihood */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="category">Categoria</Label>
+                <Label htmlFor="category">Category</Label>
                 <select
                   id="category"
                   value={formData.category}
@@ -256,7 +256,7 @@ export function ThreatForm() {
 
             {/* Attack Vector */}
             <div className="space-y-2">
-              <Label htmlFor="attack_vector">Vetor of Ataque</Label>
+              <Label htmlFor="attack_vector">Attack Vector</Label>
               <Input
                 id="attack_vector"
                 value={formData.attack_vector}
@@ -264,11 +264,11 @@ export function ThreatForm() {
                 placeholder="Email phishing, Remote code execution, Physical access, etc."
               />
               <p className="text-xs text-muted-foreground">
-                How the threat can materialize (ex: email, rede, físico)
+                How the threat can materialize (e.g., email, network, physical access)
               </p>
             </div>
 
-            {/* MITRE ATT&CK e CWE */}
+            {/* MITRE ATT&CK and CWE */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="mitre_attack_id">MITRE ATT&CK ID</Label>
@@ -332,7 +332,7 @@ export function ThreatForm() {
                 className="flex items-center gap-2 px-4 py-2 bg-primary text-primary-foreground rounded-lg hover:bg-primary/90 transition-colors disabled:opacity-50"
               >
                 <Save className="h-4 w-4" strokeWidth={1.5} />
-                {loading ? 'Saving...' : (isEdit ? 'Update' : 'Criar')} Ameaça
+                {loading ? 'Saving...' : (isEdit ? 'Update' : 'Create')} Threat
               </button>
 
               <button
@@ -350,5 +350,6 @@ export function ThreatForm() {
     </div>
   );
 }
+
 
 

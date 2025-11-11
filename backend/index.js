@@ -1,6 +1,6 @@
 /**
- * n360 Platform - Backend API (Refatorado)
- * Backend completo com TODAS as boas práticas aplicadas
+ * n360 Platform - Backend API (refined)
+ * Full backend applying all recommended best practices
  */
 
 const express = require('express');
@@ -11,14 +11,14 @@ const cron = require('node-cron');
 const path = require('path');
 
 // ============================================================
-// Inicialização e Configuração
+// Initialization & configuration
 // ============================================================
 
-// 1. Carregar e validar variáveis de ambiente (PRIMEIRO!)
+// 1. Load and validate environment variables (first!)
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const env = require('./config/env');
 
-// 2. Logger estruturado
+// 2. Structured logger
 const logger = require('./utils/logger');
 
 // 3. Constants
@@ -30,8 +30,7 @@ const {
 } = require('./config/constants');
 
 // 4. Supabase
-const { createClient } = require('@supabase/supabase-js');
-const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_KEY);
+const supabase = require('./utils/supabase');
 
 // 5. Collectors
 const WazuhCollector = require('./collectors/wazuh-collector');
@@ -51,7 +50,7 @@ const { validate, paginationSchema, alertFilterSchema, uuidParamSchema } = requi
 
 const app = express();
 
-// Middleware global
+// Global middleware
 app.use(cors());
 app.use(express.json());
 
@@ -67,7 +66,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Rate limiting global
+// Global rate limiting
 app.use('/api', defaultLimiter);
 
 // ============================================================
@@ -163,9 +162,9 @@ async function runHealthChecks() {
 // Data Collection
 // ============================================================
 
-// Wazuh Collector - DESABILITADO TEMPORARIAMENTE
-// Motivo: Wazuh 4.9.0 mudou arquitetura - alertas vêm do Indexer (OpenSearch)
-// TODO Sprint 3/4: Implementar WazuhIndexerCollector com @opensearch-project/opensearch
+// Wazuh Collector - temporarily disabled
+// Reason: Wazuh 4.9.0 changed architecture and alerts now come from the Indexer (OpenSearch)
+// TODO Sprint 3/4: Implement WazuhIndexerCollector with @opensearch-project/opensearch
 // const wazuhCollector = new WazuhCollector(supabase, {
 //   apiUrl: env.WAZUH_API_URL,
 //   username: env.WAZUH_USERNAME,
@@ -179,21 +178,21 @@ const zabbixCollector = new ZabbixCollector(supabase, {
 });
 
 async function runCollectors() {
-  const orgId = DEMO_ORG_ID; // Em produção, buscar de user_profiles
+  const orgId = DEMO_ORG_ID; // In production, fetch from user_profiles
   
-  // Wazuh: Desabilitado - implementar com OpenSearch no Sprint 3/4
+  // Wazuh: disabled - implement via OpenSearch in Sprint 3/4
   // try {
   //   await wazuhCollector.run(orgId);
   // } catch (error) {
   //   logger.errorWithContext('[Collectors] Wazuh collection failed', error);
   // }
   
-  // Zabbix: Funcionando ✅
+  // Zabbix: active ✅
   try {
     await zabbixCollector.run(orgId);
   } catch (error) {
     logger.errorWithContext('[Collectors] Zabbix collection failed', error);
-    // Não para execução
+    // Do not halt execution
   }
 }
 
@@ -201,7 +200,7 @@ async function runCollectors() {
 // API Routes
 // ============================================================
 
-// Health endpoint (sem rate limit em dev)
+// Health endpoint (no rate limit in development)
 app.get('/health', (req, res) => {
   res.json({
     status: 'ok',
@@ -210,7 +209,7 @@ app.get('/health', (req, res) => {
   });
 });
 
-// Dashboard - status das aplicações
+// Dashboard - application status
 app.get('/api/dashboard', optionalAuth, (req, res) => {
   try {
     const summary = statusCache.getSummary();
@@ -236,7 +235,7 @@ app.get('/api/dashboard', optionalAuth, (req, res) => {
   }
 });
 
-// Alerts - listagem com paginação e filtros
+// Alerts - listing with pagination and filters
 app.get(
   '/api/alerts',
   requireAuth,
@@ -287,7 +286,7 @@ app.get(
   }
 );
 
-// Alert específico
+// Single alert
 app.get(
   '/api/alerts/:id',
   requireAuth,
@@ -304,7 +303,7 @@ app.get(
       if (error || !data) {
         return res.status(404).json({
           error: 'Not Found',
-          message: 'Alerta não encontrado'
+          message: 'Alert not found'
         });
       }
 
@@ -346,7 +345,7 @@ app.patch(
       if (error || !data) {
         return res.status(404).json({
           error: 'Not Found',
-          message: 'Alerta não encontrado'
+          message: 'Alert not found'
         });
       }
 
@@ -392,7 +391,7 @@ app.patch(
       if (error || !data) {
         return res.status(404).json({
           error: 'Not Found',
-          message: 'Alerta não encontrado'
+          message: 'Alert not found'
         });
       }
 
@@ -438,7 +437,7 @@ app.patch(
       if (error || !data) {
         return res.status(404).json({
           error: 'Not Found',
-          message: 'Alerta não encontrado'
+          message: 'Alert not found'
         });
       }
 
@@ -535,7 +534,7 @@ app.patch(
       if (error || !data) {
         return res.status(404).json({
           error: 'Not Found',
-          message: 'Problema não encontrado'
+          message: 'Problem not found'
         });
       }
 
@@ -656,7 +655,7 @@ app.use('/api/reports', require('./routes/reports'));
 app.use((req, res) => {
   res.status(404).json({
     error: 'Not Found',
-    message: `Endpoint ${req.method} ${req.path} não encontrado`
+    message: `Endpoint ${req.method} ${req.path} not found`
   });
 });
 
@@ -682,7 +681,7 @@ app.use((err, req, res, next) => {
 
 async function start() {
   try {
-    // 1. Testar conexão Supabase
+    // 1. Test Supabase connectivity
     const { data, error } = await supabase.from('organizations').select('count', { count: 'exact', head: true });
     
     if (error) throw error;

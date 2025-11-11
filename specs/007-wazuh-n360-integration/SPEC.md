@@ -1003,3 +1003,4 @@ import { VulnerabilitiesWidget } from '@/components/widgets/VulnerabilitiesWidge
 Posso criar todos os componentes e integrar em ~2 horas.
 
 
+

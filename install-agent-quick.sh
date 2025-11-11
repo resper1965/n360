@@ -150,3 +150,4 @@ echo ""
 echo -e "${GREEN}🎉 Agente '${AGENT_NAME}' instalado e conectado!${NC}"
 echo ""
 
+

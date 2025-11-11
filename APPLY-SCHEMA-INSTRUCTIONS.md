@@ -5,7 +5,7 @@
 ### 1. Acesse o SQL Editor
 
 ```
-https://supabase.com/dashboard/project/hyplrlakowbwntkidtcp/sql/new
+https://supabase.com/dashboard/project/mupwrwjxqsveljtjzllr/sql/new
 ```
 
 ### 2. Copie o Schema
@@ -42,8 +42,7 @@ Vá em **Table Editor** e você verá:
 ## Método 2: Via CLI (Alternativo)
 
 ```bash
-cd /home/resper/stack/n360-platform
-npm install @supabase/supabase-js
+cp env.sample .env   # apenas se ainda não existir
 node apply-schema.js
 ```
 

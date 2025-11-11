@@ -9,14 +9,8 @@ const { generateExecutiveSummary } = require('../templates/pdf-executive');
 const { generateRiskRegister } = require('../templates/pdf-risk-register');
 const { generateSoA } = require('../templates/pdf-soa');
 const { generateIncidentReport } = require('../templates/pdf-incident');
-const { createClient } = require('@supabase/supabase-js');
 const logger = require('../utils/logger');
-
-// Supabase client
-const supabase = createClient(
-  process.env.SUPABASE_URL,
-  process.env.SUPABASE_SERVICE_KEY
-);
+const supabase = require('../utils/supabase');
 
 /**
  * GET /api/reports/executive-pdf
@@ -174,7 +168,7 @@ router.get('/incident-pdf/:id', async (req, res) => {
       .single();
 
     if (!incident) {
-      return res.status(404).json({ error: 'Incidente não encontrado' });
+      return res.status(404).json({ error: 'Incident not found' });
     }
 
     // Gerar HTML

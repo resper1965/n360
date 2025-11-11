@@ -9,7 +9,7 @@ https://supabase.com/dashboard
 
 ### 2. Selecione o projeto
 ```
-hyplrlakowbwntkidtcp
+mupwrwjxqsveljtjzllr
 ```
 
 ### 3. Vá em Settings → API

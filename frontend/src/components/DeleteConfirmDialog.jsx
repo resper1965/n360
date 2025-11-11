@@ -1,6 +1,6 @@
 /**
  * Delete Confirmation Dialog
- * Modal reutilizável para confirmação of delete
+ * Reusable modal to confirm destructive actions
  */
 
 import {
@@ -17,9 +17,9 @@ export function DeleteConfirmDialog({
   open, 
   onOpenChange, 
   onConfirm, 
-  title = "Confirmar Exclusão",
-  description = "Esta ação não poof ser desfeita. Tem certeza que deseja continuar?",
-  itemName = "este item"
+  title = "Confirm Deletion",
+  description = "This action cannot be undone. Are you sure you want to continue?",
+  itemName = "this item"
 }) {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
@@ -61,5 +61,6 @@ export function DeleteConfirmDialog({
     </Dialog>
   );
 }
+
 
 

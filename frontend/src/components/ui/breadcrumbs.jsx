@@ -1,6 +1,6 @@
 /**
  * Breadcrumbs Component
- * Navegação contextual
+ * Contextual navigation
  */
 
 import { Link } from 'react-router-dom';
@@ -40,5 +40,6 @@ export function Breadcrumbs({ items }) {
     </nav>
   );
 }
+
 
 

@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-/** 🎨 ness. Design System - "Invisível Elegância" */
+/** 🎨 ness. Design System - "Invisible Elegance" */
 export default {
   darkMode: ["class"],
   content: [
@@ -8,7 +8,7 @@ export default {
   ],
   theme: {
     extend: {
-      /* 🎨 Cores Refinadas */
+      /* 🎨 Refined colors */
       colors: {
         // Shadcn Base
         background: 'hsl(var(--background))',
@@ -35,7 +35,7 @@ export default {
         input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
 
-        // Paleta Slate Refinada
+        // Refined slate palette
         slate: {
           950: 'hsl(var(--slate-950))',
           900: 'hsl(var(--slate-900))',
@@ -50,7 +50,7 @@ export default {
           100: 'hsl(var(--slate-100))',
         },
 
-        // Aliases ness. (compatibilidade)
+        // ness. aliases (compatibility)
         'ness-blue': 'hsl(var(--primary-500))',
         'ness-dark': 'hsl(var(--slate-950))',
         'ness-surface': 'hsl(var(--slate-850))',
@@ -60,7 +60,7 @@ export default {
         'ness-muted': 'hsl(var(--slate-400))',
       },
 
-      /* ✍️ Tipografia */
+      /* ✍️ Typography */
       fontFamily: {
         sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'sans-serif'],
         display: ['Montserrat', 'Inter', 'sans-serif'],
@@ -93,7 +93,7 @@ export default {
         loose: 'var(--leading-loose)',
       },
 
-      /* 📏 Espaçamento (baseado em 4px) */
+      /* 📏 Spacing (4px scale) */
       spacing: {
         '1': 'var(--space-1)',
         '2': 'var(--space-2)',
@@ -116,14 +116,14 @@ export default {
         'grid-2xl': 'var(--grid-gap-2xl)',
       },
 
-      /* 🎨 Border Radius */
+      /* 🎨 Border radius */
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
       },
 
-      /* 🎭 Transições Sutis */
+      /* 🎭 Subtle transitions */
       transitionTimingFunction: {
         'elegant': 'cubic-bezier(0.2, 0.8, 0.2, 1)',
       },
@@ -133,7 +133,7 @@ export default {
         'slow': 'var(--transition-slow)',
       },
 
-      /* 🌑 Sombras Elegantes */
+      /* 🌑 Elegant shadows */
       boxShadow: {
         'elegant': '0 4px 16px rgba(0, 0, 0, 0.15)',
         'elegant-hover': '0 8px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px hsl(var(--primary-500) / 0.1)',

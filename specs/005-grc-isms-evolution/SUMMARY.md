@@ -290,3 +290,4 @@ Score = (Controles Efetivos / Total Controles Aplicáveis) × 100
 **Status**: ✅ Aprovada para Implementação
 
 
+

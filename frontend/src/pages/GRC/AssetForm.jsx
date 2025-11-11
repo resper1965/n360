@@ -150,8 +150,8 @@ export default function AssetForm() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="name">Nome *</Label>
-                  <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Example: Servidor of Banco of Dados" required />
+                  <Label htmlFor="name">Name *</Label>
+                  <Input id="name" name="name" value={formData.name} onChange={handleChange} placeholder="Example: Database Server" required />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="description">Description</Label>
@@ -162,14 +162,14 @@ export default function AssetForm() {
 
             <Card>
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg font-medium">Classificação CIA (Confidentiality, Integrity, Availability)</CardTitle>
+                <CardTitle className="text-lg font-medium">CIA Classification (Confidentiality, Integrity, Availability)</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {['confidentiality', 'integrity', 'availability'].map((field) => (
                   <div key={field} className="space-y-2">
                     <Label htmlFor={`${field}_impact`}>
-                      {field === 'confidentiality' ? 'Confidencialidade' : field === 'integrity' ? 'Integridade' : 'Disponibilidade'} (1-5) *
-                      <span className="ml-2 text-xs text-muted-foreground">Atual: {formData[`${field}_impact`]}</span>
+                      {field === 'confidentiality' ? 'Confidentiality' : field === 'integrity' ? 'Integrity' : 'Availability'} (1-5) *
+                      <span className="ml-2 text-xs text-muted-foreground">Current: {formData[`${field}_impact`]}</span>
                     </Label>
                     <input
                       type="range"
@@ -182,15 +182,15 @@ export default function AssetForm() {
                       className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
                     />
                     <div className="flex justify-between text-xs text-muted-foreground">
-                      <span>Muito Baixo</span>
-                      <span>Muito Alto</span>
+                      <span>Very Low</span>
+                      <span>Very High</span>
                     </div>
                   </div>
                 ))}
                 <div className="p-4 rounded-lg border border-primary/20 bg-primary/5 mt-6">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-sm font-medium">Business Impact (Calculado)</div>
+                      <div className="text-sm font-medium">Business Impact (Calculated)</div>
                       <div className="text-xs text-muted-foreground mt-0.5">max(C,I,A) + avg(C,I,A)</div>
                     </div>
                     <div className="text-3xl font-medium tracking-tight text-primary">{businessImpact}</div>
@@ -203,7 +203,7 @@ export default function AssetForm() {
           <div className="space-y-grid-lg">
             <Card>
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg font-medium">Integração</CardTitle>
+                <CardTitle className="text-lg font-medium">Integration</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
@@ -234,5 +234,6 @@ export default function AssetForm() {
     </div>
   )
 }
+
 
 

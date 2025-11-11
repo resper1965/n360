@@ -68,7 +68,7 @@ cat [PATH_ENCONTRADO]
 # docker-compose.yml
 environment:
   - WAZUH_API_URL=https://wazuh.manager:55000
-  - WAZUH_API_USER=wazuh-wui
+  - WAZUH_USERNAME=wazuh-wui
   - WAZUH_API_PASSWORD=Nessnet@10
 ```
 

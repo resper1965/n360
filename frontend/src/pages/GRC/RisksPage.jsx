@@ -37,7 +37,7 @@ export default function RisksPage() {
       setRisks(data.data || [])
       setPagination(data.pagination || {})
     } catch (error) {
-      console.error('Error buscar risks:', error)
+      console.error('Error fetching risks:', error)
     } finally {
       setLoading(false)
     }
@@ -45,25 +45,25 @@ export default function RisksPage() {
 
   const getRiskLevel = (score) => {
     if (score >= 20) return { label: "Critical", color: 'destructive' }
-    if (score >= 15) return { label: 'Alto', color: 'default' }
+    if (score >= 15) return { label: 'High', color: 'default' }
     if (score >= 6) return { label: 'Medium', color: 'secondary' }
-    return { label: 'Baixo', color: 'outline' }
+    return { label: 'Low', color: 'outline' }
   }
 
   const categoryLabels = {
-    operational: 'Operacional',
-    financial: 'Financeiro',
-    strategic: 'Estratégico',
-    compliance: 'Conformidade',
-    cyber: 'Cibernético',
-    reputational: 'Reputação',
+    operational: 'Operational',
+    financial: 'Financial',
+    strategic: 'Strategic',
+    compliance: 'Compliance',
+    cyber: 'Cyber',
+    reputational: 'Reputation',
   }
 
   const statusLabels = {
     open: 'Open',
-    mitigating: 'Mitigando',
-    mitigated: 'Mitigado',
-    accepted: 'Aceito',
+    mitigating: 'Mitigating',
+    mitigated: 'Mitigated',
+    accepted: 'Accepted',
     closed: 'Closed',
   }
 
@@ -108,11 +108,11 @@ export default function RisksPage() {
             value={filters.status}
             onChange={(e) => setFilters({ ...filters, status: e.target.value })}
           >
-            <option value="all">Todos os Status</option>
+            <option value="all">All Statuses</option>
             <option value="open">Open</option>
-            <option value="mitigating">Mitigando</option>
-            <option value="mitigated">Mitigado</option>
-            <option value="accepted">Aceito</option>
+            <option value="mitigating">Mitigating</option>
+            <option value="mitigated">Mitigated</option>
+            <option value="accepted">Accepted</option>
             <option value="closed">Closed</option>
           </select>
 
@@ -124,11 +124,11 @@ export default function RisksPage() {
               setFilters({ ...filters, category: e.target.value })
             }
           >
-            <option value="all">Todas as Categorias</option>
-            <option value="operational">Operacional</option>
-            <option value="financial">Financeiro</option>
+            <option value="all">All Categories</option>
+            <option value="operational">Operational</option>
+            <option value="financial">Financial</option>
             <option value="strategic">Strategic</option>
-            <option value="compliance">Conformidade</option>
+            <option value="compliance">Compliance</option>
             <option value="cyber">Cyber</option>
             <option value="reputational">Reputation</option>
           </select>
@@ -141,11 +141,11 @@ export default function RisksPage() {
               setFilters({ ...filters, severity: e.target.value })
             }
           >
-            <option value="all">Todas as Severidades</option>
-            <option value="critical">Crítico (20-25)</option>
-            <option value="high">Alto (15-19)</option>
+            <option value="all">All Severities</option>
+            <option value="critical">Critical (20-25)</option>
+            <option value="high">High (15-19)</option>
             <option value="medium">Medium (6-14)</option>
-            <option value="low">Baixo (1-5)</option>
+            <option value="low">Low (1-5)</option>
           </select>
         </div>
       </Card>

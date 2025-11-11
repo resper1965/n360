@@ -51,9 +51,9 @@ export default function GRCDashboard() {
 
   const getRiskLevel = (score) => {
     if (score >= 20) return { label: "Critical", color: 'destructive' }
-    if (score >= 15) return { label: 'Alto', color: 'default' }
+    if (score >= 15) return { label: 'High', color: 'default' }
     if (score >= 6) return { label: 'Medium', color: 'secondary' }
-    return { label: 'Baixo', color: 'outline' }
+    return { label: 'Low', color: 'outline' }
   }
 
   if (loading) {
@@ -68,9 +68,9 @@ export default function GRCDashboard() {
     <div className="space-y-grid-xl">
       {/* Header */}
       <div className="space-y-1">
-        <h1 className="text-3xl font-medium tracking-tight">Dashboard GRC</h1>
+        <h1 className="text-3xl font-medium tracking-tight">GRC Dashboard</h1>
         <p className="text-sm text-muted-foreground">
-          Governance, Risk & Compliance - Visão executiva
+          Governance, Risk & Compliance executive overview
         </p>
       </div>
 
@@ -155,13 +155,13 @@ export default function GRCDashboard() {
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">
               <div className="text-xs text-muted-foreground">
-                Documentos em vigência
+                Active documents
               </div>
             </div>
           </CardContent>
         </Card>
 
-        {/* Controles Pending */}
+        {/* Pending controls */}
         <Card className="group">
           <CardContent className="p-6">
             <div className="flex items-start justify-between mb-4">
@@ -174,12 +174,12 @@ export default function GRCDashboard() {
                 {data.controls.length}
               </div>
               <div className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
-                Controles Pending
+                Pending Controls
               </div>
             </div>
             <div className="mt-4 pt-4 border-t border-border/50">
               <div className="text-xs text-muted-foreground">
-                Não implementados
+                Not implemented
               </div>
             </div>
           </CardContent>
@@ -195,7 +195,7 @@ export default function GRCDashboard() {
         >
           <div className="flex flex-col items-center gap-2">
             <TrendingUp className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-base" strokeWidth={1.5} />
-            <span className="text-sm font-medium">Matriz Risk</span>
+            <span className="text-sm font-medium">Risk Matrix</span>
           </div>
         </Button>
         <Button
@@ -205,7 +205,7 @@ export default function GRCDashboard() {
         >
           <div className="flex flex-col items-center gap-2">
             <AlertTriangle className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-base" strokeWidth={1.5} />
-            <span className="text-sm font-medium">Gestão Risk</span>
+            <span className="text-sm font-medium">Risk Management</span>
           </div>
         </Button>
         <Button
@@ -215,32 +215,32 @@ export default function GRCDashboard() {
         >
           <div className="flex flex-col items-center gap-2">
             <Shield className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors duration-base" strokeWidth={1.5} />
-            <span className="text-sm font-medium">Controles</span>
+            <span className="text-sm font-medium">Controls</span>
           </div>
         </Button>
       </div>
 
       {/* Main Content Grid - Elegant Layout */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-grid-lg">
-        {/* Compliance Score por Framework */}
+        {/* Compliance Score by Framework */}
         <Card>
           <CardHeader className="pb-4">
             <CardTitle className="flex items-center gap-2 text-lg font-medium">
               <Shield className="h-4 w-4 text-muted-foreground" strokeWidth={1.5} />
-              Compliance Score por Framework
+              Compliance Score by Framework
             </CardTitle>
           </CardHeader>
           <CardContent>
             {data.complianceScores.length === 0 ? (
               <div className="text-center py-12 text-muted-foreground">
                 <Shield className="h-10 w-10 mx-auto mb-3 opacity-30" strokeWidth={1.5} />
-                <p className="text-sm">No framework configurado</p>
+                <p className="text-sm">No framework configured</p>
                 <Button
                   variant="outline"
                   className="mt-4 border-border/50"
                   onClick={() => navigate('/grc/controls')}
                 >
-                  Cadastrar Controles
+                  Register Controls
                 </Button>
               </div>
             ) : (
@@ -251,7 +251,7 @@ export default function GRCDashboard() {
                       <div className="flex-1">
                         <div className="font-medium text-sm">{score.framework}</div>
                         <div className="text-xs text-muted-foreground mt-0.5">
-                          {score.implemented_controls}/{score.total_controls} controles implementados
+                          {score.implemented_controls}/{score.total_controls} controls implemented
                         </div>
                       </div>
                       <div className="text-xl font-medium tracking-tight ml-4">
@@ -291,7 +291,7 @@ export default function GRCDashboard() {
                   className="mt-4 border-border/50"
                   onClick={() => navigate('/grc/risks')}
                 >
-                  Cadastrar Riscos
+                  Register Risks
                 </Button>
               </div>
             ) : (

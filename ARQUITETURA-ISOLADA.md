@@ -192,7 +192,7 @@ ssh root@148.230.77.242 "docker logs -f n360-backend"
 
 ```env
 # Supabase
-SUPABASE_URL=https://hyplrlakowbwntkidtcp.supabase.co
+SUPABASE_URL=https://mupwrwjxqsveljtjzllr.supabase.co
 SUPABASE_ANON_KEY=eyJ...
 SUPABASE_SERVICE_KEY=eyJ...
 
@@ -460,5 +460,6 @@ docker network inspect wazuh-stack_wazuh-internal
 ---
 
 **Princípio Final**: Se funciona, não mexa. Inove apenas no n360. 🚀
+
 
 

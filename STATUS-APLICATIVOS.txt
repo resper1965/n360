@@ -92,7 +92,7 @@ VPS: root@148.230.77.242
 └─────────────────────────────────────────────────────────────┘
 
   Instância:
-    • URL: https://hyplrlakowbwntkidtcp.supabase.co
+    • URL: https://mupwrwjxqsveljtjzllr.supabase.co
     • Region: us-east-1
     • Plan: Free
   
@@ -216,5 +216,6 @@ VPS: root@148.230.77.242
 ╚══════════════════════════════════════════════════════════════╝
 
 Última verificação: 05/11/2025 - 23h
+
 
 

@@ -2,16 +2,16 @@ import React, { useState } from 'react';
 import { Download, Loader2 } from 'lucide-react';
 
 /**
- * Botão of Export PDF
- * 
- * @param {string} endpoint - Endpoint of API (ex: /api/reports/executive-pdf)
- * @param {string} filename - Nome of arquivo (ex: executive-summary.pdf)
- * @param {string} label - Texto of botão
+ * Export PDF button component.
+ *
+ * @param {string} endpoint - API endpoint (e.g., /api/reports/executive-pdf)
+ * @param {string} filename - Output filename (e.g., executive-summary.pdf)
+ * @param {string} label - Button text
  */
 const ExportPDFButton = ({ 
   endpoint, 
-  filename = 'relatorio.pdf',
-  label = 'Exportar PDF',
+  filename = 'report.pdf',
+  label = 'Export PDF',
   className = '',
   variant = 'primary'
 }) => {
@@ -23,7 +23,7 @@ const ExportPDFButton = ({
       setLoading(true);
       setError(null);
 
-      // Fazer requisição para gerar PDF
+      // Request PDF generation
       const response = await fetch(`${import.meta.env.VITE_API_URL}${endpoint}`, {
         method: 'GET',
         headers: {
@@ -32,13 +32,13 @@ const ExportPDFButton = ({
       });
 
       if (!response.ok) {
-        throw new Error(`Error gerar PDF: ${response.statusText}`);
+        throw new Error(`Error generating PDF: ${response.statusText}`);
       }
 
-      // Converter resposta em blob
+      // Convert response to blob
       const blob = await response.blob();
 
-      // Criar link of download
+      // Create download link
       const url = window.URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
@@ -50,9 +50,9 @@ const ExportPDFButton = ({
       window.URL.revokeObjectURL(url);
       document.body.removeChild(a);
 
-      console.log(`[PDF] ${filename} baixado com sucesso`);
+      console.log(`[PDF] ${filename} downloaded successfully`);
     } catch (err) {
-      console.error('[PDF] Error exportar:', err);
+      console.error('[PDF] Error exporting:', err);
       setError(err.message);
     } finally {
       setLoading(false);
@@ -84,7 +84,7 @@ const ExportPDFButton = ({
         {loading ? (
           <>
             <Loader2 className="w-4 h-4 animate-spin" />
-            <span>Gerando PDF...</span>
+            <span>Generating PDF...</span>
           </>
         ) : (
           <>

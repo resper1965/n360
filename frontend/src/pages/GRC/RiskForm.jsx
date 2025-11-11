@@ -68,7 +68,7 @@ export default function RiskForm() {
     setLoading(true)
 
     try {
-      // Calcular risk_score
+      // Calculate risk_score
       const risk_score = formData.likelihood * formData.impact
 
       const payload = {
@@ -90,14 +90,14 @@ export default function RiskForm() {
       })
 
       if (response.ok) {
-        alert(isEdit ? 'Risco atualizado successfully!' : 'Risco criado successfully!')
+        alert(isEdit ? 'Risk updated successfully!' : 'Risk created successfully!')
         navigate('/grc/risks')
       } else {
         const error = await response.json()
-        alert(`Erro: ${error.error || 'Error saving risk'}`)
+        alert(`Error: ${error.error || 'Error saving risk'}`)
       }
     } catch (error) {
-      console.error('Erro:', error)
+      console.error('Error:', error)
       alert('Error saving risk')
     } finally {
       setLoading(false)
@@ -105,7 +105,7 @@ export default function RiskForm() {
   }
 
   const handleDelete = async () => {
-    if (!confirm('Are you sure you want to delete este risk?')) return
+    if (!confirm('Are you sure you want to delete this risk?')) return
 
     try {
       setLoading(true)
@@ -114,14 +114,14 @@ export default function RiskForm() {
       })
 
       if (response.ok) {
-        alert('Risco excluído successfully!')
+        alert('Risk deleted successfully!')
         navigate('/grc/risks')
       } else {
-        alert('Error excluir risk')
+        alert('Error deleting risk')
       }
     } catch (error) {
-      console.error('Erro:', error)
-      alert('Error excluir risk')
+      console.error('Error:', error)
+      alert('Error deleting risk')
     } finally {
       setLoading(false)
     }
@@ -150,11 +150,11 @@ export default function RiskForm() {
               <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
             </Button>
             <h1 className="text-3xl font-medium tracking-tight">
-              {isEdit ? 'Edit Risco' : 'New Risco'}
+              {isEdit ? 'Edit Risk' : 'New Risk'}
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Update the information of risk' : 'Register a new risk no sistema'}
+            {isEdit ? 'Update the risk information' : 'Register a new risk in the platform'}
           </p>
         </div>
 
@@ -189,7 +189,7 @@ export default function RiskForm() {
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    placeholder="Example: Risco of vazamento of dados"
+                    placeholder="Example: Data breach risk"
                     required
                   />
                 </div>
@@ -202,15 +202,15 @@ export default function RiskForm() {
                     name="description"
                     value={formData.description || ''}
                     onChange={handleChange}
-                    placeholder="Descreva o risk em detalhes..."
+                    placeholder="Describe the risk in detail..."
                     rows={4}
                   />
                 </div>
 
-                {/* Categoria e Asset Type */}
+                {/* Category and Asset Type */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <Label htmlFor="category">Categoria *</Label>
+                    <Label htmlFor="category">Category *</Label>
                     <Select
                       id="category"
                       name="category"
@@ -218,42 +218,42 @@ export default function RiskForm() {
                       onChange={handleChange}
                       required
                     >
-                      <option value="operational">Operacional</option>
-                      <option value="financial">Financeiro</option>
+                      <option value="operational">Operational</option>
+                      <option value="financial">Financial</option>
                       <option value="strategic">Strategic</option>
                       <option value="compliance">Compliance</option>
                       <option value="cyber">Cyber</option>
-                      <option value="reputational">Reputacional</option>
+                      <option value="reputational">Reputational</option>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="asset_type">Tipo of Ativo</Label>
+                    <Label htmlFor="asset_type">Asset Type</Label>
                     <Input
                       id="asset_type"
                       name="asset_type"
                       value={formData.asset_type || ''}
                       onChange={handleChange}
-                      placeholder="Example: Banco of dados"
+                      placeholder="Example: Database"
                     />
                   </div>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Analysis of Risco */}
+            {/* Risk Analysis */}
             <Card>
               <CardHeader className="pb-4">
                 <CardTitle className="text-lg font-medium">Analysis of Risco</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                {/* Likelihood e Impact */}
+                {/* Likelihood and Impact */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <Label htmlFor="likelihood">
                       Probability (1-5) *
                       <span className="ml-2 text-xs text-muted-foreground">
-                        Atual: {formData.likelihood}
+                        Current: {formData.likelihood}
                       </span>
                     </Label>
                     <input
@@ -267,16 +267,16 @@ export default function RiskForm() {
                       className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
                     />
                     <div className="flex justify-between text-xs text-muted-foreground">
-                      <span>Muito Baixa</span>
-                      <span>Muito Alta</span>
+                      <span>Very Low</span>
+                      <span>Very High</span>
                     </div>
                   </div>
 
                   <div className="space-y-2">
                     <Label htmlFor="impact">
-                      Impacto (1-5) *
+                      Impact (1-5) *
                       <span className="ml-2 text-xs text-muted-foreground">
-                        Atual: {formData.impact}
+                        Current: {formData.impact}
                       </span>
                     </Label>
                     <input
@@ -290,8 +290,8 @@ export default function RiskForm() {
                       className="w-full h-2 bg-muted rounded-lg appearance-none cursor-pointer accent-primary"
                     />
                     <div className="flex justify-between text-xs text-muted-foreground">
-                      <span>Muito Baixo</span>
-                      <span>Muito Alto</span>
+                      <span>Very Low</span>
+                      <span>Very High</span>
                     </div>
                   </div>
                 </div>
@@ -300,9 +300,9 @@ export default function RiskForm() {
                 <div className="p-4 rounded-lg border border-border/50 bg-muted/30">
                   <div className="flex items-center justify-between">
                     <div>
-                      <div className="text-sm font-medium">Risk Score (Inherente)</div>
+                      <div className="text-sm font-medium">Risk Score (Inherent)</div>
                       <div className="text-xs text-muted-foreground mt-0.5">
-                        Probability × Impacto
+                        Likelihood × Impact
                       </div>
                     </div>
                     <div className="text-3xl font-medium tracking-tight">
@@ -313,14 +313,14 @@ export default function RiskForm() {
               </CardContent>
             </Card>
 
-            {/* Tratamento */}
+            {/* Treatment */}
             <Card>
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg font-medium">Tratamento of Risco</CardTitle>
+                <CardTitle className="text-lg font-medium">Risk Treatment</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="treatment">Estratégia of Tratamento *</Label>
+                  <Label htmlFor="treatment">Treatment Strategy *</Label>
                   <Select
                     id="treatment"
                     name="treatment"
@@ -328,22 +328,22 @@ export default function RiskForm() {
                     onChange={handleChange}
                     required
                   >
-                    <option value="mitigate">Mitigar</option>
-                    <option value="accept">Aceitar</option>
-                    <option value="transfer">Transferir</option>
-                    <option value="avoid">Evitar</option>
+                    <option value="mitigate">Mitigate</option>
+                    <option value="accept">Accept</option>
+                    <option value="transfer">Transfer</option>
+                    <option value="avoid">Avoid</option>
                   </Select>
                 </div>
 
                 {formData.treatment === 'mitigate' && (
                   <div className="space-y-2">
-                    <Label htmlFor="mitigation_plan">Plano of Mitigação</Label>
+                  <Label htmlFor="mitigation_plan">Mitigation Plan</Label>
                     <Textarea
                       id="mitigation_plan"
                       name="mitigation_plan"
                       value={formData.mitigation_plan || ''}
                       onChange={handleChange}
-                      placeholder="Descreva as ações of mitigação..."
+                      placeholder="Describe the mitigation actions..."
                       rows={4}
                     />
                   </div>
@@ -354,7 +354,7 @@ export default function RiskForm() {
 
           {/* Sidebar - 1/3 */}
           <div className="space-y-grid-lg">
-            {/* Status e Datas */}
+            {/* Status and Dates */}
             <Card>
               <CardHeader className="pb-4">
                 <CardTitle className="text-lg font-medium">Status</CardTitle>
@@ -370,15 +370,15 @@ export default function RiskForm() {
                     required
                   >
                     <option value="open">Open</option>
-                    <option value="mitigating">Mitigando</option>
-                    <option value="mitigated">Mitigado</option>
-                    <option value="accepted">Aceito</option>
+                    <option value="mitigating">Mitigating</option>
+                    <option value="mitigated">Mitigated</option>
+                    <option value="accepted">Accepted</option>
                     <option value="closed">Closed</option>
                   </Select>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="identified_date">Data of Identificação *</Label>
+                  <Label htmlFor="identified_date">Identification Date *</Label>
                   <Input
                     type="date"
                     id="identified_date"
@@ -390,7 +390,7 @@ export default function RiskForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="target_date">Data Alvo</Label>
+                  <Label htmlFor="target_date">Target Date</Label>
                   <Input
                     type="date"
                     id="target_date"
@@ -411,7 +411,7 @@ export default function RiskForm() {
                   disabled={loading}
                 >
                   <Save className="h-4 w-4 mr-2" strokeWidth={1.5} />
-                  {loading ? 'Saving...' : (isEdit ? 'Atualizar Risco' : 'Criar Risco')}
+                  {loading ? 'Saving...' : (isEdit ? 'Update Risk' : 'Create Risk')}
                 </Button>
 
                 <Button
@@ -431,5 +431,6 @@ export default function RiskForm() {
     </div>
   )
 }
+
 
 

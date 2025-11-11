@@ -28,7 +28,7 @@ export function FileUpload({
     // Validate size
     const maxSizeBytes = maxSize * 1024 * 1024
     if (file.size > maxSizeBytes) {
-      setError(`Arquivo muito grande. Máximo: ${maxSize}MB`)
+      setError(`File too large. Maximum allowed: ${maxSize}MB`)
       return false
     }
 
@@ -46,7 +46,7 @@ export function FileUpload({
       })
 
       if (!isValid) {
-        setError(`Tipo of arquivo não permitido. Aceitos: ${accept}`)
+        setError(`File type not allowed. Accepted: ${accept}`)
         return false
       }
     }
@@ -144,12 +144,12 @@ export function FileUpload({
             </div>
             <div className="space-y-1">
               <p className="text-sm font-medium">
-                Clique ou arraste o arquivo aqui
+                Click or drag the file here
               </p>
               <p className="text-xs text-muted-foreground">
-                {accept !== '*/*' && `Formatos: ${accept}`}
+                {accept !== '*/*' && `Formats: ${accept}`}
                 {accept !== '*/*' && maxSize && ' • '}
-                {maxSize && `Máx: ${maxSize}MB`}
+                {maxSize && `Max: ${maxSize}MB`}
               </p>
             </div>
           </div>
@@ -219,7 +219,7 @@ export function FileUploadWithStatus({
       {uploadStatus === 'uploading' && (
         <div className="space-y-2">
           <div className="flex items-center justify-between text-xs">
-            <span className="text-muted-foreground">Enviando...</span>
+            <span className="text-muted-foreground">Uploading...</span>
             <span className="font-medium">{uploadProgress}%</span>
           </div>
           <div className="h-1.5 bg-muted rounded-full overflow-hidden">
@@ -234,18 +234,19 @@ export function FileUploadWithStatus({
       {uploadStatus === 'success' && (
         <div className="flex items-center gap-2 text-xs text-green-400">
           <CheckCircle className="h-3.5 w-3.5" strokeWidth={1.5} />
-          Arquivo enviado com sucesso
+          File uploaded successfully
         </div>
       )}
 
       {uploadStatus === 'error' && (
         <div className="flex items-center gap-2 text-xs text-red-400">
           <AlertCircle className="h-3.5 w-3.5" strokeWidth={1.5} />
-          Error enviar arquivo. Tente novamente.
+          Failed to upload file. Please try again.
         </div>
       )}
     </div>
   )
 }
+
 
 

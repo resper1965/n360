@@ -1,18 +1,16 @@
 /**
  * Authentication Middleware
- * Valida JWT e extrai org_id do usuário autenticado
+ * Validates the JWT and extracts the authenticated user's org_id
  */
 
-const { createClient } = require('@supabase/supabase-js');
 const env = require('../config/env');
 const logger = require('../utils/logger');
 const { DEMO_ORG_ID } = require('../config/constants');
-
-const supabase = createClient(env.SUPABASE_URL, env.SUPABASE_SERVICE_KEY);
+const supabase = require('../utils/supabase');
 
 /**
- * Middleware de autenticação obrigatória
- * Valida token JWT e extrai userId e orgId
+ * Required authentication middleware
+ * Validates the JWT and extracts userId and orgId
  */
 async function requireAuth(req, res, next) {
   try {
@@ -25,7 +23,7 @@ async function requireAuth(req, res, next) {
       });
       return res.status(401).json({ 
         error: 'Unauthorized',
-        message: 'Token de autenticação não fornecido' 
+        message: 'Authentication token not provided' 
       });
     }
 
@@ -42,11 +40,11 @@ async function requireAuth(req, res, next) {
       });
       return res.status(401).json({ 
         error: 'Unauthorized',
-        message: 'Token inválido ou expirado' 
+        message: 'Token invalid or expired' 
       });
     }
 
-    // Buscar org_id do usuário
+    // Fetch the user's org_id
     const { data: userProfile, error: profileError } = await supabase
       .from('user_profiles')
       .select('org_id, role')
@@ -60,11 +58,11 @@ async function requireAuth(req, res, next) {
       });
       return res.status(403).json({ 
         error: 'Forbidden',
-        message: 'Perfil de usuário não encontrado' 
+        message: 'User profile not found' 
       });
     }
 
-    // Anexar dados do usuário ao request
+    // Attach user data to the request
     req.user = {
       id: user.id,
       email: user.email,
@@ -88,21 +86,21 @@ async function requireAuth(req, res, next) {
     
     return res.status(500).json({ 
       error: 'Internal Server Error',
-      message: 'Erro ao validar autenticação' 
+      message: 'Failed to validate authentication' 
     });
   }
 }
 
 /**
- * Middleware de autenticação opcional
- * Se houver token, valida e extrai dados
- * Se não houver token, usa DEMO_ORG_ID (apenas desenvolvimento)
+ * Optional authentication middleware
+ * If a token is present, validate and extract user data
+ * If no token, uses DEMO_ORG_ID (development only)
  */
 async function optionalAuth(req, res, next) {
   const authHeader = req.headers.authorization;
   
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
-    // Sem autenticação: usar org demo (apenas em desenvolvimento)
+    // No authentication: use demo org (development only)
     if (env.NODE_ENV === 'development') {
       req.user = {
         id: null,
@@ -119,23 +117,23 @@ async function optionalAuth(req, res, next) {
       return next();
     }
     
-    // Produção: auth obrigatório
+    // Production: authentication required
     return requireAuth(req, res, next);
   }
 
-  // Tem token: validar
+  // Token provided: validate it
   return requireAuth(req, res, next);
 }
 
 /**
- * Middleware para verificar permissões por role
+ * Middleware to check role-based permissions
  */
 function requireRole(...allowedRoles) {
   return (req, res, next) => {
     if (!req.user) {
       return res.status(401).json({ 
         error: 'Unauthorized',
-        message: 'Autenticação necessária' 
+        message: 'Authentication required' 
       });
     }
 
@@ -149,7 +147,7 @@ function requireRole(...allowedRoles) {
       
       return res.status(403).json({ 
         error: 'Forbidden',
-        message: `Acesso negado. Permissões necessárias: ${allowedRoles.join(', ')}` 
+        message: `Access denied. Required roles: ${allowedRoles.join(', ')}` 
       });
     }
 
@@ -162,6 +160,7 @@ module.exports = {
   optionalAuth,
   requireRole,
 };
+
 
 
 

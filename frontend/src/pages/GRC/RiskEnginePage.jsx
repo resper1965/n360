@@ -343,19 +343,19 @@ export function RiskEnginePage() {
             <div className="grid grid-cols-4 gap-4 pt-4 border-t border-border">
               <div className="text-center">
                 <div className="text-2xl font-bold text-red-500">{stats.critical}</div>
-                <div className="text-xs text-muted-foreground">Críticos</div>
+                <div className="text-xs text-muted-foreground">Critical</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-orange-500">{stats.high}</div>
-                <div className="text-xs text-muted-foreground">Altos</div>
+                <div className="text-xs text-muted-foreground">High</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-yellow-500">{stats.medium}</div>
-                <div className="text-xs text-muted-foreground">Mediums</div>
+                <div className="text-xs text-muted-foreground">Medium</div>
               </div>
               <div className="text-center">
                 <div className="text-2xl font-bold text-blue-500">{stats.low}</div>
-                <div className="text-xs text-muted-foreground">Baixos</div>
+                <div className="text-xs text-muted-foreground">Low</div>
               </div>
             </div>
           </div>
@@ -365,11 +365,11 @@ export function RiskEnginePage() {
       {/* Explanation of Model */}
       <Card className="shadow-elegant bg-muted/30">
         <CardHeader>
-          <CardTitle>Como Funciona o Risk Engine v2</CardTitle>
+          <CardTitle>How the Risk Engine v2 Works</CardTitle>
         </CardHeader>
         <CardContent className="space-y-4 text-sm">
           <div>
-            <div className="font-medium mb-2">1. Inherent Risk (Bruto)</div>
+            <div className="font-medium mb-2">1. Inherent Risk (Gross)</div>
             <code className="block p-3 bg-background rounded-lg border border-border font-mono text-xs">
               Inherent Risk = Likelihood × Impact
             </code>
@@ -379,7 +379,7 @@ export function RiskEnginePage() {
           </div>
 
           <div>
-            <div className="font-medium mb-2">2. Residual Risk (Líquido)</div>
+            <div className="font-medium mb-2">2. Residual Risk (Net)</div>
             <code className="block p-3 bg-background rounded-lg border border-border font-mono text-xs">
               Residual Risk = Inherent Risk × (1 - Control Effectiveness)
             </code>
@@ -389,7 +389,7 @@ export function RiskEnginePage() {
           </div>
 
           <div>
-            <div className="font-medium mb-2">3. Effectiveness of Controles</div>
+            <div className="font-medium mb-2">3. Control Effectiveness</div>
             <code className="block p-3 bg-background rounded-lg border border-border font-mono text-xs">
               Reduction = ((Inherent - Residual) / Inherent) × 100%
             </code>
@@ -400,8 +400,8 @@ export function RiskEnginePage() {
 
           <div className="p-3 bg-primary/5 rounded-lg border border-primary/20">
             <p className="text-xs">
-              <strong>💡 Tip:</strong> Um risk residual alto indica que os controles existentes não são suficientes. 
-              Considere implementar controles adicionais ou aceitar o risk formalmente.
+              <strong>💡 Tip:</strong> A high residual risk indicates that the current controls are insufficient.
+              Consider implementing additional controls or formally accepting the risk.
             </p>
           </div>
         </CardContent>

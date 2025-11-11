@@ -222,3 +222,4 @@ cron.schedule(`*/${ZABBIX_COLLECTION_INTERVAL_SECONDS} * * * * *`, async () => {
 **Próximo**: Continuar Sprint 2 com o que funciona (Zabbix + core features).
 
 
+

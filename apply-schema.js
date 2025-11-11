@@ -1,38 +1,59 @@
-const { createClient } = require('@supabase/supabase-js');
 const fs = require('fs');
+const path = require('path');
+require('dotenv').config({ path: path.join(__dirname, '.env') });
 
-const supabase = createClient(
-  'https://hyplrlakowbwntkidtcp.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh5cGxybGFrb3did250a2lkdGNwIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc2MjI3NjkzMiwiZXhwIjoyMDc3ODUyOTMyfQ.IwPdJtuqXRHjiaC5GeGCGroWj0H6pzy-j45Bjb1h84w'
-);
+const supabaseUrl = process.env.SUPABASE_URL;
+const supabaseServiceKey = process.env.SUPABASE_SERVICE_KEY;
+
+if (!supabaseUrl || !supabaseServiceKey) {
+  console.error('❌ SUPABASE_URL ou SUPABASE_SERVICE_KEY não definidos no arquivo .env');
+  process.exit(1);
+}
+
+if (typeof fetch !== 'function') {
+  console.error('❌ Node.js 18+ é obrigatório para executar este script (fetch global ausente)');
+  process.exit(1);
+}
+
+const pgExecuteUrl = new URL('/pg/execute', supabaseUrl).toString();
+
+async function runStatement(query, index, total) {
+  const response = await fetch(pgExecuteUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      apikey: supabaseServiceKey,
+      Authorization: `Bearer ${supabaseServiceKey}`,
+      Prefer: 'tx=commit',
+    },
+    body: JSON.stringify({ query }),
+  });
+
+  if (!response.ok) {
+    const error = await response.text();
+    console.error(`❌ Erro no statement ${index + 1}/${total}:`, error);
+    return;
+  }
+
+  console.log(`✅ Statement ${index + 1}/${total} executado`);
+}
 
 async function applySchema() {
   console.log('Aplicando schema no Supabase...');
-  
-  const schema = fs.readFileSync('./database/schema.sql', 'utf8');
-  
-  // Split por ; e executar cada statement
-  const statements = schema.split(';').filter(s => s.trim().length > 0);
-  
+
+  const schema = fs.readFileSync(path.join(__dirname, 'database/schema.sql'), 'utf8');
+  const statements = schema.split(';').map((s) => s.trim()).filter(Boolean);
+
   console.log(`Total de statements: ${statements.length}`);
-  
+
   for (let i = 0; i < statements.length; i++) {
-    const stmt = statements[i].trim();
-    if (!stmt) continue;
-    
-    try {
-      const { data, error } = await supabase.rpc('exec_sql', { sql: stmt });
-      if (error) {
-        console.error(`❌ Erro no statement ${i + 1}:`, error.message);
-      } else {
-        console.log(`✅ Statement ${i + 1}/${statements.length} executado`);
-      }
-    } catch (e) {
-      console.error(`❌ Erro:`, e.message);
-    }
+    await runStatement(statements[i], i, statements.length);
   }
-  
+
   console.log('Schema aplicado!');
 }
 
-applySchema();
+applySchema().catch((error) => {
+  console.error('❌ Erro ao aplicar schema:', error);
+  process.exit(1);
+});

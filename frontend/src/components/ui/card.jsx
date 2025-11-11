@@ -1,19 +1,19 @@
-/** 🎨 ness. Design System - "Invisível Elegância" */
+/** 🎨 ness. Design System - "Invisible Elegance" */
 import * as React from "react"
 import { cn } from "@/lib/utils"
 
 /**
- * Card - Invisível quando funciona, Presente quando importa
- * Background: slate-850 (invisível)
- * Hover: Sutil elevação + borda primária (presente)
+ * Card - Invisible when it works, present when it matters
+ * Background: slate-850 (invisible)
+ * Hover: Subtle elevation + primary border (present)
  */
 const Card = React.forwardRef(({ className, ...props }, ref) => (
   <div
     ref={ref}
     className={cn(
-      // Invisível (estado padrão)
+      // Invisible (default state)
       "rounded-lg border border-slate-700/50 bg-slate-850 text-slate-200",
-      // Presente (hover)
+      // Present (hover state)
       "transition-all duration-base ease-elegant",
       "hover:border-primary-500/20 hover:shadow-elegant-hover hover:-translate-y-0.5",
       className
@@ -24,7 +24,7 @@ const Card = React.forwardRef(({ className, ...props }, ref) => (
 Card.displayName = "Card"
 
 /**
- * CardHeader - Espaçamento generoso (respira)
+ * CardHeader - Generous spacing for breathing room
  */
 const CardHeader = React.forwardRef(({ className, ...props }, ref) => (
   <div
@@ -36,8 +36,8 @@ const CardHeader = React.forwardRef(({ className, ...props }, ref) => (
 CardHeader.displayName = "CardHeader"
 
 /**
- * CardTitle - Tipografia como protagonista
- * Montserrat Light, tracking tight
+ * CardTitle - Typography as the protagonist
+ * Montserrat Light, tight tracking
  */
 const CardTitle = React.forwardRef(({ className, ...props }, ref) => (
   <h3
@@ -52,7 +52,7 @@ const CardTitle = React.forwardRef(({ className, ...props }, ref) => (
 CardTitle.displayName = "CardTitle"
 
 /**
- * CardDescription - Texto secundário respirável
+ * CardDescription - Comfortable secondary text
  */
 const CardDescription = React.forwardRef(({ className, ...props }, ref) => (
   <p
@@ -67,7 +67,7 @@ const CardDescription = React.forwardRef(({ className, ...props }, ref) => (
 CardDescription.displayName = "CardDescription"
 
 /**
- * CardContent - Conteúdo com espaçamento elegante
+ * CardContent - Content with elegant spacing
  */
 const CardContent = React.forwardRef(({ className, ...props }, ref) => (
   <div ref={ref} className={cn("p-6 pt-0", className)} {...props} />
@@ -75,7 +75,7 @@ const CardContent = React.forwardRef(({ className, ...props }, ref) => (
 CardContent.displayName = "CardContent"
 
 /**
- * CardFooter - Rodapé alinhado
+ * CardFooter - Aligned footer
  */
 const CardFooter = React.forwardRef(({ className, ...props }, ref) => (
   <div

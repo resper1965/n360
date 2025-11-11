@@ -68,7 +68,7 @@ export default function ThreatsPage() {
 
       <Card>
         <CardHeader className="pb-4">
-          <CardTitle className="text-lg font-medium">Ameaças Catalogadas</CardTitle>
+          <CardTitle className="text-lg font-medium">Cataloged Threats</CardTitle>
         </CardHeader>
         <CardContent>
           {loading ? (
@@ -111,5 +111,6 @@ export default function ThreatsPage() {
     </div>
   )
 }
+
 
 

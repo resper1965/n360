@@ -486,3 +486,4 @@ Proprietário - ness. © 2025
 **Próximo**: Sprint 2 (Error Handling + Tests) - ETA 1 semana
 
 
+

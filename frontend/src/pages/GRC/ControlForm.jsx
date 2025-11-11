@@ -56,8 +56,8 @@ export default function ControlForm() {
         tags: data.tags || [],
       })
     } catch (error) {
-      console.error('Error loading controle:', error)
-      alert('Error loading controle')
+      console.error('Error loading control:', error)
+      alert('Error loading control')
     } finally {
       setLoading(false)
     }
@@ -99,10 +99,10 @@ export default function ControlForm() {
         evidence_url: result.url
       }))
 
-      alert('Evidência enviada successfully!')
+      alert('Evidence uploaded successfully!')
     } catch (error) {
-      console.error('Error enviar evidência:', error)
-      alert('Error enviar evidência')
+      console.error('Error uploading evidence:', error)
+      alert('Error uploading evidence')
     } finally {
       setUploadingEvidence(false)
     }
@@ -136,22 +136,22 @@ export default function ControlForm() {
       })
 
       if (response.ok) {
-        alert(isEdit ? 'Controle atualizado successfully!' : 'Controle criado successfully!')
+        alert(isEdit ? 'Control updated successfully!' : 'Control created successfully!')
         navigate('/grc/controls')
       } else {
         const error = await response.json()
-        alert(`Erro: ${error.error || 'Error saving controle'}`)
+        alert(`Error: ${error.error || 'Error saving control'}`)
       }
     } catch (error) {
-      console.error('Erro:', error)
-      alert('Error saving controle')
+      console.error('Error:', error)
+      alert('Error saving control')
     } finally {
       setLoading(false)
     }
   }
 
   const handleDelete = async () => {
-    if (!confirm('Are you sure you want to delete este controle?')) return
+    if (!confirm('Are you sure you want to delete this control?')) return
 
     try {
       setLoading(true)
@@ -160,14 +160,14 @@ export default function ControlForm() {
       })
 
       if (response.ok) {
-        alert('Controle excluído successfully!')
+        alert('Control deleted successfully!')
         navigate('/grc/controls')
       } else {
-        alert('Error excluir controle')
+        alert('Error deleting control')
       }
     } catch (error) {
-      console.error('Erro:', error)
-      alert('Error excluir controle')
+      console.error('Error:', error)
+      alert('Error deleting control')
     } finally {
       setLoading(false)
     }
@@ -196,11 +196,11 @@ export default function ControlForm() {
               <ArrowLeft className="h-4 w-4" strokeWidth={1.5} />
             </Button>
             <h1 className="text-3xl font-medium tracking-tight">
-              {isEdit ? 'Edit Controle' : 'New Control'}
+              {isEdit ? 'Edit Control' : 'New Control'}
             </h1>
           </div>
           <p className="text-sm text-muted-foreground">
-            {isEdit ? 'Update the information of controle' : 'Register a new controle of security'}
+            {isEdit ? 'Update the control information' : 'Register a new security control'}
           </p>
         </div>
 
@@ -229,7 +229,7 @@ export default function ControlForm() {
               <CardContent className="space-y-4">
                 {/* Control ID */}
                 <div className="space-y-2">
-                  <Label htmlFor="control_id">ID of Controle *</Label>
+                  <Label htmlFor="control_id">Control ID *</Label>
                   <Input
                     id="control_id"
                     name="control_id"
@@ -239,7 +239,7 @@ export default function ControlForm() {
                     required
                   />
                   <p className="text-xs text-muted-foreground">
-                    Identificador único (ex: ISO-27001-A.5.1, NIST-PR.AC-1)
+                    Unique identifier (e.g., ISO-27001-A.5.1, NIST-PR.AC-1)
                   </p>
                 </div>
 
@@ -251,7 +251,7 @@ export default function ControlForm() {
                     name="title"
                     value={formData.title}
                     onChange={handleChange}
-                    placeholder="Example: Controle of Acesso Lógico"
+                    placeholder="Example: Logical Access Control"
                     required
                   />
                 </div>
@@ -264,7 +264,7 @@ export default function ControlForm() {
                     name="description"
                     value={formData.description || ''}
                     onChange={handleChange}
-                    placeholder="Descreva o controle em detalhes..."
+                    placeholder="Describe the control in detail..."
                     rows={4}
                   />
                 </div>
@@ -290,7 +290,7 @@ export default function ControlForm() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="control_type">Tipo of Controle *</Label>
+                    <Label htmlFor="control_type">Control Type *</Label>
                     <Select
                       id="control_type"
                       name="control_type"
@@ -298,10 +298,10 @@ export default function ControlForm() {
                       onChange={handleChange}
                       required
                     >
-                      <option value="preventive">Preventivo</option>
-                      <option value="detective">Detectivo</option>
-                      <option value="corrective">Corretivo</option>
-                      <option value="compensating">Compensatório</option>
+                      <option value="preventive">Preventive</option>
+                      <option value="detective">Detective</option>
+                      <option value="corrective">Corrective</option>
+                      <option value="compensating">Compensating</option>
                     </Select>
                   </div>
                 </div>
@@ -320,10 +320,10 @@ export default function ControlForm() {
               </CardContent>
             </Card>
 
-            {/* Implementação */}
+            {/* Implementation */}
             <Card>
               <CardHeader className="pb-4">
-                <CardTitle className="text-lg font-medium">Implementação</CardTitle>
+                <CardTitle className="text-lg font-medium">Implementation</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
@@ -336,26 +336,26 @@ export default function ControlForm() {
                     required
                   >
                     <option value="not_implemented">Not Implemented</option>
-                    <option value="planned">Planejado</option>
-                    <option value="partial">Parcial</option>
-                    <option value="implemented">Implementado</option>
-                    <option value="verified">Verificado</option>
+                    <option value="planned">Planned</option>
+                    <option value="partial">Partial</option>
+                    <option value="implemented">Implemented</option>
+                    <option value="verified">Verified</option>
                   </Select>
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="implementation_notes">Notas of Implementação</Label>
+                  <Label htmlFor="implementation_notes">Implementation Notes</Label>
                   <Textarea
                     id="implementation_notes"
                     name="implementation_notes"
                     value={formData.implementation_notes || ''}
                     onChange={handleChange}
-                    placeholder="Descreva como o controle foi implementado..."
+                    placeholder="Describe how the control was implemented..."
                     rows={4}
                   />
                 </div>
 
-                {/* Team Responsável */}
+                {/* Responsible team */}
                 <div className="space-y-2">
                   <Label htmlFor="responsible_team">Time Owner</Label>
                   <Input
@@ -363,24 +363,24 @@ export default function ControlForm() {
                     name="responsible_team"
                     value={formData.responsible_team || ''}
                     onChange={handleChange}
-                    placeholder="Example: Equipe Security"
+                    placeholder="Example: Security Team"
                   />
                 </div>
               </CardContent>
             </Card>
 
-            {/* Evidências */}
+            {/* Evidence */}
             <Card>
               <CardHeader className="pb-4">
                 <CardTitle className="text-lg font-medium flex items-center gap-2">
                   <Upload className="h-4 w-4" strokeWidth={1.5} />
-                  Evidências of Teste
+                  Test Evidence
                 </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 {/* File Upload */}
                 <FileUpload
-                  label="Arquivo of Evidência"
+                  label="Evidence file"
                   accept=".pdf,.png,.jpg,.jpeg,.doc,.docx,.txt,.csv,.xlsx"
                   maxSize={10}
                   value={evidenceFile}
@@ -396,7 +396,7 @@ export default function ControlForm() {
                     className="w-full border-border/50"
                   >
                     <Upload className="h-4 w-4 mr-2" strokeWidth={1.5} />
-                    {uploadingEvidence ? 'Enviando...' : 'Enviar Evidência'}
+                    {uploadingEvidence ? 'Uploading...' : 'Upload Evidence'}
                   </Button>
                 )}
 
@@ -404,14 +404,14 @@ export default function ControlForm() {
                   <div className="p-4 rounded-lg border border-border/50 bg-muted/30">
                     <div className="flex items-center justify-between">
                       <div className="flex-1">
-                        <div className="text-sm font-medium">Evidência anexada</div>
+                        <div className="text-sm font-medium">Evidence attached</div>
                         <a
                           href={formData.evidence_url}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="text-xs text-primary hover:underline"
                         >
-                          Ver arquivo
+                          View file
                         </a>
                       </div>
                       <Button
@@ -421,20 +421,20 @@ export default function ControlForm() {
                         onClick={() => setFormData(prev => ({ ...prev, evidence_url: '' }))}
                         className="border-border/50"
                       >
-                        Remover
+                        Remove
                       </Button>
                     </div>
                   </div>
                 )}
 
                 <div className="space-y-2">
-                  <Label htmlFor="evidence_description">Descrição of Evidência</Label>
+                  <Label htmlFor="evidence_description">Evidence Description</Label>
                   <Textarea
                     id="evidence_description"
                     name="evidence_description"
                     value={formData.evidence_description || ''}
                     onChange={handleChange}
-                    placeholder="Descreva a evidência anexada..."
+                    placeholder="Describe the attached evidence..."
                     rows={3}
                   />
                 </div>
@@ -451,7 +451,7 @@ export default function ControlForm() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2">
-                  <Label htmlFor="test_frequency">Frequência of Teste (dias)</Label>
+                  <Label htmlFor="test_frequency">Test Frequency (days)</Label>
                   <Input
                     type="number"
                     id="test_frequency"
@@ -467,7 +467,7 @@ export default function ControlForm() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="last_tested">Último Teste</Label>
+                  <Label htmlFor="last_tested">Last Test</Label>
                   <Input
                     type="date"
                     id="last_tested"
@@ -485,7 +485,7 @@ export default function ControlForm() {
                     value={formData.test_result || ''}
                     onChange={handleChange}
                   >
-                    <option value="">Não testado</option>
+                    <option value="">Not tested</option>
                     <option value="passed">Passou</option>
                     <option value="failed">Falhou</option>
                     <option value="partial">Parcial</option>
@@ -523,7 +523,7 @@ export default function ControlForm() {
                   disabled={loading || uploadingEvidence}
                 >
                   <Save className="h-4 w-4 mr-2" strokeWidth={1.5} />
-                  {loading ? 'Saving...' : (isEdit ? 'Atualizar Controle' : 'Criar Controle')}
+                  {loading ? 'Saving...' : (isEdit ? 'Update Control' : 'Create Control')}
                 </Button>
 
                 <Button
@@ -543,5 +543,6 @@ export default function ControlForm() {
     </div>
   )
 }
+
 
 
